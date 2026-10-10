@@ -1,5 +1,12 @@
-export const PRICING_TIER_HTML = `<div class="bg-white border-2 border-blue-600 rounded-xl p-5 shadow-md flex flex-col justify-between relative overflow-hidden">
-  <div class="absolute -right-12 top-5 rotate-45 bg-blue-600 text-white font-mono text-[9px] uppercase px-12 py-0.5 text-center">RECOMMENDED</div>
+export const PRICING_TIER_HTML = `
+<div
+  class="bg-white border-2 border-blue-600 rounded-xl p-5 shadow-md flex flex-col justify-between relative overflow-hidden"
+>
+  <div
+    class="absolute -right-12 top-5 rotate-45 bg-blue-600 text-white font-mono text-[9px] uppercase px-12 py-0.5 text-center"
+  >
+    RECOMMENDED
+  </div>
   <div>
     <div class="mb-3">
       <span class="font-mono text-[9px] text-blue-600 uppercase font-bold tracking-wider">PLATFORM TIER</span>
@@ -17,14 +24,20 @@ export const PRICING_TIER_HTML = `<div class="bg-white border-2 border-blue-600 
     </ul>
   </div>
   <div>
-    <button class="w-full py-2.5 px-4 rounded-lg bg-blue-600 text-white text-sm font-semibold text-center">Provision Cluster</button>
+    <button class="w-full py-2.5 px-4 rounded-lg bg-blue-600 text-white text-sm font-semibold text-center">
+      Provision Cluster
+    </button>
   </div>
-</div>`;
+</div>
+`;
 
-export const PRICING_TIER_TSX = `export const PricingTierCard = () => {
+export const PRICING_TIER_TSX = `
+export const PricingTierCard = () => {
   return (
     <div className="bg-white border-2 border-blue-600 rounded-xl p-5 shadow-md flex flex-col justify-between relative overflow-hidden">
-      <div className="absolute -right-12 top-5 rotate-45 bg-blue-600 text-white font-mono text-[9px] uppercase px-12 py-0.5 text-center">RECOMMENDED</div>
+      <div className="absolute -right-12 top-5 rotate-45 bg-blue-600 text-white font-mono text-[9px] uppercase px-12 py-0.5 text-center">
+        RECOMMENDED
+      </div>
       <div>
         <div className="mb-3">
           <span className="font-mono text-[9px] text-blue-600 uppercase font-bold tracking-wider">PLATFORM TIER</span>
@@ -42,8 +55,11 @@ export const PRICING_TIER_TSX = `export const PricingTierCard = () => {
         </ul>
       </div>
       <div>
-        <button className="w-full py-2.5 px-4 rounded-lg bg-blue-600 text-white text-sm font-semibold text-center">Provision Cluster</button>
+        <button className="w-full py-2.5 px-4 rounded-lg bg-blue-600 text-white text-sm font-semibold text-center">
+          Provision Cluster
+        </button>
       </div>
     </div>
   );
-};`;
+};
+`;

@@ -1,4 +1,5 @@
-export const QUOTA_PROGRESS_HTML = `<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
+export const QUOTA_PROGRESS_HTML = `
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
   <div>
     <div class="flex items-center justify-between mb-3">
       <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Cluster Quota Usage</span>
@@ -25,15 +26,19 @@ export const QUOTA_PROGRESS_HTML = `<div class="bg-white border border-slate-200
     <span class="text-slate-500">Within threshold</span>
     <span class="font-mono text-[9px] text-slate-900 font-semibold">ETA LIMIT: ~18 DAYS</span>
   </div>
-</div>`;
+</div>
+`;
 
-export const QUOTA_PROGRESS_TSX = `export const QuotaProgressCard = () => {
+export const QUOTA_PROGRESS_TSX = `
+export const QuotaProgressCard = () => {
   return (
     <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
       <div>
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-semibold uppercase text-slate-500 tracking-wider">Cluster Quota Usage</span>
-          <span className="font-mono text-[9px] text-blue-600 bg-blue-100 px-2 py-0.5 rounded font-semibold">ACTIVE_CYCLE</span>
+          <span className="font-mono text-[9px] text-blue-600 bg-blue-100 px-2 py-0.5 rounded font-semibold">
+            ACTIVE_CYCLE
+          </span>
         </div>
         <div className="flex items-baseline justify-between mb-2">
           <div className="text-2xl font-bold text-slate-900">82.4%</div>
@@ -58,4 +63,5 @@ export const QUOTA_PROGRESS_TSX = `export const QuotaProgressCard = () => {
       </div>
     </div>
   );
-};`;
+};
+`;

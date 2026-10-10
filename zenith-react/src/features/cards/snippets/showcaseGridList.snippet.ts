@@ -1,11 +1,20 @@
-export const SHOWCASE_GRID_LIST_HTML = `<div class="space-y-6">
-  <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+export const SHOWCASE_GRID_LIST_HTML = `
+<div class="space-y-6">
+  <div
+    class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4"
+  >
     <div class="flex flex-wrap items-center gap-2">
       <span class="font-mono text-[9px] text-slate-500 uppercase mr-1">Filter:</span>
       <button class="px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold">All Repositories (6)</button>
-      <button class="px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold">Production</button>
-      <button class="px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold">Staging</button>
-      <button class="px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold">Archived</button>
+      <button class="px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold">
+        Production
+      </button>
+      <button class="px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold">
+        Staging
+      </button>
+      <button class="px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold">
+        Archived
+      </button>
     </div>
     <div class="flex items-center gap-3">
       <span class="font-mono text-[9px] text-slate-500 uppercase">Display Layout:</span>
@@ -41,9 +50,11 @@ export const SHOWCASE_GRID_LIST_HTML = `<div class="space-y-6">
       </div>
     </div>
   </div>
-</div>`;
+</div>
+`;
 
-export const SHOWCASE_GRID_LIST_TSX = `import { useState } from 'react';
+export const SHOWCASE_GRID_LIST_TSX = `
+import { useState } from 'react';
 
 const REPOS = [
   { name: 'zenith-ingress-router', env: 'production', desc: 'Core Envoy-backed API gateway.', lang: 'TypeScript' },
@@ -64,22 +75,24 @@ const FILTERS = [
 export const ShowcaseGridList = () => {
   const [filter, setFilter] = useState('all');
   const [view, setView] = useState('grid');
-  const visible = filter === 'all' ? REPOS : REPOS.filter((repo) => repo.env === filter);
-  const countFor = (id: string) => (id === 'all' ? REPOS.length : REPOS.filter((repo) => repo.env === id).length);
+  const visible = filter === 'all' ? REPOS : REPOS.filter(repo => repo.env === filter);
+  const countFor = (id: string) => (id === 'all' ? REPOS.length : REPOS.filter(repo => repo.env === id).length);
 
   return (
     <div className="space-y-6">
       <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-mono text-[9px] text-slate-500 uppercase mr-1">Filter:</span>
-          {FILTERS.map((option) => (
+          {FILTERS.map(option => (
             <button
               key={option.id}
               onClick={() => setFilter(option.id)}
               aria-pressed={filter === option.id}
-              className={filter === option.id
-                ? 'px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold'
-                : 'px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold'}
+              className={
+                filter === option.id
+                  ? 'px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold'
+                  : 'px-3 py-1 rounded-full bg-slate-50 text-slate-500 border border-slate-200 text-xs font-semibold'
+              }
             >
               {option.label} ({countFor(option.id)})
             </button>
@@ -91,18 +104,22 @@ export const ShowcaseGridList = () => {
             <button
               onClick={() => setView('grid')}
               aria-pressed={view === 'grid'}
-              className={view === 'grid'
-                ? 'px-3 py-1 rounded bg-white text-blue-600 shadow-sm font-mono text-[9px] font-bold'
-                : 'px-3 py-1 rounded text-slate-500 font-mono text-[9px] font-medium'}
+              className={
+                view === 'grid'
+                  ? 'px-3 py-1 rounded bg-white text-blue-600 shadow-sm font-mono text-[9px] font-bold'
+                  : 'px-3 py-1 rounded text-slate-500 font-mono text-[9px] font-medium'
+              }
             >
               GRID
             </button>
             <button
               onClick={() => setView('list')}
               aria-pressed={view === 'list'}
-              className={view === 'list'
-                ? 'px-3 py-1 rounded bg-white text-blue-600 shadow-sm font-mono text-[9px] font-bold'
-                : 'px-3 py-1 rounded text-slate-500 font-mono text-[9px] font-medium'}
+              className={
+                view === 'list'
+                  ? 'px-3 py-1 rounded bg-white text-blue-600 shadow-sm font-mono text-[9px] font-bold'
+                  : 'px-3 py-1 rounded text-slate-500 font-mono text-[9px] font-medium'
+              }
             >
               LIST
             </button>
@@ -114,11 +131,16 @@ export const ShowcaseGridList = () => {
           Sin repositorios en este entorno.
         </div>
       ) : (
-        <div className={view === 'grid'
-          ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-          : 'flex flex-col space-y-3'}>
-          {visible.map((repo) => (
-            <div key={repo.name} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
+        <div
+          className={
+            view === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'flex flex-col space-y-3'
+          }
+        >
+          {visible.map(repo => (
+            <div
+              key={repo.name}
+              className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between"
+            >
               <h3 className="text-sm font-semibold text-slate-900">{repo.name}</h3>
               <p className="text-sm text-slate-500 mb-4">{repo.desc}</p>
               <div className="pt-3 border-t border-slate-200 flex items-center justify-between font-mono text-[9px] text-slate-500">
@@ -131,4 +153,5 @@ export const ShowcaseGridList = () => {
       )}
     </div>
   );
-};`;
+};
+`;

@@ -1,4 +1,5 @@
-export const QUICK_ACTIONS_HTML = `<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
+export const QUICK_ACTIONS_HTML = `
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
   <div>
     <div class="flex items-center justify-between mb-3">
       <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Quick Actions</span>
@@ -19,9 +20,11 @@ export const QUICK_ACTIONS_HTML = `<div class="bg-white border border-slate-200 
     <span>COMMAND_BAR: READY</span>
     <span class="text-blue-600">ALL SHORTCUTS →</span>
   </div>
-</div>`;
+</div>
+`;
 
-export const QUICK_ACTIONS_TSX = `export const QuickActionsCard = () => {
+export const QUICK_ACTIONS_TSX = `
+export const QuickActionsCard = () => {
   return (
     <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col justify-between">
       <div>
@@ -30,11 +33,17 @@ export const QUICK_ACTIONS_TSX = `export const QuickActionsCard = () => {
           <span className="font-mono text-[9px] text-slate-500">SHORTCUTS</span>
         </div>
         <div className="space-y-2 mb-2">
-          <a href="#" className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
+          <a
+            href="#"
+            className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200/60"
+          >
             <span className="text-sm font-semibold text-slate-900">Deploy New Cluster</span>
             <span className="font-mono text-[9px] text-slate-500">⌘+N</span>
           </a>
-          <a href="#" className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
+          <a
+            href="#"
+            className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200/60"
+          >
             <span className="text-sm font-semibold text-slate-900">Rotate Credentials</span>
             <span className="font-mono text-[9px] text-slate-500">⌘+R</span>
           </a>
@@ -46,4 +55,5 @@ export const QUICK_ACTIONS_TSX = `export const QuickActionsCard = () => {
       </div>
     </div>
   );
-};`;
+};
+`;
