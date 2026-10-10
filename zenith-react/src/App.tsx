@@ -1,4 +1,14 @@
 import {
+  ButtonGroupsDoc,
+  ButtonIconsDoc,
+  ButtonSizesDoc,
+  ButtonStatesDoc,
+  ButtonVariantsDoc,
+  FullWidthButtonsDoc,
+  IconButtonsDoc,
+  SemanticButtonsDoc,
+} from "./features/botones";
+import {
   EventFormDoc,
   InputAccessoriesDoc,
   InputStatesDoc,
@@ -20,6 +30,14 @@ function App() {
       <SelectionControlsDoc />
       <TextareaUploadDoc />
       <EventFormDoc />
+      <ButtonSizesDoc />
+      <ButtonVariantsDoc />
+      <SemanticButtonsDoc />
+      <ButtonIconsDoc />
+      <IconButtonsDoc />
+      <ButtonGroupsDoc />
+      <ButtonStatesDoc />
+      <FullWidthButtonsDoc />
     </main>
   );
 }
