@@ -1,7 +1,7 @@
-import { useState } from "react";
-import type { ReactNode } from "react";
-import { Sidebar, Topbar } from "../shared/components/layout";
-import type { ShellTone } from "../shared/components/layout";
+import { type ReactNode, useState } from "react";
+import { Sidebar } from "../shared/components/sidebar/Sidebar";
+import { Topbar } from "../shared/components/topbar/Topbar";
+import type { ShellTone } from "../shared/components/interfaces/navigation.interface";
 
 export interface MainLayoutProps {
   children?: ReactNode;
@@ -59,11 +59,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         />
       </div>
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar
-          tone={tone}
-          onToggleTheme={toggleTone}
-          onMenu={openMobile}
-        />
+        <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} />
         <main
           className={
             dark
@@ -75,7 +71,12 @@ export function MainLayout({ children }: MainLayoutProps) {
         </main>
       </div>
       {(mobileOpen || mobileExiting) && (
-        <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+        <div
+          className="fixed inset-0 z-50 md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menú de navegación"
+        >
           <button
             type="button"
             aria-label="Cerrar menú"

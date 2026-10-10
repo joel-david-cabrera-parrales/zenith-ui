@@ -1,13 +1,14 @@
 import { useId, useState } from "react";
 import {
-  SHELL_USER,
-  SIDEBAR_NAV,
-  SIDEBAR_SECONDARY,
+  type ShellTone,
+  type NavItem,
   filterNav,
   getRailFlyout,
+  SIDEBAR_NAV,
   parentOf,
-} from "./navigation";
-import type { NavItem, ShellTone } from "./navigation";
+  SIDEBAR_SECONDARY,
+  SHELL_USER,
+} from "../interfaces/navigation.interface";
 
 export interface SidebarProps {
   tone?: ShellTone;
@@ -62,7 +63,7 @@ const RailButton = ({ item, dark, highlighted, onClick }: RailButtonProps) => {
       </button>
     </span>
   );
-}
+};
 
 export function Sidebar({
   tone = "light",
@@ -135,7 +136,9 @@ export function Sidebar({
           <div
             className={cx(
               "mb-6 flex h-10 w-10 items-center justify-center rounded-full",
-              dark ? "bg-stone-700/80 text-slate-100" : "bg-slate-800 text-white",
+              dark
+                ? "bg-stone-700/80 text-slate-100"
+                : "bg-slate-800 text-white",
             )}
           >
             <span className="material-symbols-outlined text-xl">star</span>
@@ -249,9 +252,7 @@ export function Sidebar({
                       className={cx(
                         sIdx > 0 && "border-t pt-1",
                         sIdx > 0 &&
-                          (dark
-                            ? "border-slate-700/60"
-                            : "border-slate-100"),
+                          (dark ? "border-slate-700/60" : "border-slate-100"),
                       )}
                     >
                       <p className="px-2 py-0.5 text-[11px] font-semibold text-slate-400">

@@ -1,10 +1,10 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState, useEffect } from "react";
 import {
-  SHELL_NOTIFICATIONS,
+  type ShellTone,
   SHELL_USER,
   TOPBAR_RESULTS,
-} from "./navigation";
-import type { ShellTone } from "./navigation";
+  SHELL_NOTIFICATIONS,
+} from "../interfaces/navigation.interface";
 
 export interface TopbarProps {
   tone?: ShellTone;
@@ -127,7 +127,9 @@ export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
                   onClick={() => setQuery("")}
                   className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-500"
                 >
-                  <span className="material-symbols-outlined text-sm">close</span>
+                  <span className="material-symbols-outlined text-sm">
+                    close
+                  </span>
                 </button>
               )}
               <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-slate-500">
@@ -190,7 +192,9 @@ export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
             aria-expanded={popover === "profile"}
             className={cx(
               "flex items-center gap-2 rounded-xl border border-transparent px-1.5 py-1",
-              dark ? "hover:bg-slate-800" : "hover:border-slate-200 hover:bg-slate-50",
+              dark
+                ? "hover:bg-slate-800"
+                : "hover:border-slate-200 hover:bg-slate-50",
             )}
           >
             <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800 text-xs font-bold text-white">
@@ -257,59 +261,59 @@ export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
             anim,
           )}
         >
-            <div className="flex items-center justify-between border-b border-slate-100 px-4 py-2.5">
-              <p className="text-xs font-semibold">
-                Resultados para: “{query}” (14 coincidencias)
-              </p>
-              <p className="text-[11px] text-slate-400">↑↓ para navegar</p>
-            </div>
-            <div className="max-h-80 overflow-y-auto p-2">
-              {TOPBAR_RESULTS.map((group) => (
-                <div key={group.title} className="mt-1">
-                  <p className="flex items-center gap-1.5 px-2 py-1 text-[11px] font-semibold text-slate-400">
-                    <span className="material-symbols-outlined text-sm">
-                      {group.icon}
-                    </span>
-                    {group.title}
-                  </p>
-                  {group.items.map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={dismiss}
-                      className="flex w-full items-center gap-3 rounded-xl px-2 py-2 text-left hover:bg-blue-50/60"
-                    >
-                      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-600">
-                        {item.title.slice(0, 2).toUpperCase()}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-xs font-semibold">
-                          {item.title}
-                        </span>
-                        <span className="block truncate text-[11px] text-slate-500">
-                          {item.meta}
-                        </span>
-                      </span>
-                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
-                        {item.tag}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-between border-t border-slate-100 px-4 py-2.5 text-[11px] text-slate-500">
-              <span>Presiona [⏎] para ver todos los 14 resultados</span>
-              <button
-                type="button"
-                onClick={close}
-                className="font-semibold text-slate-500"
-              >
-                [Esc] para cerrar
-              </button>
-            </div>
+          <div className="flex items-center justify-between border-b border-slate-100 px-4 py-2.5">
+            <p className="text-xs font-semibold">
+              Resultados para: “{query}” (14 coincidencias)
+            </p>
+            <p className="text-[11px] text-slate-400">↑↓ para navegar</p>
           </div>
-        )}
+          <div className="max-h-80 overflow-y-auto p-2">
+            {TOPBAR_RESULTS.map((group) => (
+              <div key={group.title} className="mt-1">
+                <p className="flex items-center gap-1.5 px-2 py-1 text-[11px] font-semibold text-slate-400">
+                  <span className="material-symbols-outlined text-sm">
+                    {group.icon}
+                  </span>
+                  {group.title}
+                </p>
+                {group.items.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={dismiss}
+                    className="flex w-full items-center gap-3 rounded-xl px-2 py-2 text-left hover:bg-blue-50/60"
+                  >
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-600">
+                      {item.title.slice(0, 2).toUpperCase()}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-xs font-semibold">
+                        {item.title}
+                      </span>
+                      <span className="block truncate text-[11px] text-slate-500">
+                        {item.meta}
+                      </span>
+                    </span>
+                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
+                      {item.tag}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center justify-between border-t border-slate-100 px-4 py-2.5 text-[11px] text-slate-500">
+            <span>Presiona [⏎] para ver todos los 14 resultados</span>
+            <button
+              type="button"
+              onClick={close}
+              className="font-semibold text-slate-500"
+            >
+              [Esc] para cerrar
+            </button>
+          </div>
+        </div>
+      )}
 
       {(popover === "notifications" || popover === "profile") && (
         <div className="absolute top-full right-0 z-40 mt-2 w-full max-w-md">
@@ -407,9 +411,21 @@ export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
                 </div>
                 <div className="space-y-0.5 border-t border-slate-100 p-1 pt-2">
                   {[
-                    { icon: "account_circle", label: "Mi Cuenta y Perfil", meta: "⌘P" },
-                    { icon: "tune", label: "Preferencias de Espacio", meta: "→" },
-                    { icon: "key", label: "Claves API & Tokens", meta: "3 activas" },
+                    {
+                      icon: "account_circle",
+                      label: "Mi Cuenta y Perfil",
+                      meta: "⌘P",
+                    },
+                    {
+                      icon: "tune",
+                      label: "Preferencias de Espacio",
+                      meta: "→",
+                    },
+                    {
+                      icon: "key",
+                      label: "Claves API & Tokens",
+                      meta: "3 activas",
+                    },
                   ].map((item) => (
                     <button
                       key={item.label}
@@ -438,7 +454,9 @@ export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
                       onClick={onToggleTheme}
                       className={cx(
                         "ml-auto flex h-5 w-9 items-center rounded-full px-0.5",
-                        dark ? "justify-end bg-blue-600" : "justify-start bg-slate-200",
+                        dark
+                          ? "justify-end bg-blue-600"
+                          : "justify-start bg-slate-200",
                       )}
                     >
                       <span className="h-4 w-4 rounded-full bg-white" />
