@@ -1,9 +1,25 @@
-import { TextInputDoc } from "./features/forms";
+import {
+  EventFormDoc,
+  InputAccessoriesDoc,
+  InputStatesDoc,
+  NumericInputsDoc,
+  SelectionControlsDoc,
+  SelectsDoc,
+  TextInputDoc,
+  TextareaUploadDoc,
+} from "./features/forms";
 
 function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-8 bg-slate-100 p-4">
+    <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col items-center gap-12 bg-slate-100 px-4 py-10">
       <TextInputDoc />
+      <InputStatesDoc />
+      <InputAccessoriesDoc />
+      <SelectsDoc />
+      <NumericInputsDoc />
+      <SelectionControlsDoc />
+      <TextareaUploadDoc />
+      <EventFormDoc />
     </main>
   );
 }

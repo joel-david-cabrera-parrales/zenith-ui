@@ -1,13 +1,16 @@
 import { useId } from 'react';
-import type { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 
 export type TextInputSize = 'sm' | 'md' | 'lg';
+export type TextInputState = 'default' | 'error' | 'success';
 
 export interface TextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: TextInputSize;
+  state?: TextInputState;
   label?: string;
   hint?: string;
+  message?: ReactNode;
 }
 
 const SIZE_CLASSES: Record<TextInputSize, string> = {
@@ -16,10 +19,26 @@ const SIZE_CLASSES: Record<TextInputSize, string> = {
   lg: 'h-12 px-4 text-base rounded-xl',
 };
 
+const STATE_CLASSES: Record<TextInputState, string> = {
+  default:
+    'border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600',
+  error: 'border-red-600 focus:border-red-600 focus:ring-1 focus:ring-red-600',
+  success:
+    'border-green-700 focus:border-green-700 focus:ring-1 focus:ring-green-700',
+};
+
+const MESSAGE_CLASSES: Record<TextInputState, string> = {
+  default: 'text-slate-500',
+  error: 'text-red-700',
+  success: 'text-green-700',
+};
+
 export function TextInput({
   size = 'md',
+  state = 'default',
   label,
   hint,
+  message,
   id,
   className = '',
   ...rest
@@ -49,9 +68,12 @@ export function TextInput({
       <input
         id={inputId}
         type="text"
-        className={`w-full border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 focus:outline-none transition-all ${SIZE_CLASSES[size]} ${className}`}
+        className={`w-full border bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none transition-all disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 ${SIZE_CLASSES[size]} ${STATE_CLASSES[state]} ${className}`}
         {...rest}
       />
+      {message !== undefined && (
+        <p className={`mt-1 text-xs ${MESSAGE_CLASSES[state]}`}>{message}</p>
+      )}
     </div>
   );
 }

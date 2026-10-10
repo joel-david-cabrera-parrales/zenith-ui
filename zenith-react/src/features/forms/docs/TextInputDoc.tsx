@@ -1,6 +1,6 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { TextInput } from '../components';
-import { TEXT_INPUT_HTML, TEXT_INPUT_TSX } from './textInput.snippet';
+import { TEXT_INPUT_HTML, TEXT_INPUT_TSX } from '../snippets';
 
 export function TextInputDoc() {
   return (
