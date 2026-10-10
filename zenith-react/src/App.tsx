@@ -1,4 +1,18 @@
 import {
+  AuditLogTableDoc,
+  BatchTableFooterDoc,
+  ClassicPaginationDoc,
+  CompactPaginationDoc,
+  CompactTableFooterDoc,
+  InfiniteFeedStatusDoc,
+  LoadMoreButtonDoc,
+  PageJumpControlDoc,
+  PageSizeSelectorDoc,
+  StandardTableFooterDoc,
+  StepDotsDoc,
+  WizardStepperDoc,
+} from "./features/paginators";
+import {
   ButtonGroupsDoc,
   ButtonIconsDoc,
   ButtonSizesDoc,
@@ -36,6 +50,13 @@ import {
   TextInputDoc,
   TextareaUploadDoc,
 } from "./features/forms";
+import {
+  BodyTextDoc,
+  EditorialDoc,
+  HeadingsScaleDoc,
+  MicrocopyDoc,
+  MonoDataDoc,
+} from "./features/headings";
 
 function App() {
   return (
@@ -72,6 +93,23 @@ function App() {
       <NavDrawerDoc />
       <BottomSheetDoc />
       <FiltersDrawerDoc />
+      <ClassicPaginationDoc />
+      <CompactPaginationDoc />
+      <PageJumpControlDoc />
+      <PageSizeSelectorDoc />
+      <StandardTableFooterDoc />
+      <CompactTableFooterDoc />
+      <BatchTableFooterDoc />
+      <LoadMoreButtonDoc />
+      <InfiniteFeedStatusDoc />
+      <WizardStepperDoc />
+      <StepDotsDoc />
+      <AuditLogTableDoc />
+      <HeadingsScaleDoc />
+      <BodyTextDoc />
+      <EditorialDoc />
+      <MicrocopyDoc />
+      <MonoDataDoc />
     </main>
   );
 }
