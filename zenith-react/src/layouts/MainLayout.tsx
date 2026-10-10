@@ -1,16 +1,12 @@
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
+import { Outlet } from "react-router";
 import { Sidebar } from "../shared/components/sidebar/Sidebar";
 import { Topbar } from "../shared/components/topbar/Topbar";
 import type { ShellTone } from "../shared/components/interfaces/navigation.interface";
 
-export interface MainLayoutProps {
-  children?: ReactNode;
-}
-
-export const MainLayout = ({ children }: MainLayoutProps) => {
+export const MainLayout = () => {
   const [tone, setTone] = useState<ShellTone>("light");
   const [collapsed, setCollapsed] = useState(false);
-  const [activeId, setActiveId] = useState("event-list");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExiting, setMobileExiting] = useState(false);
   const dark = tone === "dark";
@@ -36,40 +32,50 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     }, 200);
   };
 
-  const navigate = (id: string) => {
-    setActiveId(id);
-    closeMobile();
-  };
+  const sidebarWidth = collapsed ? "w-16" : "w-[305px]";
 
   return (
     <div
       className={
         dark
-          ? "flex min-h-screen w-full bg-slate-900 text-slate-200"
-          : "flex min-h-screen w-full bg-slate-300 text-slate-800"
+          ? "min-h-screen w-full bg-slate-900 text-slate-200"
+          : "min-h-screen w-full bg-slate-300 text-slate-800"
       }
     >
-      <div className="hidden shrink-0 self-stretch md:flex">
+      {/* Sidebar - Fixed left, full height */}
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-40 ${sidebarWidth} h-screen
+          transition-all duration-200 ease-out
+          ${dark
+            ? "border-r border-slate-700/60 bg-slate-950"
+            : "border-r border-slate-200/70 bg-white"}
+        `}
+        aria-label="Sidebar de navegación"
+      >
         <Sidebar
           tone={tone}
           collapsed={collapsed}
-          activeId={activeId}
-          onNavigate={setActiveId}
           onToggleCollapsed={toggleCollapsed}
         />
-      </div>
-      <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} />
-        <main
-          className={
-            dark
-              ? "min-w-0 flex-1 bg-slate-900 p-6"
-              : "min-w-0 flex-1 bg-slate-100 p-6"
-          }
-        >
-          {children}
+      </aside>
+
+      {/* Main content area - offset by sidebar */}
+      <div className={`flex-1 min-w-0 transition-all duration-200 ${collapsed ? "ml-16" : "ml-[305px]"}`}>
+        {/* Topbar - Fixed top */}
+        <header className={`sticky top-0 z-30 ${dark ? "bg-slate-900/80 backdrop-blur-sm" : "bg-white/80 backdrop-blur-sm"}`}>
+          <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} />
+        </header>
+
+        {/* Scrollable content */}
+        <main className={dark ? "bg-slate-900" : "bg-slate-100"}>
+          <div className="p-6">
+            <Outlet />
+          </div>
         </main>
       </div>
+
+      {/* Mobile sidebar overlay */}
       {(mobileOpen || mobileExiting) && (
         <div
           className="fixed inset-0 z-50 md:hidden"
@@ -97,8 +103,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             <Sidebar
               tone={tone}
               collapsed={false}
-              activeId={activeId}
-              onNavigate={navigate}
               onToggleCollapsed={closeMobile}
             />
           </div>
@@ -106,4 +110,4 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       )}
     </div>
   );
-}
+};

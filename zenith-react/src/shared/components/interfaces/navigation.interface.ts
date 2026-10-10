@@ -16,6 +16,7 @@ export interface NavItem {
   label: string;
   icon: string;
   badge?: string;
+  route?: string;
   groups?: NavGroup[];
   links?: NavLeaf[];
 }
@@ -35,34 +36,66 @@ export const SHELL_USER: ShellUser = {
 };
 
 export const SIDEBAR_NAV: NavItem[] = [
-  { id: "dashboard", label: "Dashboard", icon: "dashboard" },
-  { id: "schedule", label: "My schedule", icon: "event_available" },
   {
-    id: "events",
-    label: "Manage events",
-    icon: "event",
-    groups: [
-      {
-        id: "galas",
-        label: "Conferencias & Galas",
-        children: [
-          { id: "event-list", label: "Lista de Eventos" },
-          { id: "tickets", label: "Venta de Entradas" },
-          { id: "accreditations", label: "Acreditaciones" },
-        ],
-      },
-    ],
-    links: [{ id: "venues", label: "Calendario & Sedes" }],
+    id: "paginators",
+    label: "Paginadores",
+    icon: "pages",
+    route: "/layout/paginators",
   },
-  { id: "calendar", label: "Calendar", icon: "calendar_month" },
-  { id: "people", label: "People", icon: "group" },
-  { id: "reports", label: "Reports", icon: "bar_chart" },
+  {
+    id: "tables",
+    label: "Tablas",
+    icon: "table_view",
+    route: "/layout/tables",
+  },
+  {
+    id: "forms",
+    label: "Formularios",
+    icon: "input",
+    route: "/forms/forms",
+  },
+  {
+    id: "modals",
+    label: "Modales",
+    icon: "window",
+    route: "/feedback/modals",
+  },
+  {
+    id: "drawers",
+    label: "Drawers",
+    icon: "menu_open",
+    route: "/feedback/drawers",
+  },
+  {
+    id: "cards",
+    label: "Cards",
+    icon: "view_in_ar",
+    route: "/display/cards",
+  },
+  {
+    id: "hero",
+    label: "Hero Sections",
+    icon: "crop_16_9",
+    route: "/display/hero",
+  },
+  {
+    id: "headings",
+    label: "Tipografía",
+    icon: "text_fields",
+    route: "/display/headings",
+  },
+  {
+    id: "buttons",
+    label: "Botones",
+    icon: "smart_button",
+    route: "/action/buttons",
+  },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [
-  { id: "notifications", label: "Notification", icon: "notifications", badge: "5" },
-  { id: "documents", label: "Documents", icon: "description" },
-  { id: "help", label: "Help", icon: "help" },
+  { id: "docs", label: "Documentación", icon: "description", route: "/docs" },
+  { id: "changelog", label: "Changelog", icon: "history", route: "/changelog" },
+  { id: "github", label: "GitHub", icon: "code", route: "https://github.com" },
 ];
 
 export interface SearchResultGroup {
@@ -78,7 +111,7 @@ export const TOPBAR_RESULTS: SearchResultGroup[] = [
     items: [
       {
         id: "create",
-        title: "Crear nuevo evento: “Keynote Star Summit 2026”",
+        title: 'Crear nuevo evento: "Keynote Star Summit 2026"',
         meta: "Comando",
         tag: "⌘N",
       },
@@ -267,16 +300,6 @@ export function filterNav(query: string): NavItem[] {
   if (q === "") return SIDEBAR_NAV;
   return SIDEBAR_NAV.map((item) => {
     if (item.label.toLowerCase().includes(q)) return item;
-    const groups = item.groups
-      ?.map((g) => ({
-        ...g,
-        children: g.children.filter((c) => c.label.toLowerCase().includes(q)),
-      }))
-      .filter((g) => g.children.length > 0);
-    const links = item.links?.filter((l) => l.label.toLowerCase().includes(q));
-    if ((groups?.length ?? 0) > 0 || (links?.length ?? 0) > 0) {
-      return { ...item, groups, links };
-    }
     return null;
   }).filter((item): item is NavItem => item !== null);
 }

@@ -1,0 +1,10 @@
+export { DashboardPage } from './DashboardPage';
+export { PaginatorsPage } from './PaginatorsPage';
+export { TablesPage } from './TablesPage';
+export { FormsPage } from './FormsPage';
+export { ModalsPage } from './ModalsPage';
+export { DrawersPage } from './DrawersPage';
+export { CardsPage } from './display/CardsPage';
+export { HeroPage } from './display/HeroPage';
+export { HeadingsPage } from './display/HeadingsPage';
+export { ButtonsPage } from './ButtonsPage';
