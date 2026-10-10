@@ -8,6 +8,7 @@ import {
   IconButtonsDoc,
   SemanticButtonsDoc,
 } from "./features/botones";
+import { ModalSizesDoc } from "./features/modals";
 import {
   EventFormDoc,
   InputAccessoriesDoc,
@@ -38,6 +39,7 @@ function App() {
       <ButtonGroupsDoc />
       <ButtonStatesDoc />
       <FullWidthButtonsDoc />
+      <ModalSizesDoc />
     </main>
   );
 }
