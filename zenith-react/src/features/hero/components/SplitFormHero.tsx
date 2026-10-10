@@ -9,7 +9,7 @@ const CHECKS = [
 
 const STACK = ['KUBERNETES', 'TERRAFORM', 'DOCKER', 'AWS LAMBDA'];
 
-export function SplitFormHero() {
+export const SplitFormHero = () => {
   const emailId = useId();
   const envId = useId();
   const volId = useId();

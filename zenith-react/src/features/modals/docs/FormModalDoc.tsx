@@ -12,7 +12,7 @@ const ROLE_OPTIONS = [
   { value: 'viewer', label: 'Viewer (Solo lectura)' },
 ];
 
-export function FormModalDoc() {
+export const FormModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

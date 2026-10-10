@@ -6,14 +6,14 @@ export interface BlockquoteProps extends HTMLAttributes<HTMLElement> {
   initials?: string;
 }
 
-export function Blockquote({
+export const Blockquote = ({
   author,
   role,
   initials,
   className = '',
   children,
   ...rest
-}: BlockquoteProps) {
+}: BlockquoteProps) => {
   return (
     <figure className={`flex flex-col justify-between ${className}`} {...rest}>
       <blockquote className="border-l-4 border-blue-600 pl-4">

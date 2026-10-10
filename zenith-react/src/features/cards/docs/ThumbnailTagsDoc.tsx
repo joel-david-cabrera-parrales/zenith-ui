@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { ThumbnailTags } from '../components';
 import { THUMBNAIL_TAGS_HTML, THUMBNAIL_TAGS_TSX } from '../snippets';
 
-export function ThumbnailTagsDoc() {
+export const ThumbnailTagsDoc = () => {
   return (
     <ComponentDoc
       title="Thumbnail 16:9 con tags"

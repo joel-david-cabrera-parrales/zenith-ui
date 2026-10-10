@@ -65,13 +65,13 @@ const RailButton = ({ item, dark, highlighted, onClick }: RailButtonProps) => {
   );
 };
 
-export function Sidebar({
+export const Sidebar = ({
   tone = "light",
   collapsed = false,
   activeId = "event-list",
   onNavigate,
   onToggleCollapsed,
-}: SidebarProps) {
+}: SidebarProps) => {
   const dark = tone === "dark";
   const searchId = useId();
   const [query, setQuery] = useState("");
@@ -82,32 +82,32 @@ export function Sidebar({
 
   const nav = filterNav(query);
 
-  function toggleSection(id: string) {
+  const toggleSection = (id: string) => {
     setOpenSections((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id],
     );
-  }
+  };
 
-  function toggleGroup(id: string) {
+  const toggleGroup = (id: string) => {
     setOpenGroups((prev) =>
       prev.includes(id) ? prev.filter((g) => g !== id) : [...prev, id],
     );
-  }
+  };
 
-  function openFlyout(id: string) {
+  const openFlyout = (id: string) => {
     setFlyoutExiting(false);
     setFlyoutFor(id);
-  }
+  };
 
-  function closeFlyout() {
+  const closeFlyout = () => {
     setFlyoutExiting(true);
     window.setTimeout(() => {
       setFlyoutFor(null);
       setFlyoutExiting(false);
     }, 200);
-  }
+  };
 
-  function toggleFlyout(item: NavItem) {
+  const toggleFlyout = (item: NavItem) => {
     if (getRailFlyout(item, activeId) === null) {
       setFlyoutFor(null);
       go(item.id);
@@ -115,11 +115,11 @@ export function Sidebar({
     }
     if (flyoutFor === item.id) closeFlyout();
     else openFlyout(item.id);
-  }
+  };
 
-  function go(id: string) {
+  const go = (id: string) => {
     onNavigate?.(id);
-  }
+  };
 
   if (collapsed) {
     return (

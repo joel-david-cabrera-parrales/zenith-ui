@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Button } from '../components';
 import { SEMANTIC_BUTTONS_HTML, SEMANTIC_BUTTONS_TSX } from '../snippets';
 
-export function SemanticButtonsDoc() {
+export const SemanticButtonsDoc = () => {
   return (
     <ComponentDoc
       title="Semánticos & colores"

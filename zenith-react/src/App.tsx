@@ -1,6 +1,6 @@
 import { MainLayout } from "./layouts/MainLayout";
 
-function App() {
+export const App = () => {
   return (
     <MainLayout>
       <div className="flex h-full flex-col items-start justify-center gap-3">
@@ -18,6 +18,6 @@ function App() {
       </div>
     </MainLayout>
   );
-}
+};
 
 export default App;

@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Button } from '../components';
 import { BUTTON_SIZES_HTML, BUTTON_SIZES_TSX } from '../snippets';
 
-export function ButtonSizesDoc() {
+export const ButtonSizesDoc = () => {
   return (
     <ComponentDoc
       title="Tamaños de botón"

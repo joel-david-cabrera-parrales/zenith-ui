@@ -8,7 +8,7 @@ import {
 } from '../components';
 import { EDITORIAL_HTML, EDITORIAL_TSX } from '../snippets';
 
-export function EditorialDoc() {
+export const EditorialDoc = () => {
   return (
     <ComponentDoc
       title="Contenido editorial, citas y listas"

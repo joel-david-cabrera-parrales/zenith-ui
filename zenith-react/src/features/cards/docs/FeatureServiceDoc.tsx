@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { FeatureService } from '../components';
 import { FEATURE_SERVICE_HTML, FEATURE_SERVICE_TSX } from '../snippets';
 
-export function FeatureServiceDoc() {
+export const FeatureServiceDoc = () => {
   return (
     <ComponentDoc
       title="Servicio con checklist"

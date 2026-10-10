@@ -15,7 +15,7 @@ const ALIGN_OPTIONS = [
   { value: 'right', icon: 'format_align_right', ariaLabel: 'Alineación derecha' },
 ];
 
-export function ButtonGroupsDoc() {
+export const ButtonGroupsDoc = () => {
   return (
     <ComponentDoc
       title="Grupos & segmentados"

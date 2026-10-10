@@ -5,12 +5,12 @@ export interface CheckListProps extends HTMLAttributes<HTMLUListElement> {
   icon?: string;
 }
 
-export function CheckList({
+export const CheckList = ({
   items,
   icon = 'verified',
   className = '',
   ...rest
-}: CheckListProps) {
+}: CheckListProps) => {
   return (
     <ul className={`space-y-2 text-sm text-slate-600 ${className}`} {...rest}>
       {items.map((item) => (

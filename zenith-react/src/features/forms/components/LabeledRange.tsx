@@ -10,7 +10,7 @@ export interface LabeledRangeProps {
   id?: string;
 }
 
-export function LabeledRange({
+export const LabeledRange = ({
   label,
   min = 50,
   max = 1000,
@@ -18,7 +18,7 @@ export function LabeledRange({
   defaultValue = 650,
   unit = 'personas',
   id,
-}: LabeledRangeProps) {
+}: LabeledRangeProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const [value, setValue] = useState(defaultValue);

@@ -16,7 +16,7 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'jsx', label: 'JSX' },
 ];
 
-export function TabbedView({ preview, htmlCode, jsxCode }: TabbedViewProps) {
+export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
   const visibleTabs = TABS.filter((tab) => {
     if (tab.id === 'preview') return preview !== undefined;
     if (tab.id === 'html') return htmlCode !== undefined;

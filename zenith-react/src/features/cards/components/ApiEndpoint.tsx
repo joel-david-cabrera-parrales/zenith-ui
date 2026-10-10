@@ -12,7 +12,7 @@ export interface ApiEndpointProps extends HTMLAttributes<HTMLDivElement> {
   footerLink?: string;
 }
 
-export function ApiEndpoint({
+export const ApiEndpoint = ({
   method = 'POST',
   path = '/v2/ingest',
   status = '200 OK',
@@ -23,7 +23,7 @@ export function ApiEndpoint({
   footerLink = 'API_DOCS →',
   className = '',
   ...rest
-}: ApiEndpointProps) {
+}: ApiEndpointProps) => {
   const { copied, copy } = useCopyToClipboard();
 
   return (

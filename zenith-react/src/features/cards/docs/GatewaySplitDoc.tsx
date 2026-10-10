@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { GatewaySplit } from '../components';
 import { GATEWAY_SPLIT_HTML, GATEWAY_SPLIT_TSX } from '../snippets';
 
-export function GatewaySplitDoc() {
+export const GatewaySplitDoc = () => {
   return (
     <ComponentDoc
       title="Card multi-métrica dividida"

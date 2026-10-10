@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { InfiniteFeedStatus } from '../components';
 import { INFINITE_FEED_HTML, INFINITE_FEED_TSX } from '../snippets';
 
-export function InfiniteFeedStatusDoc() {
+export const InfiniteFeedStatusDoc = () => {
   return (
     <ComponentDoc
       title="Feed infinito con skeleton"

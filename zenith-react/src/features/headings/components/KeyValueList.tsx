@@ -10,11 +10,11 @@ export interface KeyValueListProps extends HTMLAttributes<HTMLElement> {
   items: KeyValueItem[];
 }
 
-export function KeyValueList({
+export const KeyValueList = ({
   items,
   className = '',
   ...rest
-}: KeyValueListProps) {
+}: KeyValueListProps) => {
   return (
     <dl
       className={`text-xs space-y-1.5 font-mono ${className}`}

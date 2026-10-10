@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { HorizontalSplit } from '../components';
 import { HORIZONTAL_SPLIT_HTML, HORIZONTAL_SPLIT_TSX } from '../snippets';
 
-export function HorizontalSplitDoc() {
+export const HorizontalSplitDoc = () => {
   return (
     <ComponentDoc
       title="Horizontal con imagen lateral"

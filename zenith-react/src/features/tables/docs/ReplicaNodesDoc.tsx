@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { ReplicaNodesTable } from '../components';
 import { REPLICA_NODES_HTML, REPLICA_NODES_TSX } from '../snippets';
 
-export function ReplicaNodesDoc() {
+export const ReplicaNodesDoc = () => {
   return (
     <ComponentDoc
       title="Réplicas NVMe con latencia e IOPS"

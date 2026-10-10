@@ -2,7 +2,7 @@ import { useCopyToClipboard } from '../../../shared/hooks/useCopyToClipboard';
 
 const INSTALL_CMD = 'npm i @zenith/core';
 
-export function DeveloperConsoleHero() {
+export const DeveloperConsoleHero = () => {
   const { copied, copy } = useCopyToClipboard();
 
   return (

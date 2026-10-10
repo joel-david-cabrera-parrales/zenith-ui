@@ -6,7 +6,7 @@ const NODES = [
   { name: 'edge-ap-south-02', cpu: '23%', mem: '35%', bar: 'w-1/4', live: false },
 ];
 
-export function DashboardMetricsHero() {
+export const DashboardMetricsHero = () => {
   return (
     <div className="w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 md:p-12">
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 md:gap-10">

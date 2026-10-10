@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { StatSparkline } from '../components';
 import { STAT_SPARKLINE_HTML, STAT_SPARKLINE_TSX } from '../snippets';
 
-export function StatSparklineDoc() {
+export const StatSparklineDoc = () => {
   return (
     <ComponentDoc
       title="Stat con sparkline y tendencia"

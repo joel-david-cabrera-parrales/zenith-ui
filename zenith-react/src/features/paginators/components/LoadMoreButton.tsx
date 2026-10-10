@@ -6,7 +6,7 @@ export interface LoadMoreButtonProps {
   step?: number;
 }
 
-export function LoadMoreButton({ total = 250, defaultLoaded = 48, step = 25 }: LoadMoreButtonProps) {
+export const LoadMoreButton = ({ total = 250, defaultLoaded = 48, step = 25 }: LoadMoreButtonProps) => {
   const [loaded, setLoaded] = useState(defaultLoaded);
   const [loading, setLoading] = useState(false);
   const percent = Math.min(100, (loaded / total) * 100);

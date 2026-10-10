@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { StandardTableFooter } from '../components';
 import { STANDARD_TABLE_FOOTER_HTML, STANDARD_TABLE_FOOTER_TSX } from '../snippets';
 
-export function StandardTableFooterDoc() {
+export const StandardTableFooterDoc = () => {
   return (
     <ComponentDoc
       title="Footer de tabla estándar SaaS"

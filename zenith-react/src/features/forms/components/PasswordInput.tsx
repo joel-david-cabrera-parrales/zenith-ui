@@ -7,12 +7,12 @@ export interface PasswordInputProps
   leadingIcon?: string;
 }
 
-export function PasswordInput({
+export const PasswordInput = ({
   label,
   leadingIcon = 'lock',
   id,
   ...rest
-}: PasswordInputProps) {
+}: PasswordInputProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const [visible, setVisible] = useState(false);

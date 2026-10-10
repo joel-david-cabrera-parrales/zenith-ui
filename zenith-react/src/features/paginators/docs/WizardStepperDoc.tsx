@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { WizardStepper } from '../components';
 import { WIZARD_STEPPER_HTML, WIZARD_STEPPER_TSX } from '../snippets';
 
-export function WizardStepperDoc() {
+export const WizardStepperDoc = () => {
   return (
     <ComponentDoc
       title="Wizard multietapa numerado"

@@ -8,7 +8,7 @@ export interface FeatureServiceProps extends HTMLAttributes<HTMLDivElement> {
   link?: string;
 }
 
-export function FeatureService({
+export const FeatureService = ({
   icon = 'database',
   title = 'Automated Rebalancing',
   excerpt = 'Realtime partition sharding with dynamic storage migration and zero downtime.',
@@ -20,7 +20,7 @@ export function FeatureService({
   link = 'Inspect Configuration',
   className = '',
   ...rest
-}: FeatureServiceProps) {
+}: FeatureServiceProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

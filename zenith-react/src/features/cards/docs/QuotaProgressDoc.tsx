@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { QuotaProgress } from '../components';
 import { QUOTA_PROGRESS_HTML, QUOTA_PROGRESS_TSX } from '../snippets';
 
-export function QuotaProgressDoc() {
+export const QuotaProgressDoc = () => {
   return (
     <ComponentDoc
       title="Stat de cuota con progreso"

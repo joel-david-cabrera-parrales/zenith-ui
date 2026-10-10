@@ -9,7 +9,7 @@ export interface AccentNoticeProps extends HTMLAttributes<HTMLDivElement> {
   link?: string;
 }
 
-export function AccentNotice({
+export const AccentNotice = ({
   badge = 'NOTICE // AUDIT',
   icon = 'verified_user',
   title = 'SOC2 Compliance Attestation',
@@ -18,7 +18,7 @@ export function AccentNotice({
   link = 'VIEW AUDIT',
   className = '',
   ...rest
-}: AccentNoticeProps) {
+}: AccentNoticeProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 border-l-4 border-l-blue-600 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

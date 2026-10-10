@@ -12,7 +12,7 @@ export interface StatSparklineProps extends HTMLAttributes<HTMLDivElement> {
   peak?: string;
 }
 
-export function StatSparkline({
+export const StatSparkline = ({
   label = 'Throughput Rate',
   code = 'telemetry.stream.hz',
   icon = 'query_stats',
@@ -24,7 +24,7 @@ export function StatSparkline({
   peak = 'PEAK 5,120',
   className = '',
   ...rest
-}: StatSparklineProps) {
+}: StatSparklineProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

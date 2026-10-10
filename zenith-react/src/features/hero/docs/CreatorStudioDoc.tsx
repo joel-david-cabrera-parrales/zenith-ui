@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { CreatorStudioHero } from '../components';
 import { CREATOR_STUDIO_HTML, CREATOR_STUDIO_TSX } from '../snippets';
 
-export function CreatorStudioDoc() {
+export const CreatorStudioDoc = () => {
   return (
     <ComponentDoc
       title="Hero creator con timeline NLE"

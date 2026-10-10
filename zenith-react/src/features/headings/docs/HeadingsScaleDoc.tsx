@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Heading } from '../components';
 import { HEADINGS_SCALE_HTML, HEADINGS_SCALE_TSX } from '../snippets';
 
-export function HeadingsScaleDoc() {
+export const HeadingsScaleDoc = () => {
   return (
     <ComponentDoc
       title="Escala de titulares y display hero"

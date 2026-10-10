@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { MemberCard } from '../components';
 import { MEMBER_CARD_HTML, MEMBER_CARD_TSX } from '../snippets';
 
-export function MemberCardDoc() {
+export const MemberCardDoc = () => {
   return (
     <ComponentDoc
       title="Miembro con rol"

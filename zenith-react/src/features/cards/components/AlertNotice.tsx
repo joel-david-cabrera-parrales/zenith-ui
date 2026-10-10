@@ -9,7 +9,7 @@ export interface AlertNoticeProps extends HTMLAttributes<HTMLDivElement> {
   actionLabel?: string;
 }
 
-export function AlertNotice({
+export const AlertNotice = ({
   title = 'Scheduled Maintenance',
   body = 'Regional database replica resync will occur on Sunday at 02:00 UTC. API response times may experience minor variance of ~5ms.',
   rows = [
@@ -20,7 +20,7 @@ export function AlertNotice({
   actionLabel = 'View Calendar',
   className = '',
   ...rest
-}: AlertNoticeProps) {
+}: AlertNoticeProps) => {
   const [dismissed, setDismissed] = useState(false);
 
   if (dismissed) {

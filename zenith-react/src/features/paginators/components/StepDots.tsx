@@ -5,7 +5,7 @@ export interface StepDotsProps {
   defaultStep?: number;
 }
 
-export function StepDots({ total = 5, defaultStep = 2 }: StepDotsProps) {
+export const StepDots = ({ total = 5, defaultStep = 2 }: StepDotsProps) => {
   const [active, setActive] = useState(defaultStep);
 
   return (

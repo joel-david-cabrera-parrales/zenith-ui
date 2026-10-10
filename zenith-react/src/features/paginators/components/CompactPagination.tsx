@@ -5,7 +5,7 @@ export interface CompactPaginationProps {
   defaultPage?: number;
 }
 
-export function CompactPagination({ totalPages = 12, defaultPage = 2 }: CompactPaginationProps) {
+export const CompactPagination = ({ totalPages = 12, defaultPage = 2 }: CompactPaginationProps) => {
   const [page, setPage] = useState(defaultPage);
   const visible = [1, 2, 3];
 

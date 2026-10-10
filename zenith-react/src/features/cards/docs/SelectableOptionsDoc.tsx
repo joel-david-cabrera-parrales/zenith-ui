@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { SelectableOptions } from '../components';
 import { SELECTABLE_OPTIONS_HTML, SELECTABLE_OPTIONS_TSX } from '../snippets';
 
-export function SelectableOptionsDoc() {
+export const SelectableOptionsDoc = () => {
   return (
     <ComponentDoc
       title="Opciones seleccionables"

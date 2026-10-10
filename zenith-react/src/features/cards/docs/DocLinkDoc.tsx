@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { DocLink } from '../components';
 import { DOC_LINK_HTML, DOC_LINK_TSX } from '../snippets';
 
-export function DocLinkDoc() {
+export const DocLinkDoc = () => {
   return (
     <ComponentDoc
       title="Enlace a documentación"

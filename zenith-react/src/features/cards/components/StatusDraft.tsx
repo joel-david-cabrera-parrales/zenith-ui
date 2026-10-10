@@ -9,7 +9,7 @@ export interface StatusDraftProps extends HTMLAttributes<HTMLDivElement> {
   modified?: string;
 }
 
-export function StatusDraft({
+export const StatusDraft = ({
   badge = 'DRAFT',
   rev = 'REV #04',
   title = 'Observability Pipeline v3',
@@ -18,7 +18,7 @@ export function StatusDraft({
   modified = 'MODIFIED 4H AGO',
   className = '',
   ...rest
-}: StatusDraftProps) {
+}: StatusDraftProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

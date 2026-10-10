@@ -5,7 +5,7 @@ export interface PageJumpControlProps {
   defaultPage?: number;
 }
 
-export function PageJumpControl({ totalPages = 128, defaultPage = 4 }: PageJumpControlProps) {
+export const PageJumpControl = ({ totalPages = 128, defaultPage = 4 }: PageJumpControlProps) => {
   const inputId = useId();
   const [page, setPage] = useState(defaultPage);
   const [draft, setDraft] = useState(String(defaultPage));

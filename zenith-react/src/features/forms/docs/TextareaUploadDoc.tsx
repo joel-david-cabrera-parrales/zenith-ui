@@ -5,7 +5,7 @@ import {
   TEXTAREA_UPLOAD_TSX,
 } from '../snippets';
 
-export function TextareaUploadDoc() {
+export const TextareaUploadDoc = () => {
   return (
     <ComponentDoc
       title="Áreas de texto & upload"

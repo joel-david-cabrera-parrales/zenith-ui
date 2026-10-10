@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { DeveloperConsoleHero } from '../components';
 import { DEVELOPER_CONSOLE_HTML, DEVELOPER_CONSOLE_TSX } from '../snippets';
 
-export function DeveloperConsoleDoc() {
+export const DeveloperConsoleDoc = () => {
   return (
     <ComponentDoc
       title="Hero developer-first con consola"

@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Button } from '../components';
 import { BUTTON_ICONS_HTML, BUTTON_ICONS_TSX } from '../snippets';
 
-export function ButtonIconsDoc() {
+export const ButtonIconsDoc = () => {
   return (
     <ComponentDoc
       title="Iconografía"

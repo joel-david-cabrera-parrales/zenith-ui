@@ -8,7 +8,7 @@ export interface DocLinkProps extends HTMLAttributes<HTMLDivElement> {
   action?: string;
 }
 
-export function DocLink({
+export const DocLink = ({
   eyebrow = 'DOCS // QUICKSTART',
   title = 'Environment Variables',
   excerpt = 'Configure global secrets and staging environment variables for microservice runtime contexts.',
@@ -16,7 +16,7 @@ export function DocLink({
   action = 'Configure',
   className = '',
   ...rest
-}: DocLinkProps) {
+}: DocLinkProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

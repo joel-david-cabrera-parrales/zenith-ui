@@ -5,7 +5,7 @@ export interface BatchTableFooterProps {
   defaultPage?: number;
 }
 
-export function BatchTableFooter({ totalRows = 184, defaultPage = 3 }: BatchTableFooterProps) {
+export const BatchTableFooter = ({ totalRows = 184, defaultPage = 3 }: BatchTableFooterProps) => {
   const [page, setPage] = useState(defaultPage);
   const [selected, setSelected] = useState(3);
   const pages: (number | 'ellipsis')[] = [1, 2, 3, 4, 'ellipsis', 19];

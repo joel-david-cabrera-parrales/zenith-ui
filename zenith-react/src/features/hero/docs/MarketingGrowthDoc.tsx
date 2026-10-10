@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { MarketingGrowthHero } from '../components';
 import { MARKETING_GROWTH_HTML, MARKETING_GROWTH_TSX } from '../snippets';
 
-export function MarketingGrowthDoc() {
+export const MarketingGrowthDoc = () => {
   return (
     <ComponentDoc
       title="Hero marketing con funnel omnicanal"

@@ -17,7 +17,7 @@ const DELTA_CLASSES: Record<StatMetricTone, string> = {
   live: 'text-emerald-600',
 };
 
-export function StatMetric({
+export const StatMetric = ({
   label,
   value,
   hint,
@@ -26,7 +26,7 @@ export function StatMetric({
   deltaIcon = 'arrow_upward',
   className = '',
   ...rest
-}: StatMetricProps) {
+}: StatMetricProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-2 ${className}`}

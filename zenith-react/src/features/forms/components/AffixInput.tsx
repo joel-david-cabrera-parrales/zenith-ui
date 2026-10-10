@@ -8,13 +8,13 @@ export interface AffixInputProps
   suffix?: ReactNode;
 }
 
-export function AffixInput({
+export const AffixInput = ({
   label,
   prefix,
   suffix,
   id,
   ...rest
-}: AffixInputProps) {
+}: AffixInputProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
 

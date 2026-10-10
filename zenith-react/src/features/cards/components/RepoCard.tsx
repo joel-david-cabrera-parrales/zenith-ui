@@ -21,7 +21,7 @@ const STATUS_LABEL: Record<RepoInfo['status'], string> = {
   archived: 'ARCHIVED',
 };
 
-export function RepoCard({
+export const RepoCard = ({
   repo = {
     name: 'zenith-ingress-router',
     branch: 'git: main (v2.8.1)',
@@ -35,7 +35,7 @@ export function RepoCard({
   icon = 'terminal',
   className = '',
   ...rest
-}: RepoCardProps) {
+}: RepoCardProps) => {
   const live = repo.status === 'live';
 
   return (

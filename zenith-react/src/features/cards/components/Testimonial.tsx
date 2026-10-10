@@ -8,7 +8,7 @@ export interface TestimonialProps extends HTMLAttributes<HTMLDivElement> {
   stars?: number;
 }
 
-export function Testimonial({
+export const Testimonial = ({
   quote = '"Migrating our payment ingestion cluster to Zenith reduced our P99 latency from 140ms down to 18ms without adding compute nodes."',
   author = 'Arthur Pendelton',
   role = 'VP Infrastructure @ FinEdge',
@@ -16,7 +16,7 @@ export function Testimonial({
   stars = 5,
   className = '',
   ...rest
-}: TestimonialProps) {
+}: TestimonialProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

@@ -24,7 +24,7 @@ const CODE: Record<Tab, string[]> = {
   ],
 };
 
-export function CenteredTechHero() {
+export const CenteredTechHero = () => {
   const [tab, setTab] = useState<Tab>('CLI');
   const { copied, copy } = useCopyToClipboard();
 

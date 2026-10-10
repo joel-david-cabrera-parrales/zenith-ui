@@ -5,7 +5,7 @@ import {
   INPUT_ACCESSORIES_TSX,
 } from '../snippets';
 
-export function InputAccessoriesDoc() {
+export const InputAccessoriesDoc = () => {
   return (
     <ComponentDoc
       title="Inputs con iconos y prefijos"

@@ -13,12 +13,12 @@ const SIZE_CLASSES: Record<BodyTextSize, string> = {
   caption: 'text-xs text-slate-400 leading-normal',
 };
 
-export function BodyText({
+export const BodyText = ({
   size = 'base',
   className = '',
   children,
   ...rest
-}: BodyTextProps) {
+}: BodyTextProps) => {
   return (
     <p className={`${SIZE_CLASSES[size]} ${className}`} {...rest}>
       {children}

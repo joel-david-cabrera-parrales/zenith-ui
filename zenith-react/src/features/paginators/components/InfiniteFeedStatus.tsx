@@ -2,7 +2,7 @@ export interface InfiniteFeedStatusProps {
   totalSynced?: number;
 }
 
-export function InfiniteFeedStatus({ totalSynced = 1248 }: InfiniteFeedStatusProps) {
+export const InfiniteFeedStatus = ({ totalSynced = 1248 }: InfiniteFeedStatusProps) => {
   return (
     <div className="w-full">
       <div className="mb-4 space-y-2.5 rounded-lg border border-slate-200 bg-slate-100/40 p-3.5">

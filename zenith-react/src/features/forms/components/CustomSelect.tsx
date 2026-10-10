@@ -12,11 +12,11 @@ export interface CustomSelectProps {
   defaultValue?: string;
 }
 
-export function CustomSelect({
+export const CustomSelect = ({
   label,
   options,
   defaultValue,
-}: CustomSelectProps) {
+}: CustomSelectProps) => {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const [selected, setSelected] = useState(
     defaultValue ?? options[0]?.value ?? '',

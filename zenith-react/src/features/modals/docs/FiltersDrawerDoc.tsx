@@ -20,7 +20,7 @@ const RANGE_OPTIONS = [
   { value: 'custom', label: 'Personalizado' },
 ];
 
-export function FiltersDrawerDoc() {
+export const FiltersDrawerDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   const [severity, setSeverity] = useState('Todos');

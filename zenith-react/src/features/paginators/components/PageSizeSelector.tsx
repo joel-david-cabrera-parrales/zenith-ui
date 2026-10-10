@@ -6,11 +6,11 @@ export interface PageSizeSelectorProps {
   options?: number[];
 }
 
-export function PageSizeSelector({
+export const PageSizeSelector = ({
   totalResults = 1248,
   defaultSize = 25,
   options = [10, 25, 50, 100],
-}: PageSizeSelectorProps) {
+}: PageSizeSelectorProps) => {
   const [size, setSize] = useState(defaultSize);
   const end = Math.min(size, totalResults);
 

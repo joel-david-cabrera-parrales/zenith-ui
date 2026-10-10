@@ -8,13 +8,13 @@ export interface SwitchProps {
   id?: string;
 }
 
-export function Switch({
+export const Switch = ({
   label,
   description,
   defaultChecked = false,
   disabled = false,
   id,
-}: SwitchProps) {
+}: SwitchProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
 

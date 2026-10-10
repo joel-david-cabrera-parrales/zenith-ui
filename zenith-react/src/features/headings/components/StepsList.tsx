@@ -4,7 +4,7 @@ export interface StepsListProps extends HTMLAttributes<HTMLOListElement> {
   items: string[];
 }
 
-export function StepsList({ items, className = '', ...rest }: StepsListProps) {
+export const StepsList = ({ items, className = '', ...rest }: StepsListProps) => {
   return (
     <ol className={`space-y-2.5 text-sm text-slate-600 ${className}`} {...rest}>
       {items.map((item, index) => (

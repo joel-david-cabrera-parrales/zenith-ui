@@ -39,14 +39,14 @@ const DEFAULT_ICON: Record<CalloutTone, string> = {
   warning: 'warning',
 };
 
-export function Callout({
+export const Callout = ({
   tone = 'info',
   icon,
   title,
   className = '',
   children,
   ...rest
-}: CalloutProps) {
+}: CalloutProps) => {
   return (
     <div
       role="note"

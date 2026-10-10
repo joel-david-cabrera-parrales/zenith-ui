@@ -11,7 +11,7 @@ const CPU_OPTIONS = [
   { value: '16', label: '16 vCPU - 64 GB RAM' },
 ];
 
-export function ClusterDrawerDoc() {
+export const ClusterDrawerDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

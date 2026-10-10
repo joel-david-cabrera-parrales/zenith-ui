@@ -10,7 +10,7 @@ export interface MetricMiniProps extends HTMLAttributes<HTMLDivElement> {
   footerRight?: string;
 }
 
-export function MetricMini({
+export const MetricMini = ({
   icon = 'speed',
   status = 'OPTIMAL',
   label = 'Average Response Time',
@@ -20,7 +20,7 @@ export function MetricMini({
   footerRight = 'TARGET < 25ms',
   className = '',
   ...rest
-}: MetricMiniProps) {
+}: MetricMiniProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

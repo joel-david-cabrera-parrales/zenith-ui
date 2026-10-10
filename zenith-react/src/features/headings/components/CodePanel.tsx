@@ -6,13 +6,13 @@ export interface CodePanelProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-export function CodePanel({
+export const CodePanel = ({
   title,
   icon = 'data_object',
   className = '',
   children,
   ...rest
-}: CodePanelProps) {
+}: CodePanelProps) => {
   return (
     <div
       className={`bg-slate-900 rounded-xl border border-slate-800 p-5 text-slate-100 shadow-md space-y-3 font-mono ${className}`}

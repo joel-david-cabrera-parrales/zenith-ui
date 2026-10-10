@@ -12,7 +12,7 @@ const LINKS = [
   { icon: 'tune', label: 'Parámetros del Sistema', active: false },
 ];
 
-export function NavDrawerDoc() {
+export const NavDrawerDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

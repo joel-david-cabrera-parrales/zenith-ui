@@ -6,13 +6,13 @@ export interface ComponentDocProps extends TabbedViewProps {
   description?: string;
 }
 
-export function ComponentDoc({
+export const ComponentDoc = ({
   title,
   description,
   preview,
   htmlCode,
   jsxCode,
-}: ComponentDocProps) {
+}: ComponentDocProps) => {
   return (
     <section className="w-full max-w-4xl">
       <h2 className="text-xl font-semibold text-slate-900">{title}</h2>

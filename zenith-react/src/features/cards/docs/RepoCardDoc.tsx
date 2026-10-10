@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { RepoCard } from '../components';
 import { REPO_CARD_HTML, REPO_CARD_TSX } from '../snippets';
 
-export function RepoCardDoc() {
+export const RepoCardDoc = () => {
   return (
     <ComponentDoc
       title="Repo card individual"

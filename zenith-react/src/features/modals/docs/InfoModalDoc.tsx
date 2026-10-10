@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { INFO_MODAL_HTML, INFO_MODAL_TSX } from '../snippets';
 
-export function InfoModalDoc() {
+export const InfoModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

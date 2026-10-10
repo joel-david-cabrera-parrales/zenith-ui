@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { TaskKanban } from '../components';
 import { TASK_KANBAN_HTML, TASK_KANBAN_TSX } from '../snippets';
 
-export function TaskKanbanDoc() {
+export const TaskKanbanDoc = () => {
   return (
     <ComponentDoc
       title="Tarea kanban arrastrable"

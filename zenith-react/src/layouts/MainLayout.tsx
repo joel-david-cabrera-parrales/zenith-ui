@@ -7,7 +7,7 @@ export interface MainLayoutProps {
   children?: ReactNode;
 }
 
-export function MainLayout({ children }: MainLayoutProps) {
+export const MainLayout = ({ children }: MainLayoutProps) => {
   const [tone, setTone] = useState<ShellTone>("light");
   const [collapsed, setCollapsed] = useState(false);
   const [activeId, setActiveId] = useState("event-list");
@@ -15,31 +15,31 @@ export function MainLayout({ children }: MainLayoutProps) {
   const [mobileExiting, setMobileExiting] = useState(false);
   const dark = tone === "dark";
 
-  function toggleTone() {
+  const toggleTone = () => {
     setTone((prev) => (prev === "light" ? "dark" : "light"));
-  }
+  };
 
-  function toggleCollapsed() {
+  const toggleCollapsed = () => {
     setCollapsed((prev) => !prev);
-  }
+  };
 
-  function openMobile() {
+  const openMobile = () => {
     setMobileExiting(false);
     setMobileOpen(true);
-  }
+  };
 
-  function closeMobile() {
+  const closeMobile = () => {
     setMobileExiting(true);
     window.setTimeout(() => {
       setMobileOpen(false);
       setMobileExiting(false);
     }, 200);
-  }
+  };
 
-  function navigate(id: string) {
+  const navigate = (id: string) => {
     setActiveId(id);
     closeMobile();
-  }
+  };
 
   return (
     <div

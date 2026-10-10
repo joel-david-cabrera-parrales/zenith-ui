@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { BodyText } from '../components';
 import { BODY_TEXT_HTML, BODY_TEXT_TSX } from '../snippets';
 
-export function BodyTextDoc() {
+export const BodyTextDoc = () => {
   return (
     <ComponentDoc
       title="Párrafos, legibilidad y formato en línea"

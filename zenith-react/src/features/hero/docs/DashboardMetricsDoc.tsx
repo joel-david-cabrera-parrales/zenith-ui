@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { DashboardMetricsHero } from '../components';
 import { DASHBOARD_METRICS_HTML, DASHBOARD_METRICS_TSX } from '../snippets';
 
-export function DashboardMetricsDoc() {
+export const DashboardMetricsDoc = () => {
   return (
     <ComponentDoc
       title="Hero producto con telemetría live"

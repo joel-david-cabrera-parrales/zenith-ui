@@ -5,7 +5,7 @@ import {
   SELECTION_CONTROLS_TSX,
 } from '../snippets';
 
-export function SelectionControlsDoc() {
+export const SelectionControlsDoc = () => {
   return (
     <ComponentDoc
       title="Selección (checkbox, radio, switch)"

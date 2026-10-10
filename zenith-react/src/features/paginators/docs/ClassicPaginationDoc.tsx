@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { ClassicPagination } from '../components';
 import { CLASSIC_PAGINATION_HTML, CLASSIC_PAGINATION_TSX } from '../snippets';
 
-export function ClassicPaginationDoc() {
+export const ClassicPaginationDoc = () => {
   return (
     <ComponentDoc
       title="Paginador clásico segmentado"

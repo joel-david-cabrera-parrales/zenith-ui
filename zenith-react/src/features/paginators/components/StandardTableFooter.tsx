@@ -8,11 +8,11 @@ export interface StandardTableFooterProps {
 
 const ROW_OPTIONS = [10, 25, 50];
 
-export function StandardTableFooter({
+export const StandardTableFooter = ({
   totalItems = 240,
   defaultPage = 1,
   defaultRows = 10,
-}: StandardTableFooterProps) {
+}: StandardTableFooterProps) => {
   const [page, setPage] = useState(defaultPage);
   const [rows, setRows] = useState(defaultRows);
   const totalPages = Math.max(1, Math.ceil(totalItems / rows));

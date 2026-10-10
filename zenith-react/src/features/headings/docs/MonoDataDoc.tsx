@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { CodePanel, StatMetric } from '../components';
 import { MONO_DATA_HTML, MONO_DATA_TSX } from '../snippets';
 
-export function MonoDataDoc() {
+export const MonoDataDoc = () => {
   return (
     <ComponentDoc
       title="Monospace, CLI, JSON y métricas"

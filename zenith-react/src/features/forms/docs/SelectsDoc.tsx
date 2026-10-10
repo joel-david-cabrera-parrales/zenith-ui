@@ -53,7 +53,7 @@ const TAG_OPTIONS = [
   { value: 'Seguridad', label: 'Seguridad', meta: 'Auth & IAM' },
 ];
 
-export function SelectsDoc() {
+export const SelectsDoc = () => {
   return (
     <ComponentDoc
       title="Selectores & dropdowns"

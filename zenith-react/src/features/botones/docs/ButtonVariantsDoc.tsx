@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Button } from '../components';
 import { BUTTON_VARIANTS_HTML, BUTTON_VARIANTS_TSX } from '../snippets';
 
-export function ButtonVariantsDoc() {
+export const ButtonVariantsDoc = () => {
   return (
     <ComponentDoc
       title="Variantes de estilo"

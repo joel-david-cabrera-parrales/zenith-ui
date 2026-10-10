@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Testimonial } from '../components';
 import { TESTIMONIAL_HTML, TESTIMONIAL_TSX } from '../snippets';
 
-export function TestimonialDoc() {
+export const TestimonialDoc = () => {
   return (
     <ComponentDoc
       title="Testimonio con rating"

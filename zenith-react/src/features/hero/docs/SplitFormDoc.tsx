@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { SplitFormHero } from '../components';
 import { SPLIT_FORM_HTML, SPLIT_FORM_TSX } from '../snippets';
 
-export function SplitFormDoc() {
+export const SplitFormDoc = () => {
   return (
     <ComponentDoc
       title="Hero split 50/50 con formulario"

@@ -8,13 +8,13 @@ export interface StepperInputProps {
   id?: string;
 }
 
-export function StepperInput({
+export const StepperInput = ({
   label,
   defaultValue = 150,
   step = 10,
   min = 1,
   id,
-}: StepperInputProps) {
+}: StepperInputProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const [value, setValue] = useState(defaultValue);

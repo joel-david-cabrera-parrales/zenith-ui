@@ -11,7 +11,7 @@ export interface TaskKanbanProps extends HTMLAttributes<HTMLDivElement> {
   comments?: number;
 }
 
-export function TaskKanban({
+export const TaskKanban = ({
   priority = 'URGENT_P0',
   title = 'Investigate TCP connection drops on node worker-us-e-04',
   excerpt = 'Buffer exhaustion detected after release v2.3.9 during peak traffic burst.',
@@ -22,7 +22,7 @@ export function TaskKanban({
   comments = 8,
   className = '',
   ...rest
-}: TaskKanbanProps) {
+}: TaskKanbanProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 border-l-4 border-l-rose-600 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between cursor-grab active:cursor-grabbing ${className}`}

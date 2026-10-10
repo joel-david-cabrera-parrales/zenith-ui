@@ -5,7 +5,7 @@ const COUNTDOWN = [
   { value: '45', label: 'SEG' },
 ];
 
-export function EventBannerHero() {
+export const EventBannerHero = () => {
   return (
     <div className="relative w-full overflow-hidden rounded-2xl border border-blue-200 bg-gradient-to-r from-slate-50 via-white to-slate-50 p-5 shadow-sm sm:p-8 md:p-12">
       <div className="pointer-events-none absolute top-0 right-0 h-80 w-80 rounded-full bg-blue-600/10 blur-3xl" />

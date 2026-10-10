@@ -31,7 +31,7 @@ const ACTIONS = [
   },
 ];
 
-export function BottomSheetDoc() {
+export const BottomSheetDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

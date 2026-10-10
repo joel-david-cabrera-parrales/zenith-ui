@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { PricingTier } from '../components';
 import { PRICING_TIER_HTML, PRICING_TIER_TSX } from '../snippets';
 
-export function PricingTierDoc() {
+export const PricingTierDoc = () => {
   return (
     <ComponentDoc
       title="Tier de precio destacado"

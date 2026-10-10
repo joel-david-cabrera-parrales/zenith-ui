@@ -15,7 +15,7 @@ interface CodeBlockProps {
   language: CodeLanguage;
 }
 
-export function CodeBlock({ code, label, language }: CodeBlockProps) {
+export const CodeBlock = ({ code, label, language }: CodeBlockProps) => {
   const { copied, copy } = useCopyToClipboard();
   const [lines, setLines] = useState<HighlightLine[] | null>(null);
 

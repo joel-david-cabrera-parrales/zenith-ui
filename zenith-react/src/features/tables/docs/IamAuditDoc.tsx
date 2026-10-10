@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { IamAuditTable } from '../components';
 import { IAM_AUDIT_HTML, IAM_AUDIT_TSX } from '../snippets';
 
-export function IamAuditDoc() {
+export const IamAuditDoc = () => {
   return (
     <ComponentDoc
       title="Auditoría IAM zero-trust"

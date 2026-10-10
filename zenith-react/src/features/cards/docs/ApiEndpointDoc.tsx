@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { ApiEndpoint } from '../components';
 import { API_ENDPOINT_HTML, API_ENDPOINT_TSX } from '../snippets';
 
-export function ApiEndpointDoc() {
+export const ApiEndpointDoc = () => {
   return (
     <ComponentDoc
       title="Endpoint API con snippet"

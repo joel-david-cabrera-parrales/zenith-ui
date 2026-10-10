@@ -68,7 +68,7 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   info: 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm',
 };
 
-function Spinner({ className = '' }: { className?: string }) {
+const Spinner = ({ className = '' }: { className?: string }) => {
   return (
     <svg
       aria-hidden="true"
@@ -94,7 +94,7 @@ function Spinner({ className = '' }: { className?: string }) {
   );
 }
 
-export function Button({
+export const Button = ({
   size = 'md',
   variant = 'primary',
   type = 'button',
@@ -107,7 +107,7 @@ export function Button({
   className = '',
   children,
   ...rest
-}: ButtonProps) {
+}: ButtonProps) => {
   const isDisabled = disabled === true || loading;
   const ghostLike = variant === 'outline' || variant === 'ghost' || variant === 'link';
   const look = isDisabled

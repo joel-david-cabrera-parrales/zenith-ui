@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { MetricMini } from '../components';
 import { METRIC_MINI_HTML, METRIC_MINI_TSX } from '../snippets';
 
-export function MetricMiniDoc() {
+export const MetricMiniDoc = () => {
   return (
     <ComponentDoc
       title="Mini métrica con estado"

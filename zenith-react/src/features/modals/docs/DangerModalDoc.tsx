@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { DANGER_MODAL_HTML, DANGER_MODAL_TSX } from '../snippets';
 
-export function DangerModalDoc() {
+export const DangerModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

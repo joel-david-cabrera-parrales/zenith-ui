@@ -15,7 +15,7 @@ const SHOTS: { series: string; title: string; exif: string; seed: string }[] = [
   { series: 'SERIES #067', title: 'Producto Premium // Estudio', exif: 'ISO 64 • 100mm f/11 • 1/60s', seed: 'zenith-product' },
 ];
 
-export function PhotographyShowcaseHero() {
+export const PhotographyShowcaseHero = () => {
   const [discipline, setDiscipline] = useState<Discipline>('Moda & Editorial');
 
   return (

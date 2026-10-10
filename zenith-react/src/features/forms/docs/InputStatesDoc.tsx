@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { TextInput } from '../components';
 import { INPUT_STATES_HTML, INPUT_STATES_TSX } from '../snippets';
 
-export function InputStatesDoc() {
+export const InputStatesDoc = () => {
   return (
     <ComponentDoc
       title="Estados"

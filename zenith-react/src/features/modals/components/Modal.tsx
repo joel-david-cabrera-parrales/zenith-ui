@@ -32,7 +32,7 @@ const TONE_BORDER: Record<ModalTone, string> = {
 
 const EXIT_DELAY = 200;
 
-export function Modal({
+export const Modal = ({
   open,
   onClose,
   size = 'md',
@@ -43,7 +43,7 @@ export function Modal({
   actions,
   showClose = true,
   closeLabel = 'Cerrar diálogo',
-}: ModalProps) {
+}: ModalProps) => {
   const [exiting, setExiting] = useState(false);
   const timer = useRef<number | null>(null);
 

@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { InfraResourcesTable } from '../components';
 import { INFRA_RESOURCES_HTML, INFRA_RESOURCES_TSX } from '../snippets';
 
-export function InfraResourcesDoc() {
+export const InfraResourcesDoc = () => {
   return (
     <ComponentDoc
       title="Recursos cloud con filas expandibles"

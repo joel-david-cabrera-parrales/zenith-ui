@@ -10,7 +10,7 @@ export interface ThumbnailTagsProps extends HTMLAttributes<HTMLDivElement> {
   initials?: string;
 }
 
-export function ThumbnailTags({
+export const ThumbnailTags = ({
   badge = 'GUIDE',
   tags = ['Security', 'IAM'],
   title = 'Configuring Mutual TLS for Microservices',
@@ -19,7 +19,7 @@ export function ThumbnailTags({
   initials = 'MR',
   className = '',
   ...rest
-}: ThumbnailTagsProps) {
+}: ThumbnailTagsProps) => {
   const [saved, setSaved] = useState(false);
 
   return (

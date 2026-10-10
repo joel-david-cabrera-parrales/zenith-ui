@@ -9,7 +9,7 @@ export interface HorizontalSplitProps extends HTMLAttributes<HTMLDivElement> {
   link?: string;
 }
 
-export function HorizontalSplit({
+export const HorizontalSplit = ({
   badge = 'RELEASE_LOG',
   eyebrow = 'V2.4.0 ENGINE UPDATE • OCT 28, 2024',
   title = 'Kernel Memory Optimization & Sub-Millisecond RPC Routing',
@@ -18,7 +18,7 @@ export function HorizontalSplit({
   link = 'Read Spec',
   className = '',
   ...rest
-}: HorizontalSplitProps) {
+}: HorizontalSplitProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col sm:flex-row ${className}`}

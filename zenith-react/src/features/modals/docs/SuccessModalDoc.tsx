@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { SUCCESS_MODAL_HTML, SUCCESS_MODAL_TSX } from '../snippets';
 
-export function SuccessModalDoc() {
+export const SuccessModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

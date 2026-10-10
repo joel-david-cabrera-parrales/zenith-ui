@@ -8,12 +8,12 @@ export interface CopyInputProps {
   id?: string;
 }
 
-export function CopyInput({
+export const CopyInput = ({
   label,
   value,
   shortcut = '⌘K',
   id,
-}: CopyInputProps) {
+}: CopyInputProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const { copied, copy } = useCopyToClipboard();

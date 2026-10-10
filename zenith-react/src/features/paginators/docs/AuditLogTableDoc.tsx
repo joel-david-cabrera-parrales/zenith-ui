@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { AuditLogTable } from '../components';
 import { AUDIT_LOG_TABLE_HTML, AUDIT_LOG_TABLE_TSX } from '../snippets';
 
-export function AuditLogTableDoc() {
+export const AuditLogTableDoc = () => {
   return (
     <ComponentDoc
       title="Tabla de auditoría paginada en vivo"

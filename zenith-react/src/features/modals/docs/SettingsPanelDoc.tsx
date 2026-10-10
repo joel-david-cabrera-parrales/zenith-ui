@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Drawer } from '../components';
 import { SETTINGS_PANEL_HTML, SETTINGS_PANEL_TSX } from '../snippets';
 
-export function SettingsPanelDoc() {
+export const SettingsPanelDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

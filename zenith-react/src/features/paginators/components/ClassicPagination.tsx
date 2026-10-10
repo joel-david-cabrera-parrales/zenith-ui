@@ -6,7 +6,7 @@ export interface ClassicPaginationProps {
   onPageChange?: (page: number) => void;
 }
 
-function buildPages(total: number, current: number): (number | 'ellipsis')[] {
+const buildPages = (total: number, current: number): (number | 'ellipsis')[] => {
   if (total <= 7) {
     return Array.from({ length: total }, (_, i) => i + 1);
   }
@@ -17,13 +17,13 @@ function buildPages(total: number, current: number): (number | 'ellipsis')[] {
     return [1, 2, 'ellipsis', total - 3, total - 2, total - 1, total];
   }
   return [1, 'ellipsis', current - 1, current, current + 1, 'ellipsis', total];
-}
+};
 
-export function ClassicPagination({
+export const ClassicPagination = ({
   totalPages = 19,
   defaultPage = 2,
   onPageChange,
-}: ClassicPaginationProps) {
+}: ClassicPaginationProps) => {
   const [page, setPage] = useState(defaultPage);
 
   const goTo = (next: number) => {

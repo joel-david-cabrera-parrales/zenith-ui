@@ -68,7 +68,7 @@ export interface AuditLogTableProps {
   totalRecords?: number;
 }
 
-export function AuditLogTable({ totalRecords = 1480 }: AuditLogTableProps) {
+export const AuditLogTable = ({ totalRecords = 1480 }: AuditLogTableProps) => {
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [filter, setFilter] = useState('');

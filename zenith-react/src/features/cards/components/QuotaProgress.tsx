@@ -14,7 +14,7 @@ export interface QuotaProgressProps extends HTMLAttributes<HTMLDivElement> {
   eta?: string;
 }
 
-export function QuotaProgress({
+export const QuotaProgress = ({
   label = 'Cluster Quota Usage',
   badge = 'ACTIVE_CYCLE',
   value = '82.4%',
@@ -28,7 +28,7 @@ export function QuotaProgress({
   eta = 'ETA LIMIT: ~18 DAYS',
   className = '',
   ...rest
-}: QuotaProgressProps) {
+}: QuotaProgressProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

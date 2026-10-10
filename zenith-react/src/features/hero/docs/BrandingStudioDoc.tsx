@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { BrandingStudioHero } from '../components';
 import { BRANDING_STUDIO_HTML, BRANDING_STUDIO_TSX } from '../snippets';
 
-export function BrandingStudioDoc() {
+export const BrandingStudioDoc = () => {
   return (
     <ComponentDoc
       title="Hero branding con canvas vectorial"

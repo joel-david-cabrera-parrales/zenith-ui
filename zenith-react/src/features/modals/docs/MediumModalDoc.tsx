@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { MEDIUM_MODAL_HTML, MEDIUM_MODAL_TSX } from '../snippets';
 
-export function MediumModalDoc() {
+export const MediumModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

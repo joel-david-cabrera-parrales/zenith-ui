@@ -17,7 +17,7 @@ const FILTERS: Array<{ id: ShowcaseFilter; label: string }> = [
   { id: 'archived', label: 'Archived' },
 ];
 
-export function ShowcaseGridListDoc() {
+export const ShowcaseGridListDoc = () => {
   const [filter, setFilter] = useState<ShowcaseFilter>('all');
   const [view, setView] = useState<ShowcaseView>('grid');
   const visible = filterRepos(SHOWCASE_REPOS, filter);

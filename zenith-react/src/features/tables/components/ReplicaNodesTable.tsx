@@ -19,7 +19,7 @@ const ROWS: ReplicaRow[] = [
   { id: 'replica-06', zone: 'us-east-1c', latencyMs: 9, iopsK: 12.9, storagePct: 37, state: 'Sincronizada', stateClasses: 'bg-emerald-100 text-emerald-700' },
 ];
 
-export function ReplicaNodesTable() {
+export const ReplicaNodesTable = () => {
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<string[]>([]);
   const [page, setPage] = useState(1);

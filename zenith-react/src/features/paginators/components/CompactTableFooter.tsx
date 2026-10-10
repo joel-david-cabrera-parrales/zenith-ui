@@ -6,11 +6,11 @@ export interface CompactTableFooterProps {
   defaultPage?: number;
 }
 
-export function CompactTableFooter({
+export const CompactTableFooter = ({
   totalPages = 8,
   totalRecords = 42,
   defaultPage = 3,
-}: CompactTableFooterProps) {
+}: CompactTableFooterProps) => {
   const [page, setPage] = useState(defaultPage);
 
   return (

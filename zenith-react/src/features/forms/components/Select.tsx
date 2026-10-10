@@ -12,7 +12,7 @@ export interface SelectProps
   options: SelectOption[];
 }
 
-export function Select({ label, options, id, ...rest }: SelectProps) {
+export const Select = ({ label, options, id, ...rest }: SelectProps) => {
   const generatedId = useId();
   const selectId = id ?? generatedId;
 

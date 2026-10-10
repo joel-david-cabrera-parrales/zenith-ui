@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { EventForm } from '../components';
 import { EVENT_FORM_HTML, EVENT_FORM_TSX } from '../snippets';
 
-export function EventFormDoc() {
+export const EventFormDoc = () => {
   return (
     <ComponentDoc
       title="Registro de Evento en Zenith Dash"

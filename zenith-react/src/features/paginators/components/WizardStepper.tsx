@@ -16,7 +16,7 @@ const DEFAULT_STEPS: WizardStep[] = [
   { title: 'Despliegue a Producción', code: 'PASO 03 // PENDIENTE' },
 ];
 
-export function WizardStepper({ steps = DEFAULT_STEPS, defaultStep = 1 }: WizardStepperProps) {
+export const WizardStepper = ({ steps = DEFAULT_STEPS, defaultStep = 1 }: WizardStepperProps) => {
   const [active, setActive] = useState(defaultStep);
 
   return (

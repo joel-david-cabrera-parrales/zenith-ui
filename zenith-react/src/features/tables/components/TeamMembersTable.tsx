@@ -21,7 +21,7 @@ const INITIAL: Member[] = [
 
 const ROLES = ['Admin', 'Editor', 'Viewer', 'Billing'] as const;
 
-export function TeamMembersTable() {
+export const TeamMembersTable = () => {
   const searchId = useId();
   const [query, setQuery] = useState('');
   const [roles, setRoles] = useState<Record<string, string>>({

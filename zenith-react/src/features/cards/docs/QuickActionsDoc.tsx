@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { QuickActions } from '../components';
 import { QUICK_ACTIONS_HTML, QUICK_ACTIONS_TSX } from '../snippets';
 
-export function QuickActionsDoc() {
+export const QuickActionsDoc = () => {
   return (
     <ComponentDoc
       title="Acciones rápidas"

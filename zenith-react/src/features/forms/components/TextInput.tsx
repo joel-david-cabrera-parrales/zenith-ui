@@ -33,7 +33,7 @@ const MESSAGE_CLASSES: Record<TextInputState, string> = {
   success: 'text-green-700',
 };
 
-export function TextInput({
+export const TextInput = ({
   size = 'md',
   state = 'default',
   label,
@@ -42,7 +42,7 @@ export function TextInput({
   id,
   className = '',
   ...rest
-}: TextInputProps) {
+}: TextInputProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
 

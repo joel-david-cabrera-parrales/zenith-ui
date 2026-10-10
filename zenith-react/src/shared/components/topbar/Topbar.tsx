@@ -12,13 +12,12 @@ export interface TopbarProps {
   onMenu?: () => void;
 }
 
-function cx(...parts: Array<string | false | undefined>): string {
-  return parts.filter(Boolean).join(" ");
-}
+const cx = (...parts: Array<string | false | undefined>): string =>
+  parts.filter(Boolean).join(" ");
 
 type Popover = "none" | "search" | "notifications" | "profile";
 
-export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
+export const Topbar = ({ tone = "light", onToggleTheme, onMenu }: TopbarProps) => {
   const dark = tone === "dark";
   const searchId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -27,28 +26,28 @@ export function Topbar({ tone = "light", onToggleTheme, onMenu }: TopbarProps) {
   const [exiting, setExiting] = useState(false);
   const [mobileSearch, setMobileSearch] = useState(false);
 
-  function open(which: Popover) {
+  const open = (which: Popover) => {
     setExiting(false);
     setPopover(which);
-  }
+  };
 
-  function close() {
+  const close = () => {
     setExiting(true);
     window.setTimeout(() => {
       setPopover("none");
       setExiting(false);
     }, 200);
-  }
+  };
 
-  function toggle(which: Popover) {
+  const toggle = (which: Popover) => {
     if (popover === which) close();
     else open(which);
-  }
+  };
 
-  function dismiss() {
+  const dismiss = () => {
     close();
     setMobileSearch(false);
-  }
+  };
 
   useEffect(() => {
     if (popover === "none" && !mobileSearch) return;

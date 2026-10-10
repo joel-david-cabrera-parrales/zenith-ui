@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { BatchTableFooter } from '../components';
 import { BATCH_TABLE_FOOTER_HTML, BATCH_TABLE_FOOTER_TSX } from '../snippets';
 
-export function BatchTableFooterDoc() {
+export const BatchTableFooterDoc = () => {
   return (
     <ComponentDoc
       title="Footer de tabla con acciones batch"

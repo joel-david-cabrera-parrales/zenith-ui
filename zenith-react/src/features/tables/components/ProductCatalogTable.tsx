@@ -19,7 +19,7 @@ const ROWS: Product[] = [
   { sku: 'SKU-88012', name: 'Ceramic Pour-Over Set', category: 'Hogar', seed: 'zenith-sku6', channels: ['Shopify', 'Amazon', 'Retail'], price: 74.9, margin: 47 },
 ];
 
-export function ProductCatalogTable() {
+export const ProductCatalogTable = () => {
   const [query, setQuery] = useState('');
   const [stock, setStock] = useState<Record<string, number>>({
     'SKU-88410': 142,

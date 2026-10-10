@@ -7,7 +7,7 @@ import {
   CONNECTION_DRAWER_TSX,
 } from '../snippets';
 
-export function ConnectionDrawerDoc() {
+export const ConnectionDrawerDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

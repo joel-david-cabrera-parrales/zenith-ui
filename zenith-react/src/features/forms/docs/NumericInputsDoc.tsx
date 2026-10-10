@@ -5,7 +5,7 @@ import {
   NUMERIC_INPUTS_TSX,
 } from '../snippets';
 
-export function NumericInputsDoc() {
+export const NumericInputsDoc = () => {
   return (
     <ComponentDoc
       title="Campos numéricos, fechas & rangos"

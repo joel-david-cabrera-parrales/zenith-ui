@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { FULLSCREEN_MODAL_HTML, FULLSCREEN_MODAL_TSX } from '../snippets';
 
-export function FullscreenModalDoc() {
+export const FullscreenModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

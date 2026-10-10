@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { EventBannerHero } from '../components';
 import { EVENT_BANNER_HTML, EVENT_BANNER_TSX } from '../snippets';
 
-export function EventBannerDoc() {
+export const EventBannerDoc = () => {
   return (
     <ComponentDoc
       title="Hero banner de evento con countdown"

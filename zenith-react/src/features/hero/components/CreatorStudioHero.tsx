@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const RETENTION = [100, 92, 88, 84, 81, 79, 82, 86];
 
-export function CreatorStudioHero() {
+export const CreatorStudioHero = () => {
   const [playing, setPlaying] = useState(false);
 
   return (

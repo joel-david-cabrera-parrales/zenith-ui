@@ -25,7 +25,7 @@ const AUDIT_ROWS = [
   },
 ];
 
-export function LargeModalDoc() {
+export const LargeModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

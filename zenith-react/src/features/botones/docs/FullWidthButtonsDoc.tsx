@@ -5,7 +5,7 @@ import {
   FULL_WIDTH_BUTTONS_TSX,
 } from '../snippets';
 
-export function FullWidthButtonsDoc() {
+export const FullWidthButtonsDoc = () => {
   return (
     <ComponentDoc
       title="Ancho completo (full width)"

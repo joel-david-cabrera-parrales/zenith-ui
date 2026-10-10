@@ -40,13 +40,13 @@ const DEFAULT_TAG: Record<HeadingVariant, HeadingProps['as']> = {
   overline: 'p',
 };
 
-export function Heading({
+export const Heading = ({
   variant = 'h2',
   as,
   className = '',
   children,
   ...rest
-}: HeadingProps) {
+}: HeadingProps) => {
   const Tag = (as ?? DEFAULT_TAG[variant] ?? 'h2') as 'h1';
   return (
     <Tag className={`${VARIANT_CLASSES[variant]} ${className}`} {...rest}>

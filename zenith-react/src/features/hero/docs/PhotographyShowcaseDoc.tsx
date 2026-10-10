@@ -5,7 +5,7 @@ import {
   PHOTOGRAPHY_SHOWCASE_TSX,
 } from '../snippets';
 
-export function PhotographyShowcaseDoc() {
+export const PhotographyShowcaseDoc = () => {
   return (
     <ComponentDoc
       title="Hero fotografía con tríptico EXIF"

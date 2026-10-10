@@ -27,14 +27,14 @@ const DEFAULT_OPTIONS: SelectableOption[] = [
   },
 ];
 
-export function SelectableOptions({
+export const SelectableOptions = ({
   label = 'Selectable Options',
   badge = 'RADIO_GROUP',
   options = DEFAULT_OPTIONS,
   initial,
   className = '',
   ...rest
-}: SelectableOptionsProps) {
+}: SelectableOptionsProps) => {
   const [selected, setSelected] = useState(initial ?? options[0]?.id);
 
   return (

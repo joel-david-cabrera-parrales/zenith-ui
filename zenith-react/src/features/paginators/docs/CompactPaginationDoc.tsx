@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { CompactPagination } from '../components';
 import { COMPACT_PAGINATION_HTML, COMPACT_PAGINATION_TSX } from '../snippets';
 
-export function CompactPaginationDoc() {
+export const CompactPaginationDoc = () => {
   return (
     <ComponentDoc
       title="Paginador compacto pill"

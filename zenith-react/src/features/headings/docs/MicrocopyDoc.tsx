@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { LabeledField } from '../components';
 import { MICROCOPY_HTML, MICROCOPY_TSX } from '../snippets';
 
-export function MicrocopyDoc() {
+export const MicrocopyDoc = () => {
   return (
     <ComponentDoc
       title="Microcopy, formularios y estados"

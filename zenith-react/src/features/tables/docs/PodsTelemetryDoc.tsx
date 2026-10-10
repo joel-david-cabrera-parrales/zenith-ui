@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { PodsTelemetryTable } from '../components';
 import { PODS_TELEMETRY_HTML, PODS_TELEMETRY_TSX } from '../snippets';
 
-export function PodsTelemetryDoc() {
+export const PodsTelemetryDoc = () => {
   return (
     <ComponentDoc
       title="Telemetría densa de pods"

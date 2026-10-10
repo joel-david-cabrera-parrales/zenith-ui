@@ -13,11 +13,11 @@ export interface TagMultiSelectProps {
   defaultSelected?: string[];
 }
 
-export function TagMultiSelect({
+export const TagMultiSelect = ({
   label,
   options,
   defaultSelected = [],
-}: TagMultiSelectProps) {
+}: TagMultiSelectProps) => {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const [selected, setSelected] = useState<string[]>(defaultSelected);
 

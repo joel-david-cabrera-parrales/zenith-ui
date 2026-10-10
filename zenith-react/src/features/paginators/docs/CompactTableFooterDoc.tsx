@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { CompactTableFooter } from '../components';
 import { COMPACT_TABLE_FOOTER_HTML, COMPACT_TABLE_FOOTER_TSX } from '../snippets';
 
-export function CompactTableFooterDoc() {
+export const CompactTableFooterDoc = () => {
   return (
     <ComponentDoc
       title="Footer de tabla compacto"

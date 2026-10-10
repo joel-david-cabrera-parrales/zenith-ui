@@ -22,7 +22,7 @@ const INPUT_CLASSES: Record<LabeledFieldState, string> = {
     'border-slate-200 bg-slate-100 text-slate-500 cursor-not-allowed select-none',
 };
 
-export function LabeledField({
+export const LabeledField = ({
   label,
   helper,
   state = 'default',
@@ -31,7 +31,7 @@ export function LabeledField({
   className = '',
   disabled,
   ...rest
-}: LabeledFieldProps) {
+}: LabeledFieldProps) => {
   const generatedId = useId();
   const fieldId = id ?? generatedId;
   const helperId = `${fieldId}-helper`;

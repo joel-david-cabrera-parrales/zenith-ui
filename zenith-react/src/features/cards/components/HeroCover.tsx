@@ -10,7 +10,7 @@ export interface HeroCoverProps extends HTMLAttributes<HTMLDivElement> {
   initials?: string;
 }
 
-export function HeroCover({
+export const HeroCover = ({
   category = 'Architecture',
   readTime = '6 MIN READ',
   title = 'Distributed Telemetry Pipelines at Enterprise Scale',
@@ -20,7 +20,7 @@ export function HeroCover({
   initials = 'EV',
   className = '',
   ...rest
-}: HeroCoverProps) {
+}: HeroCoverProps) => {
   return (
     <div
       className={`relative rounded-xl overflow-hidden border border-slate-700 shadow-sm min-h-[380px] flex flex-col justify-between p-5 bg-slate-900 ${className}`}

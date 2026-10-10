@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { AccentNotice } from '../components';
 import { ACCENT_NOTICE_HTML, ACCENT_NOTICE_TSX } from '../snippets';
 
-export function AccentNoticeDoc() {
+export const AccentNoticeDoc = () => {
   return (
     <ComponentDoc
       title="Aviso con acento lateral"

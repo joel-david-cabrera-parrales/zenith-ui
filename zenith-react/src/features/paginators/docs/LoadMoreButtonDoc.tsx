@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { LoadMoreButton } from '../components';
 import { LOAD_MORE_HTML, LOAD_MORE_TSX } from '../snippets';
 
-export function LoadMoreButtonDoc() {
+export const LoadMoreButtonDoc = () => {
   return (
     <ComponentDoc
       title="Botón cargar más con progreso"

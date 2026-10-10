@@ -10,7 +10,7 @@ export interface MemberCardProps extends HTMLAttributes<HTMLDivElement> {
   action?: string;
 }
 
-export function MemberCard({
+export const MemberCard = ({
   name = 'Marcus Reed',
   role = 'SecOps Lead // Identity',
   initials = 'MR',
@@ -20,7 +20,7 @@ export function MemberCard({
   action = 'Manage Role',
   className = '',
   ...rest
-}: MemberCardProps) {
+}: MemberCardProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

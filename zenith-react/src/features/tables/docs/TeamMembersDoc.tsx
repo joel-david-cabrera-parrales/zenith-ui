@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { TeamMembersTable } from '../components';
 import { TEAM_MEMBERS_HTML, TEAM_MEMBERS_TSX } from '../snippets';
 
-export function TeamMembersDoc() {
+export const TeamMembersDoc = () => {
   return (
     <ComponentDoc
       title="Equipo con roles editables"

@@ -7,7 +7,7 @@ import { API_KEY_MODAL_HTML, API_KEY_MODAL_TSX } from '../snippets';
 
 const TOKEN = 'zenith_live_pk_884f629fe01a4bc';
 
-export function ApiKeyModalDoc() {
+export const ApiKeyModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   const { copied, copy } = useCopyToClipboard(2000);

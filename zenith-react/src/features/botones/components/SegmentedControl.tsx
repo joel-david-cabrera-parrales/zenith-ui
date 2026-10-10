@@ -14,12 +14,12 @@ export interface SegmentedControlProps {
   ariaLabel?: string;
 }
 
-export function SegmentedControl({
+export const SegmentedControl = ({
   options,
   defaultValue,
   onChange,
   ariaLabel = 'Opciones',
-}: SegmentedControlProps) {
+}: SegmentedControlProps) => {
   const [selected, setSelected] = useState(
     defaultValue ?? options[0]?.value ?? '',
   );

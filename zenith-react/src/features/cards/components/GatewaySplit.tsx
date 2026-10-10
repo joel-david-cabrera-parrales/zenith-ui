@@ -24,7 +24,7 @@ const DEFAULT_CELLS: GatewayCell[] = [
   { label: 'DROPPED', value: '12', delta: '0.001%', alert: true },
 ];
 
-export function GatewaySplit({
+export const GatewaySplit = ({
   title = 'Gateway Network',
   icon = 'hub',
   region = 'REGION: US-EAST',
@@ -35,7 +35,7 @@ export function GatewaySplit({
   link = 'TELEMETRY',
   className = '',
   ...rest
-}: GatewaySplitProps) {
+}: GatewaySplitProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

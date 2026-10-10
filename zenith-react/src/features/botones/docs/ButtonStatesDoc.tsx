@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { Button } from '../components';
 import { BUTTON_STATES_HTML, BUTTON_STATES_TSX } from '../snippets';
 
-export function ButtonStatesDoc() {
+export const ButtonStatesDoc = () => {
   return (
     <ComponentDoc
       title="Estados interactivos"

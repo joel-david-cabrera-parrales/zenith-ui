@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { BillingInvoicesTable } from '../components';
 import { BILLING_INVOICES_HTML, BILLING_INVOICES_TSX } from '../snippets';
 
-export function BillingInvoicesDoc() {
+export const BillingInvoicesDoc = () => {
   return (
     <ComponentDoc
       title="Facturación con estados de pago"

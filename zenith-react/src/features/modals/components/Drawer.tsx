@@ -32,7 +32,7 @@ const PANEL_ANIMATION: Record<DrawerSide, { in: string; out: string }> = {
 
 const EXIT_DELAY = 200;
 
-export function Drawer({
+export const Drawer = ({
   open,
   onClose,
   side = 'right',
@@ -43,7 +43,7 @@ export function Drawer({
   children,
   footer,
   closeLabel = 'Cerrar panel',
-}: DrawerProps) {
+}: DrawerProps) => {
   const [exiting, setExiting] = useState(false);
   const timer = useRef<number | null>(null);
 

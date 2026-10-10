@@ -121,7 +121,7 @@ const ROWS: InfraRow[] = [
 
 type SortKey = 'name' | 'region' | 'cpu';
 
-export function InfraResourcesTable() {
+export const InfraResourcesTable = () => {
   const [query, setQuery] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>('name');
   const [sortDir, setSortDir] = useState<1 | -1>(1);

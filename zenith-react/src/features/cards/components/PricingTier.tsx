@@ -10,7 +10,7 @@ export interface PricingTierProps extends HTMLAttributes<HTMLDivElement> {
   action?: string;
 }
 
-export function PricingTier({
+export const PricingTier = ({
   ribbon = 'RECOMMENDED',
   eyebrow = 'PLATFORM TIER',
   name = 'Developer Scale',
@@ -25,7 +25,7 @@ export function PricingTier({
   action = 'Provision Cluster',
   className = '',
   ...rest
-}: PricingTierProps) {
+}: PricingTierProps) => {
   return (
     <div
       className={`bg-white border-2 border-blue-600 rounded-xl p-5 shadow-md flex flex-col justify-between relative overflow-hidden ${className}`}

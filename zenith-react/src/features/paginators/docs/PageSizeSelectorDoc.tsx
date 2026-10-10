@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { PageSizeSelector } from '../components';
 import { PAGE_SIZE_HTML, PAGE_SIZE_TSX } from '../snippets';
 
-export function PageSizeSelectorDoc() {
+export const PageSizeSelectorDoc = () => {
   return (
     <ComponentDoc
       title="Selector de densidad por página"

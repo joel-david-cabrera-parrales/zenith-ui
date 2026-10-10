@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { StatusDraft } from '../components';
 import { STATUS_DRAFT_HTML, STATUS_DRAFT_TSX } from '../snippets';
 
-export function StatusDraftDoc() {
+export const StatusDraftDoc = () => {
   return (
     <ComponentDoc
       title="Borrador con estado sutil"

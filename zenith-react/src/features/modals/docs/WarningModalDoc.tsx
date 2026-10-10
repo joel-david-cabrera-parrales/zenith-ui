@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { WARNING_MODAL_HTML, WARNING_MODAL_TSX } from '../snippets';
 
-export function WarningModalDoc() {
+export const WarningModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

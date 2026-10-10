@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { ProductCatalogTable } from '../components';
 import { PRODUCT_CATALOG_HTML, PRODUCT_CATALOG_TSX } from '../snippets';
 
-export function ProductCatalogDoc() {
+export const ProductCatalogDoc = () => {
   return (
     <ComponentDoc
       title="Catálogo multicanal con stock editable"

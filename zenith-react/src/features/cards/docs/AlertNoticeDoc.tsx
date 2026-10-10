@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { AlertNotice } from '../components';
 import { ALERT_NOTICE_HTML, ALERT_NOTICE_TSX } from '../snippets';
 
-export function AlertNoticeDoc() {
+export const AlertNoticeDoc = () => {
   return (
     <ComponentDoc
       title="Aviso de sistema descartable"

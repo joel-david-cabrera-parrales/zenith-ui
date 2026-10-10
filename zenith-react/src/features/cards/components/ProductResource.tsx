@@ -11,7 +11,7 @@ export interface ProductResourceProps extends HTMLAttributes<HTMLDivElement> {
   action?: string;
 }
 
-export function ProductResource({
+export const ProductResource = ({
   status = 'STABLE',
   pkg = 'PKG // DEV-TOOLKIT',
   version = 'v3.12.4',
@@ -22,7 +22,7 @@ export function ProductResource({
   action = 'Install Package',
   className = '',
   ...rest
-}: ProductResourceProps) {
+}: ProductResourceProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

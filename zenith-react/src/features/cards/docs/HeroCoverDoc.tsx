@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { HeroCover } from '../components';
 import { HERO_COVER_HTML, HERO_COVER_TSX } from '../snippets';
 
-export function HeroCoverDoc() {
+export const HeroCoverDoc = () => {
   return (
     <ComponentDoc
       title="Hero cover con overlay"

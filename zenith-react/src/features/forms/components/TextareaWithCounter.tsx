@@ -7,14 +7,14 @@ export interface TextareaWithCounterProps
   maxLength?: number;
 }
 
-export function TextareaWithCounter({
+export const TextareaWithCounter = ({
   label,
   maxLength = 250,
   rows = 3,
   defaultValue = '',
   id,
   ...rest
-}: TextareaWithCounterProps) {
+}: TextareaWithCounterProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const [length, setLength] = useState(

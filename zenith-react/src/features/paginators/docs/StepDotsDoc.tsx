@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { StepDots } from '../components';
 import { STEP_DOTS_HTML, STEP_DOTS_TSX } from '../snippets';
 
-export function StepDotsDoc() {
+export const StepDotsDoc = () => {
   return (
     <ComponentDoc
       title="Micro-indicadores lineales"

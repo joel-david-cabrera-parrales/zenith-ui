@@ -4,7 +4,7 @@ import { Button } from '../../botones';
 import { Modal } from '../components';
 import { SMALL_MODAL_HTML, SMALL_MODAL_TSX } from '../snippets';
 
-export function SmallModalDoc() {
+export const SmallModalDoc = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 

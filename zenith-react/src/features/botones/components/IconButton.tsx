@@ -41,7 +41,7 @@ const TONE_CLASSES: Record<IconButtonTone, string> = {
   ghost: 'text-slate-600 hover:bg-slate-200/60 hover:text-slate-900',
 };
 
-export function IconButton({
+export const IconButton = ({
   icon,
   label,
   size = 'md',
@@ -50,7 +50,7 @@ export function IconButton({
   type = 'button',
   className = '',
   ...rest
-}: IconButtonProps) {
+}: IconButtonProps) => {
   return (
     <button
       type={type}

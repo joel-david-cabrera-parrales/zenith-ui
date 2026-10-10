@@ -5,12 +5,12 @@ export interface FileDropzoneProps {
   icon?: string;
 }
 
-export function FileDropzone({
+export const FileDropzone = ({
   label,
   title,
   hint,
   icon = 'cloud_upload',
-}: FileDropzoneProps) {
+}: FileDropzoneProps) => {
   return (
     <div>
       {label !== undefined && (

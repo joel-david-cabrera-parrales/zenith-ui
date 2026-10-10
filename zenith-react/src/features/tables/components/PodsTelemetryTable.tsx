@@ -32,7 +32,7 @@ const healthBadge = (h: Pod['health']) =>
       ? 'bg-amber-100 text-amber-800'
       : 'bg-rose-100 text-rose-800';
 
-export function PodsTelemetryTable() {
+export const PodsTelemetryTable = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const pageSize = 5;

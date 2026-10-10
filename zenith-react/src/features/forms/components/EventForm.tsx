@@ -5,7 +5,7 @@ import { Switch } from './Switch';
 import { TextInput } from './TextInput';
 import { TextareaWithCounter } from './TextareaWithCounter';
 
-export function EventForm() {
+export const EventForm = () => {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}

@@ -19,7 +19,7 @@ const DEFAULT_ACTIONS: QuickAction[] = [
   { icon: 'sync_alt', label: 'Rotate Credentials', shortcut: '⌘+R' },
 ];
 
-export function QuickActions({
+export const QuickActions = ({
   title = 'Quick Actions',
   badge = 'SHORTCUTS',
   actions = DEFAULT_ACTIONS,
@@ -27,7 +27,7 @@ export function QuickActions({
   footerLink = 'ALL SHORTCUTS →',
   className = '',
   ...rest
-}: QuickActionsProps) {
+}: QuickActionsProps) => {
   return (
     <div
       className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between ${className}`}

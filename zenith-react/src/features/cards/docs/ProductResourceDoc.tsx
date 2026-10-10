@@ -2,7 +2,7 @@ import { ComponentDoc } from '../../../shared/components/doc';
 import { ProductResource } from '../components';
 import { PRODUCT_RESOURCE_HTML, PRODUCT_RESOURCE_TSX } from '../snippets';
 
-export function ProductResourceDoc() {
+export const ProductResourceDoc = () => {
   return (
     <ComponentDoc
       title="Producto / recurso con CTA"

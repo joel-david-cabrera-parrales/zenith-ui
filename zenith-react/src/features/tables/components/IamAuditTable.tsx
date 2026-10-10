@@ -37,7 +37,7 @@ const sevClasses = (s: Severity) =>
       ? 'bg-amber-100 text-amber-800'
       : 'bg-blue-100 text-blue-800';
 
-export function IamAuditTable() {
+export const IamAuditTable = () => {
   const [query, setQuery] = useState('');
   const [severity, setSeverity] = useState<Severity | 'all'>('all');
   const [page, setPage] = useState(1);

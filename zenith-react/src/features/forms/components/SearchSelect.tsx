@@ -13,12 +13,12 @@ export interface SearchSelectProps {
   searchPlaceholder?: string;
 }
 
-export function SearchSelect({
+export const SearchSelect = ({
   label,
   options,
   defaultValue,
   searchPlaceholder = 'Filtrar tecnologías...',
-}: SearchSelectProps) {
+}: SearchSelectProps) => {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const [selected, setSelected] = useState(
     defaultValue ?? options[0]?.value ?? '',

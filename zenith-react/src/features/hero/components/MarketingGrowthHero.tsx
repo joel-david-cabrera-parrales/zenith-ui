@@ -17,7 +17,7 @@ const METRICS = [
   { value: '4.2x', label: 'ROAS consolidado', accent: 'text-blue-700' },
 ];
 
-export function MarketingGrowthHero() {
+export const MarketingGrowthHero = () => {
   const [channel, setChannel] = useState<Channel>('Google Ads');
 
   return (
