@@ -57,6 +57,17 @@ import {
   MicrocopyDoc,
   MonoDataDoc,
 } from "./features/headings";
+import {
+  BrandingStudioDoc,
+  CenteredTechDoc,
+  CreatorStudioDoc,
+  DashboardMetricsDoc,
+  DeveloperConsoleDoc,
+  EventBannerDoc,
+  MarketingGrowthDoc,
+  PhotographyShowcaseDoc,
+  SplitFormDoc,
+} from "./features/hero";
 
 function App() {
   return (
@@ -110,6 +121,15 @@ function App() {
       <EditorialDoc />
       <MicrocopyDoc />
       <MonoDataDoc />
+      <CenteredTechDoc />
+      <SplitFormDoc />
+      <DashboardMetricsDoc />
+      <DeveloperConsoleDoc />
+      <EventBannerDoc />
+      <MarketingGrowthDoc />
+      <PhotographyShowcaseDoc />
+      <BrandingStudioDoc />
+      <CreatorStudioDoc />
     </main>
   );
 }
