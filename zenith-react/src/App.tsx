@@ -8,7 +8,24 @@ import {
   IconButtonsDoc,
   SemanticButtonsDoc,
 } from "./features/botones";
-import { ModalSizesDoc } from "./features/modals";
+import {
+  ApiKeyModalDoc,
+  BottomSheetDoc,
+  ClusterDrawerDoc,
+  ConnectionDrawerDoc,
+  DangerModalDoc,
+  FiltersDrawerDoc,
+  FormModalDoc,
+  FullscreenModalDoc,
+  InfoModalDoc,
+  LargeModalDoc,
+  MediumModalDoc,
+  NavDrawerDoc,
+  SettingsPanelDoc,
+  SmallModalDoc,
+  SuccessModalDoc,
+  WarningModalDoc,
+} from "./features/modals";
 import {
   EventFormDoc,
   InputAccessoriesDoc,
@@ -39,7 +56,22 @@ function App() {
       <ButtonGroupsDoc />
       <ButtonStatesDoc />
       <FullWidthButtonsDoc />
-      <ModalSizesDoc />
+      <SmallModalDoc />
+      <MediumModalDoc />
+      <LargeModalDoc />
+      <FullscreenModalDoc />
+      <InfoModalDoc />
+      <SuccessModalDoc />
+      <WarningModalDoc />
+      <DangerModalDoc />
+      <FormModalDoc />
+      <SettingsPanelDoc />
+      <ApiKeyModalDoc />
+      <ConnectionDrawerDoc />
+      <ClusterDrawerDoc />
+      <NavDrawerDoc />
+      <BottomSheetDoc />
+      <FiltersDrawerDoc />
     </main>
   );
 }
