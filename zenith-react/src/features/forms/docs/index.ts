@@ -1,0 +1,1 @@
+export { TextInputDoc } from './TextInputDoc';
