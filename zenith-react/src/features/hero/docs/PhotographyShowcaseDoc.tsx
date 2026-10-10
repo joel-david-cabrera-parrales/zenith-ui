@@ -1,11 +1,18 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { PhotographyShowcaseHero } from '../components';
+import type { MaxWidth } from '@/shared/components/doc';
+
 import {
   PHOTOGRAPHY_SHOWCASE_HTML,
   PHOTOGRAPHY_SHOWCASE_TSX,
 } from '../snippets';
 
-export const PhotographyShowcaseDoc = () => {
+
+interface PhotographyShowcaseDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const PhotographyShowcaseDoc = ({ maxWidth = '4xl' }: PhotographyShowcaseDocProps) => {
   return (
     <ComponentDoc
       title="Hero fotografía con tríptico EXIF"

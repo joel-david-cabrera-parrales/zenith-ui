@@ -17,15 +17,15 @@ export const HeroPage = () => (
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Hero Sections</h1>
         <p className="text-sm text-slate-500 dark:text-slate-400">9 secciones hero</p>
       </header>
-      <CenteredTechDoc />
-      <SplitFormDoc />
-      <DashboardMetricsDoc />
-      <DeveloperConsoleDoc />
-      <EventBannerDoc />
-      <MarketingGrowthDoc />
-      <PhotographyShowcaseDoc />
-      <BrandingStudioDoc />
-      <CreatorStudioDoc />
+      <CenteredTechDoc maxWidth="7xl" />
+      <SplitFormDoc maxWidth="7xl" />
+      <DashboardMetricsDoc maxWidth="7xl" />
+      <DeveloperConsoleDoc maxWidth="7xl" />
+      <EventBannerDoc maxWidth="7xl" />
+      <MarketingGrowthDoc maxWidth="7xl" />
+      <PhotographyShowcaseDoc maxWidth="7xl" />
+      <BrandingStudioDoc maxWidth="7xl" />
+      <CreatorStudioDoc maxWidth="7xl" />
     </div>
   </div>
 );

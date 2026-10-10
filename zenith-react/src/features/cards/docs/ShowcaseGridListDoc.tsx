@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { ComponentDoc } from '../../../shared/components/doc';
 import { RepoCard, SHOWCASE_REPOS, filterRepos } from '../components';
+import type { MaxWidth } from '@/shared/components/doc';
+
 import type {
   ShowcaseFilter,
   ShowcaseView,
@@ -17,7 +19,12 @@ const FILTERS: Array<{ id: ShowcaseFilter; label: string }> = [
   { id: 'archived', label: 'Archived' },
 ];
 
-export const ShowcaseGridListDoc = () => {
+
+interface ShowcaseGridListDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const ShowcaseGridListDoc = ({ maxWidth = '4xl' }: ShowcaseGridListDocProps) => {
   const [filter, setFilter] = useState<ShowcaseFilter>('all');
   const [view, setView] = useState<ShowcaseView>('grid');
   const visible = filterRepos(SHOWCASE_REPOS, filter);

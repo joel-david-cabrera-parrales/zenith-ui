@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { Testimonial } from '../components';
 import { TESTIMONIAL_HTML, TESTIMONIAL_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const TestimonialDoc = () => {
+
+
+interface TestimonialDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const TestimonialDoc = ({ maxWidth = '4xl' }: TestimonialDocProps) => {
   return (
     <ComponentDoc
       title="Testimonio con rating"

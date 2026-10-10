@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { QuickActions } from '../components';
 import { QUICK_ACTIONS_HTML, QUICK_ACTIONS_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const QuickActionsDoc = () => {
+interface QuickActionsDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const QuickActionsDoc = ({ maxWidth = '4xl' }: QuickActionsDocProps) => {
   return (
     <ComponentDoc
       title="Acciones rápidas"
@@ -16,6 +21,7 @@ export const QuickActionsDoc = () => {
       }
       htmlCode={QUICK_ACTIONS_HTML}
       jsxCode={QUICK_ACTIONS_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

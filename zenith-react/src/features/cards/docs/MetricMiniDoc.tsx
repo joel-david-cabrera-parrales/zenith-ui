@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { MetricMini } from '../components';
 import { METRIC_MINI_HTML, METRIC_MINI_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const MetricMiniDoc = () => {
+interface MetricMiniDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const MetricMiniDoc = ({ maxWidth = '4xl' }: MetricMiniDocProps) => {
   return (
     <ComponentDoc
       title="Mini métrica con estado"
@@ -16,6 +21,7 @@ export const MetricMiniDoc = () => {
       }
       htmlCode={METRIC_MINI_HTML}
       jsxCode={METRIC_MINI_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

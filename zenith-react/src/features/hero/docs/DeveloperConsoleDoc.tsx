@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { DeveloperConsoleHero } from '../components';
 import { DEVELOPER_CONSOLE_HTML, DEVELOPER_CONSOLE_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const DeveloperConsoleDoc = () => {
+
+
+interface DeveloperConsoleDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const DeveloperConsoleDoc = ({ maxWidth = '4xl' }: DeveloperConsoleDocProps) => {
   return (
     <ComponentDoc
       title="Hero developer-first con consola"

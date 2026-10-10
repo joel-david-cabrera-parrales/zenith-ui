@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { AccentNotice } from '../components';
 import { ACCENT_NOTICE_HTML, ACCENT_NOTICE_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const AccentNoticeDoc = () => {
+interface AccentNoticeDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const AccentNoticeDoc = ({ maxWidth = '4xl' }: AccentNoticeDocProps) => {
   return (
     <ComponentDoc
       title="Aviso con acento lateral"
@@ -16,6 +21,7 @@ export const AccentNoticeDoc = () => {
       }
       htmlCode={ACCENT_NOTICE_HTML}
       jsxCode={ACCENT_NOTICE_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { QuotaProgress } from '../components';
 import { QUOTA_PROGRESS_HTML, QUOTA_PROGRESS_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const QuotaProgressDoc = () => {
+interface QuotaProgressDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const QuotaProgressDoc = ({ maxWidth = '4xl' }: QuotaProgressDocProps) => {
   return (
     <ComponentDoc
       title="Stat de cuota con progreso"
@@ -16,6 +21,7 @@ export const QuotaProgressDoc = () => {
       }
       htmlCode={QUOTA_PROGRESS_HTML}
       jsxCode={QUOTA_PROGRESS_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { MarketingGrowthHero } from '../components';
 import { MARKETING_GROWTH_HTML, MARKETING_GROWTH_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const MarketingGrowthDoc = () => {
+
+
+interface MarketingGrowthDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const MarketingGrowthDoc = ({ maxWidth = '4xl' }: MarketingGrowthDocProps) => {
   return (
     <ComponentDoc
       title="Hero marketing con funnel omnicanal"

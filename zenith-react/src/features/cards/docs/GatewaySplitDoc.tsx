@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { GatewaySplit } from '../components';
 import { GATEWAY_SPLIT_HTML, GATEWAY_SPLIT_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const GatewaySplitDoc = () => {
+interface GatewaySplitDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const GatewaySplitDoc = ({ maxWidth = '4xl' }: GatewaySplitDocProps) => {
   return (
     <ComponentDoc
       title="Card multi-métrica dividida"
@@ -16,6 +21,7 @@ export const GatewaySplitDoc = () => {
       }
       htmlCode={GATEWAY_SPLIT_HTML}
       jsxCode={GATEWAY_SPLIT_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

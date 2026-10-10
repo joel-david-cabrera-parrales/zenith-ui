@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { DashboardMetricsHero } from '../components';
 import { DASHBOARD_METRICS_HTML, DASHBOARD_METRICS_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const DashboardMetricsDoc = () => {
+
+
+interface DashboardMetricsDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const DashboardMetricsDoc = ({ maxWidth = '4xl' }: DashboardMetricsDocProps) => {
   return (
     <ComponentDoc
       title="Hero producto con telemetría live"

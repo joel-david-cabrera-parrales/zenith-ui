@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { PricingTier } from '../components';
 import { PRICING_TIER_HTML, PRICING_TIER_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const PricingTierDoc = () => {
+interface PricingTierDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const PricingTierDoc = ({ maxWidth = '4xl' }: PricingTierDocProps) => {
   return (
     <ComponentDoc
       title="Tier de precio destacado"
@@ -16,6 +21,7 @@ export const PricingTierDoc = () => {
       }
       htmlCode={PRICING_TIER_HTML}
       jsxCode={PRICING_TIER_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { RepoCard } from '../components';
 import { REPO_CARD_HTML, REPO_CARD_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const RepoCardDoc = () => {
+interface RepoCardDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const RepoCardDoc = ({ maxWidth = '4xl' }: RepoCardDocProps) => {
   return (
     <ComponentDoc
       title="Repo card individual"
@@ -16,6 +21,7 @@ export const RepoCardDoc = () => {
       }
       htmlCode={REPO_CARD_HTML}
       jsxCode={REPO_CARD_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

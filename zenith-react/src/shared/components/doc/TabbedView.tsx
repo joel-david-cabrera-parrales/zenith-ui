@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { CodeBlock } from './CodeBlock';
+import type { MaxWidth } from './max-width';
 
 export type TabId = 'preview' | 'html' | 'jsx';
 
@@ -8,6 +9,7 @@ export interface TabbedViewProps {
   preview?: ReactNode;
   htmlCode?: string;
   jsxCode?: string;
+  maxWidth?: MaxWidth;
 }
 
 const TABS: { id: TabId; label: string }[] = [
@@ -16,7 +18,7 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'jsx', label: 'JSX' },
 ];
 
-export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
+export const TabbedView = ({ preview, htmlCode, jsxCode, maxWidth = '4xl' }: TabbedViewProps) => {
   const visibleTabs = TABS.filter((tab) => {
     if (tab.id === 'preview') return preview !== undefined;
     if (tab.id === 'html') return htmlCode !== undefined;
@@ -31,7 +33,7 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
   if (activeTab === undefined) return null;
 
   return (
-    <div className="w-full max-w-4xl min-w-[18rem] overflow-hidden rounded-lg border border-slate-200">
+    <div className={`w-full max-w-${maxWidth} min-w-[18rem] overflow-hidden rounded-lg border border-slate-200`}>
       <div role="tablist" aria-label="Vista del componente" className="flex gap-1 border-b border-slate-200 bg-slate-50 p-2">
         {visibleTabs.map((tab) => {
           const selected = activeTab === tab.id;
@@ -75,4 +77,4 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
       </div>
     </div>
   );
-}
+};

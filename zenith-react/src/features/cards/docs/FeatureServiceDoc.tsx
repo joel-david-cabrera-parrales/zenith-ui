@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { FeatureService } from '../components';
 import { FEATURE_SERVICE_HTML, FEATURE_SERVICE_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const FeatureServiceDoc = () => {
+interface FeatureServiceDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const FeatureServiceDoc = ({ maxWidth = '4xl' }: FeatureServiceDocProps) => {
   return (
     <ComponentDoc
       title="Servicio con checklist"
@@ -16,6 +21,7 @@ export const FeatureServiceDoc = () => {
       }
       htmlCode={FEATURE_SERVICE_HTML}
       jsxCode={FEATURE_SERVICE_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

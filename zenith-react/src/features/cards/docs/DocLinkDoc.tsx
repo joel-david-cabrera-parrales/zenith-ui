@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { DocLink } from '../components';
 import { DOC_LINK_HTML, DOC_LINK_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const DocLinkDoc = () => {
+interface DocLinkDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const DocLinkDoc = ({ maxWidth = '4xl' }: DocLinkDocProps) => {
   return (
     <ComponentDoc
       title="Enlace a documentación"
@@ -16,6 +21,7 @@ export const DocLinkDoc = () => {
       }
       htmlCode={DOC_LINK_HTML}
       jsxCode={DOC_LINK_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

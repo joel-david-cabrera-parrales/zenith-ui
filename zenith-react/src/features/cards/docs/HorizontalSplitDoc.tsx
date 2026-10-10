@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { HorizontalSplit } from '../components';
 import { HORIZONTAL_SPLIT_HTML, HORIZONTAL_SPLIT_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const HorizontalSplitDoc = () => {
+interface HorizontalSplitDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const HorizontalSplitDoc = ({ maxWidth = '4xl' }: HorizontalSplitDocProps) => {
   return (
     <ComponentDoc
       title="Horizontal con imagen lateral"
@@ -16,6 +21,7 @@ export const HorizontalSplitDoc = () => {
       }
       htmlCode={HORIZONTAL_SPLIT_HTML}
       jsxCode={HORIZONTAL_SPLIT_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

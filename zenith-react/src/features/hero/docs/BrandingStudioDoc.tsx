@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { BrandingStudioHero } from '../components';
 import { BRANDING_STUDIO_HTML, BRANDING_STUDIO_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const BrandingStudioDoc = () => {
+
+
+interface BrandingStudioDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const BrandingStudioDoc = ({ maxWidth = '4xl' }: BrandingStudioDocProps) => {
   return (
     <ComponentDoc
       title="Hero branding con canvas vectorial"

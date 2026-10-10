@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { HeroCover } from '../components';
 import { HERO_COVER_HTML, HERO_COVER_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const HeroCoverDoc = () => {
+interface HeroCoverDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const HeroCoverDoc = ({ maxWidth = '4xl' }: HeroCoverDocProps) => {
   return (
     <ComponentDoc
       title="Hero cover con overlay"
@@ -16,6 +21,7 @@ export const HeroCoverDoc = () => {
       }
       htmlCode={HERO_COVER_HTML}
       jsxCode={HERO_COVER_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

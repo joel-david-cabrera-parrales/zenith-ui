@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { SelectableOptions } from '../components';
 import { SELECTABLE_OPTIONS_HTML, SELECTABLE_OPTIONS_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const SelectableOptionsDoc = () => {
+interface SelectableOptionsDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const SelectableOptionsDoc = ({ maxWidth = '4xl' }: SelectableOptionsDocProps) => {
   return (
     <ComponentDoc
       title="Opciones seleccionables"
@@ -16,6 +21,7 @@ export const SelectableOptionsDoc = () => {
       }
       htmlCode={SELECTABLE_OPTIONS_HTML}
       jsxCode={SELECTABLE_OPTIONS_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

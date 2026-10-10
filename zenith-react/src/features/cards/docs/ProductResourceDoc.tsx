@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { ProductResource } from '../components';
 import { PRODUCT_RESOURCE_HTML, PRODUCT_RESOURCE_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const ProductResourceDoc = () => {
+interface ProductResourceDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const ProductResourceDoc = ({ maxWidth = '4xl' }: ProductResourceDocProps) => {
   return (
     <ComponentDoc
       title="Producto / recurso con CTA"
@@ -16,6 +21,7 @@ export const ProductResourceDoc = () => {
       }
       htmlCode={PRODUCT_RESOURCE_HTML}
       jsxCode={PRODUCT_RESOURCE_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

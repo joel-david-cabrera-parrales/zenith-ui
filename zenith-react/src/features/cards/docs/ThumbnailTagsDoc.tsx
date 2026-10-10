@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { ThumbnailTags } from '../components';
 import { THUMBNAIL_TAGS_HTML, THUMBNAIL_TAGS_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const ThumbnailTagsDoc = () => {
+
+
+interface ThumbnailTagsDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const ThumbnailTagsDoc = ({ maxWidth = '4xl' }: ThumbnailTagsDocProps) => {
   return (
     <ComponentDoc
       title="Thumbnail 16:9 con tags"

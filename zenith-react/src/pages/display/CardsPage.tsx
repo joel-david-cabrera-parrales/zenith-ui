@@ -30,28 +30,28 @@ export const CardsPage = () => (
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Cards</h1>
         <p className="text-sm text-slate-500 dark:text-slate-400">22 variantes de tarjetas</p>
       </header>
-      <StatSparklineDoc />
-      <QuotaProgressDoc />
-      <GatewaySplitDoc />
-      <HeroCoverDoc />
-      <HorizontalSplitDoc />
-      <ThumbnailTagsDoc />
-      <ProductResourceDoc />
-      <ApiEndpointDoc />
-      <FeatureServiceDoc />
-      <TestimonialDoc />
-      <PricingTierDoc />
-      <SelectableOptionsDoc />
-      <TaskKanbanDoc />
-      <AlertNoticeDoc />
-      <RepoCardDoc />
-      <ShowcaseGridListDoc />
-      <DocLinkDoc />
-      <MetricMiniDoc />
-      <StatusDraftDoc />
-      <MemberCardDoc />
-      <QuickActionsDoc />
-      <AccentNoticeDoc />
+      <StatSparklineDoc maxWidth="full" />
+      <QuotaProgressDoc maxWidth="full" />
+      <GatewaySplitDoc maxWidth="full" />
+      <HeroCoverDoc maxWidth="full" />
+      <HorizontalSplitDoc maxWidth="full" />
+      <ThumbnailTagsDoc maxWidth="full" />
+      <ProductResourceDoc maxWidth="full" />
+      <ApiEndpointDoc maxWidth="full" />
+      <FeatureServiceDoc maxWidth="full" />
+      <TestimonialDoc maxWidth="full" />
+      <PricingTierDoc maxWidth="full" />
+      <SelectableOptionsDoc maxWidth="full" />
+      <TaskKanbanDoc maxWidth="full" />
+      <AlertNoticeDoc maxWidth="full" />
+      <RepoCardDoc maxWidth="full" />
+      <ShowcaseGridListDoc maxWidth="full" />
+      <DocLinkDoc maxWidth="full" />
+      <MetricMiniDoc maxWidth="full" />
+      <StatusDraftDoc maxWidth="full" />
+      <MemberCardDoc maxWidth="full" />
+      <QuickActionsDoc maxWidth="full" />
+      <AccentNoticeDoc maxWidth="full" />
     </div>
   </div>
 );

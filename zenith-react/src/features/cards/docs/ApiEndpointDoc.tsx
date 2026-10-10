@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { ApiEndpoint } from '../components';
 import { API_ENDPOINT_HTML, API_ENDPOINT_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const ApiEndpointDoc = () => {
+interface ApiEndpointDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const ApiEndpointDoc = ({ maxWidth = '4xl' }: ApiEndpointDocProps) => {
   return (
     <ComponentDoc
       title="Endpoint API con snippet"
@@ -16,6 +21,7 @@ export const ApiEndpointDoc = () => {
       }
       htmlCode={API_ENDPOINT_HTML}
       jsxCode={API_ENDPOINT_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

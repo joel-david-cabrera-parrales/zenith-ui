@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { CreatorStudioHero } from '../components';
 import { CREATOR_STUDIO_HTML, CREATOR_STUDIO_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const CreatorStudioDoc = () => {
+
+
+interface CreatorStudioDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const CreatorStudioDoc = ({ maxWidth = '4xl' }: CreatorStudioDocProps) => {
   return (
     <ComponentDoc
       title="Hero creator con timeline NLE"

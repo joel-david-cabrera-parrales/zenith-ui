@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { EventBannerHero } from '../components';
 import { EVENT_BANNER_HTML, EVENT_BANNER_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const EventBannerDoc = () => {
+
+
+interface EventBannerDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const EventBannerDoc = ({ maxWidth = '4xl' }: EventBannerDocProps) => {
   return (
     <ComponentDoc
       title="Hero banner de evento con countdown"

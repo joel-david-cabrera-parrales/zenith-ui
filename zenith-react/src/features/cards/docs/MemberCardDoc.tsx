@@ -1,8 +1,13 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { MemberCard } from '../components';
 import { MEMBER_CARD_HTML, MEMBER_CARD_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const MemberCardDoc = () => {
+interface MemberCardDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const MemberCardDoc = ({ maxWidth = '4xl' }: MemberCardDocProps) => {
   return (
     <ComponentDoc
       title="Miembro con rol"
@@ -16,6 +21,7 @@ export const MemberCardDoc = () => {
       }
       htmlCode={MEMBER_CARD_HTML}
       jsxCode={MEMBER_CARD_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

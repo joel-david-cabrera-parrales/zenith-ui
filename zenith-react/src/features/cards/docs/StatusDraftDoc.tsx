@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { StatusDraft } from '../components';
 import { STATUS_DRAFT_HTML, STATUS_DRAFT_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const StatusDraftDoc = () => {
+
+
+interface StatusDraftDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const StatusDraftDoc = ({ maxWidth = '4xl' }: StatusDraftDocProps) => {
   return (
     <ComponentDoc
       title="Borrador con estado sutil"

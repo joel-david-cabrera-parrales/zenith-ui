@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { StatSparkline } from '../components';
 import { STAT_SPARKLINE_HTML, STAT_SPARKLINE_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const StatSparklineDoc = () => {
+
+
+interface StatSparklineDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const StatSparklineDoc = ({ maxWidth = '4xl' }: StatSparklineDocProps) => {
   return (
     <ComponentDoc
       title="Stat con sparkline y tendencia"

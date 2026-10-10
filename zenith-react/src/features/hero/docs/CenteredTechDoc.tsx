@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { CenteredTechHero } from '../components';
 import { CENTERED_TECH_HTML, CENTERED_TECH_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const CenteredTechDoc = () => {
+
+
+interface CenteredTechDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const CenteredTechDoc = ({ maxWidth = '4xl' }: CenteredTechDocProps) => {
   return (
     <ComponentDoc
       title="Hero SaaS centrado con terminal"

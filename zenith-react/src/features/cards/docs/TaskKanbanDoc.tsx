@@ -1,8 +1,15 @@
 import { ComponentDoc } from '../../../shared/components/doc';
 import { TaskKanban } from '../components';
 import { TASK_KANBAN_HTML, TASK_KANBAN_TSX } from '../snippets';
+import type { MaxWidth } from '@/shared/components/doc';
 
-export const TaskKanbanDoc = () => {
+
+
+interface TaskKanbanDocProps {
+  maxWidth?: MaxWidth;
+}
+
+export const TaskKanbanDoc = ({ maxWidth = '4xl' }: TaskKanbanDocProps) => {
   return (
     <ComponentDoc
       title="Tarea kanban arrastrable"
