@@ -3,8 +3,6 @@ import { Testimonial } from '../components';
 import { TESTIMONIAL_HTML, TESTIMONIAL_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface TestimonialDocProps {
   maxWidth?: MaxWidth;
 }
@@ -23,6 +21,7 @@ export const TestimonialDoc = ({ maxWidth = '4xl' }: TestimonialDocProps) => {
       }
       htmlCode={TESTIMONIAL_HTML}
       jsxCode={TESTIMONIAL_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

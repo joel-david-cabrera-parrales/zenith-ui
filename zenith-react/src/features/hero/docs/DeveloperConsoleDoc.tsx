@@ -3,8 +3,6 @@ import { DeveloperConsoleHero } from '../components';
 import { DEVELOPER_CONSOLE_HTML, DEVELOPER_CONSOLE_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface DeveloperConsoleDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const DeveloperConsoleDoc = ({ maxWidth = '4xl' }: DeveloperConsoleDocPro
       }
       htmlCode={DEVELOPER_CONSOLE_HTML}
       jsxCode={DEVELOPER_CONSOLE_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

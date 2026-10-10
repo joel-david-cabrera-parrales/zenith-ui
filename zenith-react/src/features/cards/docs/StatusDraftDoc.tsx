@@ -3,8 +3,6 @@ import { StatusDraft } from '../components';
 import { STATUS_DRAFT_HTML, STATUS_DRAFT_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface StatusDraftDocProps {
   maxWidth?: MaxWidth;
 }
@@ -23,6 +21,7 @@ export const StatusDraftDoc = ({ maxWidth = '4xl' }: StatusDraftDocProps) => {
       }
       htmlCode={STATUS_DRAFT_HTML}
       jsxCode={STATUS_DRAFT_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

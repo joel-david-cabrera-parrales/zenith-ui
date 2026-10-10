@@ -3,8 +3,6 @@ import { DashboardMetricsHero } from '../components';
 import { DASHBOARD_METRICS_HTML, DASHBOARD_METRICS_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface DashboardMetricsDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const DashboardMetricsDoc = ({ maxWidth = '4xl' }: DashboardMetricsDocPro
       }
       htmlCode={DASHBOARD_METRICS_HTML}
       jsxCode={DASHBOARD_METRICS_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

@@ -3,8 +3,6 @@ import { EventBannerHero } from '../components';
 import { EVENT_BANNER_HTML, EVENT_BANNER_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface EventBannerDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const EventBannerDoc = ({ maxWidth = '4xl' }: EventBannerDocProps) => {
       }
       htmlCode={EVENT_BANNER_HTML}
       jsxCode={EVENT_BANNER_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

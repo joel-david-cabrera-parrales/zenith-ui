@@ -3,8 +3,6 @@ import { BrandingStudioHero } from '../components';
 import { BRANDING_STUDIO_HTML, BRANDING_STUDIO_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface BrandingStudioDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const BrandingStudioDoc = ({ maxWidth = '4xl' }: BrandingStudioDocProps) 
       }
       htmlCode={BRANDING_STUDIO_HTML}
       jsxCode={BRANDING_STUDIO_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

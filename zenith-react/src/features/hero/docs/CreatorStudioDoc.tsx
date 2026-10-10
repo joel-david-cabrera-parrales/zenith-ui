@@ -3,8 +3,6 @@ import { CreatorStudioHero } from '../components';
 import { CREATOR_STUDIO_HTML, CREATOR_STUDIO_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface CreatorStudioDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const CreatorStudioDoc = ({ maxWidth = '4xl' }: CreatorStudioDocProps) =>
       }
       htmlCode={CREATOR_STUDIO_HTML}
       jsxCode={CREATOR_STUDIO_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

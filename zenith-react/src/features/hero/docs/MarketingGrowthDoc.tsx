@@ -3,8 +3,6 @@ import { MarketingGrowthHero } from '../components';
 import { MARKETING_GROWTH_HTML, MARKETING_GROWTH_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface MarketingGrowthDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const MarketingGrowthDoc = ({ maxWidth = '4xl' }: MarketingGrowthDocProps
       }
       htmlCode={MARKETING_GROWTH_HTML}
       jsxCode={MARKETING_GROWTH_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

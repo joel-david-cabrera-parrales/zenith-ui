@@ -16,9 +16,8 @@ const FILTERS: Array<{ id: ShowcaseFilter; label: string }> = [
   { id: 'all', label: 'All Repositories' },
   { id: 'production', label: 'Production' },
   { id: 'staging', label: 'Staging' },
-  { id: 'archived', label: 'Archived' },
+  { id: 'archived', label: 'Archived' }
 ];
-
 
 interface ShowcaseGridListDocProps {
   maxWidth?: MaxWidth;
@@ -133,6 +132,7 @@ export const ShowcaseGridListDoc = ({ maxWidth = '4xl' }: ShowcaseGridListDocPro
       }
       htmlCode={SHOWCASE_GRID_LIST_HTML}
       jsxCode={SHOWCASE_GRID_LIST_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

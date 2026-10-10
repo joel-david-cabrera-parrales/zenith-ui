@@ -3,8 +3,6 @@ import { StatSparkline } from '../components';
 import { STAT_SPARKLINE_HTML, STAT_SPARKLINE_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface StatSparklineDocProps {
   maxWidth?: MaxWidth;
 }
@@ -23,6 +21,7 @@ export const StatSparklineDoc = ({ maxWidth = '4xl' }: StatSparklineDocProps) =>
       }
       htmlCode={STAT_SPARKLINE_HTML}
       jsxCode={STAT_SPARKLINE_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

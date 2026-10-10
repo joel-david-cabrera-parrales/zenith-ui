@@ -3,8 +3,6 @@ import { ThumbnailTags } from '../components';
 import { THUMBNAIL_TAGS_HTML, THUMBNAIL_TAGS_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface ThumbnailTagsDocProps {
   maxWidth?: MaxWidth;
 }
@@ -23,6 +21,7 @@ export const ThumbnailTagsDoc = ({ maxWidth = '4xl' }: ThumbnailTagsDocProps) =>
       }
       htmlCode={THUMBNAIL_TAGS_HTML}
       jsxCode={THUMBNAIL_TAGS_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

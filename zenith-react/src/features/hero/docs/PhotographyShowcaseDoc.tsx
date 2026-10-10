@@ -7,7 +7,6 @@ import {
   PHOTOGRAPHY_SHOWCASE_TSX,
 } from '../snippets';
 
-
 interface PhotographyShowcaseDocProps {
   maxWidth?: MaxWidth;
 }
@@ -24,6 +23,7 @@ export const PhotographyShowcaseDoc = ({ maxWidth = '4xl' }: PhotographyShowcase
       }
       htmlCode={PHOTOGRAPHY_SHOWCASE_HTML}
       jsxCode={PHOTOGRAPHY_SHOWCASE_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

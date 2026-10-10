@@ -3,8 +3,6 @@ import { TaskKanban } from '../components';
 import { TASK_KANBAN_HTML, TASK_KANBAN_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface TaskKanbanDocProps {
   maxWidth?: MaxWidth;
 }
@@ -23,6 +21,7 @@ export const TaskKanbanDoc = ({ maxWidth = '4xl' }: TaskKanbanDocProps) => {
       }
       htmlCode={TASK_KANBAN_HTML}
       jsxCode={TASK_KANBAN_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};

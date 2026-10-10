@@ -3,8 +3,6 @@ import { CenteredTechHero } from '../components';
 import { CENTERED_TECH_HTML, CENTERED_TECH_TSX } from '../snippets';
 import type { MaxWidth } from '@/shared/components/doc';
 
-
-
 interface CenteredTechDocProps {
   maxWidth?: MaxWidth;
 }
@@ -21,6 +19,7 @@ export const CenteredTechDoc = ({ maxWidth = '4xl' }: CenteredTechDocProps) => {
       }
       htmlCode={CENTERED_TECH_HTML}
       jsxCode={CENTERED_TECH_TSX}
+      maxWidth={maxWidth}
     />
   );
-}
+};
