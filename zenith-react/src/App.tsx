@@ -68,6 +68,39 @@ import {
   PhotographyShowcaseDoc,
   SplitFormDoc,
 } from "./features/hero";
+import {
+  BillingInvoicesDoc,
+  IamAuditDoc,
+  InfraResourcesDoc,
+  PodsTelemetryDoc,
+  ProductCatalogDoc,
+  ReplicaNodesDoc,
+  TeamMembersDoc,
+} from "./features/tables";
+import {
+  AccentNoticeDoc,
+  AlertNoticeDoc,
+  ApiEndpointDoc,
+  DocLinkDoc,
+  FeatureServiceDoc,
+  GatewaySplitDoc,
+  HeroCoverDoc,
+  HorizontalSplitDoc,
+  MemberCardDoc,
+  MetricMiniDoc,
+  PricingTierDoc,
+  ProductResourceDoc,
+  QuickActionsDoc,
+  QuotaProgressDoc,
+  RepoCardDoc,
+  SelectableOptionsDoc,
+  ShowcaseGridListDoc,
+  StatSparklineDoc,
+  StatusDraftDoc,
+  TaskKanbanDoc,
+  TestimonialDoc,
+  ThumbnailTagsDoc,
+} from "./features/cards";
 
 function App() {
   return (
@@ -130,6 +163,35 @@ function App() {
       <PhotographyShowcaseDoc />
       <BrandingStudioDoc />
       <CreatorStudioDoc />
+      <InfraResourcesDoc />
+      <ReplicaNodesDoc />
+      <ProductCatalogDoc />
+      <PodsTelemetryDoc />
+      <IamAuditDoc />
+      <TeamMembersDoc />
+      <BillingInvoicesDoc />
+      <StatSparklineDoc />
+      <QuotaProgressDoc />
+      <GatewaySplitDoc />
+      <HeroCoverDoc />
+      <HorizontalSplitDoc />
+      <ThumbnailTagsDoc />
+      <ProductResourceDoc />
+      <ApiEndpointDoc />
+      <FeatureServiceDoc />
+      <TestimonialDoc />
+      <PricingTierDoc />
+      <SelectableOptionsDoc />
+      <TaskKanbanDoc />
+      <AlertNoticeDoc />
+      <RepoCardDoc />
+      <ShowcaseGridListDoc />
+      <DocLinkDoc />
+      <MetricMiniDoc />
+      <StatusDraftDoc />
+      <MemberCardDoc />
+      <QuickActionsDoc />
+      <AccentNoticeDoc />
     </main>
   );
 }
