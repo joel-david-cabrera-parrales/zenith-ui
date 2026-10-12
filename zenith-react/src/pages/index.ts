@@ -9,4 +9,6 @@ export { HeroPage } from './display/HeroPage';
 export { HeadingsPage } from './display/HeadingsPage';
 export { ButtonsPage } from './ButtonsPage';
 export { DropdownsPage } from './DropdownsPage';
+export { CountdownsPage } from './CountdownsPage';
 export { BadgesPage } from './BadgesPage';
+export { ToastsPage } from './ToastsPage';

@@ -13,6 +13,8 @@ import {
   ButtonsPage,
   DropdownsPage,
   BadgesPage,
+  CountdownsPage,
+  ToastsPage,
 } from '@/pages';
 
 export const appRouter = createBrowserRouter([
@@ -31,7 +33,9 @@ export const appRouter = createBrowserRouter([
       { path: 'display/headings', element: <HeadingsPage /> },
       { path: 'action/buttons', element: <ButtonsPage /> },
       { path: 'overlay/dropdowns', element: <DropdownsPage /> },
+      { path: 'feedback/countdowns', element: <CountdownsPage /> },
       { path: 'display/badges', element: <BadgesPage /> },
+      { path: 'feedback/toasts', element: <ToastsPage /> },
     ],
   },
 ]);

@@ -97,10 +97,22 @@ export const SIDEBAR_NAV: NavItem[] = [
     route: "/overlay/dropdowns",
   },
   {
+    id: "countdowns",
+    label: "Countdowns",
+    icon: "timer",
+    route: "/feedback/countdowns",
+  },
+  {
     id: "badges",
     label: "Badges",
     icon: "badge",
     route: "/display/badges",
+  },
+  {
+    id: "toasts",
+    label: "Toasts",
+    icon: "notifications",
+    route: "/feedback/toasts",
   },
 ];
 

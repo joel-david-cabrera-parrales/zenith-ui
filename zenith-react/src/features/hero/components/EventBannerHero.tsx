@@ -1,9 +1,4 @@
-const COUNTDOWN = [
-  { value: '14', label: 'DÍAS' },
-  { value: '08', label: 'HORAS' },
-  { value: '22', label: 'MIN' },
-  { value: '45', label: 'SEG' },
-];
+import { EventCountdown } from '../../countdowns/components';
 
 export const EventBannerHero = () => {
   return (
@@ -40,17 +35,7 @@ export const EventBannerHero = () => {
           </div>
         </div>
         <div className="flex w-full shrink-0 flex-col items-start gap-5 lg:w-auto lg:items-end">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5" role="timer" aria-label="Cuenta regresiva al evento">
-            {COUNTDOWN.map((c) => (
-              <div
-                key={c.label}
-                className="flex h-14 w-14 flex-col items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm sm:h-16 sm:w-16"
-              >
-                <span className="text-sm font-bold text-slate-900">{c.value}</span>
-                <span className="text-[10px] font-semibold text-slate-500">{c.label}</span>
-              </div>
-            ))}
-          </div>
+          <EventCountdown />
           <div className="flex w-full flex-col gap-2 sm:flex-row lg:w-auto">
             <button
               type="button"
