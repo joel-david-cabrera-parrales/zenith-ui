@@ -90,6 +90,18 @@ export const SIDEBAR_NAV: NavItem[] = [
     icon: "smart_button",
     route: "/action/buttons",
   },
+  {
+    id: "dropdowns",
+    label: "Dropdowns",
+    icon: "arrow_drop_down",
+    route: "/overlay/dropdowns",
+  },
+  {
+    id: "badges",
+    label: "Badges",
+    icon: "badge",
+    route: "/display/badges",
+  },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [

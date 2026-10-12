@@ -8,3 +8,5 @@ export { CardsPage } from './display/CardsPage';
 export { HeroPage } from './display/HeroPage';
 export { HeadingsPage } from './display/HeadingsPage';
 export { ButtonsPage } from './ButtonsPage';
+export { DropdownsPage } from './DropdownsPage';
+export { BadgesPage } from './BadgesPage';

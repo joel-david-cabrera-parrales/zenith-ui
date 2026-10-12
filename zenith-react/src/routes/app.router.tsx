@@ -11,6 +11,8 @@ import {
   HeroPage,
   HeadingsPage,
   ButtonsPage,
+  DropdownsPage,
+  BadgesPage,
 } from '@/pages';
 
 export const appRouter = createBrowserRouter([
@@ -28,6 +30,8 @@ export const appRouter = createBrowserRouter([
       { path: 'display/hero', element: <HeroPage /> },
       { path: 'display/headings', element: <HeadingsPage /> },
       { path: 'action/buttons', element: <ButtonsPage /> },
+      { path: 'overlay/dropdowns', element: <DropdownsPage /> },
+      { path: 'display/badges', element: <BadgesPage /> },
     ],
   },
 ]);

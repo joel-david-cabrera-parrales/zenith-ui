@@ -1,0 +1,12 @@
+export { SolidBadgesDoc } from './SolidBadgesDoc';
+export { SoftBadgesDoc } from './SoftBadgesDoc';
+export { OutlineBadgesDoc } from './OutlineBadgesDoc';
+export { StatusPillsDoc } from './StatusPillsDoc';
+export { IconBadgesDoc } from './IconBadgesDoc';
+export { CountBadgesDoc } from './CountBadgesDoc';
+export { UserPillsDoc } from './UserPillsDoc';
+export { SplitBadgesDoc } from './SplitBadgesDoc';
+export { DismissibleChipsDoc } from './DismissibleChipsDoc';
+export { SelectableChipsDoc } from './SelectableChipsDoc';
+export { ActionLinksDoc } from './ActionLinksDoc';
+export { BadgeSizesDoc } from './BadgeSizesDoc';
