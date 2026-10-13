@@ -15,6 +15,7 @@ import {
   BadgesPage,
   CountdownsPage,
   ToastsPage,
+  AvatarsPage,
 } from '@/pages';
 
 export const appRouter = createBrowserRouter([
@@ -36,6 +37,7 @@ export const appRouter = createBrowserRouter([
       { path: 'feedback/countdowns', element: <CountdownsPage /> },
       { path: 'display/badges', element: <BadgesPage /> },
       { path: 'feedback/toasts', element: <ToastsPage /> },
+      { path: 'display/avatars', element: <AvatarsPage /> },
     ],
   },
 ]);

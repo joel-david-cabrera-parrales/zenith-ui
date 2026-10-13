@@ -114,6 +114,12 @@ export const SIDEBAR_NAV: NavItem[] = [
     icon: "notifications",
     route: "/feedback/toasts",
   },
+  {
+    id: "avatars",
+    label: "Avatars",
+    icon: "account_circle",
+    route: "/display/avatars",
+  },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [

@@ -155,8 +155,24 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
+/* Avatar vector masks (SEC_03 del catálogo avatar) */
+.mask-hex {
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+.mask-oct {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+.mask-shield {
+  clip-path: polygon(50% 0%, 100% 15%, 100% 65%, 50% 100%, 0% 65%, 0% 15%);
+}
+.mask-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.mask-star {
+  clip-path: polygon(50% 0%, 65% 20%, 88% 15%, 85% 38%, 100% 50%, 85% 62%, 88% 85%, 65% 80%, 50% 100%, 35% 80%, 12% 85%, 15% 62%, 0% 50%, 15% 38%, 12% 15%, 35% 20%);
+}
+
+@media (prefers-reduced-motion: reduce) {  *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;

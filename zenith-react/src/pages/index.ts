@@ -12,3 +12,4 @@ export { DropdownsPage } from './DropdownsPage';
 export { CountdownsPage } from './CountdownsPage';
 export { BadgesPage } from './BadgesPage';
 export { ToastsPage } from './ToastsPage';
+export { AvatarsPage } from './AvatarsPage';

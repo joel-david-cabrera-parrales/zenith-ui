@@ -1,0 +1,12 @@
+export { Avatar } from './Avatar';
+export type { AvatarProps, AvatarSize, AvatarShape } from './Avatar';
+export { MaskedAvatar } from './MaskedAvatar';
+export type { MaskedAvatarProps, AvatarMask } from './MaskedAvatar';
+export { AvatarGroup } from './AvatarGroup';
+export type { AvatarGroupProps, AvatarMember } from './AvatarGroup';
+export { RingedAvatar } from './RingedAvatar';
+export type { RingedAvatarProps, AvatarRing } from './RingedAvatar';
+export { PresenceAvatar } from './PresenceAvatar';
+export type { PresenceAvatarProps, PresenceStatus } from './PresenceAvatar';
+export { FallbackAvatar } from './FallbackAvatar';
+export type { FallbackAvatarProps, FallbackKind } from './FallbackAvatar';
