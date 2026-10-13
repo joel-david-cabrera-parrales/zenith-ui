@@ -120,6 +120,30 @@ export const SIDEBAR_NAV: NavItem[] = [
     icon: "account_circle",
     route: "/display/avatars",
   },
+  {
+    id: "accordions",
+    label: "Acordeones",
+    icon: "expand_more",
+    route: "/display/accordions",
+  },
+  {
+    id: "skeletons",
+    label: "Skeletons",
+    icon: "hourglass_empty",
+    route: "/feedback/skeletons",
+  },
+  {
+    id: "diffs",
+    label: "Diff",
+    icon: "compare",
+    route: "/display/diffs",
+  },
+  {
+    id: "carousels",
+    label: "Carousels",
+    icon: "view_carousel",
+    route: "/display/carousels",
+  },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [

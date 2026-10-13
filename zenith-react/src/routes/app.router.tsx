@@ -16,6 +16,10 @@ import {
   CountdownsPage,
   ToastsPage,
   AvatarsPage,
+  AccordionsPage,
+  SkeletonsPage,
+  DiffsPage,
+  CarouselsPage,
 } from '@/pages';
 
 export const appRouter = createBrowserRouter([
@@ -38,6 +42,10 @@ export const appRouter = createBrowserRouter([
       { path: 'display/badges', element: <BadgesPage /> },
       { path: 'feedback/toasts', element: <ToastsPage /> },
       { path: 'display/avatars', element: <AvatarsPage /> },
+      { path: 'display/accordions', element: <AccordionsPage /> },
+      { path: 'feedback/skeletons', element: <SkeletonsPage /> },
+      { path: 'display/diffs', element: <DiffsPage /> },
+      { path: 'display/carousels', element: <CarouselsPage /> },
     ],
   },
 ]);

@@ -13,3 +13,7 @@ export { CountdownsPage } from './CountdownsPage';
 export { BadgesPage } from './BadgesPage';
 export { ToastsPage } from './ToastsPage';
 export { AvatarsPage } from './AvatarsPage';
+export { AccordionsPage } from './AccordionsPage';
+export { SkeletonsPage } from './SkeletonsPage';
+export { DiffsPage } from './DiffsPage';
+export { CarouselsPage } from './CarouselsPage';
