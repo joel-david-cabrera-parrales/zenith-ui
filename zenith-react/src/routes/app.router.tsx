@@ -1,5 +1,14 @@
 import { createBrowserRouter } from 'react-router';
-import { MainLayout } from '@/layouts/MainLayout';
+import { FeaturesLayout } from '@/features/layout';
+import { LandingLayout, HomePage, AboutPage, ServicesPage } from '@/landing';
+import {
+  AuthLayout,
+  LoginPage,
+  RegisterPage,
+  ForgotPasswordPage,
+  ResetPasswordPage,
+} from '@/auth';
+import { HelperLayout, NotFoundPage, ServerErrorPage } from '@/helper';
 import {
   DashboardPage,
   PaginatorsPage,
@@ -31,7 +40,7 @@ import {
 export const appRouter = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
+    element: <FeaturesLayout />,
     children: [
       { index: true, element: <DashboardPage /> },
       { path: 'layout/paginators', element: <PaginatorsPage /> },
@@ -59,5 +68,39 @@ export const appRouter = createBrowserRouter([
       { path: 'navigation/tabs', element: <TabsPage /> },
       { path: 'overlay/tooltips', element: <TooltipsPage /> },
     ],
+  },
+  {
+    path: '/landing',
+    element: <LandingLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'home', element: <HomePage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'services', element: <ServicesPage /> },
+    ],
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      { index: true, element: <LoginPage /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'register', element: <RegisterPage /> },
+      { path: 'forgot', element: <ForgotPasswordPage /> },
+      { path: 'reset', element: <ResetPasswordPage /> },
+    ],
+  },
+  {
+    path: '/helper',
+    element: <HelperLayout />,
+    children: [
+      { path: '404', element: <NotFoundPage /> },
+      { path: '500', element: <ServerErrorPage /> },
+    ],
+  },
+  {
+    path: '*',
+    element: <HelperLayout />,
+    children: [{ path: '*', element: <NotFoundPage /> }],
   },
 ]);

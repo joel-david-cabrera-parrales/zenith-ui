@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
-import { Sidebar } from "../shared/components/sidebar/Sidebar";
-import { Topbar } from "../shared/components/topbar/Topbar";
-import type { ShellTone } from "../shared/components/interfaces/navigation.interface";
+import { Sidebar } from "../../shared/components/sidebar/Sidebar";
+import { Topbar } from "../../shared/components/topbar/Topbar";
+import type { ShellTone } from "../../shared/components/interfaces/navigation.interface";
 
-export const MainLayout = () => {
+export const FeaturesLayout = () => {
   const [tone, setTone] = useState<ShellTone>("light");
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);

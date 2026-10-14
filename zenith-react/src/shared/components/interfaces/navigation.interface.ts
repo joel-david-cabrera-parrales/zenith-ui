@@ -180,6 +180,13 @@ export const SIDEBAR_NAV: NavItem[] = [
     icon: "tooltip",
     route: "/overlay/tooltips",
   },
+  {
+    id: "landing",
+    label: "Landing",
+    icon: "home",
+    badge: "demo",
+    route: "/landing/home",
+  },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [
