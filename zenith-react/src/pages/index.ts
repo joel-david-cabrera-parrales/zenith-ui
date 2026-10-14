@@ -17,3 +17,7 @@ export { AccordionsPage } from './AccordionsPage';
 export { SkeletonsPage } from './SkeletonsPage';
 export { DiffsPage } from './DiffsPage';
 export { CarouselsPage } from './CarouselsPage';
+export { BreadcrumbsPage } from './BreadcrumbsPage';
+export { StepsPage } from './StepsPage';
+export { TabsPage } from './TabsPage';
+export { TooltipsPage } from './TooltipsPage';

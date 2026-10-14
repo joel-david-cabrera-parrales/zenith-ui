@@ -16,6 +16,16 @@
   --animate-toast-in: toast-in 200ms ease-out both;
   --animate-toast-out: toast-out 200ms ease-in both;
   --animate-toast-progress: toast-progress linear forwards;
+  --animate-tab-panel-in: tab-panel-in 200ms ease-out both;
+  --animate-step-panel-in: step-panel-in 250ms ease-out both;
+  --animate-tooltip-in: tooltip-in 150ms ease-out both;
+  --animate-tooltip-out: tooltip-out 150ms ease-in both;
+  --animate-tooltip-fade-in: tooltip-fade-in 150ms ease-out both;
+  --animate-tooltip-fade-out: tooltip-fade-out 150ms ease-in both;
+  --animate-tooltip-top-in: tooltip-slide-top 150ms ease-out both;
+  --animate-tooltip-bottom-in: tooltip-slide-bottom 150ms ease-out both;
+  --animate-tooltip-left-in: tooltip-slide-left 150ms ease-out both;
+  --animate-tooltip-right-in: tooltip-slide-right 150ms ease-out both;
 
   @keyframes overlay-in {
     from {
@@ -151,6 +161,112 @@
     }
     to {
       width: 0%;
+    }
+  }
+
+  @keyframes tab-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes step-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes tooltip-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes tooltip-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  @keyframes tooltip-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes tooltip-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes tooltip-slide-top {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes tooltip-slide-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes tooltip-slide-left {
+    from {
+      opacity: 0;
+      transform: translateX(4px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes tooltip-slide-right {
+    from {
+      opacity: 0;
+      transform: translateX(-4px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
     }
   }
 }

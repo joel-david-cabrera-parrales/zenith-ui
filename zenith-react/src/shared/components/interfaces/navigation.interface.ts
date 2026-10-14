@@ -144,6 +144,30 @@ export const SIDEBAR_NAV: NavItem[] = [
     icon: "view_carousel",
     route: "/display/carousels",
   },
+  {
+    id: "steps",
+    label: "Steps",
+    icon: "footprint",
+    route: "/display/steps",
+  },
+  {
+    id: "breadcrumbs",
+    label: "Breadcrumbs",
+    icon: "chevron_right",
+    route: "/navigation/breadcrumbs",
+  },
+  {
+    id: "tabs",
+    label: "Tabs",
+    icon: "tab",
+    route: "/navigation/tabs",
+  },
+  {
+    id: "tooltips",
+    label: "Tooltips",
+    icon: "tooltip",
+    route: "/overlay/tooltips",
+  },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [

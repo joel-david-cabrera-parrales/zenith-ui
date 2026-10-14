@@ -20,6 +20,10 @@ import {
   SkeletonsPage,
   DiffsPage,
   CarouselsPage,
+  StepsPage,
+  BreadcrumbsPage,
+  TabsPage,
+  TooltipsPage,
 } from '@/pages';
 
 export const appRouter = createBrowserRouter([
@@ -46,6 +50,10 @@ export const appRouter = createBrowserRouter([
       { path: 'feedback/skeletons', element: <SkeletonsPage /> },
       { path: 'display/diffs', element: <DiffsPage /> },
       { path: 'display/carousels', element: <CarouselsPage /> },
+      { path: 'display/steps', element: <StepsPage /> },
+      { path: 'navigation/breadcrumbs', element: <BreadcrumbsPage /> },
+      { path: 'navigation/tabs', element: <TabsPage /> },
+      { path: 'overlay/tooltips', element: <TooltipsPage /> },
     ],
   },
 ]);
