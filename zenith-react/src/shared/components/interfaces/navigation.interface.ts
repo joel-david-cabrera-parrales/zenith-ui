@@ -109,6 +109,12 @@ export const SIDEBAR_NAV: NavItem[] = [
     route: "/display/badges",
   },
   {
+    id: "progress",
+    label: "Progress",
+    icon: "trending_up",
+    route: "/display/progress",
+  },
+  {
     id: "toasts",
     label: "Toasts",
     icon: "notifications",
@@ -131,6 +137,12 @@ export const SIDEBAR_NAV: NavItem[] = [
     label: "Skeletons",
     icon: "hourglass_empty",
     route: "/feedback/skeletons",
+  },
+  {
+    id: "loading",
+    label: "Loading",
+    icon: "progress_activity",
+    route: "/feedback/loading",
   },
   {
     id: "diffs",

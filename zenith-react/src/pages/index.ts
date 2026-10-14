@@ -11,6 +11,8 @@ export { ButtonsPage } from './ButtonsPage';
 export { DropdownsPage } from './DropdownsPage';
 export { CountdownsPage } from './CountdownsPage';
 export { BadgesPage } from './BadgesPage';
+export { ProgressPage } from './ProgressPage';
+export { LoadingPage } from './LoadingPage';
 export { ToastsPage } from './ToastsPage';
 export { AvatarsPage } from './AvatarsPage';
 export { AccordionsPage } from './AccordionsPage';
