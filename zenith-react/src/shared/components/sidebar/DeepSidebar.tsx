@@ -321,7 +321,7 @@ export const DeepSidebar = ({
                 aria-controls={areaPanelId}
                 onClick={() => {
                   if (collapsed) {
-                    setCollapsed(false);
+                    onToggleCollapsed?.();
                   }
                   setOpenAreaId((prev: string | null) => (prev === area.id ? null : area.id));
                 }}
