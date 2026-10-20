@@ -256,13 +256,18 @@ export const DeepSidebar = ({
     <aside
       aria-label="Sidebar de navegación (4 niveles)"
       className={cx(
-        "flex h-full w-[350px] shrink-0 flex-col border",
+        "flex h-full shrink-0 flex-col border transition-all duration-200",
+        collapsed ? "w-16" : "w-[350px]",
         border,
         bg,
         dark ? "text-slate-300 shadow-[0_25px_40px_-10px_rgba(0,0,0,0.5)]" : "text-slate-600 shadow-[0_20px_35px_-10px_rgba(0,0,0,0.08)]",
       )}
     >
-      <div className="flex items-center gap-3 px-3 py-2.5 sm:px-5 sm:py-3">
+      <div className={cx(
+        "flex items-center justify-center gap-2 px-3 py-2.5 sm:px-5 sm:py-3",
+        collapsed ? "gap-0" : "gap-3",
+      )}
+      >
         <span
           aria-hidden="true"
           className={cx(
@@ -272,34 +277,39 @@ export const DeepSidebar = ({
         >
           Z
         </span>
-        <span className={cx("text-sm font-bold", text)}>Zenith UI</span>
+        {!collapsed && (
+          <span className={cx("text-sm font-bold", text)}>Zenith UI</span>
+        )}
       </div>
 
-      <div className="my-2 px-1">
-        <div className="relative flex w-full items-center">
-          <span className="material-symbols-outlined pointer-events-none absolute left-3 text-base text-slate-400">
-            search
-          </span>
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar..."
-            className={cx(
-              "w-full rounded-xl border py-1.5 pr-9 pl-9 text-xs transition-all focus:outline-none",
-              dark
-                ? "border-slate-700/60 bg-slate-800 text-slate-200 placeholder-slate-500 focus:border-blue-500"
-                : "border-transparent bg-slate-100 text-slate-800 placeholder-slate-400 hover:bg-slate-200/70 focus:border-blue-500 focus:bg-white",
-            )}
-          />
-          <span className="pointer-events-none absolute right-2 rounded border border-slate-200/80 bg-white px-1.5 py-0.5 text-[9px] font-semibold text-slate-400">
-            ⌘K
-          </span>
+      {!collapsed && (
+        <div className="my-2 px-1">
+          <div className="relative flex w-full items-center">
+            <span className="material-symbols-outlined pointer-events-none absolute left-3 text-base text-slate-400">
+              search
+            </span>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Buscar..."
+              className={cx(
+                "w-full rounded-xl border py-1.5 pr-9 pl-9 text-xs transition-all focus:outline-none",
+                dark
+                  ? "border-slate-700/60 bg-slate-800 text-slate-200 placeholder-slate-500 focus:border-blue-500"
+                  : "border-transparent bg-slate-100 text-slate-800 placeholder-slate-400 hover:bg-slate-200/70 focus:border-blue-500 focus:bg-white",
+              )}
+            />
+            <span className="pointer-events-none absolute right-2 rounded border border-slate-200/80 bg-white px-1.5 py-0.5 text-[9px] font-semibold text-slate-400">
+              ⌘K
+            </span>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="space-y-1 p-3">
-        {filteredAreas.map((area) => {
+      {!collapsed && (
+        <div className="space-y-1 p-3">
+          {filteredAreas.map((area) => {
           const areaOpen = openAreaId === area.id;
           const areaButtonId = `${baseId}-${area.id}-button`;
           const areaPanelId = `${baseId}-${area.id}-panel`;
@@ -494,19 +504,34 @@ export const DeepSidebar = ({
           );
         })}
       </div>
+      )}
 
-      <div className="mt-auto flex items-center gap-2 shadow-sm px-4 py-3">
-        <span
-          aria-hidden="true"
-          className={cx(
-            "flex h-8 w-8 items-center justify-center rounded-full font-bold",
-            dark ? "bg-slate-800 text-blue-300" : "bg-blue-100 text-blue-800",
-          )}
-        >
-          JJ
-        </span>
-        <span className={cx("text-xs font-semibold", text)}>Jonathan J.</span>
-        <span className="ml-auto font-mono text-[9px] text-slate-500">v2.4.0</span>
+      <div className="mt-auto flex items-center justify-center gap-2 shadow-sm px-4 py-3">
+        {collapsed ? (
+          <span
+            aria-hidden="true"
+            className={cx(
+              "flex h-8 w-8 items-center justify-center rounded-full font-bold",
+              dark ? "bg-slate-800 text-blue-300" : "bg-blue-100 text-blue-800",
+            )}
+          >
+            JJ
+          </span>
+        ) : (
+          <>
+            <span
+              aria-hidden="true"
+              className={cx(
+                "flex h-8 w-8 items-center justify-center rounded-full font-bold",
+                dark ? "bg-slate-800 text-blue-300" : "bg-blue-100 text-blue-800",
+              )}
+            >
+              JJ
+            </span>
+            <span className={cx("text-xs font-semibold", text)}>Jonathan J.</span>
+            <span className="ml-auto font-mono text-[9px] text-slate-500">v2.4.0</span>
+          </>
+        )}
       </div>
     </aside>
   );

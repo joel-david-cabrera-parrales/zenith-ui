@@ -6,11 +6,33 @@ import type { ShellTone } from "../../shared/components/interfaces/navigation.in
 
 export const FeaturesLayout = () => {
   const [tone, setTone] = useState<ShellTone>("light");
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExiting, setMobileExiting] = useState(false);
   const dark = tone === "dark";
 
   const toggleTone = () => {
     setTone((prev) => (prev === "light" ? "dark" : "light"));
   };
+
+  const toggleCollapsed = () => {
+    setCollapsed((prev) => !prev);
+  };
+
+  const openMobile = () => {
+    setMobileExiting(false);
+    setMobileOpen(true);
+  };
+
+  const closeMobile = () => {
+    setMobileExiting(true);
+    window.setTimeout(() => {
+      setMobileOpen(false);
+      setMobileExiting(false);
+    }, 200);
+  };
+
+  const sidebarWidth = collapsed ? "w-16" : "w-[350px]";
 
   return (
     <div
@@ -20,23 +42,27 @@ export const FeaturesLayout = () => {
           : "min-h-screen w-full bg-slate-300 text-slate-800"
       }
     >
-      {/* Sidebar - Fixed left, full height, same level as topbar */}
+      {/* Sidebar - Fixed left, full height */}
       <aside
         className={`
-          fixed top-0 left-0 z-40 w-[350px] h-screen
+          fixed inset-y-0 left-0 z-40 ${sidebarWidth} h-screen
           transition-all duration-200 ease-out
           ${dark ? "border-r border-slate-700/60 bg-slate-950" : "border-r border-slate-200/70 bg-white"}
         `}
         aria-label="Sidebar de navegación"
       >
-        <DeepSidebar tone={tone} />
+        <DeepSidebar
+          tone={tone}
+          collapsed={collapsed}
+          onToggleCollapsed={toggleCollapsed}
+        />
       </aside>
 
       {/* Main content area - offset by sidebar */}
-      <div className="flex-1 min-w-0 ml-[350px]">
+      <div className={`flex-1 min-w-0 transition-all duration-200 ${collapsed ? "ml-16" : "ml-[350px]"}`}>
         {/* Topbar - Fixed top */}
         <header className={`sticky top-0 z-30 ${dark ? "bg-slate-900/80 backdrop-blur-sm" : "bg-white/80 backdrop-blur-sm"}`}>
-          <Topbar tone={tone} onToggleTheme={toggleTone} />
+          <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} />
         </header>
 
         {/* Scrollable content */}
@@ -46,6 +72,40 @@ export const FeaturesLayout = () => {
           </div>
         </main>
       </div>
+
+      {/* Mobile sidebar overlay */}
+      {(mobileOpen || mobileExiting) && (
+        <div
+          className="fixed inset-0 z-50 md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menú de navegación"
+        >
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            onClick={closeMobile}
+            className={
+              mobileExiting
+                ? "absolute inset-0 animate-overlay-out bg-slate-950/50"
+                : "absolute inset-0 animate-overlay-in bg-slate-950/50"
+            }
+          />
+          <div
+            className={
+              mobileExiting
+                ? "absolute top-0 bottom-0 left-0 flex w-[350px] max-w-[85vw] animate-drawer-left-out"
+                : "absolute top-0 bottom-0 left-0 flex w-[350px] max-w-[85vw] animate-drawer-left-in"
+            }
+          >
+            <DeepSidebar
+              tone={tone}
+              collapsed={false}
+              onToggleCollapsed={closeMobile}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
