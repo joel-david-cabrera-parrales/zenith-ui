@@ -180,6 +180,53 @@ const AREAS: DeepArea[] = [
       },
     ],
   },
+  {
+    id: "ejemplos",
+    label: "Ejemplos",
+    icon: "thumb_up",
+    groups: [
+      {
+        id: "autenticacion",
+        label: "Autenticación",
+        icon: "login",
+        sections: [
+          {
+            id: "auth-pages",
+            label: "Páginas de Auth",
+            icon: "person",
+            links: [
+              { id: "login", label: "Login", icon: "login", route: "/examples/login" },
+              { id: "signup", label: "Signup", icon: "person_add", route: "/examples/signup" },
+              { id: "forgot-password", label: "Forgot Password", icon: "email", route: "/examples/forgot-password" },
+              { id: "reset-password", label: "Reset Password", icon: "restore", route: "/examples/reset-password" },
+              { id: "verify-email", label: "Verify Email", icon: "verified", route: "/examples/verify-email" },
+              { id: "magic-link", label: "Magic Link", icon: "link", route: "/examples/magic-link" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "paginas-estaticas",
+        label: "Landing page",
+        icon: "description",
+        sections: [
+          {
+            id: "landing-pages",
+            label: "Landing Pages",
+            icon: "article",
+            links: [
+              { id: "about", label: "About", icon: "info", route: "/examples/about" },
+              { id: "contact", label: "Contact", icon: "contact_page", route: "/examples/contact" },
+              { id: "pricing", label: "Pricing", icon: "attach_money", route: "/examples/pricing" },
+              { id: "faq", label: "FAQ", icon: "help", route: "/examples/faq" },
+              { id: "terms", label: "Terms", icon: "description", route: "/examples/terms" },
+              { id: "privacy", label: "Privacy", icon: "security", route: "/examples/privacy" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 function findActiveId(pathname: string): string | null {
