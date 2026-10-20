@@ -13,6 +13,7 @@ export interface DeepLink {
 export interface DeepSection {
   id: string;
   label: string;
+  icon: string;
   links: DeepLink[];
 }
 
@@ -53,6 +54,7 @@ const AREAS: DeepArea[] = [
           {
             id: "componentes",
             label: "Componentes",
+            icon: "layers",
             links: [
               { id: "cards", label: "Cards", icon: "view_in_ar", route: "/display/cards" },
               { id: "hero", label: "Hero Sections", icon: "crop_16_9", route: "/display/hero" },
@@ -68,6 +70,7 @@ const AREAS: DeepArea[] = [
           {
             id: "accordeones",
             label: "Acordeones",
+            icon: "expand_more",
             links: [{ id: "accordions", label: "Acordeones", icon: "expand_more", route: "/display/accordions" }],
           },
         ],
@@ -80,6 +83,7 @@ const AREAS: DeepArea[] = [
           {
             id: "avisos",
             label: "Avisos",
+            icon: "notifications",
             links: [
               { id: "modals", label: "Modales", icon: "window", route: "/feedback/modals" },
               { id: "drawers", label: "Drawers", icon: "menu_open", route: "/feedback/drawers" },
@@ -90,6 +94,7 @@ const AREAS: DeepArea[] = [
           {
             id: "estados",
             label: "Estados",
+            icon: "hourglass_empty",
             links: [
               { id: "loading", label: "Loading", icon: "progress_activity", route: "/feedback/loading" },
               { id: "skeletons", label: "Skeletons", icon: "hourglass_empty", route: "/feedback/skeletons" },
@@ -105,16 +110,19 @@ const AREAS: DeepArea[] = [
           {
             id: "formularios",
             label: "Formularios",
+            icon: "input",
             links: [{ id: "forms", label: "Formularios", icon: "input", route: "/forms/forms" }],
           },
           {
             id: "botones",
             label: "Botones",
+            icon: "smart_button",
             links: [{ id: "buttons", label: "Botones", icon: "smart_button", route: "/action/buttons" }],
           },
           {
             id: "overlay",
             label: "Overlay",
+            icon: "layers",
             links: [
               { id: "dropdowns", label: "Dropdowns", icon: "arrow_drop_down", route: "/overlay/dropdowns" },
               { id: "tooltips", label: "Tooltips", icon: "tooltip", route: "/overlay/tooltips" },
@@ -123,6 +131,7 @@ const AREAS: DeepArea[] = [
           {
             id: "general",
             label: "General",
+            icon: "list",
             links: [
               { id: "paginators", label: "Paginadores", icon: "pages", route: "/layout/paginators" },
               { id: "tables", label: "Tablas", icon: "table_view", route: "/layout/tables" },
@@ -145,6 +154,7 @@ const AREAS: DeepArea[] = [
           {
             id: "rutas",
             label: "Rutas",
+            icon: "route",
             links: [
               { id: "breadcrumbs", label: "Breadcrumbs", icon: "chevron_right", route: "/navigation/breadcrumbs" },
               { id: "tabs", label: "Tabs", icon: "tab", route: "/navigation/tabs" },
@@ -160,6 +170,7 @@ const AREAS: DeepArea[] = [
           {
             id: "helper",
             label: "Helper",
+            icon: "build",
             links: [
               { id: "not-found", label: "404", icon: "error", route: "/helper/404" },
               { id: "server-error", label: "500", icon: "error", route: "/helper/500" },
@@ -199,11 +210,25 @@ export const DeepSidebar = ({
   const [openGroupId, setOpenGroupId] = useState<string | null>("display");
   const [openSectionId, setOpenSectionId] = useState<string | null>("componentes");
   const baseId = useId();
+  const [query, setQuery] = useState("");
 
   void collapsed;
   void onToggleCollapsed;
 
   const activeId = findActiveId(location.pathname);
+
+  const filteredAreas = AREAS.map((area) => {
+    const filteredGroups = area.groups.map((group) => {
+      const filteredSections = group.sections.map((section) => {
+        const filteredLinks = section.links.filter((link) =>
+          link.label.toLowerCase().includes(query.toLowerCase())
+        );
+        return { ...section, links: filteredLinks };
+      }).filter((section) => section.links.length > 0);
+      return { ...group, sections: filteredSections };
+    }).filter((group) => group.sections.length > 0);
+    return { ...area, groups: filteredGroups };
+  }).filter((area) => area.groups.length > 0);
 
   const go = (route: string | undefined) => {
     if (route) {
@@ -231,13 +256,13 @@ export const DeepSidebar = ({
     <aside
       aria-label="Sidebar de navegación (4 niveles)"
       className={cx(
-        "flex h-full w-[350px] shrink-0 flex-col rounded-xl border",
+        "flex h-full w-[350px] shrink-0 flex-col border",
         border,
         bg,
         dark ? "text-slate-300 shadow-[0_25px_40px_-10px_rgba(0,0,0,0.5)]" : "text-slate-600 shadow-[0_20px_35px_-10px_rgba(0,0,0,0.08)]",
       )}
     >
-      <div className="flex items-center gap-2 border-b px-4 py-3">
+      <div className="flex items-center gap-2 px-4 py-3 shadow-sm">
         <span
           aria-hidden="true"
           className={cx(
@@ -248,13 +273,33 @@ export const DeepSidebar = ({
           Z
         </span>
         <span className={cx("text-sm font-bold", text)}>Zenith UI</span>
-        <span className={cx("ml-auto rounded-full px-2 py-0.5 font-mono text-[9px] font-bold", dark ? "bg-slate-800 text-blue-300" : "bg-blue-100 text-blue-800")}>
-          ADMIN
-        </span>
+      </div>
+
+      <div className="my-2 px-1">
+        <div className="relative flex w-full items-center">
+          <span className="material-symbols-outlined pointer-events-none absolute left-3 text-base text-slate-400">
+            search
+          </span>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar..."
+            className={cx(
+              "w-full rounded-xl border py-1.5 pr-9 pl-9 text-xs transition-all focus:outline-none",
+              dark
+                ? "border-slate-700/60 bg-slate-800 text-slate-200 placeholder-slate-500 focus:border-blue-500"
+                : "border-transparent bg-slate-100 text-slate-800 placeholder-slate-400 hover:bg-slate-200/70 focus:border-blue-500 focus:bg-white",
+            )}
+          />
+          <span className="pointer-events-none absolute right-2 rounded border border-slate-200/80 bg-white px-1.5 py-0.5 text-[9px] font-semibold text-slate-400">
+            ⌘K
+          </span>
+        </div>
       </div>
 
       <div className="space-y-1 p-3">
-        {AREAS.map((area) => {
+        {filteredAreas.map((area) => {
           const areaOpen = openAreaId === area.id;
           const areaButtonId = `${baseId}-${area.id}-button`;
           const areaPanelId = `${baseId}-${area.id}-panel`;
@@ -297,7 +342,7 @@ export const DeepSidebar = ({
                       return (
                         <div
                           key={group.id}
-                          className="ml-2 rounded-md border-l-2 pl-2"
+                          className="ml-2 rounded-md pl-2"
                         >
                           <button
                             type="button"
@@ -342,7 +387,7 @@ export const DeepSidebar = ({
                                   return (
                                     <div
                                       key={section.id}
-                                      className="ml-3 border-l border-slate-200 pl-2"
+                                      className="ml-3 pl-2"
                                     >
                                       <button
                                         type="button"
@@ -352,13 +397,23 @@ export const DeepSidebar = ({
                                         onClick={() => setOpenSectionId((prev: string | null) => (prev === section.id ? null : section.id))}
                                         tabIndex={groupOpen ? 0 : -1}
                                         className={cx(
-                                          "flex w-full cursor-pointer items-center justify-between gap-2 rounded px-2 py-1 text-left font-mono text-[11px] font-semibold transition-colors",
+                                          "flex w-full cursor-pointer items-center justify-between gap-2 rounded px-2 py-1 text-left font-semibold transition-colors",
                                           sectionOpen ? "border-blue-300 text-blue-500" : `border-slate-200 ${textSecondary}`,
                                           "hover:bg-slate-100 hover:text-slate-700",
                                           dark && "hover:bg-slate-800 hover:text-white",
                                         )}
                                       >
-                                        {section.label.toUpperCase()}
+                                        <span className="flex items-center gap-2">
+                                          <span
+                                            aria-hidden="true"
+                                            className={cx("material-symbols-outlined text-[16px]", textSecondary)}
+                                          >
+                                            {section.icon}
+                                          </span>
+                                          <span className={cx(text)}>
+                                            {section.label.charAt(0).toUpperCase() + section.label.slice(1).toLowerCase()}
+                                          </span>
+                                        </span>
                                         <span
                                           aria-hidden="true"
                                           className={cx(
@@ -440,7 +495,7 @@ export const DeepSidebar = ({
         })}
       </div>
 
-      <div className="mt-auto flex items-center gap-2 border-t px-4 py-3">
+      <div className="mt-auto flex items-center gap-2 shadow-sm px-4 py-3">
         <span
           aria-hidden="true"
           className={cx(
