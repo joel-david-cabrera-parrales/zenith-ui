@@ -32,22 +32,23 @@ export const FeaturesLayout = () => {
     }, 200);
   };
 
-  const sidebarWidth = collapsed ? "w-16" : "w-[350px]";
-
   return (
     <div
-      className={
-        dark
-          ? "min-h-screen w-full bg-slate-900 text-slate-200"
-          : "min-h-screen w-full bg-slate-300 text-slate-800"
-      }
+      className={`
+        min-h-screen w-full
+        grid
+        ${collapsed ? "grid-cols-[64px_1fr]" : "grid-cols-1 lg:grid-cols-[350px_1fr]"}
+        ${dark ? "bg-slate-900 text-slate-200" : "bg-slate-300 text-slate-800"}
+      `}
     >
-      {/* Sidebar - Fixed left, full height */}
+      {/* Sidebar - Grid item, full height desktop; hidden on mobile */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-40 ${sidebarWidth} h-screen
+          h-screen sticky top-0 z-40
           transition-all duration-200 ease-out
+          ${collapsed ? "w-16" : "w-[350px]"}
           ${dark ? "border-r border-slate-700/60 bg-slate-950" : "border-r border-slate-200/70 bg-white"}
+          hidden lg:flex
         `}
         aria-label="Sidebar de navegación"
       >
@@ -58,15 +59,15 @@ export const FeaturesLayout = () => {
         />
       </aside>
 
-      {/* Main content area - offset by sidebar */}
-      <div className={`flex-1 min-w-0 transition-all duration-200 ${collapsed ? "ml-16" : "ml-[350px]"}`}>
+      {/* Main content area - Grid item */}
+      <div className="flex flex-col min-w-0">
         {/* Topbar - Fixed top */}
         <header className={`sticky top-0 z-30 ${dark ? "bg-slate-900/80 backdrop-blur-sm" : "bg-white/80 backdrop-blur-sm"}`}>
-          <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} />
+          <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} onCollapse={toggleCollapsed} collapsed={collapsed} />
         </header>
 
         {/* Scrollable content */}
-        <main className={dark ? "bg-slate-900" : "bg-slate-100"}>
+        <main className="flex-1 overflow-y-auto bg-slate-100 dark:bg-slate-900">
           <div className="p-6">
             <Outlet />
           </div>
@@ -76,7 +77,7 @@ export const FeaturesLayout = () => {
       {/* Mobile sidebar overlay */}
       {(mobileOpen || mobileExiting) && (
         <div
-          className="fixed inset-0 z-50 md:hidden"
+          className="fixed inset-0 z-50 lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menú de navegación"

@@ -268,15 +268,15 @@ export const DeepSidebar = ({
         collapsed ? "gap-0" : "gap-3",
       )}
       >
-        <span
-          aria-hidden="true"
-          className={cx(
-            "flex h-8 w-8 items-center justify-center rounded-lg font-bold text-white",
-            dark ? "bg-slate-700" : "bg-blue-600",
-          )}
-        >
-          Z
-        </span>
+          <span
+            aria-hidden="true"
+            className={cx(
+              "flex h-10 w-10 items-center justify-center rounded-full font-bold text-white",
+              dark ? "bg-slate-700" : "bg-blue-600",
+            )}
+          >
+            Z
+          </span>
         {!collapsed && (
           <span className={cx("text-sm font-bold", text)}>Zenith UI</span>
         )}
@@ -307,9 +307,8 @@ export const DeepSidebar = ({
         </div>
       )}
 
-      {!collapsed && (
-        <div className="space-y-1 p-3">
-          {filteredAreas.map((area) => {
+      <div className="space-y-1 p-3">
+        {filteredAreas.map((area) => {
           const areaOpen = openAreaId === area.id;
           const areaButtonId = `${baseId}-${area.id}-button`;
           const areaPanelId = `${baseId}-${area.id}-panel`;
@@ -320,8 +319,16 @@ export const DeepSidebar = ({
                 id={areaButtonId}
                 aria-expanded={areaOpen}
                 aria-controls={areaPanelId}
-                onClick={() => setOpenAreaId((prev: string | null) => (prev === area.id ? null : area.id))}
-                className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2 text-left text-sm font-semibold"
+                onClick={() => {
+                  if (collapsed) {
+                    setCollapsed(false);
+                  }
+                  setOpenAreaId((prev: string | null) => (prev === area.id ? null : area.id));
+                }}
+                className={cx(
+                  "flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2 text-left text-sm font-semibold",
+                  collapsed ? "justify-center" : "",
+                )}
               >
                 <span className="flex items-center gap-2">
                   <span
@@ -330,181 +337,184 @@ export const DeepSidebar = ({
                   >
                     {area.icon}
                   </span>
-                  <span className={cx(text)}>{area.label}</span>
+                  {!collapsed && <span className={cx(text)}>{area.label}</span>}
                 </span>
-                <span aria-hidden="true" className={chevron(areaOpen, dark ? "text-blue-500" : "text-blue-600")}>
-                  expand_more
-                </span>
+                {!collapsed && (
+                  <span aria-hidden="true" className={chevron(areaOpen, dark ? "text-blue-500" : "text-blue-600")}>
+                    expand_more
+                  </span>
+                )}
               </button>
-              <div
-                id={areaPanelId}
-                role="region"
-                aria-labelledby={areaButtonId}
-                inert={!areaOpen}
-                className={panel(areaOpen)}
-              >
-                <div className="overflow-hidden">
-                  <div className="space-y-1 px-2 pb-2">
-                    {area.groups.map((group) => {
-                      const groupOpen = areaOpen && openGroupId === group.id;
-                      const groupButtonId = `${baseId}-${group.id}-button`;
-                      const groupPanelId = `${baseId}-${group.id}-panel`;
-                      return (
-                        <div
-                          key={group.id}
-                          className="ml-2 rounded-md pl-2"
-                        >
-                          <button
-                            type="button"
-                            id={groupButtonId}
-                            aria-expanded={groupOpen}
-                            aria-controls={groupPanelId}
-                            onClick={() => setOpenGroupId((prev: string | null) => (prev === group.id ? null : group.id))}
-                            tabIndex={areaOpen ? 0 : -1}
-                            className={cx(
-                              "flex w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-[13px] font-semibold transition-colors",
-                              groupOpen ? "border-blue-200 text-blue-600" : `border-slate-200 ${textMuted}`,
-                              "hover:bg-slate-100",
-                              dark && "hover:bg-slate-800 hover:text-white",
-                            )}
-                          >
-                            <span className="flex items-center gap-2">
-                              <span
-                                aria-hidden="true"
-                                className={cx("material-symbols-outlined text-[16px]", textSecondary)}
-                              >
-                                {group.icon}
-                              </span>
-                              <span className={cx(text)}>{group.label}</span>
-                            </span>
-                            <span aria-hidden="true" className={chevron(groupOpen, dark ? "text-slate-500" : "text-slate-500")}>
-                              expand_more
-                            </span>
-                          </button>
+              {!collapsed && (
+                <div
+                  id={areaPanelId}
+                  role="region"
+                  aria-labelledby={areaButtonId}
+                  inert={!areaOpen}
+                  className={panel(areaOpen)}
+                >
+                  <div className="overflow-hidden">
+                    <div className="space-y-1 px-2 pb-2">
+                      {area.groups.map((group) => {
+                        const groupOpen = areaOpen && openGroupId === group.id;
+                        const groupButtonId = `${baseId}-${group.id}-button`;
+                        const groupPanelId = `${baseId}-${group.id}-panel`;
+                        return (
                           <div
-                            id={groupPanelId}
-                            role="region"
-                            aria-labelledby={groupButtonId}
-                            inert={!groupOpen}
-                            className={panel(groupOpen)}
+                            key={group.id}
+                            className="ml-2 rounded-md pl-2"
                           >
-                            <div className="overflow-hidden">
-                              <div className="space-y-1 pb-1">
-                                {group.sections.map((section) => {
-                                  const sectionOpen = groupOpen && openSectionId === section.id;
-                                  const sectionButtonId = `${baseId}-${section.id}-button`;
-                                  const sectionPanelId = `${baseId}-${section.id}-panel`;
-                                  return (
-                                    <div
-                                      key={section.id}
-                                      className="ml-3 pl-2"
-                                    >
-                                      <button
-                                        type="button"
-                                        id={sectionButtonId}
-                                        aria-expanded={sectionOpen}
-                                        aria-controls={sectionPanelId}
-                                        onClick={() => setOpenSectionId((prev: string | null) => (prev === section.id ? null : section.id))}
-                                        tabIndex={groupOpen ? 0 : -1}
-                                        className={cx(
-                                          "flex w-full cursor-pointer items-center justify-between gap-2 rounded px-2 py-1 text-left font-semibold transition-colors",
-                                          sectionOpen ? "border-blue-300 text-blue-500" : `border-slate-200 ${textSecondary}`,
-                                          "hover:bg-slate-100 hover:text-slate-700",
-                                          dark && "hover:bg-slate-800 hover:text-white",
-                                        )}
+                            <button
+                              type="button"
+                              id={groupButtonId}
+                              aria-expanded={groupOpen}
+                              aria-controls={groupPanelId}
+                              onClick={() => setOpenGroupId((prev: string | null) => (prev === group.id ? null : group.id))}
+                              tabIndex={areaOpen ? 0 : -1}
+                              className={cx(
+                                "flex w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-[13px] font-semibold transition-colors",
+                                groupOpen ? "border-blue-200 text-blue-600" : `border-slate-200 ${textMuted}`,
+                                "hover:bg-slate-100",
+                                dark && "hover:bg-slate-800 hover:text-white",
+                              )}
+                            >
+                              <span className="flex items-center gap-2">
+                                <span
+                                  aria-hidden="true"
+                                  className={cx("material-symbols-outlined text-[16px]", textSecondary)}
+                                >
+                                  {group.icon}
+                                </span>
+                                <span className={cx(text)}>{group.label}</span>
+                              </span>
+                              <span aria-hidden="true" className={chevron(groupOpen, dark ? "text-slate-500" : "text-slate-500")}>
+                                expand_more
+                              </span>
+                            </button>
+                            <div
+                              id={groupPanelId}
+                              role="region"
+                              aria-labelledby={groupButtonId}
+                              inert={!groupOpen}
+                              className={panel(groupOpen)}
+                            >
+                              <div className="overflow-hidden">
+                                <div className="space-y-1 pb-1">
+                                  {group.sections.map((section) => {
+                                    const sectionOpen = groupOpen && openSectionId === section.id;
+                                    const sectionButtonId = `${baseId}-${section.id}-button`;
+                                    const sectionPanelId = `${baseId}-${section.id}-panel`;
+                                    return (
+                                      <div
+                                        key={section.id}
+                                        className="ml-3 pl-2"
                                       >
-                                        <span className="flex items-center gap-2">
-                                          <span
-                                            aria-hidden="true"
-                                            className={cx("material-symbols-outlined text-[16px]", textSecondary)}
-                                          >
-                                            {section.icon}
-                                          </span>
-                                          <span className={cx(text)}>
-                                            {section.label.charAt(0).toUpperCase() + section.label.slice(1).toLowerCase()}
-                                          </span>
-                                        </span>
-                                        <span
-                                          aria-hidden="true"
+                                        <button
+                                          type="button"
+                                          id={sectionButtonId}
+                                          aria-expanded={sectionOpen}
+                                          aria-controls={sectionPanelId}
+                                          onClick={() => setOpenSectionId((prev: string | null) => (prev === section.id ? null : section.id))}
+                                          tabIndex={groupOpen ? 0 : -1}
                                           className={cx(
-                                            "material-symbols-outlined text-[16px] transition-transform duration-300 ease-in-out",
-                                            sectionOpen ? "rotate-180" : "",
-                                            sectionOpen ? "text-blue-500" : "text-slate-400",
+                                            "flex w-full cursor-pointer items-center justify-between gap-2 rounded px-2 py-1 text-left font-semibold transition-colors",
+                                            sectionOpen ? "border-blue-300 text-blue-500" : `border-slate-200 ${textSecondary}`,
+                                            "hover:bg-slate-100 hover:text-slate-700",
+                                            dark && "hover:bg-slate-800 hover:text-white",
                                           )}
                                         >
-                                          expand_more
-                                        </span>
-                                      </button>
-                                      <div
-                                        id={sectionPanelId}
-                                        role="region"
-                                        aria-labelledby={sectionButtonId}
-                                        inert={!sectionOpen}
-                                        className={panel(sectionOpen)}
-                                      >
-                                        <div className="overflow-hidden">
-                                          <div className="space-y-0.5 pb-1">
-                                            {section.links.map((link) => {
-                                              const active = activeId === link.id;
-                                              return (
-                                                <button
-                                                  key={link.id}
-                                                  type="button"
-                                                  aria-current={active ? "page" : undefined}
-                                                  onClick={() => go(link.route)}
-                                                  tabIndex={sectionOpen ? 0 : -1}
-                                                  className={cx(
-                                                    "flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] transition-colors",
-                                                    active
-                                                      ? "bg-blue-600 font-semibold text-white"
-                                                      : `font-medium ${textMuted} ${hoverBg}`,
-                                                  )}
-                                                >
-                                                  <span
-                                                    aria-hidden="true"
+                                          <span className="flex items-center gap-2">
+                                            <span
+                                              aria-hidden="true"
+                                              className={cx("material-symbols-outlined text-[16px]", textSecondary)}
+                                            >
+                                              {section.icon}
+                                            </span>
+                                            <span className={cx(text)}>
+                                              {section.label.charAt(0).toUpperCase() + section.label.slice(1).toLowerCase()}
+                                            </span>
+                                          </span>
+                                          <span
+                                            aria-hidden="true"
+                                            className={cx(
+                                              "material-symbols-outlined text-[16px] transition-transform duration-300 ease-in-out",
+                                              sectionOpen ? "rotate-180" : "",
+                                              sectionOpen ? "text-blue-500" : "text-slate-400",
+                                            )}
+                                          >
+                                            expand_more
+                                          </span>
+                                        </button>
+                                        <div
+                                          id={sectionPanelId}
+                                          role="region"
+                                          aria-labelledby={sectionButtonId}
+                                          inert={!sectionOpen}
+                                          className={panel(sectionOpen)}
+                                        >
+                                          <div className="overflow-hidden">
+                                            <div className="space-y-0.5 pb-1">
+                                              {section.links.map((link) => {
+                                                const active = activeId === link.id;
+                                                return (
+                                                  <button
+                                                    key={link.id}
+                                                    type="button"
+                                                    aria-current={active ? "page" : undefined}
+                                                    onClick={() => go(link.route)}
+                                                    tabIndex={sectionOpen ? 0 : -1}
                                                     className={cx(
-                                                      "material-symbols-outlined text-[16px]",
-                                                      active ? "" : textSecondary,
+                                                      "flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] transition-colors",
+                                                      active
+                                                        ? "bg-blue-600 font-semibold text-white"
+                                                        : `font-medium ${textMuted} ${hoverBg}`,
                                                     )}
                                                   >
-                                                    {link.icon}
-                                                  </span>
-                                                  <span className={cx(active ? "font-semibold" : "font-medium")}>
-                                                    {link.label}
-                                                  </span>
-                                                  {link.badge !== undefined && (
                                                     <span
+                                                      aria-hidden="true"
                                                       className={cx(
-                                                        "ml-auto rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold",
-                                                        active ? "bg-white/20 text-white" : "bg-blue-600 text-white",
+                                                        "material-symbols-outlined text-[16px]",
+                                                        active ? "" : textSecondary,
                                                       )}
                                                     >
-                                                      {link.badge}
+                                                      {link.icon}
                                                     </span>
-                                                  )}
-                                                </button>
-                                              );
-                                            })}
+                                                    <span className={cx(active ? "font-semibold" : "font-medium")}>
+                                                      {link.label}
+                                                    </span>
+                                                    {link.badge !== undefined && (
+                                                      <span
+                                                        className={cx(
+                                                          "ml-auto rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold",
+                                                          active ? "bg-white/20 text-white" : "bg-blue-600 text-white",
+                                                        )}
+                                                      >
+                                                        {link.badge}
+                                                      </span>
+                                                    )}
+                                                  </button>
+                                                );
+                                              })}
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  );
-                                })}
+                                    );
+                                  })}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           );
         })}
       </div>
-      )}
 
       <div className="mt-auto flex items-center justify-center gap-2 shadow-sm px-4 py-3">
         {collapsed ? (

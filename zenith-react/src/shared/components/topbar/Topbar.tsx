@@ -10,6 +10,8 @@ export interface TopbarProps {
   tone?: ShellTone;
   onToggleTheme?: () => void;
   onMenu?: () => void;
+  onCollapse?: () => void;
+  collapsed?: boolean;
 }
 
 const cx = (...parts: Array<string | false | undefined>): string =>
@@ -17,7 +19,7 @@ const cx = (...parts: Array<string | false | undefined>): string =>
 
 type Popover = "none" | "search" | "notifications" | "profile";
 
-export const Topbar = ({ tone = "light", onToggleTheme, onMenu }: TopbarProps) => {
+export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, collapsed = false }: TopbarProps) => {
   const dark = tone === "dark";
   const searchId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -85,11 +87,27 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu }: TopbarProps) =
             title="Menú de navegación"
             aria-label="Menú de navegación"
             onClick={onMenu}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 lg:hidden"
           >
             <span className="material-symbols-outlined text-xl">menu</span>
           </button>
-          <div className="flex min-w-0 items-center gap-3 md:hidden">
+          <button
+            type="button"
+            title={collapsed ? "Expandir sidebar" : "Colapsar sidebar"}
+            aria-label={collapsed ? "Expandir sidebar" : "Colapsar sidebar"}
+            onClick={onCollapse}
+            className={cx(
+              "flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200",
+              "hidden lg:flex",
+              collapsed ? "text-slate-400" : "text-slate-500",
+              "hover:bg-slate-100 hover:text-slate-900",
+            )}
+          >
+            <span className="material-symbols-outlined text-xl">
+              {collapsed ? "chevron_right" : "chevron_left"}
+            </span>
+          </button>
+          <div className="flex min-w-0 items-center gap-3 lg:hidden">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-white ring-1 ring-slate-100">
               <span className="material-symbols-outlined text-xl">star</span>
             </div>
