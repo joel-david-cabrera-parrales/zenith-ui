@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
-import { Sidebar } from "../../shared/components/sidebar/Sidebar";
+import { DeepSidebar } from "../../shared/components/sidebar/DeepSidebar";
 import { Topbar } from "../../shared/components/topbar/Topbar";
 import type { ShellTone } from "../../shared/components/interfaces/navigation.interface";
 
@@ -32,8 +32,6 @@ export const FeaturesLayout = () => {
     }, 200);
   };
 
-  const sidebarWidth = collapsed ? "w-16" : "w-[305px]";
-
   return (
     <div
       className={
@@ -45,15 +43,13 @@ export const FeaturesLayout = () => {
       {/* Sidebar - Fixed left, full height */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-40 ${sidebarWidth} h-screen
+          fixed inset-y-0 left-0 z-40 w-[350px] h-screen
           transition-all duration-200 ease-out
-          ${dark
-            ? "border-r border-slate-700/60 bg-slate-950"
-            : "border-r border-slate-200/70 bg-white"}
+          ${dark ? "border-r border-slate-700/60 bg-slate-950" : "border-r border-slate-200/70 bg-white"}
         `}
         aria-label="Sidebar de navegación"
       >
-        <Sidebar
+        <DeepSidebar
           tone={tone}
           collapsed={collapsed}
           onToggleCollapsed={toggleCollapsed}
@@ -61,7 +57,7 @@ export const FeaturesLayout = () => {
       </aside>
 
       {/* Main content area - offset by sidebar */}
-      <div className={`flex-1 min-w-0 transition-all duration-200 ${collapsed ? "ml-16" : "ml-[305px]"}`}>
+      <div className="flex-1 min-w-0 transition-all duration-200 ml-[350px]">
         {/* Topbar - Fixed top */}
         <header className={`sticky top-0 z-30 ${dark ? "bg-slate-900/80 backdrop-blur-sm" : "bg-white/80 backdrop-blur-sm"}`}>
           <Topbar tone={tone} onToggleTheme={toggleTone} onMenu={openMobile} />
@@ -96,11 +92,11 @@ export const FeaturesLayout = () => {
           <div
             className={
               mobileExiting
-                ? "absolute top-0 bottom-0 left-0 flex w-[305px] max-w-[85vw] animate-drawer-left-out"
-                : "absolute top-0 bottom-0 left-0 flex w-[305px] max-w-[85vw] animate-drawer-left-in"
+                ? "absolute top-0 bottom-0 left-0 flex w-[350px] max-w-[85vw] animate-drawer-left-out"
+                : "absolute top-0 bottom-0 left-0 flex w-[350px] max-w-[85vw] animate-drawer-left-in"
             }
           >
-            <Sidebar
+            <DeepSidebar
               tone={tone}
               collapsed={false}
               onToggleCollapsed={closeMobile}
