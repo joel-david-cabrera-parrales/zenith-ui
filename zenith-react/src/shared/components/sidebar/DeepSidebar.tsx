@@ -189,40 +189,21 @@ const AREAS: DeepArea[] = [
         id: "autenticacion",
         label: "Autenticación",
         icon: "login",
-        sections: [
-          {
-            id: "auth-pages",
-            label: "Páginas de Auth",
-            icon: "person",
-            links: [
-              { id: "login", label: "Login", icon: "login", route: "/examples/login" },
-              { id: "signup", label: "Signup", icon: "person_add", route: "/examples/signup" },
-              { id: "forgot-password", label: "Forgot Password", icon: "email", route: "/examples/forgot-password" },
-              { id: "reset-password", label: "Reset Password", icon: "restore", route: "/examples/reset-password" },
-              { id: "verify-email", label: "Verify Email", icon: "verified", route: "/examples/verify-email" },
-              { id: "magic-link", label: "Magic Link", icon: "link", route: "/examples/magic-link" },
-            ],
-          },
+        links: [
+          { id: "login", label: "Login", icon: "login", route: "/auth/login" },
+          { id: "signup", label: "Signup", icon: "person_add", route: "/auth/register" },
+          { id: "forgot-password", label: "Forgot Password", icon: "email", route: "/auth/forgot" },
+          { id: "reset-password", label: "Reset Password", icon: "restore", route: "/auth/reset" },
         ],
       },
       {
-        id: "paginas-estaticas",
+        id: "landing-page",
         label: "Landing page",
         icon: "description",
-        sections: [
-          {
-            id: "landing-pages",
-            label: "Landing Pages",
-            icon: "article",
-            links: [
-              { id: "about", label: "About", icon: "info", route: "/examples/about" },
-              { id: "contact", label: "Contact", icon: "contact_page", route: "/examples/contact" },
-              { id: "pricing", label: "Pricing", icon: "attach_money", route: "/examples/pricing" },
-              { id: "faq", label: "FAQ", icon: "help", route: "/examples/faq" },
-              { id: "terms", label: "Terms", icon: "description", route: "/examples/terms" },
-              { id: "privacy", label: "Privacy", icon: "security", route: "/examples/privacy" },
-            ],
-          },
+        links: [
+          { id: "about", label: "About", icon: "info", route: "/landing/about" },
+          { id: "contact", label: "Contact", icon: "contact_page", route: "/landing/services" },
+          { id: "home", label: "Home", icon: "home", route: "/landing/home" },
         ],
       },
     ],
@@ -232,12 +213,13 @@ const AREAS: DeepArea[] = [
 function findActiveId(pathname: string): string | null {
   for (const area of AREAS) {
     for (const group of area.groups) {
-      for (const section of group.sections) {
-        for (const link of section.links) {
-          if (!link.route) continue;
-          if (pathname === link.route || pathname.startsWith(link.route + "/")) {
-            return link.id;
-          }
+      const links = group.sections
+        ? group.sections.flatMap((section) => section.links)
+        : group.links || [];
+      for (const link of links) {
+        if (!link.route) continue;
+        if (pathname === link.route || pathname.startsWith(link.route + "/")) {
+          return link.id;
         }
       }
     }
@@ -266,14 +248,24 @@ export const DeepSidebar = ({
 
   const filteredAreas = AREAS.map((area) => {
     const filteredGroups = area.groups.map((group) => {
-      const filteredSections = group.sections.map((section) => {
-        const filteredLinks = section.links.filter((link) =>
+      if (group.sections) {
+        const filteredSections = group.sections.map((section) => {
+          const filteredLinks = section.links.filter((link) =>
+            link.label.toLowerCase().includes(query.toLowerCase())
+          );
+          return { ...section, links: filteredLinks };
+        }).filter((section) => section.links.length > 0);
+        return { ...group, sections: filteredSections };
+      } else {
+        const filteredLinks = (group.links || []).filter((link) =>
           link.label.toLowerCase().includes(query.toLowerCase())
         );
-        return { ...section, links: filteredLinks };
-      }).filter((section) => section.links.length > 0);
-      return { ...group, sections: filteredSections };
-    }).filter((group) => group.sections.length > 0);
+        return { ...group, links: filteredLinks };
+      }
+    }).filter((group) => {
+      if (group.sections) return group.sections.length > 0;
+      return (group.links || []).length > 0;
+    });
     return { ...area, groups: filteredGroups };
   }).filter((area) => area.groups.length > 0);
 
@@ -447,7 +439,7 @@ export const DeepSidebar = ({
                             >
                               <div className="overflow-hidden">
                                 <div className="space-y-1 pb-1">
-                                  {group.sections.map((section) => {
+                                  {group.sections?.map((section) => {
                                     const sectionOpen = groupOpen && openSectionId === section.id;
                                     const sectionButtonId = `${baseId}-${section.id}-button`;
                                     const sectionPanelId = `${baseId}-${section.id}-panel`;
@@ -547,7 +539,51 @@ export const DeepSidebar = ({
                                         </div>
                                       </div>
                                     );
-                                  })}
+                                  }) ?? (
+                                    <>
+                                      {group.links?.map((link) => {
+                                        const active = activeId === link.id;
+                                        return (
+                                          <button
+                                            key={link.id}
+                                            type="button"
+                                            aria-current={active ? "page" : undefined}
+                                            onClick={() => go(link.route)}
+                                            tabIndex={groupOpen ? 0 : -1}
+                                            className={cx(
+                                              "flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] transition-colors",
+                                              active
+                                                ? "bg-blue-600 font-semibold text-white"
+                                                : `font-medium ${textMuted} ${hoverBg}`,
+                                            )}
+                                          >
+                                            <span
+                                              aria-hidden="true"
+                                              className={cx(
+                                                "material-symbols-outlined text-[16px]",
+                                                active ? "" : textSecondary,
+                                              )}
+                                            >
+                                              {link.icon}
+                                            </span>
+                                            <span className={cx(active ? "font-semibold" : "font-medium")}>
+                                              {link.label}
+                                            </span>
+                                            {link.badge !== undefined && (
+                                              <span
+                                                className={cx(
+                                                  "ml-auto rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold",
+                                                  active ? "bg-white/20 text-white" : "bg-blue-600 text-white",
+                                                )}
+                                              >
+                                                {link.badge}
+                                              </span>
+                                            )}
+                                          </button>
+                                        );
+                                      })}
+                                    </>
+                                  )}
                                 </div>
                               </div>
                             </div>
