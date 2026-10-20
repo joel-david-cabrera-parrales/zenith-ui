@@ -1,0 +1,22 @@
+name: zenith-ui
+
+services:
+  zenith-react:
+    build:
+      context: ./zenith-react
+      dockerfile: Dockerfile.dev
+    container_name: zenith-react
+    ports:
+      - "5174:5173"
+    restart: always
+    environment:
+      - NODE_ENV=development
+    networks:
+      - frontend
+    volumes:
+      - ./zenith-react:/app
+      - /app/node_modules
+
+networks:
+  frontend:
+    driver: bridge

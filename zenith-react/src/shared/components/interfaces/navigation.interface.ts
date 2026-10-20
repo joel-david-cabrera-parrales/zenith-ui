@@ -1,4 +1,4 @@
-export type ShellTone = "light" | "dark";
+export type ShellTone = 'light' | 'dark';
 
 export interface NavLeaf {
   id: string;
@@ -29,170 +29,206 @@ export interface ShellUser {
 }
 
 export const SHELL_USER: ShellUser = {
-  name: "Jonathan",
-  email: "Jonathan.j@email.com",
-  role: "Admin",
-  initials: "JJ",
+  name: 'Jonathan',
+  email: 'Jonathan.j@email.com',
+  role: 'Admin',
+  initials: 'JJ',
 };
 
 export const SIDEBAR_NAV: NavItem[] = [
   {
-    id: "paginators",
-    label: "Paginadores",
-    icon: "pages",
-    route: "/layout/paginators",
+    id: 'paginators',
+    label: 'Paginadores',
+    icon: 'pages',
+    route: '/layout/paginators',
   },
   {
-    id: "tables",
-    label: "Tablas",
-    icon: "table_view",
-    route: "/layout/tables",
+    id: 'tables',
+    label: 'Tablas',
+    icon: 'table_view',
+    route: '/layout/tables',
   },
   {
-    id: "forms",
-    label: "Formularios",
-    icon: "input",
-    route: "/forms/forms",
+    id: 'forms',
+    label: 'Formularios',
+    icon: 'input',
+    route: '/forms/forms',
   },
   {
-    id: "modals",
-    label: "Modales",
-    icon: "window",
-    route: "/feedback/modals",
+    id: 'modals',
+    label: 'Modales',
+    icon: 'window',
+    route: '/feedback/modals',
   },
   {
-    id: "drawers",
-    label: "Drawers",
-    icon: "menu_open",
-    route: "/feedback/drawers",
+    id: 'drawers',
+    label: 'Drawers',
+    icon: 'menu_open',
+    route: '/feedback/drawers',
   },
   {
-    id: "cards",
-    label: "Cards",
-    icon: "view_in_ar",
-    route: "/display/cards",
+    id: 'cards',
+    label: 'Cards',
+    icon: 'view_in_ar',
+    route: '/display/cards',
   },
   {
-    id: "hero",
-    label: "Hero Sections",
-    icon: "crop_16_9",
-    route: "/display/hero",
+    id: 'hero',
+    label: 'Hero Sections',
+    icon: 'crop_16_9',
+    route: '/display/hero',
   },
   {
-    id: "headings",
-    label: "Tipografía",
-    icon: "text_fields",
-    route: "/display/headings",
+    id: 'headings',
+    label: 'Tipografía',
+    icon: 'text_fields',
+    route: '/display/headings',
   },
   {
-    id: "buttons",
-    label: "Botones",
-    icon: "smart_button",
-    route: "/action/buttons",
+    id: 'buttons',
+    label: 'Botones',
+    icon: 'smart_button',
+    route: '/action/buttons',
   },
   {
-    id: "dropdowns",
-    label: "Dropdowns",
-    icon: "arrow_drop_down",
-    route: "/overlay/dropdowns",
+    id: 'dropdowns',
+    label: 'Dropdowns',
+    icon: 'arrow_drop_down',
+    route: '/overlay/dropdowns',
   },
   {
-    id: "countdowns",
-    label: "Countdowns",
-    icon: "timer",
-    route: "/feedback/countdowns",
+    id: 'countdowns',
+    label: 'Countdowns',
+    icon: 'timer',
+    route: '/feedback/countdowns',
   },
   {
-    id: "badges",
-    label: "Badges",
-    icon: "badge",
-    route: "/display/badges",
+    id: 'badges',
+    label: 'Badges',
+    icon: 'badge',
+    route: '/display/badges',
   },
   {
-    id: "progress",
-    label: "Progress",
-    icon: "trending_up",
-    route: "/display/progress",
+    id: 'progress',
+    label: 'Progress',
+    icon: 'trending_up',
+    route: '/display/progress',
   },
   {
-    id: "toasts",
-    label: "Toasts",
-    icon: "notifications",
-    route: "/feedback/toasts",
+    id: 'toasts',
+    label: 'Toasts',
+    icon: 'notifications',
+    route: '/feedback/toasts',
   },
   {
-    id: "avatars",
-    label: "Avatars",
-    icon: "account_circle",
-    route: "/display/avatars",
+    id: 'avatars',
+    label: 'Avatars',
+    icon: 'account_circle',
+    route: '/display/avatars',
   },
   {
-    id: "accordions",
-    label: "Acordeones",
-    icon: "expand_more",
-    route: "/display/accordions",
+    id: 'accordions',
+    label: 'Acordeones',
+    icon: 'expand_more',
+    route: '/display/accordions',
   },
   {
-    id: "skeletons",
-    label: "Skeletons",
-    icon: "hourglass_empty",
-    route: "/feedback/skeletons",
+    id: 'skeletons',
+    label: 'Skeletons',
+    icon: 'hourglass_empty',
+    route: '/feedback/skeletons',
   },
   {
-    id: "loading",
-    label: "Loading",
-    icon: "progress_activity",
-    route: "/feedback/loading",
+    id: 'loading',
+    label: 'Loading',
+    icon: 'progress_activity',
+    route: '/feedback/loading',
   },
   {
-    id: "diffs",
-    label: "Diff",
-    icon: "compare",
-    route: "/display/diffs",
+    id: 'diffs',
+    label: 'Diff',
+    icon: 'compare',
+    route: '/display/diffs',
   },
   {
-    id: "carousels",
-    label: "Carousels",
-    icon: "view_carousel",
-    route: "/display/carousels",
+    id: 'carousels',
+    label: 'Carousels',
+    icon: 'view_carousel',
+    route: '/display/carousels',
   },
   {
-    id: "steps",
-    label: "Steps",
-    icon: "footprint",
-    route: "/display/steps",
+    id: 'steps',
+    label: 'Steps',
+    icon: 'footprint',
+    route: '/display/steps',
   },
   {
-    id: "breadcrumbs",
-    label: "Breadcrumbs",
-    icon: "chevron_right",
-    route: "/navigation/breadcrumbs",
+    id: 'breadcrumbs',
+    label: 'Breadcrumbs',
+    icon: 'chevron_right',
+    route: '/navigation/breadcrumbs',
   },
   {
-    id: "tabs",
-    label: "Tabs",
-    icon: "tab",
-    route: "/navigation/tabs",
+    id: 'tabs',
+    label: 'Tabs',
+    icon: 'tab',
+    route: '/navigation/tabs',
   },
   {
-    id: "tooltips",
-    label: "Tooltips",
-    icon: "tooltip",
-    route: "/overlay/tooltips",
+    id: 'tooltips',
+    label: 'Tooltips',
+    icon: 'tooltip',
+    route: '/overlay/tooltips',
   },
   {
-    id: "landing",
-    label: "Landing",
-    icon: "home",
-    badge: "demo",
-    route: "/landing/home",
+    id: 'landing',
+    label: 'Landing',
+    icon: 'home',
+    badge: 'demo',
+    route: '/landing/home',
+  },
+  {
+    id: 'auth',
+    label: 'Login',
+    icon: 'lock',
+    route: '/auth',
+  },
+  {
+    id: 'register',
+    label: 'Register',
+    icon: 'person_add',
+    route: '/auth/register',
+  },
+  {
+    id: 'forgot',
+    label: 'Forgot Password',
+    icon: 'lock_reset',
+    route: '/auth/forgot',
+  },
+  {
+    id: 'reset',
+    label: 'Reset Password',
+    icon: 'password',
+    route: '/auth/reset',
+  },
+  {
+    id: 'not-found',
+    label: '404',
+    icon: 'error',
+    route: '/helper/404',
+  },
+  {
+    id: 'server-error',
+    label: '500',
+    icon: 'error',
+    route: '/helper/500',
   },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [
-  { id: "docs", label: "Documentación", icon: "description", route: "/docs" },
-  { id: "changelog", label: "Changelog", icon: "history", route: "/changelog" },
-  { id: "github", label: "GitHub", icon: "code", route: "https://github.com" },
+  { id: 'docs', label: 'Documentación', icon: 'description', route: '/docs' },
+  { id: 'changelog', label: 'Changelog', icon: 'history', route: '/changelog' },
+  { id: 'github', label: 'GitHub', icon: 'code', route: 'https://github.com' },
 ];
 
 export interface SearchResultGroup {
@@ -203,56 +239,56 @@ export interface SearchResultGroup {
 
 export const TOPBAR_RESULTS: SearchResultGroup[] = [
   {
-    title: "Acciones Rápidas & Comandos",
-    icon: "bolt",
+    title: 'Acciones Rápidas & Comandos',
+    icon: 'bolt',
     items: [
       {
-        id: "create",
+        id: 'create',
         title: 'Crear nuevo evento: "Keynote Star Summit 2026"',
-        meta: "Comando",
-        tag: "⌘N",
+        meta: 'Comando',
+        tag: '⌘N',
       },
       {
-        id: "gateway",
-        title: "Ir a configuración de pasarela & pagos",
-        meta: "Ajustes",
-        tag: "→",
-      },
-    ],
-  },
-  {
-    title: "Resultados Recientes / Eventos",
-    icon: "event",
-    items: [
-      {
-        id: "summit",
-        title: "Keynote Star Summit 2025",
-        meta: "Auditorio Principal • 1,240 asistentes",
-        tag: "En Vivo",
-      },
-      {
-        id: "workshop",
-        title: "Workshop React & Tailwind UI",
-        meta: "Laboratorio de Innovación • Inicio 15:30",
-        tag: "Próximo",
+        id: 'gateway',
+        title: 'Ir a configuración de pasarela & pagos',
+        meta: 'Ajustes',
+        tag: '→',
       },
     ],
   },
   {
-    title: "Usuarios & Organizadores",
-    icon: "group",
+    title: 'Resultados Recientes / Eventos',
+    icon: 'event',
     items: [
       {
-        id: "mariana",
-        title: "Mariana Silva",
-        meta: "Coordinadora VIP • mariana.s@zenith.io",
-        tag: "Staff",
+        id: 'summit',
+        title: 'Keynote Star Summit 2025',
+        meta: 'Auditorio Principal • 1,240 asistentes',
+        tag: 'En Vivo',
       },
       {
-        id: "jonathan",
-        title: "Jonathan J.",
-        meta: "Administrador General • jonathan.j@email.com",
-        tag: "Admin",
+        id: 'workshop',
+        title: 'Workshop React & Tailwind UI',
+        meta: 'Laboratorio de Innovación • Inicio 15:30',
+        tag: 'Próximo',
+      },
+    ],
+  },
+  {
+    title: 'Usuarios & Organizadores',
+    icon: 'group',
+    items: [
+      {
+        id: 'mariana',
+        title: 'Mariana Silva',
+        meta: 'Coordinadora VIP • mariana.s@zenith.io',
+        tag: 'Staff',
+      },
+      {
+        id: 'jonathan',
+        title: 'Jonathan J.',
+        meta: 'Administrador General • jonathan.j@email.com',
+        tag: 'Admin',
       },
     ],
   },
@@ -269,28 +305,28 @@ export interface ShellNotification {
 
 export const SHELL_NOTIFICATIONS: ShellNotification[] = [
   {
-    id: "deploy",
-    icon: "rocket_launch",
-    title: "Despliegue a Producción Exitoso",
-    time: "hace 3m",
-    body: "El release v2.4.0 se ha completado en el clúster Cluster-EU1 sin incidencias.",
-    chip: "Pipeline #8492",
+    id: 'deploy',
+    icon: 'rocket_launch',
+    title: 'Despliegue a Producción Exitoso',
+    time: 'hace 3m',
+    body: 'El release v2.4.0 se ha completado en el clúster Cluster-EU1 sin incidencias.',
+    chip: 'Pipeline #8492',
   },
   {
-    id: "api",
-    icon: "warning",
-    title: "Alerta de Consumo de API",
-    time: "hace 18m",
-    body: "El límite mensual de telemetría de eventos ha superado el 85% de la cuota.",
-    chip: "Key: prod_client_eu",
+    id: 'api',
+    icon: 'warning',
+    title: 'Alerta de Consumo de API',
+    time: 'hace 18m',
+    body: 'El límite mensual de telemetría de eventos ha superado el 85% de la cuota.',
+    chip: 'Key: prod_client_eu',
   },
   {
-    id: "member",
-    icon: "person_add",
-    title: "Nuevo Integrante Invitado",
-    time: "hace 1h",
-    body: "Mariana Silva ha aceptado la invitación con rol Coordinadora VIP.",
-    chip: "Workspace Central",
+    id: 'member',
+    icon: 'person_add',
+    title: 'Nuevo Integrante Invitado',
+    time: 'hace 1h',
+    body: 'Mariana Silva ha aceptado la invitación con rol Coordinadora VIP.',
+    chip: 'Workspace Central',
   },
 ];
 
@@ -315,24 +351,24 @@ export interface RailFlyout {
 }
 
 export const DASHBOARD_FLYOUT: RailFlyout = {
-  title: "Dashboard Views",
+  title: 'Dashboard Views',
   sections: [
     {
-      label: "ESTADÍSTICAS EN VIVO",
+      label: 'ESTADÍSTICAS EN VIVO',
       links: [
-        { id: "resumen", label: "Resumen Ejecutivo" },
-        { id: "ingresos", label: "Ingresos por Entradas" },
+        { id: 'resumen', label: 'Resumen Ejecutivo' },
+        { id: 'ingresos', label: 'Ingresos por Entradas' },
       ],
     },
     {
-      label: "OPERACIONES",
+      label: 'OPERACIONES',
       links: [
         {
-          id: "accesos",
-          label: "Control de Accesos",
+          id: 'accesos',
+          label: 'Control de Accesos',
           children: [
-            { id: "escaner-norte", label: "Escaners Puerta Norte" },
-            { id: "escaner-vip", label: "Escaners VIP Lounge" },
+            { id: 'escaner-norte', label: 'Escaners Puerta Norte' },
+            { id: 'escaner-vip', label: 'Escaners VIP Lounge' },
           ],
         },
       ],
@@ -343,45 +379,37 @@ export const DASHBOARD_FLYOUT: RailFlyout = {
 export function parentOf(id: string): string {
   for (const item of SIDEBAR_NAV) {
     if (item.id === id) return item.id;
-    if (item.groups?.some((g) => g.children.some((c) => c.id === id)))
-      return item.id;
-    if (item.links?.some((l) => l.id === id)) return item.id;
+    if (item.groups?.some(g => g.children.some(c => c.id === id))) return item.id;
+    if (item.links?.some(l => l.id === id)) return item.id;
   }
   for (const section of DASHBOARD_FLYOUT.sections) {
-    if (
-      section.links.some(
-        (l) => l.id === id || l.children?.some((c) => c.id === id),
-      )
-    )
-      return "dashboard";
+    if (section.links.some(l => l.id === id || l.children?.some(c => c.id === id))) return 'dashboard';
   }
   return id;
 }
 
 export function getRailFlyout(item: NavItem, activeId: string): RailFlyout | null {
-  if (item.id === "dashboard") {
+  if (item.id === 'dashboard') {
     return {
       ...DASHBOARD_FLYOUT,
-      sections: DASHBOARD_FLYOUT.sections.map((s) => ({
+      sections: DASHBOARD_FLYOUT.sections.map(s => ({
         ...s,
-        links: s.links.map((l) => ({
+        links: s.links.map(l => ({
           ...l,
-          active:
-            l.id === activeId ||
-            l.children?.some((c) => c.id === activeId) === true,
+          active: l.id === activeId || l.children?.some(c => c.id === activeId) === true,
         })),
       })),
     };
   }
   if ((item.groups?.length ?? 0) > 0 || (item.links?.length ?? 0) > 0) {
-    const sections: FlyoutSection[] = (item.groups ?? []).map((g) => ({
+    const sections: FlyoutSection[] = (item.groups ?? []).map(g => ({
       label: g.label.toUpperCase(),
-      links: g.children.map((c) => ({ ...c, active: c.id === activeId })),
+      links: g.children.map(c => ({ ...c, active: c.id === activeId })),
     }));
     if ((item.links?.length ?? 0) > 0) {
       sections.push({
-        label: "GENERAL",
-        links: (item.links ?? []).map((l) => ({
+        label: 'GENERAL',
+        links: (item.links ?? []).map(l => ({
           ...l,
           active: l.id === activeId,
         })),
@@ -394,8 +422,8 @@ export function getRailFlyout(item: NavItem, activeId: string): RailFlyout | nul
 
 export function filterNav(query: string): NavItem[] {
   const q = query.trim().toLowerCase();
-  if (q === "") return SIDEBAR_NAV;
-  return SIDEBAR_NAV.map((item) => {
+  if (q === '') return SIDEBAR_NAV;
+  return SIDEBAR_NAV.map(item => {
     if (item.label.toLowerCase().includes(q)) return item;
     return null;
   }).filter((item): item is NavItem => item !== null);

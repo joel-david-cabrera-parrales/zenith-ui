@@ -1,0 +1,16 @@
+# ─── Dev Stage ───────────────────────────────────────────────────────────────
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Instala dependencias primero (mejor aprovechamiento del cache de Docker)
+COPY package*.json ./
+RUN npm ci
+
+# El código es montado vía volumen en dev, pero se copia como fallback
+COPY . .
+
+EXPOSE 5173
+
+# --host expone Vite fuera del contenedor (obligatorio en Docker)
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
