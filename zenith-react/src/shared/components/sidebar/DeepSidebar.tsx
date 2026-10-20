@@ -262,7 +262,7 @@ export const DeepSidebar = ({
         dark ? "text-slate-300 shadow-[0_25px_40px_-10px_rgba(0,0,0,0.5)]" : "text-slate-600 shadow-[0_20px_35px_-10px_rgba(0,0,0,0.08)]",
       )}
     >
-      <div className="flex items-center gap-2 px-4 py-3 shadow-sm">
+      <div className="flex items-center gap-3 px-3 py-2.5 sm:px-5 sm:py-3">
         <span
           aria-hidden="true"
           className={cx(
