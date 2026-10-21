@@ -1,0 +1,130 @@
+{
+  "common": {
+    "brand": "Zenith UI",
+    "search": "Rechercher..."
+  },
+  "shell": {
+    "topbar": {
+      "themeToggle": "Changer de thème",
+      "language": "Langue",
+      "notifications": "Notifications",
+      "profile": "Profil",
+      "searchPlaceholder": "Rechercher événements, salles, commandes..."
+    },
+    "sidebar": {
+      "navigation": "Navigation",
+      "documentation": "Documentation"
+    }
+  },
+  "nav": {
+    "paginators": "Paginateurs",
+    "tables": "Tableaux",
+    "forms": "Formulaires",
+    "modals": "Modales",
+    "drawers": "Tiroirs",
+    "cards": "Cartes",
+    "hero": "Sections Hero",
+    "headings": "Typographie",
+    "buttons": "Boutons",
+    "dropdowns": "Menus déroulants",
+    "badges": "Badges",
+    "progress": "Progression",
+    "toasts": "Toasts",
+    "avatars": "Avatars",
+    "accordions": "Accordéons",
+    "skeletons": "Squelettes",
+    "loading": "Chargement",
+    "diffs": "Diff",
+    "carousels": "Carrousels",
+    "steps": "Étapes",
+    "breadcrumbs": "Fil d'Ariane",
+    "tabs": "Onglets",
+    "tooltips": "Infobulles",
+    "landing": "Page d'accueil",
+    "auth": "Connexion",
+    "register": "Inscription",
+    "forgot": "Mot de passe oublié",
+    "reset": "Réinitialiser mot de passe",
+    "notFound": "404",
+    "serverError": "500",
+    "changelog": "Journal des modifications",
+    "github": "GitHub"
+  },
+  "profile": {
+    "myAccount": "Mon Compte et Profil",
+    "preferences": "Préférences d'espace",
+    "apiKeys": "Clés API & Tokens",
+    "darkMode": "Mode Sombre",
+    "logout": "Déconnexion",
+    "activeWorkspace": "Actif dans l'espace central"
+  },
+  "language": {
+    "es": "Español",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "deep": {
+    "areas": {
+      "catalogo": "Catalogue",
+      "navegacion": "Navigation",
+      "ejemplos": "Exemples"
+    },
+    "groups": {
+      "display": "Affichage",
+      "feedback": "Retour",
+      "acciones": "Actions",
+      "estructuras": "Structures",
+      "herramientas": "Outils",
+      "autenticacion": "Authentification",
+      "landingPage": "Page d'accueil"
+    },
+    "sections": {
+      "componentes": "Composants",
+      "accordeones": "Accordéons",
+      "avisos": "Avis",
+      "estados": "États",
+      "formularios": "Formulaires",
+      "botones": "Boutons",
+      "overlay": "Overlay",
+      "general": "Général",
+      "rutas": "Routes",
+      "helper": "Assistant"
+    },
+    "links": {
+      "cards": "Cartes",
+      "hero": "Sections Hero",
+      "headings": "Typographie",
+      "badges": "Badges",
+      "avatars": "Avatars",
+      "progress": "Progression",
+      "diffs": "Diff",
+      "carousels": "Carrousels",
+      "steps": "Étapes",
+      "accordions": "Accordéons",
+      "modals": "Modales",
+      "drawers": "Tiroirs",
+      "toasts": "Toasts",
+      "countdowns": "Compte à rebours",
+      "loading": "Chargement",
+      "skeletons": "Squelettes",
+      "forms": "Formulaires",
+      "buttons": "Boutons",
+      "dropdowns": "Menus déroulants",
+      "tooltips": "Infobulles",
+      "paginators": "Paginateurs",
+      "tables": "Tableaux",
+      "breadcrumbs": "Fil d'Ariane",
+      "tabs": "Onglets",
+      "notFound": "404",
+      "serverError": "500",
+      "login": "Connexion",
+      "signup": "Inscription",
+      "forgot": "Mot de passe oublié",
+      "reset": "Réinitialiser mot de passe",
+      "about": "À propos",
+      "contact": "Contact",
+      "home": "Accueil"
+    }
+  }
+}

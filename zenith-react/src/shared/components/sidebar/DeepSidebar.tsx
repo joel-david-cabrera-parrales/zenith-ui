@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import type { ShellTone } from "../interfaces/navigation.interface";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export interface DeepLink {
   id: string;
@@ -44,98 +45,98 @@ const cx = (...parts: Array<string | false | undefined>): string =>
 const AREAS: DeepArea[] = [
   {
     id: "catalogo",
-    label: "Catálogo",
+    label: "deep.areas.catalogo",
     icon: "view_in_ar",
     groups: [
       {
         id: "display",
-        label: "Display",
+        label: "deep.groups.display",
         icon: "view_in_ar",
         sections: [
           {
             id: "componentes",
-            label: "Componentes",
+            label: "deep.sections.componentes",
             icon: "layers",
             links: [
-              { id: "cards", label: "Cards", icon: "view_in_ar", route: "/display/cards" },
-              { id: "hero", label: "Hero Sections", icon: "crop_16_9", route: "/display/hero" },
-              { id: "headings", label: "Tipografía", icon: "text_fields", route: "/display/headings" },
-              { id: "badges", label: "Badges", icon: "badge", route: "/display/badges" },
-              { id: "avatars", label: "Avatars", icon: "account_circle", route: "/display/avatars" },
-              { id: "progress", label: "Progress", icon: "trending_up", route: "/display/progress" },
-              { id: "diffs", label: "Diff", icon: "compare", route: "/display/diffs" },
-              { id: "carousels", label: "Carousels", icon: "view_carousel", route: "/display/carousels" },
-              { id: "steps", label: "Steps", icon: "footprint", route: "/display/steps" },
+              { id: "cards", label: "deep.links.cards", icon: "view_in_ar", route: "/display/cards" },
+              { id: "hero", label: "deep.links.hero", icon: "crop_16_9", route: "/display/hero" },
+              { id: "headings", label: "deep.links.headings", icon: "text_fields", route: "/display/headings" },
+              { id: "badges", label: "deep.links.badges", icon: "badge", route: "/display/badges" },
+              { id: "avatars", label: "deep.links.avatars", icon: "account_circle", route: "/display/avatars" },
+              { id: "progress", label: "deep.links.progress", icon: "trending_up", route: "/display/progress" },
+              { id: "diffs", label: "deep.links.diffs", icon: "compare", route: "/display/diffs" },
+              { id: "carousels", label: "deep.links.carousels", icon: "view_carousel", route: "/display/carousels" },
+              { id: "steps", label: "deep.links.steps", icon: "footprint", route: "/display/steps" },
             ],
           },
           {
             id: "accordeones",
-            label: "Acordeones",
+            label: "deep.sections.accordeones",
             icon: "expand_more",
-            links: [{ id: "accordions", label: "Acordeones", icon: "expand_more", route: "/display/accordions" }],
+            links: [{ id: "accordions", label: "deep.links.accordions", icon: "expand_more", route: "/display/accordions" }],
           },
         ],
       },
       {
         id: "feedback",
-        label: "Feedback",
+        label: "deep.groups.feedback",
         icon: "feedback",
         sections: [
           {
             id: "avisos",
-            label: "Avisos",
+            label: "deep.sections.avisos",
             icon: "notifications",
             links: [
-              { id: "modals", label: "Modales", icon: "window", route: "/feedback/modals" },
-              { id: "drawers", label: "Drawers", icon: "menu_open", route: "/feedback/drawers" },
-              { id: "toasts", label: "Toasts", icon: "notifications", route: "/feedback/toasts" },
-              { id: "countdowns", label: "Countdowns", icon: "timer", route: "/feedback/countdowns" },
+              { id: "modals", label: "deep.links.modals", icon: "window", route: "/feedback/modals" },
+              { id: "drawers", label: "deep.links.drawers", icon: "menu_open", route: "/feedback/drawers" },
+              { id: "toasts", label: "deep.links.toasts", icon: "notifications", route: "/feedback/toasts" },
+              { id: "countdowns", label: "deep.links.countdowns", icon: "timer", route: "/feedback/countdowns" },
             ],
           },
           {
             id: "estados",
-            label: "Estados",
+            label: "deep.sections.estados",
             icon: "hourglass_empty",
             links: [
-              { id: "loading", label: "Loading", icon: "progress_activity", route: "/feedback/loading" },
-              { id: "skeletons", label: "Skeletons", icon: "hourglass_empty", route: "/feedback/skeletons" },
+              { id: "loading", label: "deep.links.loading", icon: "progress_activity", route: "/feedback/loading" },
+              { id: "skeletons", label: "deep.links.skeletons", icon: "hourglass_empty", route: "/feedback/skeletons" },
             ],
           },
         ],
       },
       {
         id: "acciones",
-        label: "Acciones",
+        label: "deep.groups.acciones",
         icon: "smart_button",
         sections: [
           {
             id: "formularios",
-            label: "Formularios",
+            label: "deep.sections.formularios",
             icon: "input",
-            links: [{ id: "forms", label: "Formularios", icon: "input", route: "/forms/forms" }],
+            links: [{ id: "forms", label: "deep.links.forms", icon: "input", route: "/forms/forms" }],
           },
           {
             id: "botones",
-            label: "Botones",
+            label: "deep.sections.botones",
             icon: "smart_button",
-            links: [{ id: "buttons", label: "Botones", icon: "smart_button", route: "/action/buttons" }],
+            links: [{ id: "buttons", label: "deep.links.buttons", icon: "smart_button", route: "/action/buttons" }],
           },
           {
             id: "overlay",
-            label: "Overlay",
+            label: "deep.sections.overlay",
             icon: "layers",
             links: [
-              { id: "dropdowns", label: "Dropdowns", icon: "arrow_drop_down", route: "/overlay/dropdowns" },
-              { id: "tooltips", label: "Tooltips", icon: "tooltip", route: "/overlay/tooltips" },
+              { id: "dropdowns", label: "deep.links.dropdowns", icon: "arrow_drop_down", route: "/overlay/dropdowns" },
+              { id: "tooltips", label: "deep.links.tooltips", icon: "tooltip", route: "/overlay/tooltips" },
             ],
           },
           {
             id: "general",
-            label: "General",
+            label: "deep.sections.general",
             icon: "list",
             links: [
-              { id: "paginators", label: "Paginadores", icon: "pages", route: "/layout/paginators" },
-              { id: "tables", label: "Tablas", icon: "table_view", route: "/layout/tables" },
+              { id: "paginators", label: "deep.links.paginators", icon: "pages", route: "/layout/paginators" },
+              { id: "tables", label: "deep.links.tables", icon: "table_view", route: "/layout/tables" },
             ],
           },
         ],
@@ -144,37 +145,37 @@ const AREAS: DeepArea[] = [
   },
   {
     id: "navegacion",
-    label: "Navegación",
+    label: "deep.areas.navegacion",
     icon: "chevron_right",
     groups: [
       {
         id: "estructuras",
-        label: "Estructuras",
+        label: "deep.groups.estructuras",
         icon: "chevron_right",
         sections: [
           {
             id: "rutas",
-            label: "Rutas",
+            label: "deep.sections.rutas",
             icon: "route",
             links: [
-              { id: "breadcrumbs", label: "Breadcrumbs", icon: "chevron_right", route: "/navigation/breadcrumbs" },
-              { id: "tabs", label: "Tabs", icon: "tab", route: "/navigation/tabs" },
+              { id: "breadcrumbs", label: "deep.links.breadcrumbs", icon: "chevron_right", route: "/navigation/breadcrumbs" },
+              { id: "tabs", label: "deep.links.tabs", icon: "tab", route: "/navigation/tabs" },
             ],
           },
         ],
       },
       {
         id: "herramientas",
-        label: "Herramientas",
+        label: "deep.groups.herramientas",
         icon: "build",
         sections: [
           {
             id: "helper",
-            label: "Helper",
+            label: "deep.sections.helper",
             icon: "build",
             links: [
-              { id: "not-found", label: "404", icon: "error", route: "/helper/404" },
-              { id: "server-error", label: "500", icon: "error", route: "/helper/500" },
+              { id: "not-found", label: "deep.links.notFound", icon: "error", route: "/helper/404" },
+              { id: "server-error", label: "deep.links.serverError", icon: "error", route: "/helper/500" },
             ],
           },
         ],
@@ -183,28 +184,28 @@ const AREAS: DeepArea[] = [
   },
   {
     id: "ejemplos",
-    label: "Ejemplos",
+    label: "deep.areas.ejemplos",
     icon: "thumb_up",
     groups: [
       {
         id: "autenticacion",
-        label: "Autenticación",
+        label: "deep.groups.autenticacion",
         icon: "login",
         links: [
-          { id: "login", label: "Login", icon: "login", route: "/auth/login" },
-          { id: "signup", label: "Signup", icon: "person_add", route: "/auth/register" },
-          { id: "forgot-password", label: "Forgot Password", icon: "email", route: "/auth/forgot" },
-          { id: "reset-password", label: "Reset Password", icon: "restore", route: "/auth/reset" },
+          { id: "login", label: "deep.links.login", icon: "login", route: "/auth/login" },
+          { id: "signup", label: "deep.links.signup", icon: "person_add", route: "/auth/register" },
+          { id: "forgot-password", label: "deep.links.forgot", icon: "email", route: "/auth/forgot" },
+          { id: "reset-password", label: "deep.links.reset", icon: "restore", route: "/auth/reset" },
         ],
       },
       {
         id: "landing-page",
-        label: "Landing page",
+        label: "deep.groups.landingPage",
         icon: "description",
         links: [
-          { id: "about", label: "About", icon: "info", route: "/landing/about" },
-          { id: "contact", label: "Contact", icon: "contact_page", route: "/landing/services" },
-          { id: "home", label: "Home", icon: "home", route: "/landing/home" },
+          { id: "about", label: "deep.links.about", icon: "info", route: "/landing/about" },
+          { id: "contact", label: "deep.links.contact", icon: "contact_page", route: "/landing/services" },
+          { id: "home", label: "deep.links.home", icon: "home", route: "/landing/home" },
         ],
       },
     ],
@@ -234,6 +235,7 @@ export const DeepSidebar = ({
   onToggleCollapsed,
 }: DeepSidebarProps) => {
   const dark = tone === "dark";
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [openAreaId, setOpenAreaId] = useState<string | null>("catalogo");
@@ -377,7 +379,7 @@ export const DeepSidebar = ({
                   >
                     {area.icon}
                   </span>
-                  {!collapsed && <span className={cx(text)}>{area.label}</span>}
+                  {!collapsed && <span className={cx(text)}>{t(area.label)}</span>}
                 </span>
                 {!collapsed && (
                   <span aria-hidden="true" className={chevron(areaOpen, "text-blue-400")}>
@@ -424,7 +426,7 @@ export const DeepSidebar = ({
                                 >
                                   {group.icon}
                                 </span>
-                                <span className={cx(text)}>{group.label}</span>
+                                <span className={cx(text)}>{t(group.label)}</span>
                               </span>
                               <span aria-hidden="true" className={chevron(groupOpen, textSecondary)}>
                                 expand_more
@@ -469,7 +471,7 @@ export const DeepSidebar = ({
                                               {section.icon}
                                             </span>
                                             <span className={cx(text)}>
-                                              {section.label.charAt(0).toUpperCase() + section.label.slice(1).toLowerCase()}
+                                              {t(section.label)}
                                             </span>
                                           </span>
                                           <span
@@ -518,7 +520,7 @@ export const DeepSidebar = ({
                                                       {link.icon}
                                                     </span>
                                                     <span className={cx(active ? "font-semibold" : "font-medium")}>
-                                                      {link.label}
+                                                      {t(link.label)}
                                                     </span>
                                                     {link.badge !== undefined && (
                                                       <span
@@ -566,7 +568,7 @@ export const DeepSidebar = ({
                                               {link.icon}
                                             </span>
                                             <span className={cx(active ? "font-semibold" : "font-medium")}>
-                                              {link.label}
+                                              {t(link.label)}
                                             </span>
                                             {link.badge !== undefined && (
                                               <span

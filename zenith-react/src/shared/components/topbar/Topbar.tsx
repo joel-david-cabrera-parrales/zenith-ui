@@ -5,6 +5,8 @@ import {
   TOPBAR_RESULTS,
   SHELL_NOTIFICATIONS,
 } from "../interfaces/navigation.interface";
+import { useLanguage } from "@/shared/hooks/useLanguage";
+import { LANGUAGE_OPTIONS } from "@/shared/utils/language-storage";
 
 export interface TopbarProps {
   tone?: ShellTone;
@@ -21,6 +23,7 @@ type Popover = "none" | "search" | "notifications" | "profile";
 
 export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, collapsed = false }: TopbarProps) => {
   const dark = tone === "dark";
+  const { language, setLanguage, t } = useLanguage();
   const searchId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("Keynote");
@@ -422,7 +425,7 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, coll
                     </p>
                     <p className="mt-0.5 flex items-center gap-1 text-[11px] text-emerald-600">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                      Activo en Workspace Central
+                      {t('profile.activeWorkspace')}
                     </p>
                   </div>
                 </div>
@@ -430,17 +433,17 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, coll
                   {[
                     {
                       icon: "account_circle",
-                      label: "Mi Cuenta y Perfil",
+                      label: t('profile.myAccount'),
                       meta: "⌘P",
                     },
                     {
                       icon: "tune",
-                      label: "Preferencias de Espacio",
+                      label: t('profile.preferences'),
                       meta: "→",
                     },
                     {
                       icon: "key",
-                      label: "Claves API & Tokens",
+                      label: t('profile.apiKeys'),
                       meta: "3 activas",
                     },
                   ].map((item) => (
@@ -460,14 +463,32 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, coll
                   ))}
                   <div className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-medium">
                     <span className="material-symbols-outlined text-lg text-slate-500">
+                      language
+                    </span>
+                    {t('shell.topbar.language')}
+                    <select
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value as 'es' | 'en' | 'fr' | 'de')}
+                      className="ml-auto bg-transparent border-0 text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded px-1 py-0.5"
+                      aria-label={t('shell.topbar.language')}
+                    >
+                      {LANGUAGE_OPTIONS.map((opt) => (
+                        <option key={opt.code} value={opt.code}>
+                          {opt.flag} {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-medium">
+                    <span className="material-symbols-outlined text-lg text-slate-500">
                       dark_mode
                     </span>
-                    Modo Oscuro
+                    {t('profile.darkMode')}
                     <button
                       type="button"
                       role="switch"
                       aria-checked={dark}
-                      aria-label="Modo oscuro"
+                      aria-label={t('profile.darkMode')}
                       onClick={onToggleTheme}
                       className={cx(
                         "ml-auto flex h-5 w-9 items-center rounded-full px-0.5",
@@ -488,7 +509,7 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, coll
                     <span className="material-symbols-outlined text-lg">
                       logout
                     </span>
-                    Cerrar Sesión
+                    {t('profile.logout')}
                   </button>
                 </div>
               </>

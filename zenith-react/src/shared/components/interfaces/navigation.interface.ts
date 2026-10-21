@@ -13,7 +13,7 @@ export interface NavGroup {
 
 export interface NavItem {
   id: string;
-  label: string;
+  label: string; // translation key (e.g., 'nav.paginators')
   icon: string;
   badge?: string;
   route?: string;
@@ -38,197 +38,197 @@ export const SHELL_USER: ShellUser = {
 export const SIDEBAR_NAV: NavItem[] = [
   {
     id: 'paginators',
-    label: 'Paginadores',
+    label: 'nav.paginators',
     icon: 'pages',
     route: '/layout/paginators',
   },
   {
     id: 'tables',
-    label: 'Tablas',
+    label: 'nav.tables',
     icon: 'table_view',
     route: '/layout/tables',
   },
   {
     id: 'forms',
-    label: 'Formularios',
+    label: 'nav.forms',
     icon: 'input',
     route: '/forms/forms',
   },
   {
     id: 'modals',
-    label: 'Modales',
+    label: 'nav.modals',
     icon: 'window',
     route: '/feedback/modals',
   },
   {
     id: 'drawers',
-    label: 'Drawers',
+    label: 'nav.drawers',
     icon: 'menu_open',
     route: '/feedback/drawers',
   },
   {
     id: 'cards',
-    label: 'Cards',
+    label: 'nav.cards',
     icon: 'view_in_ar',
     route: '/display/cards',
   },
   {
     id: 'hero',
-    label: 'Hero Sections',
+    label: 'nav.hero',
     icon: 'crop_16_9',
     route: '/display/hero',
   },
   {
     id: 'headings',
-    label: 'Tipografía',
+    label: 'nav.headings',
     icon: 'text_fields',
     route: '/display/headings',
   },
   {
     id: 'buttons',
-    label: 'Botones',
+    label: 'nav.buttons',
     icon: 'smart_button',
     route: '/action/buttons',
   },
   {
     id: 'dropdowns',
-    label: 'Dropdowns',
+    label: 'nav.dropdowns',
     icon: 'arrow_drop_down',
     route: '/overlay/dropdowns',
   },
   {
     id: 'countdowns',
-    label: 'Countdowns',
+    label: 'nav.countdowns',
     icon: 'timer',
     route: '/feedback/countdowns',
   },
   {
     id: 'badges',
-    label: 'Badges',
+    label: 'nav.badges',
     icon: 'badge',
     route: '/display/badges',
   },
   {
     id: 'progress',
-    label: 'Progress',
+    label: 'nav.progress',
     icon: 'trending_up',
     route: '/display/progress',
   },
   {
     id: 'toasts',
-    label: 'Toasts',
+    label: 'nav.toasts',
     icon: 'notifications',
     route: '/feedback/toasts',
   },
   {
     id: 'avatars',
-    label: 'Avatars',
+    label: 'nav.avatars',
     icon: 'account_circle',
     route: '/display/avatars',
   },
   {
     id: 'accordions',
-    label: 'Acordeones',
+    label: 'nav.accordions',
     icon: 'expand_more',
     route: '/display/accordions',
   },
   {
     id: 'skeletons',
-    label: 'Skeletons',
+    label: 'nav.skeletons',
     icon: 'hourglass_empty',
     route: '/feedback/skeletons',
   },
   {
     id: 'loading',
-    label: 'Loading',
+    label: 'nav.loading',
     icon: 'progress_activity',
     route: '/feedback/loading',
   },
   {
     id: 'diffs',
-    label: 'Diff',
+    label: 'nav.diffs',
     icon: 'compare',
     route: '/display/diffs',
   },
   {
     id: 'carousels',
-    label: 'Carousels',
+    label: 'nav.carousels',
     icon: 'view_carousel',
     route: '/display/carousels',
   },
   {
     id: 'steps',
-    label: 'Steps',
+    label: 'nav.steps',
     icon: 'footprint',
     route: '/display/steps',
   },
   {
     id: 'breadcrumbs',
-    label: 'Breadcrumbs',
+    label: 'nav.breadcrumbs',
     icon: 'chevron_right',
     route: '/navigation/breadcrumbs',
   },
   {
     id: 'tabs',
-    label: 'Tabs',
+    label: 'nav.tabs',
     icon: 'tab',
     route: '/navigation/tabs',
   },
   {
     id: 'tooltips',
-    label: 'Tooltips',
+    label: 'nav.tooltips',
     icon: 'tooltip',
     route: '/overlay/tooltips',
   },
   {
     id: 'landing',
-    label: 'Landing',
+    label: 'nav.landing',
     icon: 'home',
     badge: 'demo',
     route: '/landing/home',
   },
   {
     id: 'auth',
-    label: 'Login',
+    label: 'nav.auth',
     icon: 'lock',
     route: '/auth',
   },
   {
     id: 'register',
-    label: 'Register',
+    label: 'nav.register',
     icon: 'person_add',
     route: '/auth/register',
   },
   {
     id: 'forgot',
-    label: 'Forgot Password',
+    label: 'nav.forgot',
     icon: 'lock_reset',
     route: '/auth/forgot',
   },
   {
     id: 'reset',
-    label: 'Reset Password',
+    label: 'nav.reset',
     icon: 'password',
     route: '/auth/reset',
   },
   {
     id: 'not-found',
-    label: '404',
+    label: 'nav.notFound',
     icon: 'error',
     route: '/helper/404',
   },
   {
     id: 'server-error',
-    label: '500',
+    label: 'nav.serverError',
     icon: 'error',
     route: '/helper/500',
   },
 ];
 
 export const SIDEBAR_SECONDARY: NavItem[] = [
-  { id: 'docs', label: 'Documentación', icon: 'description', route: '/docs' },
-  { id: 'changelog', label: 'Changelog', icon: 'history', route: '/changelog' },
-  { id: 'github', label: 'GitHub', icon: 'code', route: 'https://github.com' },
+  { id: 'docs', label: 'shell.sidebar.documentation', icon: 'description', route: '/docs' },
+  { id: 'changelog', label: 'nav.changelog', icon: 'history', route: '/changelog' },
+  { id: 'github', label: 'nav.github', icon: 'code', route: 'https://github.com' },
 ];
 
 export interface SearchResultGroup {

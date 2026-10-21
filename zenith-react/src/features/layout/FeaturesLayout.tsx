@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import { DeepSidebar } from "../../shared/components/sidebar/DeepSidebar";
 import { Topbar } from "../../shared/components/topbar/Topbar";
 import { useTheme } from "@/shared/hooks/useTheme";
+import { LanguageProvider } from "@/shared/context/LanguageProvider";
 
 export const FeaturesLayout = () => {
   const { dark, toggleTheme } = useTheme();
@@ -31,7 +32,8 @@ export const FeaturesLayout = () => {
   };
 
   return (
-    <div
+    <LanguageProvider>
+      <div
       className={`
         min-h-screen w-full
         grid
@@ -106,5 +108,6 @@ export const FeaturesLayout = () => {
         </div>
       )}
     </div>
+    </LanguageProvider>
   );
 };

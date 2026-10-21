@@ -8,6 +8,7 @@ import {
   SIDEBAR_SECONDARY,
   SHELL_USER,
 } from "../interfaces/navigation.interface";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export interface SidebarProps {
   tone?: ShellTone;
@@ -23,14 +24,16 @@ interface NavButtonProps {
   dark: boolean;
   active: boolean;
   onClick: () => void;
+  t: (key: string) => string;
 }
 
-const NavButton = ({ item, dark, active, onClick }: NavButtonProps) => {
+const NavButton = ({ item, dark, active, onClick, t }: NavButtonProps) => {
+  const label = t(item.label);
   return (
     <button
       type="button"
-      title={item.label}
-      aria-label={item.label}
+      title={label}
+      aria-label={label}
       aria-current={active ? "page" : undefined}
       onClick={onClick}
       className={cx(
@@ -45,7 +48,7 @@ const NavButton = ({ item, dark, active, onClick }: NavButtonProps) => {
       )}
     >
       <span className="material-symbols-outlined text-xl">{item.icon}</span>
-      {item.label}
+      {label}
       {item.badge !== undefined && (
         <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[11px] font-bold text-white">
           {item.badge}
@@ -60,9 +63,11 @@ interface RailButtonProps {
   dark: boolean;
   active: boolean;
   onClick: () => void;
+  t: (key: string) => string;
 }
 
-const RailButton = ({ item, dark, active, onClick }: RailButtonProps) => {
+const RailButton = ({ item, dark, active, onClick, t }: RailButtonProps) => {
+  const label = t(item.label);
   return (
     <span className="relative flex w-full items-center justify-center py-1">
       {active && (
@@ -75,8 +80,8 @@ const RailButton = ({ item, dark, active, onClick }: RailButtonProps) => {
       )}
       <button
         type="button"
-        title={item.label}
-        aria-label={item.label}
+        title={label}
+        aria-label={label}
         aria-current={active ? "page" : undefined}
         onClick={onClick}
         className={cx(
@@ -105,6 +110,7 @@ export const Sidebar = ({
   onToggleCollapsed,
 }: SidebarProps) => {
   const dark = tone === "dark";
+  const { t } = useTranslation();
   const searchId = useId();
   const navigate = useNavigate();
   const location = useLocation();
@@ -167,6 +173,7 @@ export const Sidebar = ({
                 dark={dark}
                 active={isActive(item.route)}
                 onClick={() => go(item.route)}
+                t={t}
               />
             ))}
             <div
@@ -182,6 +189,7 @@ export const Sidebar = ({
                 dark={dark}
                 active={isActive(item.route)}
                 onClick={() => go(item.route)}
+                t={t}
               />
             ))}
           </nav>
@@ -290,6 +298,7 @@ export const Sidebar = ({
               dark={dark}
               active={isActive(item.route)}
               onClick={() => go(item.route)}
+              t={t}
             />
           ))}
 
@@ -307,6 +316,7 @@ export const Sidebar = ({
               dark={dark}
               active={isActive(item.route)}
               onClick={() => go(item.route)}
+              t={t}
             />
           ))}
         </nav>

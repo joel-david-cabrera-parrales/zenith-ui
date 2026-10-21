@@ -1,0 +1,130 @@
+{
+  "common": {
+    "brand": "Zenith UI",
+    "search": "Suchen..."
+  },
+  "shell": {
+    "topbar": {
+      "themeToggle": "Thema wechseln",
+      "language": "Sprache",
+      "notifications": "Benachrichtigungen",
+      "profile": "Profil",
+      "searchPlaceholder": "Ereignisse, Räume, Befehle suchen..."
+    },
+    "sidebar": {
+      "navigation": "Navigation",
+      "documentation": "Dokumentation"
+    }
+  },
+  "nav": {
+    "paginators": "Paginierer",
+    "tables": "Tabellen",
+    "forms": "Formulare",
+    "modals": "Modale",
+    "drawers": "Drawers",
+    "cards": "Karten",
+    "hero": "Hero-Sektionen",
+    "headings": "Typografie",
+    "buttons": "Schaltflächen",
+    "dropdowns": "Dropdowns",
+    "badges": "Badges",
+    "progress": "Fortschritt",
+    "toasts": "Toasts",
+    "avatars": "Avatare",
+    "accordions": "Akkordeons",
+    "skeletons": "Skelette",
+    "loading": "Laden",
+    "diffs": "Diff",
+    "carousels": "Karussells",
+    "steps": "Schritte",
+    "breadcrumbs": "Brotkrumen",
+    "tabs": "Tabs",
+    "tooltips": "Tooltips",
+    "landing": "Landingpage",
+    "auth": "Anmeldung",
+    "register": "Registrierung",
+    "forgot": "Passwort vergessen",
+    "reset": "Passwort zurücksetzen",
+    "notFound": "404",
+    "serverError": "500",
+    "changelog": "Änderungsprotokoll",
+    "github": "GitHub"
+  },
+  "profile": {
+    "myAccount": "Mein Konto & Profil",
+    "preferences": "Workspace-Einstellungen",
+    "apiKeys": "API-Schlüssel & Tokens",
+    "darkMode": "Dunkler Modus",
+    "logout": "Abmelden",
+    "activeWorkspace": "Aktiv im zentralen Workspace"
+  },
+  "language": {
+    "es": "Español",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "deep": {
+    "areas": {
+      "catalogo": "Katalog",
+      "navegacion": "Navigation",
+      "ejemplos": "Beispiele"
+    },
+    "groups": {
+      "display": "Anzeige",
+      "feedback": "Feedback",
+      "acciones": "Aktionen",
+      "estructuras": "Strukturen",
+      "herramientas": "Werkzeuge",
+      "autenticacion": "Authentifizierung",
+      "landingPage": "Landingpage"
+    },
+    "sections": {
+      "componentes": "Komponenten",
+      "accordeones": "Akkordeons",
+      "avisos": "Hinweise",
+      "estados": "Zustände",
+      "formularios": "Formulare",
+      "botones": "Schaltflächen",
+      "overlay": "Overlay",
+      "general": "Allgemein",
+      "rutas": "Routen",
+      "helper": "Hilfe"
+    },
+    "links": {
+      "cards": "Karten",
+      "hero": "Hero-Sektionen",
+      "headings": "Typografie",
+      "badges": "Badges",
+      "avatars": "Avatare",
+      "progress": "Fortschritt",
+      "diffs": "Diff",
+      "carousels": "Karussells",
+      "steps": "Schritte",
+      "accordions": "Akkordeons",
+      "modals": "Modale",
+      "drawers": "Drawers",
+      "toasts": "Toasts",
+      "countdowns": "Countdowns",
+      "loading": "Laden",
+      "skeletons": "Skelette",
+      "forms": "Formulare",
+      "buttons": "Schaltflächen",
+      "dropdowns": "Dropdowns",
+      "tooltips": "Tooltips",
+      "paginators": "Paginierer",
+      "tables": "Tabellen",
+      "breadcrumbs": "Brotkrumen",
+      "tabs": "Tabs",
+      "notFound": "404",
+      "serverError": "500",
+      "login": "Anmeldung",
+      "signup": "Registrierung",
+      "forgot": "Passwort vergessen",
+      "reset": "Passwort zurücksetzen",
+      "about": "Über",
+      "contact": "Kontakt",
+      "home": "Start"
+    }
+  }
+}
