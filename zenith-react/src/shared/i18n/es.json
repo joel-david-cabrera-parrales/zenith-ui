@@ -126,5 +126,293 @@
       "contact": "Contact",
       "home": "Home"
     }
+  },
+  "pages": {
+    "dashboard": {
+      "title": "Zenith UI",
+      "subtitle": "Component Library",
+      "layout": "Layout",
+      "layoutDesc": "12 Paginadores + 7 Tablas",
+      "dataInputs": "Data Inputs",
+      "dataInputsDesc": "8 Formularios",
+      "feedback": "Feedback",
+      "feedbackDesc": "11 Modales + 5 Drawers",
+      "display": "Display",
+      "displayDesc": "22 Cards + 9 Heroes + 5 Tipografía",
+      "action": "Action",
+      "actionDesc": "8 Botones"
+    },
+    "buttons": {
+      "title": "Botones",
+      "subtitle": "8 variantes de botones"
+    },
+    "breadcrumbs": {
+      "title": "Breadcrumbs",
+      "subtitle": "Navegación jerárquica"
+    },
+    "badges": {
+      "title": "Badges",
+      "subtitle": "Etiquetas y contadores"
+    },
+    "avatars": {
+      "title": "Avatars",
+      "subtitle": "Avatares e identificadores visuales"
+    },
+    "accordions": {
+      "title": "Acordeones",
+      "subtitle": "Paneles colapsables"
+    },
+    "carousels": {
+      "title": "Carousels",
+      "subtitle": "Carruseles de contenido"
+    },
+    "countdowns": {
+      "title": "Countdowns",
+      "subtitle": "Temporizadores y cuentas regresivas"
+    },
+    "drawers": {
+      "title": "Drawers",
+      "subtitle": "Paneles laterales deslizantes"
+    },
+    "dropdowns": {
+      "title": "Dropdowns",
+      "subtitle": "Menús desplegables y selectores"
+    },
+    "diffs": {
+      "title": "Diff",
+      "subtitle": "Comparación visual de cambios"
+    },
+    "forms": {
+      "title": "Formularios",
+      "subtitle": "Campos, validación y layouts"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "subtitle": "Modales, drawers, toasts y más"
+    },
+    "loading": {
+      "title": "Loading",
+      "subtitle": "Estados de carga y skeletons"
+    },
+    "modals": {
+      "title": "Modales",
+      "subtitle": "Diálogos y overlays modales"
+    },
+    "paginators": {
+      "title": "Paginadores",
+      "subtitle": "Controles de paginación y carga"
+    },
+    "progress": {
+      "title": "Progress",
+      "subtitle": "Barras y indicadores de progreso"
+    },
+    "skeletons": {
+      "title": "Skeletons",
+      "subtitle": "Placeholders de carga"
+    },
+    "steps": {
+      "title": "Steps",
+      "subtitle": "Indicadores de pasos y flujos"
+    },
+    "tables": {
+      "title": "Tablas",
+      "subtitle": "Tablas de datos avanzadas"
+    },
+    "tabs": {
+      "title": "Tabs",
+      "subtitle": "Paneles con pestañas"
+    },
+    "tooltips": {
+      "title": "Tooltips",
+      "subtitle": "Información contextual al hover"
+    },
+    "toasts": {
+      "title": "Toasts",
+      "subtitle": "Notificaciones temporales"
+    },
+    "layout": {
+      "title": "Layout",
+      "subtitle": "Estructuras de página y contenedores"
+    },
+    "action": {
+      "title": "Action",
+      "subtitle": "Botones y acciones"
+    },
+    "display": {
+      "cards": {
+        "title": "Cards",
+        "subtitle": "Tarjetas de contenido"
+      },
+      "hero": {
+        "title": "Hero Sections",
+        "subtitle": "Secciones hero y banners"
+      },
+      "headings": {
+        "title": "Tipografía",
+        "subtitle": "Escalas tipográficas y textos"
+      }
+    },
+    "landing": {
+      "home": {
+        "badge": "Nueva plataforma · v2.4",
+        "heroTitle": "Infraestructura en tiempo real, sin fricción",
+        "heroDesc": "Ingesta, telemetría y despliegues en una sola plataforma construida con componentes Zenith UI. Del primer evento a producción en minutos.",
+        "ctaPrimary": "Empezar gratis",
+        "ctaSecondary": "Ver servicios",
+        "statsLabel": "eventos",
+        "statsValue": "2.4M/s",
+        "replicasLabel": "réplicas",
+        "replicasValue": "48",
+        "incidentsLabel": "incidentes",
+        "incidentsValue": "0",
+        "featuresBadge": "Todo en uno",
+        "featuresTitle": "Una plataforma, seis superpoderes",
+        "featuresDesc": "Cada tarjeta es un FeatureService del catálogo con datos ficticios de ejemplo.",
+        "pricingBadge": "Precios",
+        "pricingTitle": "Empieza gratis, escala cuando quieras",
+        "testimonialsBadge": "Clientes",
+        "testimonialsTitle": "Equipos que ya operan con Zenith",
+        "ctaBannerTitle": "Despliega tu primer clúster hoy",
+        "ctaBannerDesc": "14 días gratis, sin tarjeta. Cancela cuando quieras.",
+        "ctaBannerPrimary": "Crear cuenta",
+        "ctaBannerSecondary": "Conocer al equipo"
+      },
+      "about": {
+        "badge": "Nuestra historia",
+        "title": "Construyendo el futuro de la infraestructura",
+        "subtitle": "Zenith UI nace de la necesidad real de equipos de plataforma que gestionan miles de eventos por segundo.",
+        "missionTitle": "Nuestra misión",
+        "missionDesc": "Democratizar el acceso a componentes de alta calidad para que cualquier equipo pueda construir interfaces de infraestructura de clase mundial sin reinventar la rueda.",
+        "valuesTitle": "Valores que nos guían",
+        "values": [
+          { "title": "Calidad ante todo", "desc": "Cada componente pasa por pruebas exhaustivas de accesibilidad, rendimiento y casos edge." },
+          { "title": "Experiencia de desarrollador", "desc": "APIs intuitivas, TypeScript estricto, documentación viva y ejemplos reales." },
+          { "title": "Rendimiento nativo", "desc": "Cero dependencias pesadas, tree-shaking real, bundle size mínimo." },
+          { "title": "Diseño sistemático", "desc": "Tokens de diseño, temas oscuros/claros, escalado responsivo integrado." }
+        ],
+        "teamTitle": "El equipo",
+        "teamDesc": "Un grupo pequeño y enfocado de ingenieros y diseñadores que han construido plataformas en empresas como Vercel, Stripe y GitHub.",
+        "ctaTitle": "¿Te unes a la aventura?",
+        "ctaDesc": "Estamos contratando. Trabaja en el núcleo de la infraestructura moderna.",
+        "ctaButton": "Ver posiciones abiertas"
+      },
+      "services": {
+        "badge": "Qué hacemos",
+        "title": "Servicios de plataforma",
+        "subtitle": "Desde la ingesta hasta la observabilidad, cubrimos todo el ciclo de vida de tu infraestructura.",
+        "services": [
+          { "title": "Ingesta de eventos", "desc": "Pipeline de alto throughput para millones de eventos/seg con backpressure automático." },
+          { "title": "Telemetría unificada", "desc": "Métricas, logs y traces en una sola vista con correlación automática." },
+          { "title": "Despliegues progresivos", "desc": "Canary, blue-green y feature flags con rollback automático por SLO." },
+          { "title": "Gestión de incidentes", "desc": "Alertas inteligentes, on-call automático y postmortems generados por IA." },
+          { "title": "Configuración como código", "desc": "GitOps nativo con validación de esquemas y drift detection." },
+          { "title": "Portal de desarrolladores", "desc": "Catálogo de servicios, docs automáticas y scorecards de madurez." }
+        ]
+      },
+      "contact": {
+        "badge": "Contacto",
+        "title": "Hablemos",
+        "subtitle": "¿Tienes preguntas? Nuestro equipo está listo para ayudarte.",
+        "formTitle": "Envíanos un mensaje",
+        "nameLabel": "Nombre",
+        "emailLabel": "Email corporativo",
+        "topicLabel": "Tema",
+        "topicOptions": ["Ventas", "Soporte técnico", "Colaboración", "Otro"],
+        "messageLabel": "Mensaje",
+        "submitButton": "Enviar",
+        "successTitle": "¡Mensaje enviado!",
+        "successDesc": "Te responderemos en menos de 24 horas.",
+        "infoTitle": "Otras formas de contactar",
+        "infoItems": [
+          { "label": "Email", "value": "hola@zenith-ui.dev" },
+          { "label": "Discord", "value": "discord.gg/zenith-ui" },
+          { "label": "Twitter", "value": "@zenith_ui" },
+          { "label": "GitHub", "value": "github.com/zenith-ui" }
+        ]
+      }
+    },
+    "auth": {
+      "login": {
+        "badge": "Bienvenido de nuevo",
+        "title": "Inicia sesión",
+        "subtitle": "Usa cualquier email de demo. Te llevaremos al catálogo.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "ada@ejemplo.com",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "••••••••",
+        "rememberMe": "Recuérdame",
+        "forgotLink": "¿Olvidaste tu acceso?",
+        "submitButton": "Entrar",
+        "loadingButton": "Entrando…",
+        "divider": "o continúa con",
+        "googleButton": "Google",
+        "githubButton": "GitHub",
+        "noAccount": "¿Sin cuenta?",
+        "signupLink": "Crea una gratis"
+      },
+      "register": {
+        "badge": "Crea tu cuenta",
+        "title": "Regístrate gratis",
+        "subtitle": "Acceso inmediato al catálogo completo. Sin tarjeta de crédito.",
+        "nameLabel": "Nombre completo",
+        "namePlaceholder": "Ada Lovelace",
+        "emailLabel": "Email corporativo",
+        "emailPlaceholder": "ada@empresa.com",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "Mínimo 8 caracteres",
+        "confirmLabel": "Confirmar contraseña",
+        "confirmPlaceholder": "Repite la contraseña",
+        "termsText": "Al continuar, aceptas nuestros",
+        "termsLink": "Términos de servicio",
+        "and": "y",
+        "privacyLink": "Política de privacidad",
+        "submitButton": "Crear cuenta",
+        "loadingButton": "Creando…",
+        "hasAccount": "¿Ya tienes cuenta?",
+        "loginLink": "Inicia sesión"
+      },
+      "forgot": {
+        "badge": "Recuperar acceso",
+        "title": "¿Olvidaste tu contraseña?",
+        "subtitle": "Introduce tu email y te enviaremos un enlace para restablecerla.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "ada@empresa.com",
+        "submitButton": "Enviar enlace",
+        "loadingButton": "Enviando…",
+        "successTitle": "¡Revisa tu bandeja de entrada!",
+        "successDesc": "Hemos enviado un enlace de recuperación a tu email. Expira en 1 hora.",
+        "backLink": "Volver al login"
+      },
+      "reset": {
+        "badge": "Restablecer contraseña",
+        "title": "Nueva contraseña",
+        "subtitle": "Tu enlace ha sido verificado. Define tu nueva contraseña a continuación.",
+        "passwordLabel": "Nueva contraseña",
+        "passwordPlaceholder": "Mínimo 8 caracteres",
+        "confirmLabel": "Confirmar contraseña",
+        "confirmPlaceholder": "Repite la contraseña",
+        "submitButton": "Actualizar contraseña",
+        "loadingButton": "Actualizando…",
+        "successTitle": "¡Contraseña actualizada!",
+        "successDesc": "Ya puedes iniciar sesión con tu nueva contraseña.",
+        "loginButton": "Ir al login"
+      }
+    },
+    "helper": {
+      "notFound": {
+        "title": "404",
+        "subtitle": "Página no encontrada",
+        "desc": "La página que buscas no existe o ha sido movida.",
+        "homeButton": "Volver al inicio",
+        "catalogButton": "Ir al catálogo"
+      },
+      "serverError": {
+        "title": "500",
+        "subtitle": "Error del servidor",
+        "desc": "Algo salió mal en nuestro lado. Nuestro equipo ha sido notificado.",
+        "retryButton": "Reintentar",
+        "homeButton": "Volver al inicio"
+      }
+    }
   }
 }

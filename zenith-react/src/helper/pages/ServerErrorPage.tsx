@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 import { Button } from "@/features/botones/components/Button";
 import { Heading } from "@/features/headings/components/Heading";
 
 export const ServerErrorPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const retry = () => {
     window.location.reload();
@@ -17,20 +19,20 @@ export const ServerErrorPage = () => {
         </span>
       </span>
       <p className="mt-4 font-mono text-[10px] font-bold tracking-widest text-rose-600 uppercase">
-        Error 500
+        {t('pages.helper.serverError.title')}
       </p>
       <Heading variant="h2" as="h1" className="mt-2">
-        Algo salió mal
+        {t('pages.helper.serverError.subtitle')}
       </Heading>
       <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-slate-500">
-        Nuestro equipo ficticio ya fue notificado. Prueba de nuevo o vuelve a un lugar seguro.
+        {t('pages.helper.serverError.desc')}
       </p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         <Button leadingIcon="refresh" onClick={retry}>
-          Reintentar
+          {t('pages.helper.serverError.retryButton')}
         </Button>
         <Button variant="outline" leadingIcon="home" onClick={() => navigate("/landing/home")}>
-          Ir a la Home
+          {t('pages.helper.serverError.homeButton')}
         </Button>
       </div>
       <p className="mt-5 font-mono text-[10px] text-slate-400">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 import { Button } from "@/features/botones/components/Button";
 import { Heading } from "@/features/headings/components/Heading";
 import { BodyText } from "@/features/headings/components/BodyText";
@@ -15,6 +16,7 @@ const VALUES = [
 ] as const;
 
 export const AboutPage = () => {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
@@ -40,14 +42,13 @@ export const AboutPage = () => {
       <section className="border-b border-slate-200/70 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <p className="font-mono text-[10px] font-bold tracking-widest text-blue-600 uppercase">
-            About us
+            {t('pages.landing.about.badge')}
           </p>
           <Heading variant="display-xl" as="h1" className="mt-2 max-w-3xl">
-            Operamos la infraestructura que mueve tus eventos
+            {t('pages.landing.about.title')}
           </Heading>
           <BodyText size="lead" className="mt-4 max-w-2xl">
-            Somos un equipo ficticio de ejemplo: SREs, plataforma y datos
-            construyendo la consola que siempre quisimos usar.
+            {t('pages.landing.about.subtitle')}
           </BodyText>
           <dl className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {LANDING_STATS.map((stat) => (
@@ -61,7 +62,7 @@ export const AboutPage = () => {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <Heading variant="h2">Nuestros valores</Heading>
+        <Heading variant="h2">{t('pages.landing.about.valuesTitle')}</Heading>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {VALUES.map((value) => (
             <div key={value.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -79,9 +80,9 @@ export const AboutPage = () => {
 
       <section className="border-y border-slate-200/70 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <Heading variant="h2">El equipo</Heading>
+          <Heading variant="h2">{t('pages.landing.about.teamTitle')}</Heading>
           <BodyText className="mt-2 max-w-2xl">
-            Cuatro perfiles ficticios renderizados con `MemberCard` del catálogo.
+            {t('pages.landing.about.teamDesc')}
           </BodyText>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {LANDING_TEAM.map((member) => (
@@ -103,10 +104,9 @@ export const AboutPage = () => {
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <div>
-            <Heading variant="h2">Hablemos</Heading>
+            <Heading variant="h2">{t('pages.landing.about.ctaTitle')}</Heading>
             <BodyText className="mt-2 max-w-md">
-              Formulario de ejemplo con `TextInput` + `TextareaWithCounter` + `Button`.
-              El envío es un mock local: valida, simula 800ms y muestra éxito.
+              {t('pages.landing.about.ctaDesc')}
             </BodyText>
             <ul className="mt-6 space-y-3 text-sm text-slate-600">
               {[
@@ -134,27 +134,26 @@ export const AboutPage = () => {
                     check_circle
                   </span>
                 </span>
-                <h3 className="mt-4 text-lg font-bold text-slate-900">Mensaje enviado</h3>
+                <h3 className="mt-4 text-lg font-bold text-slate-900">{t('pages.landing.contact.successTitle')}</h3>
                 <p className="mx-auto mt-1 max-w-xs text-sm text-slate-500">
-                  Gracias {name.trim() === "" ? "por escribirnos" : `, ${name.trim()}`}. Te
-                  responderemos en menos de 24h laborables.
+                  {t('pages.landing.contact.successDesc', { name: name.trim() === "" ? "por escribirnos" : name.trim() })}
                 </p>
                 <Button variant="outline" className="mt-5" onClick={() => setSent(false)}>
-                  Enviar otro mensaje
+                  {t('pages.landing.contact.sendAnother')}
                 </Button>
               </div>
             ) : (
               <form onSubmit={submit} noValidate>
                 <div className="space-y-4">
                   <TextInput
-                    label="Nombre"
+                    label={t('pages.landing.contact.nameLabel')}
                     placeholder="Ada Lovelace"
                     autoComplete="name"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                   />
                   <TextInput
-                    label="Email"
+                    label={t('pages.landing.contact.emailLabel')}
                     type="email"
                     placeholder="ada@ejemplo.com"
                     autoComplete="email"
@@ -164,13 +163,13 @@ export const AboutPage = () => {
                     onChange={(event) => setEmail(event.target.value)}
                   />
                   <TextareaWithCounter
-                    label="Mensaje"
+                    label={t('pages.landing.contact.messageLabel')}
                     maxLength={250}
                     rows={4}
                     placeholder="Cuéntanos qué quieres construir…"
                   />
                   <Button type="submit" loading={sending} className="w-full" trailingIcon="send">
-                    {sending ? "Enviando…" : "Enviar mensaje"}
+                    {sending ? t('pages.landing.contact.sendingButton') : t('pages.landing.contact.submitButton')}
                   </Button>
                   <p className="text-center text-xs text-slate-400">
                     Demo sin backend: nada sale de tu navegador.

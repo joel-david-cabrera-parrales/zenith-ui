@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 import { Button } from "@/features/botones/components/Button";
 import { Heading } from "@/features/headings/components/Heading";
 import { BodyText } from "@/features/headings/components/BodyText";
@@ -15,6 +16,7 @@ import {
 
 export const HomePage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -26,18 +28,17 @@ export const HomePage = () => {
               <span aria-hidden="true" className="material-symbols-outlined text-sm">
                 rocket_launch
               </span>
-              Nueva plataforma · v2.4
+              {t('pages.landing.home.badge')}
             </p>
             <Heading variant="display-xl" as="h1" className="mt-4 text-white">
-              Infraestructura en tiempo real, sin fricción
+              {t('pages.landing.home.heroTitle')}
             </Heading>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">
-              Ingesta, telemetría y despliegues en una sola plataforma construida
-              con componentes Zenith UI. Del primer evento a producción en minutos.
+              {t('pages.landing.home.heroDesc')}
             </p>
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
               <Button size="lg" trailingIcon="arrow_forward" onClick={() => navigate("/auth/register")}>
-                Empezar gratis
+                {t('pages.landing.home.ctaPrimary')}
               </Button>
               <Button
                 size="lg"
@@ -46,7 +47,7 @@ export const HomePage = () => {
                 leadingIcon="play_circle"
                 onClick={() => navigate("/landing/services")}
               >
-                Ver servicios
+                {t('pages.landing.home.ctaSecondary')}
               </Button>
             </div>
             <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -108,13 +109,13 @@ export const HomePage = () => {
       {/* Features */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <p className="font-mono text-[10px] font-bold tracking-widest text-blue-600 uppercase">
-          Todo en uno
+          {t('pages.landing.home.featuresBadge')}
         </p>
         <Heading variant="h1" className="mt-2 max-w-2xl">
-          Una plataforma, seis superpoderes
+          {t('pages.landing.home.featuresTitle')}
         </Heading>
         <BodyText size="lead" className="mt-3 max-w-2xl">
-          Cada tarjeta es un `FeatureService` del catálogo con datos ficticios de ejemplo.
+          {t('pages.landing.home.featuresDesc')}
         </BodyText>
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {LANDING_SERVICES.map((service) => (
@@ -134,10 +135,10 @@ export const HomePage = () => {
       <section className="border-y border-slate-200/70 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <p className="font-mono text-[10px] font-bold tracking-widest text-blue-600 uppercase">
-            Precios
+            {t('pages.landing.home.pricingBadge')}
           </p>
           <Heading variant="h1" className="mt-2">
-            Empieza gratis, escala cuando quieras
+            {t('pages.landing.home.pricingTitle')}
           </Heading>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {LANDING_PRICING.map((tier) => (
@@ -159,10 +160,10 @@ export const HomePage = () => {
       {/* Testimonios */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <p className="font-mono text-[10px] font-bold tracking-widest text-blue-600 uppercase">
-          Clientes
+          {t('pages.landing.home.testimonialsBadge')}
         </p>
         <Heading variant="h1" className="mt-2">
-          Equipos que ya operan con Zenith
+          {t('pages.landing.home.testimonialsTitle')}
         </Heading>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {LANDING_TESTIMONIALS.map((item) => (
@@ -179,10 +180,10 @@ export const HomePage = () => {
 
         <div className="mt-10 overflow-hidden rounded-3xl bg-blue-600 px-6 py-10 text-center text-white shadow-xl sm:px-12">
           <Heading variant="h1" as="h2" className="text-white">
-            Despliega tu primer clúster hoy
+            {t('pages.landing.home.ctaBannerTitle')}
           </Heading>
           <p className="mx-auto mt-3 max-w-xl text-blue-100">
-            14 días gratis, sin tarjeta. Cancela cuando quieras.
+            {t('pages.landing.home.ctaBannerDesc')}
           </p>
           <div className="mt-6 flex flex-col justify-center gap-2 sm:flex-row">
             <Button
@@ -191,7 +192,7 @@ export const HomePage = () => {
               trailingIcon="arrow_forward"
               onClick={() => navigate("/auth/register")}
             >
-              Crear cuenta
+              {t('pages.landing.home.ctaBannerPrimary')}
             </Button>
             <Button
               size="lg"
@@ -199,7 +200,7 @@ export const HomePage = () => {
               className="border-white/30 bg-transparent text-white hover:bg-white/10"
               onClick={() => navigate("/landing/about")}
             >
-              Conocer al equipo
+              {t('pages.landing.home.ctaBannerSecondary')}
             </Button>
           </div>
         </div>

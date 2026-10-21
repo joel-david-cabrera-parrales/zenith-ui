@@ -126,5 +126,293 @@
       "contact": "Contact",
       "home": "Home"
     }
+  },
+  "pages": {
+    "dashboard": {
+      "title": "Zenith UI",
+      "subtitle": "Component Library",
+      "layout": "Layout",
+      "layoutDesc": "12 Paginators + 7 Tables",
+      "dataInputs": "Data Inputs",
+      "dataInputsDesc": "8 Forms",
+      "feedback": "Feedback",
+      "feedbackDesc": "11 Modals + 5 Drawers",
+      "display": "Display",
+      "displayDesc": "22 Cards + 9 Heroes + 5 Typography",
+      "action": "Action",
+      "actionDesc": "8 Buttons"
+    },
+    "buttons": {
+      "title": "Buttons",
+      "subtitle": "8 button variants"
+    },
+    "breadcrumbs": {
+      "title": "Breadcrumbs",
+      "subtitle": "Hierarchical navigation"
+    },
+    "badges": {
+      "title": "Badges",
+      "subtitle": "Labels and counters"
+    },
+    "avatars": {
+      "title": "Avatars",
+      "subtitle": "Avatars and visual identifiers"
+    },
+    "accordions": {
+      "title": "Accordions",
+      "subtitle": "Collapsible panels"
+    },
+    "carousels": {
+      "title": "Carousels",
+      "subtitle": "Content carousels"
+    },
+    "countdowns": {
+      "title": "Countdowns",
+      "subtitle": "Timers and countdowns"
+    },
+    "drawers": {
+      "title": "Drawers",
+      "subtitle": "Sliding side panels"
+    },
+    "dropdowns": {
+      "title": "Dropdowns",
+      "subtitle": "Dropdown menus and selectors"
+    },
+    "diffs": {
+      "title": "Diff",
+      "subtitle": "Visual change comparison"
+    },
+    "forms": {
+      "title": "Forms",
+      "subtitle": "Fields, validation and layouts"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "subtitle": "Modals, drawers, toasts and more"
+    },
+    "loading": {
+      "title": "Loading",
+      "subtitle": "Loading states and skeletons"
+    },
+    "modals": {
+      "title": "Modals",
+      "subtitle": "Modal dialogs and overlays"
+    },
+    "paginators": {
+      "title": "Paginators",
+      "subtitle": "Pagination and load controls"
+    },
+    "progress": {
+      "title": "Progress",
+      "subtitle": "Progress bars and indicators"
+    },
+    "skeletons": {
+      "title": "Skeletons",
+      "subtitle": "Loading placeholders"
+    },
+    "steps": {
+      "title": "Steps",
+      "subtitle": "Step indicators and flows"
+    },
+    "tables": {
+      "title": "Tables",
+      "subtitle": "Advanced data tables"
+    },
+    "tabs": {
+      "title": "Tabs",
+      "subtitle": "Tabbed panels"
+    },
+    "tooltips": {
+      "title": "Tooltips",
+      "subtitle": "Contextual hover information"
+    },
+    "toasts": {
+      "title": "Toasts",
+      "subtitle": "Temporary notifications"
+    },
+    "layout": {
+      "title": "Layout",
+      "subtitle": "Page structures and containers"
+    },
+    "action": {
+      "title": "Action",
+      "subtitle": "Buttons and actions"
+    },
+    "display": {
+      "cards": {
+        "title": "Cards",
+        "subtitle": "Content cards"
+      },
+      "hero": {
+        "title": "Hero Sections",
+        "subtitle": "Hero sections and banners"
+      },
+      "headings": {
+        "title": "Typography",
+        "subtitle": "Type scales and text"
+      }
+    },
+    "landing": {
+      "home": {
+        "badge": "New platform · v2.4",
+        "heroTitle": "Real-time infrastructure, frictionless",
+        "heroDesc": "Ingestion, telemetry and deployments in a single platform built with Zenith UI components. From first event to production in minutes.",
+        "ctaPrimary": "Start free",
+        "ctaSecondary": "View services",
+        "statsLabel": "events",
+        "statsValue": "2.4M/s",
+        "replicasLabel": "replicas",
+        "replicasValue": "48",
+        "incidentsLabel": "incidents",
+        "incidentsValue": "0",
+        "featuresBadge": "All in one",
+        "featuresTitle": "One platform, six superpowers",
+        "featuresDesc": "Each card is a FeatureService from the catalog with fictitious example data.",
+        "pricingBadge": "Pricing",
+        "pricingTitle": "Start free, scale when you want",
+        "testimonialsBadge": "Customers",
+        "testimonialsTitle": "Teams already operating with Zenith",
+        "ctaBannerTitle": "Deploy your first cluster today",
+        "ctaBannerDesc": "14 days free, no card. Cancel anytime.",
+        "ctaBannerPrimary": "Create account",
+        "ctaBannerSecondary": "Meet the team"
+      },
+      "about": {
+        "badge": "Our story",
+        "title": "Building the future of infrastructure",
+        "subtitle": "Zenith UI was born from the real need of platform teams managing thousands of events per second.",
+        "missionTitle": "Our mission",
+        "missionDesc": "Democratize access to high-quality components so any team can build world-class infrastructure interfaces without reinventing the wheel.",
+        "valuesTitle": "Values that guide us",
+        "values": [
+          { "title": "Quality first", "desc": "Every component undergoes exhaustive accessibility, performance and edge-case testing." },
+          { "title": "Developer experience", "desc": "Intuitive APIs, strict TypeScript, living documentation and real examples." },
+          { "title": "Native performance", "desc": "Zero heavy dependencies, real tree-shaking, minimal bundle size." },
+          { "title": "Systematic design", "desc": "Design tokens, dark/light themes, responsive scaling built-in." }
+        ],
+        "teamTitle": "The team",
+        "teamDesc": "A small, focused group of engineers and designers who have built platforms at companies like Vercel, Stripe and GitHub.",
+        "ctaTitle": "Join the adventure?",
+        "ctaDesc": "We're hiring. Work on the core of modern infrastructure.",
+        "ctaButton": "View open positions"
+      },
+      "services": {
+        "badge": "What we do",
+        "title": "Platform Services",
+        "subtitle": "From ingestion to observability, we cover the full infrastructure lifecycle.",
+        "services": [
+          { "title": "Event Ingestion", "desc": "High-throughput pipeline for millions of events/sec with automatic backpressure." },
+          { "title": "Unified Telemetry", "desc": "Metrics, logs and traces in a single view with automatic correlation." },
+          { "title": "Progressive Deployments", "desc": "Canary, blue-green and feature flags with automatic SLO-based rollback." },
+          { "title": "Incident Management", "desc": "Smart alerts, automated on-call and AI-generated postmortems." },
+          { "title": "Configuration as Code", "desc": "Native GitOps with schema validation and drift detection." },
+          { "title": "Developer Portal", "desc": "Service catalog, auto-docs and maturity scorecards." }
+        ]
+      },
+      "contact": {
+        "badge": "Contact",
+        "title": "Let's Talk",
+        "subtitle": "Have questions? Our team is ready to help.",
+        "formTitle": "Send us a message",
+        "nameLabel": "Name",
+        "emailLabel": "Work email",
+        "topicLabel": "Topic",
+        "topicOptions": ["Sales", "Technical Support", "Partnership", "Other"],
+        "messageLabel": "Message",
+        "submitButton": "Send",
+        "successTitle": "Message sent!",
+        "successDesc": "We'll get back to you within 24 hours.",
+        "infoTitle": "Other ways to reach us",
+        "infoItems": [
+          { "label": "Email", "value": "hello@zenith-ui.dev" },
+          { "label": "Discord", "value": "discord.gg/zenith-ui" },
+          { "label": "Twitter", "value": "@zenith_ui" },
+          { "label": "GitHub", "value": "github.com/zenith-ui" }
+        ]
+      }
+    },
+    "auth": {
+      "login": {
+        "badge": "Welcome back",
+        "title": "Sign in",
+        "subtitle": "Use any demo email. We'll take you to the catalog.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "ada@example.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "••••••••",
+        "rememberMe": "Remember me",
+        "forgotLink": "Forgot your access?",
+        "submitButton": "Sign in",
+        "loadingButton": "Signing in…",
+        "divider": "or continue with",
+        "googleButton": "Google",
+        "githubButton": "GitHub",
+        "noAccount": "No account?",
+        "signupLink": "Create one free"
+      },
+      "register": {
+        "badge": "Create your account",
+        "title": "Register free",
+        "subtitle": "Instant access to full catalog. No credit card.",
+        "nameLabel": "Full name",
+        "namePlaceholder": "Ada Lovelace",
+        "emailLabel": "Work email",
+        "emailPlaceholder": "ada@company.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Minimum 8 characters",
+        "confirmLabel": "Confirm password",
+        "confirmPlaceholder": "Repeat password",
+        "termsText": "By continuing, you agree to our",
+        "termsLink": "Terms of Service",
+        "and": "and",
+        "privacyLink": "Privacy Policy",
+        "submitButton": "Create account",
+        "loadingButton": "Creating…",
+        "hasAccount": "Already have an account?",
+        "loginLink": "Sign in"
+      },
+      "forgot": {
+        "badge": "Recover access",
+        "title": "Forgot your password?",
+        "subtitle": "Enter your email and we'll send you a reset link.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "ada@company.com",
+        "submitButton": "Send link",
+        "loadingButton": "Sending…",
+        "successTitle": "Check your inbox!",
+        "successDesc": "We've sent a recovery link to your email. Expires in 1 hour.",
+        "backLink": "Back to login"
+      },
+      "reset": {
+        "badge": "Reset password",
+        "title": "New password",
+        "subtitle": "Your link has been verified. Set your new password below.",
+        "passwordLabel": "New password",
+        "passwordPlaceholder": "Minimum 8 characters",
+        "confirmLabel": "Confirm password",
+        "confirmPlaceholder": "Repeat password",
+        "submitButton": "Update password",
+        "loadingButton": "Updating…",
+        "successTitle": "Password updated!",
+        "successDesc": "You can now sign in with your new password.",
+        "loginButton": "Go to login"
+      }
+    },
+    "helper": {
+      "notFound": {
+        "title": "404",
+        "subtitle": "Page not found",
+        "desc": "The page you're looking for doesn't exist or has been moved.",
+        "homeButton": "Go home",
+        "catalogButton": "Go to catalog"
+      },
+      "serverError": {
+        "title": "500",
+        "subtitle": "Server error",
+        "desc": "Something went wrong on our end. Our team has been notified.",
+        "retryButton": "Retry",
+        "homeButton": "Go home"
+      }
+    }
   }
 }

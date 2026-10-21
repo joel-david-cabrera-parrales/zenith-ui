@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 import { Button } from "@/features/botones/components/Button";
 import { Heading } from "@/features/headings/components/Heading";
 import { BodyText } from "@/features/headings/components/BodyText";
@@ -19,26 +20,27 @@ const PROCESS = [
 
 export const ServicesPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div>
       <section className="border-b border-slate-200/70 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <p className="font-mono text-[10px] font-bold tracking-widest text-blue-600 uppercase">
-            Services
+            {t('pages.landing.services.badge')}
           </p>
           <Heading variant="display-xl" as="h1" className="mt-2 max-w-3xl">
-            Todo lo que tu plataforma necesita
+            {t('pages.landing.services.title')}
           </Heading>
           <BodyText size="lead" className="mt-4 max-w-2xl">
-            Seis servicios ficticios de ejemplo, cada uno un `FeatureService` del catálogo.
+            {t('pages.landing.services.subtitle')}
           </BodyText>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Button trailingIcon="arrow_forward" onClick={() => navigate("/auth/register")}>
-              Probar 14 días gratis
+              {t('pages.landing.services.ctaPrimary')}
             </Button>
             <Button variant="outline" leadingIcon="groups" onClick={() => navigate("/landing/about")}>
-              Conocer al equipo
+              {t('pages.landing.services.ctaSecondary')}
             </Button>
           </div>
         </div>
@@ -62,10 +64,10 @@ export const ServicesPage = () => {
       <section className="border-y border-slate-200/70 bg-slate-950 text-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <p className="font-mono text-[10px] font-bold tracking-widest text-blue-300 uppercase">
-            Cómo trabajamos
+            {t('pages.landing.services.processBadge')}
           </p>
           <Heading variant="h1" as="h2" className="mt-2 text-white">
-            De cero a producción en tres pasos
+            {t('pages.landing.services.processTitle')}
           </Heading>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {PROCESS.map((item) => (
@@ -87,7 +89,7 @@ export const ServicesPage = () => {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <Heading variant="h2">Planes que escalan contigo</Heading>
+        <Heading variant="h2">{t('pages.landing.services.pricingTitle')}</Heading>
         <div className="mt-6 grid gap-4 lg:grid-cols-3">
           {LANDING_PRICING.map((tier) => (
             <PricingTier
@@ -106,7 +108,7 @@ export const ServicesPage = () => {
 
       <section className="border-t border-slate-200/70 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <Heading variant="h2">Lo que dicen</Heading>
+          <Heading variant="h2">{t('pages.landing.services.testimonialsTitle')}</Heading>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {LANDING_TESTIMONIALS.map((item) => (
               <Testimonial
