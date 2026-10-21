@@ -44,28 +44,28 @@ const ICON_SIZE_CLASSES: Record<ButtonSize, string> = {
 };
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm',
+  primary: 'bg-blue-600 text-white dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-400 active:bg-blue-800 dark:active:bg-blue-600 shadow-sm',
   secondary:
-    'bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 shadow-sm',
+    'bg-slate-900 text-white dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 active:bg-slate-950 dark:active:bg-slate-900 shadow-sm',
   outline:
-    'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 active:bg-slate-100 shadow-sm',
-  subtle: 'bg-blue-50 text-blue-700 hover:bg-blue-100 active:bg-blue-200',
+    'border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-400 dark:hover:border-slate-400 active:bg-slate-100 dark:active:bg-slate-700 shadow-sm',
+  subtle: 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 active:bg-blue-200 dark:active:bg-blue-900/40',
   ghost:
-    'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 active:bg-slate-200',
-  link: 'text-blue-600 hover:text-blue-700 hover:underline',
+    'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-800',
+  link: 'text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline',
   success:
-    'bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 shadow-sm',
+    'bg-emerald-600 text-white dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-400 active:bg-emerald-800 dark:active:bg-emerald-600 shadow-sm',
   successSubtle:
-    'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200',
+    'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-700',
   warning:
-    'bg-amber-500 text-white hover:bg-amber-600 active:bg-amber-700 shadow-sm',
+    'bg-amber-500 text-white dark:bg-amber-400 hover:bg-amber-600 dark:hover:bg-amber-300 active:bg-amber-700 dark:active:bg-amber-500 shadow-sm',
   warningSubtle:
-    'bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200',
+    'bg-amber-50 text-amber-800 dark:bg-amber-900/20 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/30 border border-amber-200 dark:border-amber-700',
   danger:
-    'bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 shadow-sm',
+    'bg-rose-600 text-white dark:bg-rose-500 hover:bg-rose-700 dark:hover:bg-rose-400 active:bg-rose-800 dark:active:bg-rose-600 shadow-sm',
   dangerOutline:
-    'border border-rose-300 text-rose-600 bg-white hover:bg-rose-50 shadow-sm',
-  info: 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm',
+    'border border-rose-300 dark:border-rose-700 text-rose-600 dark:text-rose-400 bg-white dark:bg-slate-800 hover:bg-rose-50 dark:hover:bg-rose-900/20 shadow-sm',
+  info: 'bg-indigo-600 text-white dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-400 shadow-sm',
 };
 
 const Spinner = ({ className = '' }: { className?: string }) => {
@@ -112,8 +112,8 @@ export const Button = ({
   const ghostLike = variant === 'outline' || variant === 'ghost' || variant === 'link';
   const look = isDisabled
     ? ghostLike
-      ? 'border border-slate-200 bg-white text-slate-300 shadow-none'
-      : 'bg-slate-200 text-slate-400 shadow-none'
+      ? 'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-300 dark:text-slate-500 shadow-none'
+      : 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 shadow-none'
     : VARIANT_CLASSES[variant];
   const iconSize = ICON_SIZE_CLASSES[size];
 
@@ -145,12 +145,12 @@ export const Button = ({
         </span>
       )}
       {badge !== undefined && (
-        <span className="ml-1 rounded-full bg-blue-100 px-1.5 py-0.5 text-xs font-bold text-blue-700">
+        <span className="ml-1 rounded-full bg-blue-100 dark:bg-blue-900/20 px-1.5 py-0.5 text-xs font-bold text-blue-700 dark:text-blue-400">
           {badge}
         </span>
       )}
       {shortcut !== undefined && (
-        <kbd className="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-slate-500">
+        <kbd className="rounded border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-slate-500 dark:text-slate-400">
           {shortcut}
         </kbd>
       )}

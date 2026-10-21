@@ -2,18 +2,16 @@ import { useState } from "react";
 import { Outlet } from "react-router";
 import { DeepSidebar } from "../../shared/components/sidebar/DeepSidebar";
 import { Topbar } from "../../shared/components/topbar/Topbar";
-import type { ShellTone } from "../../shared/components/interfaces/navigation.interface";
+import { useTheme } from "@/shared/hooks/useTheme";
 
 export const FeaturesLayout = () => {
-  const [tone, setTone] = useState<ShellTone>("light");
+  const { dark, toggleTheme } = useTheme();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExiting, setMobileExiting] = useState(false);
-  const dark = tone === "dark";
+  const tone = dark ? "dark" : "light";
 
-  const toggleTone = () => {
-    setTone((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const toggleTone = toggleTheme;
 
   const toggleCollapsed = () => {
     setCollapsed((prev) => !prev);

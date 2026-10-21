@@ -7,16 +7,18 @@ import {
   StepsList,
 } from '../components';
 import { EDITORIAL_HTML, EDITORIAL_TSX } from '../snippets';
+import { useTheme } from '@/shared/hooks/useTheme';
 
 export const EditorialDoc = () => {
+  const { dark } = useTheme();
   return (
     <ComponentDoc
       title="Contenido editorial, citas y listas"
       description="Blockquote, callouts y patrones de lista del diseño headings (03)."
       preview={
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-            <span className="font-mono text-[10px] text-slate-500 uppercase font-bold block mb-4">
+          <div className={`bg-white border border-slate-200 rounded-xl p-6 shadow-sm ${dark ? "dark:bg-dark-raised dark:border-dark-border dark:shadow-none" : ""}`}>
+            <span className={`font-mono text-[10px] ${dark ? "text-slate-400" : "text-slate-500"} uppercase font-bold block mb-4`}>
               BLOCKQUOTE // CITATION
             </span>
             <Blockquote
@@ -29,8 +31,8 @@ export const EditorialDoc = () => {
               decisiones de alta presión en segundos.&quot;
             </Blockquote>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-4">
-            <span className="font-mono text-[10px] text-slate-500 uppercase font-bold block">
+          <div className={`bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-4 ${dark ? "dark:bg-dark-raised dark:border-dark-border dark:shadow-none" : ""}`}>
+            <span className={`font-mono text-[10px] ${dark ? "text-slate-400" : "text-slate-500"} uppercase font-bold block`}>
               CALLOUTS // NOTIFICATION CONTAINERS
             </span>
             <Callout tone="info" title="Nota de configuración de telemetría">
@@ -46,12 +48,12 @@ export const EditorialDoc = () => {
               autoescalar.
             </Callout>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
-            <span className="font-mono text-[10px] text-slate-500 uppercase font-bold block">
+          <div className={`bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6 ${dark ? "dark:bg-dark-raised dark:border-dark-border dark:shadow-none" : ""}`}>
+            <span className={`font-mono text-[10px] ${dark ? "text-slate-400" : "text-slate-500"} uppercase font-bold block`}>
               LIST PATTERNS // MULTI-STYLE
             </span>
             <div className="space-y-2">
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block">
+              <span className={`text-xs font-semibold ${dark ? "text-slate-400" : "text-slate-500"} uppercase tracking-wider block`}>
                 Lista de verificación técnica
               </span>
               <CheckList
@@ -62,9 +64,9 @@ export const EditorialDoc = () => {
                 ]}
               />
             </div>
-            <hr className="border-slate-200" />
+            <hr className={`border-slate-200 ${dark ? "dark:border-dark-border" : ""}`} />
             <div className="space-y-2">
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block">
+              <span className={`text-xs font-semibold ${dark ? "text-slate-400" : "text-slate-500"} uppercase tracking-wider block`}>
                 Pipeline secuencial
               </span>
               <StepsList
@@ -75,9 +77,9 @@ export const EditorialDoc = () => {
                 ]}
               />
             </div>
-            <hr className="border-slate-200" />
+            <hr className={`border-slate-200 ${dark ? "dark:border-dark-border" : ""}`} />
             <div className="space-y-2">
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block">
+              <span className={`text-xs font-semibold ${dark ? "text-slate-400" : "text-slate-500"} uppercase tracking-wider block`}>
                 Pares clave-valor
               </span>
               <KeyValueList
@@ -98,4 +100,4 @@ export const EditorialDoc = () => {
       jsxCode={EDITORIAL_TSX}
     />
   );
-}
+};

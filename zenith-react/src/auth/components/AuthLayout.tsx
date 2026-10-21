@@ -1,5 +1,6 @@
 import { Link, Outlet, useNavigate } from "react-router";
 import { Button } from "@/features/botones/components/Button";
+import { useTheme } from "@/shared/hooks/useTheme";
 
 const HIGHLIGHTS = [
   { icon: "bolt", title: "Ingesta en vivo", text: "2.4M eventos/s por clúster" },
@@ -9,16 +10,17 @@ const HIGHLIGHTS = [
 
 export const AuthLayout = () => {
   const navigate = useNavigate();
+  const { dark } = useTheme();
 
   return (
-    <div className="min-h-screen w-full bg-slate-100 text-slate-800 antialiased">
+    <div className={`min-h-screen w-full antialiased ${dark ? "bg-slate-950 text-slate-200" : "bg-slate-100 text-slate-800"}`}>
       <div className="grid min-h-screen lg:grid-cols-2">
         {/* Panel marca */}
-        <aside className="relative hidden overflow-hidden bg-slate-950 text-white lg:flex lg:flex-col lg:justify-between lg:p-10">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_20%_10%,rgba(37,99,235,0.35),transparent),radial-gradient(50%_40%_at_90%_90%,rgba(37,99,235,0.22),transparent)]"
-          />
+        <aside className={`relative hidden overflow-hidden ${dark ? "bg-slate-950 text-white" : "bg-slate-900 text-slate-900"} lg:flex lg:flex-col lg:justify-between lg:p-10`}>
+            <div
+              aria-hidden="true"
+              className={`pointer-events-none absolute inset-0 ${dark ? "bg-[radial-gradient(60%_50%_at_20%_10%,rgba(37,99,235,0.35),transparent),radial-gradient(50%_40%_at_90%_90%,rgba(37,99,235,0.22),transparent)]" : "bg-[radial-gradient(60%_50%_at_20%_10%,rgba(37,99,235,0.15),transparent),radial-gradient(50%_40%_at_90%_90%,rgba(37,99,235,0.1),transparent)]"}`}
+            />
           <div className="relative flex items-center justify-between">
             <button
               type="button"
@@ -50,7 +52,7 @@ export const AuthLayout = () => {
               {HIGHLIGHTS.map((item) => (
                 <li
                   key={item.title}
-                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3.5"
+                  className={`flex items-center gap-3 rounded-2xl border p-3.5 ${dark ? "border-white/10 bg-white/5" : "border-slate-200 bg-slate-50"}`}
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
                     <span aria-hidden="true" className="material-symbols-outlined text-xl">
@@ -59,14 +61,14 @@ export const AuthLayout = () => {
                   </span>
                   <span>
                     <span className="block text-sm font-bold">{item.title}</span>
-                    <span className="block text-xs text-slate-400">{item.text}</span>
+                    <span className={`block text-xs ${dark ? "text-slate-400" : "text-slate-400"}`}>{item.text}</span>
                   </span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <p className="relative font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+          <p className={`relative font-mono text-[10px] tracking-widest uppercase ${dark ? "text-slate-400" : "text-slate-500"}`}>
             Slate / Blue · Tailwind · Demo sin backend
           </p>
         </aside>
@@ -79,9 +81,9 @@ export const AuthLayout = () => {
             </Button>
             <Link
               to="/landing/home"
-              className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 lg:hidden"
+              className={`flex items-center gap-2 text-sm font-medium ${dark ? "text-slate-400 hover:text-white" : "text-slate-500 hover:text-slate-900"} lg:hidden`}
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white">
+              <span className={`flex h-8 w-8 items-center justify-center rounded-lg ${dark ? "bg-slate-800 text-white" : "bg-slate-900 text-white"}`}>
                 <span aria-hidden="true" className="material-symbols-outlined text-lg">
                   star
                 </span>
@@ -92,10 +94,10 @@ export const AuthLayout = () => {
           </div>
 
           <div className="grid flex-1 place-items-center px-4 pb-10 sm:px-8">
-            <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+            <div className={`w-full max-w-md rounded-3xl border p-6 sm:p-8 ${dark ? "border-slate-700 bg-slate-900" : "border-slate-200 bg-white"}`}>
               <Outlet />
             </div>
-            <p className="mt-4 text-center text-xs text-slate-400">
+            <p className={`mt-4 text-center text-xs ${dark ? "text-slate-400" : "text-slate-400"}`}>
               Páginas de ejemplo · los datos no salen de tu navegador
             </p>
           </div>

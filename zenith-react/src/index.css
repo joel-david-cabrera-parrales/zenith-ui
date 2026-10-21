@@ -1,7 +1,14 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @import "material-symbols/outlined.css";
 
 @theme {
+  --color-dark-base: #141417;
+  --color-dark-raised: #16171d;
+  --color-dark-overlay: #1b1c22;
+  --color-dark-hover: #1f2026;
+  --color-dark-focus: #20222a;
+  --color-dark-border: #272930;
   --animate-overlay-in: overlay-in 200ms ease-out both;
   --animate-overlay-out: overlay-out 200ms ease-in both;
   --animate-modal-in: modal-in 200ms ease-out both;

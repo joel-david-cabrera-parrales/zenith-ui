@@ -21,7 +21,8 @@ export interface DeepGroup {
   id: string;
   label: string;
   icon: string;
-  sections: DeepSection[];
+  sections?: DeepSection[];
+  links?: DeepLink[];
 }
 
 export interface DeepArea {
@@ -213,9 +214,9 @@ const AREAS: DeepArea[] = [
 function findActiveId(pathname: string): string | null {
   for (const area of AREAS) {
     for (const group of area.groups) {
-      const links = group.sections
+      const links = "sections" in group && group.sections
         ? group.sections.flatMap((section) => section.links)
-        : group.links || [];
+        : group.links ?? [];
       for (const link of links) {
         if (!link.route) continue;
         if (pathname === link.route || pathname.startsWith(link.route + "/")) {
@@ -248,7 +249,7 @@ export const DeepSidebar = ({
 
   const filteredAreas = AREAS.map((area) => {
     const filteredGroups = area.groups.map((group) => {
-      if (group.sections) {
+      if ("sections" in group && group.sections) {
         const filteredSections = group.sections.map((section) => {
           const filteredLinks = section.links.filter((link) =>
             link.label.toLowerCase().includes(query.toLowerCase())
@@ -257,14 +258,14 @@ export const DeepSidebar = ({
         }).filter((section) => section.links.length > 0);
         return { ...group, sections: filteredSections };
       } else {
-        const filteredLinks = (group.links || []).filter((link) =>
+        const filteredLinks = (group.links ?? []).filter((link) =>
           link.label.toLowerCase().includes(query.toLowerCase())
         );
         return { ...group, links: filteredLinks };
       }
     }).filter((group) => {
-      if (group.sections) return group.sections.length > 0;
-      return (group.links || []).length > 0;
+      if ("sections" in group && group.sections) return group.sections.length > 0;
+      return (group.links ?? []).length > 0;
     });
     return { ...area, groups: filteredGroups };
   }).filter((area) => area.groups.length > 0);
@@ -285,10 +286,10 @@ export const DeepSidebar = ({
       open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
     }`;
 
-  const bg = dark ? "bg-slate-950" : "bg-white";
-  const border = dark ? "border-slate-700/60" : "border-slate-200";
+  const bg = dark ? "bg-slate-900" : "bg-white";
+  const border = dark ? "border-slate-800/50" : "border-slate-200";
   const text = dark ? "text-white" : "text-slate-900";
-  const textMuted = dark ? "text-slate-400" : "text-slate-600";
+  const textMuted = dark ? "text-slate-300" : "text-slate-600";
   const textSecondary = dark ? "text-slate-300" : "text-slate-500";
   const hoverBg = dark ? "hover:bg-slate-800 hover:text-white" : "hover:bg-slate-100 hover:text-slate-900";
   return (
@@ -311,7 +312,7 @@ export const DeepSidebar = ({
             aria-hidden="true"
             className={cx(
               "flex h-10 w-10 items-center justify-center rounded-full font-bold text-white",
-              dark ? "bg-slate-700" : "bg-blue-600",
+              dark ? "bg-slate-800" : "bg-blue-600",
             )}
           >
             Z
@@ -334,12 +335,12 @@ export const DeepSidebar = ({
               placeholder="Buscar..."
               className={cx(
                 "w-full rounded-xl border py-1.5 pr-9 pl-9 text-xs transition-all focus:outline-none",
-                dark
-                  ? "border-slate-700/60 bg-slate-800 text-slate-200 placeholder-slate-500 focus:border-blue-500"
-                  : "border-transparent bg-slate-100 text-slate-800 placeholder-slate-400 hover:bg-slate-200/70 focus:border-blue-500 focus:bg-white",
+                  dark
+                    ? "border-slate-700/60 bg-slate-800 text-slate-200 placeholder-slate-500 focus:border-blue-500"
+                    : "border-transparent bg-slate-100 text-slate-800 placeholder-slate-400 hover:bg-slate-200/70 focus:border-blue-500 focus:bg-white",
               )}
             />
-            <span className="pointer-events-none absolute right-2 rounded border border-slate-200/80 bg-white px-1.5 py-0.5 text-[9px] font-semibold text-slate-400">
+            <span className="pointer-events-none absolute right-2 rounded border border-slate-600/60 bg-slate-800 px-1.5 py-0.5 text-[9px] font-semibold text-slate-400">
               ⌘K
             </span>
           </div>
@@ -352,7 +353,7 @@ export const DeepSidebar = ({
           const areaButtonId = `${baseId}-${area.id}-button`;
           const areaPanelId = `${baseId}-${area.id}-panel`;
           return (
-            <div key={area.id} className={cx(areaOpen ? "rounded-lg bg-blue-50/60" : "rounded-lg")}>
+            <div key={area.id} className={cx("rounded-lg")}>
               <button
                 type="button"
                 id={areaButtonId}
@@ -379,7 +380,7 @@ export const DeepSidebar = ({
                   {!collapsed && <span className={cx(text)}>{area.label}</span>}
                 </span>
                 {!collapsed && (
-                  <span aria-hidden="true" className={chevron(areaOpen, dark ? "text-blue-500" : "text-blue-600")}>
+                  <span aria-hidden="true" className={chevron(areaOpen, "text-blue-400")}>
                     expand_more
                   </span>
                 )}
@@ -412,9 +413,8 @@ export const DeepSidebar = ({
                               tabIndex={areaOpen ? 0 : -1}
                               className={cx(
                                 "flex w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-[13px] font-semibold transition-colors",
-                                groupOpen ? "border-blue-200 text-blue-600" : `border-slate-200 ${textMuted}`,
-                                "hover:bg-slate-100",
-                                dark && "hover:bg-slate-800 hover:text-white",
+                                groupOpen ? "border-blue-500 text-blue-400" : `border-slate-600/50 ${textMuted}`,
+                                hoverBg,
                               )}
                             >
                               <span className="flex items-center gap-2">
@@ -426,7 +426,7 @@ export const DeepSidebar = ({
                                 </span>
                                 <span className={cx(text)}>{group.label}</span>
                               </span>
-                              <span aria-hidden="true" className={chevron(groupOpen, dark ? "text-slate-500" : "text-slate-500")}>
+                              <span aria-hidden="true" className={chevron(groupOpen, textSecondary)}>
                                 expand_more
                               </span>
                             </button>
@@ -457,9 +457,8 @@ export const DeepSidebar = ({
                                           tabIndex={groupOpen ? 0 : -1}
                                           className={cx(
                                             "flex w-full cursor-pointer items-center justify-between gap-2 rounded px-2 py-1 text-left font-semibold transition-colors",
-                                            sectionOpen ? "border-blue-300 text-blue-500" : `border-slate-200 ${textSecondary}`,
-                                            "hover:bg-slate-100 hover:text-slate-700",
-                                            dark && "hover:bg-slate-800 hover:text-white",
+                                            sectionOpen ? "border-blue-500 text-blue-400" : `border-slate-600/50 ${textSecondary}`,
+                                            hoverBg,
                                           )}
                                         >
                                           <span className="flex items-center gap-2">
@@ -478,7 +477,7 @@ export const DeepSidebar = ({
                                             className={cx(
                                               "material-symbols-outlined text-[16px] transition-transform duration-300 ease-in-out",
                                               sectionOpen ? "rotate-180" : "",
-                                              sectionOpen ? "text-blue-500" : "text-slate-400",
+                                              sectionOpen ? "text-blue-400" : textSecondary,
                                             )}
                                           >
                                             expand_more
@@ -541,7 +540,7 @@ export const DeepSidebar = ({
                                     );
                                   }) ?? (
                                     <>
-                                      {group.links?.map((link) => {
+                                      {(group.links ?? []).map((link) => {
                                         const active = activeId === link.id;
                                         return (
                                           <button
@@ -622,7 +621,7 @@ export const DeepSidebar = ({
               JJ
             </span>
             <span className={cx("text-xs font-semibold", text)}>Jonathan J.</span>
-            <span className="ml-auto font-mono text-[9px] text-slate-500">v2.4.0</span>
+            <span className={`ml-auto font-mono text-[9px] ${textMuted}`}>v2.4.0</span>
           </>
         )}
       </div>
