@@ -25,7 +25,7 @@ export const ComponentDoc = ({
         <p className={`mt-1 text-sm ${dark ? "text-slate-400" : "text-slate-500"}`}>{description}</p>
       )}
       <div className="mt-4">
-        <TabbedView preview={preview} htmlCode={htmlCode} jsxCode={jsxCode} maxWidth={maxWidth} />
+        <TabbedView preview={preview} htmlCode={htmlCode} jsxCode={jsxCode} />
       </div>
     </section>
   );

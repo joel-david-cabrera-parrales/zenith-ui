@@ -8,7 +8,6 @@ import type {
   CodeLanguage,
   HighlightLine,
 } from '../../utils/highlight';
-import { useTheme } from '@/shared/hooks/useTheme';
 
 interface CodeBlockProps {
   code: string;
@@ -17,7 +16,6 @@ interface CodeBlockProps {
 }
 
 export const CodeBlock = ({ code, label, language }: CodeBlockProps) => {
-  const { dark } = useTheme();
   const { copied, copy } = useCopyToClipboard();
   const [lines, setLines] = useState<HighlightLine[] | null>(null);
 
@@ -36,13 +34,13 @@ export const CodeBlock = ({ code, label, language }: CodeBlockProps) => {
   }, [code, language]);
 
   return (
-    <div className={`relative ${dark ? "bg-slate-900" : "bg-slate-100"}`}>
+    <div className="relative bg-slate-900">
       <button
         type="button"
         onClick={() => void copy(code)}
         aria-label={copied ? `${label} copiado` : `Copiar ${label}`}
         title={copied ? 'Copiado' : 'Copiar'}
-        className={`absolute top-2 right-2 z-10 rounded-md p-1.5 transition-colors ${dark ? "bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white" : "bg-black/10 text-slate-700 hover:bg-black/20 hover:text-slate-900"}`}
+        className="absolute top-2 right-2 z-10 rounded-md bg-white/10 p-1.5 text-slate-200 transition-colors hover:bg-white/20 hover:text-white"
       >
         {copied ? (
           <svg
@@ -83,7 +81,7 @@ export const CodeBlock = ({ code, label, language }: CodeBlockProps) => {
                 <span key={i} className="flex min-w-max">
                   <span
                     aria-hidden="true"
-                    className={`w-8 shrink-0 pr-4 text-right select-none ${dark ? "text-slate-500" : "text-slate-400"}`}
+                    className="w-8 shrink-0 pr-4 text-right text-slate-500 select-none"
                   >
                     {i + 1}
                   </span>

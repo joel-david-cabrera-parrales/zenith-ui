@@ -14,8 +14,8 @@ export interface HighlightToken {
 
 export type HighlightLine = HighlightToken[];
 
-export const CODE_THEME = 'tokyo-night' as const;
-export const CODE_FALLBACK_COLOR = '#c0caf5';
+export const CODE_THEME = 'github-dark' as const;
+export const CODE_FALLBACK_COLOR = '#ffffff';
 
 let highlighterPromise: Promise<HighlighterCore> | null = null;
 
@@ -23,7 +23,7 @@ function getHighlighter(): Promise<HighlighterCore> {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighterCore({
       engine: createJavaScriptRegexEngine(),
-      themes: [import('@shikijs/themes/tokyo-night')],
+      themes: [import('@shikijs/themes/github-dark')],
       langs: [import('@shikijs/langs/html'), import('@shikijs/langs/tsx')],
     });
   }
