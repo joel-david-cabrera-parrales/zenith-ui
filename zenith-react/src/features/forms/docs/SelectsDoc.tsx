@@ -5,6 +5,7 @@ import {
   Select,
   TagMultiSelect,
 } from '../components';
+import { LanguageSelect } from '@/shared/components/topbar/LanguageSelect';
 import { SELECTS_HTML, SELECTS_TSX } from '../snippets';
 
 const EVENT_OPTIONS = [
@@ -80,6 +81,9 @@ export const SelectsDoc = () => {
             defaultSelected={['Frontend', 'Cloud API']}
             options={TAG_OPTIONS}
           />
+          <div className="sm:col-span-2">
+            <LanguageSelect />
+          </div>
         </div>
       }
       htmlCode={SELECTS_HTML}

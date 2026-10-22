@@ -6,7 +6,7 @@ import {
   SHELL_NOTIFICATIONS,
 } from "../interfaces/navigation.interface";
 import { useLanguage } from "@/shared/hooks/useLanguage";
-import { LANGUAGE_OPTIONS } from "@/shared/utils/language-storage";
+import { LanguageSelect } from "./LanguageSelect";
 
 export interface TopbarProps {
   tone?: ShellTone;
@@ -23,7 +23,7 @@ type Popover = "none" | "search" | "notifications" | "profile";
 
 export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, collapsed = false }: TopbarProps) => {
   const dark = tone === "dark";
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   const searchId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("Keynote");
@@ -187,6 +187,8 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, coll
               {dark ? "light_mode" : "dark_mode"}
             </span>
           </button>
+          {/* Language Selector - Position B: after theme toggle, before notifications */}
+          <LanguageSelect />
           <button
             type="button"
             aria-label="Notificaciones"
@@ -461,24 +463,6 @@ export const Topbar = ({ tone = "light", onToggleTheme, onMenu, onCollapse, coll
                       </span>
                     </button>
                   ))}
-                  <div className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-medium">
-                    <span className="material-symbols-outlined text-lg text-slate-500">
-                      language
-                    </span>
-                    {t('shell.topbar.language')}
-                    <select
-                      value={language}
-                      onChange={(e) => setLanguage(e.target.value as 'es' | 'en' | 'fr' | 'de')}
-                      className="ml-auto bg-transparent border-0 text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded px-1 py-0.5"
-                      aria-label={t('shell.topbar.language')}
-                    >
-                      {LANGUAGE_OPTIONS.map((opt) => (
-                        <option key={opt.code} value={opt.code}>
-                          {opt.flag} {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
                   <div className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-medium">
                     <span className="material-symbols-outlined text-lg text-slate-500">
                       dark_mode

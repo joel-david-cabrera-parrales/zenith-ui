@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { CodeBlock } from './CodeBlock';
+import { useTheme } from '@/shared/hooks/useTheme';
 
 export type TabId = 'preview' | 'html' | 'jsx';
 
@@ -17,6 +18,7 @@ const TABS: { id: TabId; label: string }[] = [
 ];
 
 export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
+  const { dark } = useTheme();
   const visibleTabs = TABS.filter((tab) => {
     if (tab.id === 'preview') return preview !== undefined;
     if (tab.id === 'html') return htmlCode !== undefined;
@@ -31,8 +33,8 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
   if (activeTab === undefined) return null;
 
   return (
-    <div className="w-full max-w-4xl min-w-[18rem] overflow-hidden rounded-lg border border-slate-200">
-      <div role="tablist" aria-label="Vista del componente" className="flex gap-1 border-b border-slate-200 bg-slate-50 p-2">
+    <div className={`w-full max-w-4xl min-w-[18rem] overflow-hidden rounded-lg border ${dark ? 'border-slate-700' : 'border-slate-200'}`}>
+      <div role="tablist" aria-label="Vista del componente" className={`flex gap-1 border-b ${dark ? 'border-slate-700 bg-slate-900' : 'border-slate-200 bg-slate-50'} p-2`}>
         {visibleTabs.map((tab) => {
           const selected = activeTab === tab.id;
           return (
@@ -43,8 +45,12 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
               onClick={() => setActive(tab.id)}
               className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
                 selected
-                  ? 'bg-white text-slate-900 shadow-sm ring-1 ring-slate-200'
-                  : 'text-slate-500 hover:text-slate-900'
+                  ? dark
+                    ? 'bg-slate-800 text-white shadow-sm ring-1 ring-slate-700'
+                    : 'bg-white text-slate-900 shadow-sm ring-1 ring-slate-200'
+                  : dark
+                    ? 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    : 'text-slate-500 hover:text-slate-900'
               }`}
             >
               {tab.label}
@@ -53,7 +59,7 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
         })}
       </div>
 
-      <div className="bg-white">
+      <div className={dark ? 'bg-slate-900' : 'bg-white'}>
         {activeTab === 'preview' && (
           <div
             role="tabpanel"
