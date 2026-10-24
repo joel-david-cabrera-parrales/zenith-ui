@@ -31,6 +31,7 @@
     "dropdowns": "Menus déroulants",
     "badges": "Badges",
     "progress": "Progression",
+    "charts": "Graphiques",
     "toasts": "Toasts",
     "avatars": "Avatars",
     "accordions": "Accordéons",
@@ -100,6 +101,7 @@
       "badges": "Badges",
       "avatars": "Avatars",
       "progress": "Progression",
+      "charts": "Graphiques",
       "diffs": "Diff",
       "carousels": "Carrousels",
       "steps": "Étapes",
@@ -194,6 +196,14 @@
       "title": "Éditeur de texte enrichi",
       "subtitle": "Mise en forme, listes et liens pour le contenu enrichi",
       "description": "Un éditeur visuel pour créer du contenu HTML structuré. Il permet de formater le texte, de l'organiser avec des titres, des listes et des citations, et d'ajouter des liens. Le résultat peut alimenter des formulaires ou des pages; les variantes complète et compacte incluent les états erreur, désactivé et lecture seule.",
+      "terminal": "Terminal",
+      "copyCommand": "Copier la commande d'installation",
+      "copied": "Commande copiée"
+    },
+    "charts": {
+      "title": "Graphiques",
+      "subtitle": "Visualisation des données pour les tableaux de bord et rapports",
+      "description": "Visualisez les métriques et tendances avec des graphiques à barres, en courbes et circulaires/anneaux. Inclut des info-bulles interactives, les états de chargement et sans données, des palettes personnalisables, des tailles adaptatives et les thèmes clair et sombre.",
       "terminal": "Terminal",
       "copyCommand": "Copier la commande d'installation",
       "copied": "Commande copiée"

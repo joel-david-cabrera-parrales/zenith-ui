@@ -64,6 +64,7 @@ const AREAS: DeepArea[] = [
               { id: "badges", label: "deep.links.badges", icon: "badge", route: "/display/badges" },
               { id: "avatars", label: "deep.links.avatars", icon: "account_circle", route: "/display/avatars" },
               { id: "progress", label: "deep.links.progress", icon: "trending_up", route: "/display/progress" },
+              { id: "charts", label: "deep.links.charts", icon: "bar_chart", route: "/display/charts" },
               { id: "diffs", label: "deep.links.diffs", icon: "compare", route: "/display/diffs" },
               { id: "carousels", label: "deep.links.carousels", icon: "view_carousel", route: "/display/carousels" },
               { id: "steps", label: "deep.links.steps", icon: "footprint", route: "/display/steps" },

@@ -31,6 +31,7 @@
     "dropdowns": "Dropdowns",
     "badges": "Badges",
     "progress": "Fortschritt",
+    "charts": "Diagramme",
     "toasts": "Toasts",
     "avatars": "Avatare",
     "accordions": "Akkordeons",
@@ -100,6 +101,7 @@
       "badges": "Badges",
       "avatars": "Avatare",
       "progress": "Fortschritt",
+      "charts": "Diagramme",
       "diffs": "Diff",
       "carousels": "Karussells",
       "steps": "Schritte",
@@ -194,6 +196,14 @@
       "title": "Rich-Text-Editor",
       "subtitle": "Formatierung, Listen und Links für reichhaltige Inhalte",
       "description": "Ein visueller Editor für strukturierte HTML-Inhalte. Text lässt sich formatieren, mit Überschriften, Listen und Zitaten gliedern und mit Links ergänzen. Die Ausgabe eignet sich für Formulare und Seiten; die vollständige und kompakte Variante unterstützen Fehler-, Deaktiviert- und Nur-Lesen-Zustände.",
+      "terminal": "Terminal",
+      "copyCommand": "Installationsbefehl kopieren",
+      "copied": "Befehl kopiert"
+    },
+    "charts": {
+      "title": "Diagramme",
+      "subtitle": "Datenvisualisierung für Dashboards und Berichte",
+      "description": "Visualisieren Sie Kennzahlen und Trends mit Balken-, Linien- und Kreis-/Ringdiagrammen. Enthält interaktive Tooltips, Lade- und Leerzustände, anpassbare Farbpaletten, responsive Größen sowie Unterstützung für helle und dunkle Designs.",
       "terminal": "Terminal",
       "copyCommand": "Installationsbefehl kopieren",
       "copied": "Befehl kopiert"

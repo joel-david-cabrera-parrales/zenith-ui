@@ -31,6 +31,7 @@
     "dropdowns": "Dropdowns",
     "badges": "Badges",
     "progress": "Progress",
+    "charts": "Charts",
     "toasts": "Toasts",
     "avatars": "Avatars",
     "accordions": "Accordions",
@@ -100,6 +101,7 @@
       "badges": "Badges",
       "avatars": "Avatars",
       "progress": "Progress",
+      "charts": "Charts",
       "diffs": "Diff",
       "carousels": "Carousels",
       "steps": "Steps",
@@ -194,6 +196,14 @@
       "title": "Rich Text Editor",
       "subtitle": "Formatting, lists and links for rich content",
       "description": "A visual editor for creating structured HTML content. Format text, organize it with headings, lists and quotations, and add links. Its output can power forms or page content; full and compact variants include error, disabled and read-only states.",
+      "terminal": "Terminal",
+      "copyCommand": "Copy install command",
+      "copied": "Command copied"
+    },
+    "charts": {
+      "title": "Charts",
+      "subtitle": "Data visualization for dashboards and reports",
+      "description": "Visualize metrics and trends with bar, line, and pie/donut charts. Includes interactive tooltips, loading and empty states, customizable palettes, responsive sizes, and light and dark theme support.",
       "terminal": "Terminal",
       "copyCommand": "Copy install command",
       "copied": "Command copied"

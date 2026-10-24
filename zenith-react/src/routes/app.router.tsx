@@ -49,6 +49,13 @@ export const appRouter = createBrowserRouter([
       { path: 'layout/tables', element: <TablesPage /> },
       { path: 'forms/forms', element: <FormsPage /> },
       { path: 'forms/rich-text-editor', element: <RichTextEditorPage /> },
+      {
+        path: 'display/charts',
+        lazy: async () => {
+          const { ChartsPage } = await import('@/pages/ChartsPage');
+          return { Component: ChartsPage };
+        },
+      },
       { path: 'forms/file-upload', element: <FileUploadPage /> },
       { path: 'feedback/modals', element: <ModalsPage /> },
       { path: 'feedback/drawers', element: <DrawersPage /> },
