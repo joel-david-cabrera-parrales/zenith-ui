@@ -355,3 +355,126 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Rich text editor content styles */
+.rich-text-content .rich-text-prose {
+  min-height: inherit;
+  overflow-wrap: anywhere;
+}
+
+.rich-text-content .rich-text-prose > * + * {
+  margin-top: 0.875rem;
+}
+
+.rich-text-content .rich-text-prose p {
+  margin-bottom: 0.875rem;
+}
+
+.rich-text-content .rich-text-prose p:last-child,
+.rich-text-content .rich-text-prose ul:last-child,
+.rich-text-content .rich-text-prose ol:last-child,
+.rich-text-content .rich-text-prose blockquote:last-child {
+  margin-bottom: 0;
+}
+
+.rich-text-content .rich-text-prose h2,
+.rich-text-content .rich-text-prose h3 {
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #0f172a;
+}
+
+.rich-text-content .rich-text-prose h2 {
+  font-size: 1.125rem;
+}
+
+.rich-text-content .rich-text-prose h3 {
+  font-size: 1rem;
+}
+
+.rich-text-content .rich-text-prose ul,
+.rich-text-content .rich-text-prose ol {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.rich-text-content .rich-text-prose ul {
+  list-style: disc;
+}
+
+.rich-text-content .rich-text-prose ol {
+  list-style: decimal;
+}
+
+.rich-text-content .rich-text-prose li + li {
+  margin-top: 0.25rem;
+}
+
+.rich-text-content .rich-text-prose blockquote {
+  margin: 1rem 0;
+  border-left: 2px solid #3b82f6;
+  padding-left: 1rem;
+  color: #475569;
+}
+
+.rich-text-content .rich-text-prose a {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-decoration-color: #93c5fd;
+  text-underline-offset: 2px;
+}
+
+.rich-text-content .rich-text-prose p.is-editor-empty:first-child::before {
+  float: left;
+  height: 0;
+  color: #94a3b8;
+  content: attr(data-placeholder);
+  pointer-events: none;
+}
+
+.dark .rich-text-content .rich-text-prose h2,
+.dark .rich-text-content .rich-text-prose h3 {
+  color: #f8fafc;
+}
+
+.dark .rich-text-content .rich-text-prose blockquote {
+  color: #cbd5e1;
+}
+
+.dark .rich-text-content .rich-text-prose a {
+  color: #93c5fd;
+  text-decoration-color: #1d4ed8;
+}
+
+/* Horizontal command scrollbar */
+.terminal-command-scroll {
+  scrollbar-color: #38bdf8 #1e293b;
+  scrollbar-width: thin;
+}
+
+.terminal-command-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.terminal-command-scroll::-webkit-scrollbar-track {
+  margin: 0 8px;
+  border-radius: 9999px;
+  background: #0f172a;
+}
+
+.terminal-command-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid #0f172a;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+}
+
+.terminal-command-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #7dd3fc, #818cf8);
+}
+
+.terminal-command-scroll::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}

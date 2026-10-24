@@ -55,6 +55,12 @@ export const SIDEBAR_NAV: NavItem[] = [
     route: '/forms/forms',
   },
   {
+    id: 'rich-text-editor',
+    label: 'nav.richTextEditor',
+    icon: 'edit_note',
+    route: '/forms/rich-text-editor',
+  },
+  {
     id: 'modals',
     label: 'nav.modals',
     icon: 'window',

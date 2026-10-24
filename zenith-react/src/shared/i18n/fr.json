@@ -20,6 +20,7 @@
     "paginators": "Paginateurs",
     "tables": "Tableaux",
     "forms": "Formulaires",
+    "richTextEditor": "Éditeur de texte enrichi",
     "modals": "Modales",
     "drawers": "Tiroirs",
     "cards": "Cartes",
@@ -109,6 +110,7 @@
       "loading": "Chargement",
       "skeletons": "Squelettes",
       "forms": "Formulaires",
+      "richTextEditor": "Éditeur de texte enrichi",
       "buttons": "Boutons",
       "dropdowns": "Menus déroulants",
       "tooltips": "Infobulles",
@@ -185,6 +187,14 @@
     "forms": {
       "title": "Formulaires",
       "subtitle": "Champs, validation et mises en page"
+    },
+    "richTextEditor": {
+      "title": "Éditeur de texte enrichi",
+      "subtitle": "Mise en forme, listes et liens pour le contenu enrichi",
+      "description": "Un éditeur visuel pour créer du contenu HTML structuré. Il permet de formater le texte, de l'organiser avec des titres, des listes et des citations, et d'ajouter des liens. Le résultat peut alimenter des formulaires ou des pages; les variantes complète et compacte incluent les états erreur, désactivé et lecture seule.",
+      "terminal": "Terminal",
+      "copyCommand": "Copier la commande d'installation",
+      "copied": "Commande copiée"
     },
     "feedback": {
       "title": "Retour",

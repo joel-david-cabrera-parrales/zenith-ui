@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zenith UI — Rich Text Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+        line-height: 1;
+        vertical-align: middle;
+      }
+
+      [contenteditable="true"]:focus {
+        outline: none;
+      }
+
+      ::selection {
+        background: #dbeafe;
+        color: #1e3a8a;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
+    <main class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <header class="mb-8 border-b border-slate-200 pb-7 sm:mb-10">
+        <div class="mb-4 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+          <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+            Zenith UI
+          </span>
+          <span class="text-slate-300">/</span>
+          <span>Forms</span>
+          <span class="text-slate-300">/</span>
+          <span class="text-blue-700">Rich text editor</span>
+        </div>
+        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              Rich Text Editor
+            </h1>
+            <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
+              Un espacio claro para escribir contenido con estructura. Da formato a una descripción,
+              organiza ideas en listas y conserva los enlaces en el resultado.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-[11px] font-medium text-slate-600">
+            <span class="rounded-md border border-slate-200 bg-white px-2.5 py-1.5">Salida HTML</span>
+            <span class="rounded-md border border-slate-200 bg-white px-2.5 py-1.5">Completo y compacto</span>
+            <span class="rounded-md border border-slate-200 bg-white px-2.5 py-1.5">Listo para formularios</span>
+          </div>
+        </div>
+      </header>
+
+      <section aria-labelledby="full-editor-title" class="mb-10">
+        <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-700">
+              01 / Editor completo
+            </p>
+            <h2 id="full-editor-title" class="mt-1 text-lg font-semibold tracking-tight text-slate-900">
+              Descripción del evento
+            </h2>
+          </div>
+          <p class="text-xs text-slate-500">Ejemplo de campo enriquecido dentro de un formulario</p>
+        </div>
+
+        <form class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div class="flex flex-col gap-4 border-b border-slate-100 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+                <span class="material-symbols-outlined text-[21px]">edit_note</span>
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Nuevo evento</p>
+                <p class="mt-0.5 text-xs text-slate-500">Información que verán los asistentes</p>
+              </div>
+            </div>
+            <div class="inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-medium text-emerald-700">
+              <span class="material-symbols-outlined text-[15px]">cloud_done</span>
+              Borrador guardado
+            </div>
+          </div>
+
+          <div class="space-y-5 px-5 py-5 sm:px-6 sm:py-6">
+            <div>
+              <label for="event-title" class="mb-1.5 block text-xs font-semibold text-slate-700">
+                Título del evento <span class="text-rose-600">*</span>
+              </label>
+              <input
+                id="event-title"
+                type="text"
+                value="Lanzamiento de la nueva consola de observabilidad"
+                class="h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+              />
+            </div>
+
+            <div>
+              <div class="mb-1.5 flex flex-wrap items-center justify-between gap-2">
+                <label id="event-description-label" class="text-xs font-semibold text-slate-700">
+                  Descripción <span class="text-rose-600">*</span>
+                </label>
+                <span class="text-[11px] text-slate-500">Cuenta la agenda y los puntos clave</span>
+              </div>
+
+              <div class="overflow-hidden rounded-xl border border-slate-300 bg-white transition focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100">
+                <div
+                  role="toolbar"
+                  aria-label="Formato de texto"
+                  class="flex flex-wrap items-center gap-1 border-b border-slate-200 bg-slate-50/90 p-2"
+                >
+                  <button type="button" aria-label="Formato de párrafo" title="Formato de párrafo" class="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-2.5 text-xs font-medium text-slate-700 shadow-sm hover:bg-slate-50">
+                    Párrafo
+                    <span class="material-symbols-outlined text-[16px] text-slate-500">expand_more</span>
+                  </button>
+                  <span class="mx-1 hidden h-5 w-px bg-slate-200 sm:block"></span>
+                  <button type="button" aria-label="Negrita" title="Negrita" aria-pressed="true" class="flex h-8 w-8 items-center justify-center rounded-md bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-200 hover:bg-blue-100">
+                    <span class="material-symbols-outlined text-[18px]">format_bold</span>
+                  </button>
+                  <button type="button" aria-label="Cursiva" title="Cursiva" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">format_italic</span>
+                  </button>
+                  <button type="button" aria-label="Subrayado" title="Subrayado" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">format_underlined</span>
+                  </button>
+                  <button type="button" aria-label="Tachado" title="Tachado" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">format_strikethrough</span>
+                  </button>
+                  <span class="mx-1 hidden h-5 w-px bg-slate-200 sm:block"></span>
+                  <button type="button" aria-label="Lista con viñetas" title="Lista con viñetas" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+                  </button>
+                  <button type="button" aria-label="Lista numerada" title="Lista numerada" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">format_list_numbered</span>
+                  </button>
+                  <button type="button" aria-label="Cita" title="Cita" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">format_quote</span>
+                  </button>
+                  <span class="mx-1 hidden h-5 w-px bg-slate-200 sm:block"></span>
+                  <button type="button" aria-label="Insertar enlace" title="Insertar enlace" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                    <span class="material-symbols-outlined text-[18px]">link</span>
+                  </button>
+                  <button type="button" aria-label="Deshacer" title="Deshacer" class="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-white hover:text-slate-700">
+                    <span class="material-symbols-outlined text-[18px]">undo</span>
+                  </button>
+                  <button type="button" aria-label="Rehacer" title="Rehacer" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-white hover:text-slate-700">
+                    <span class="material-symbols-outlined text-[18px]">redo</span>
+                  </button>
+                </div>
+
+                <div
+                  id="event-description"
+                  role="textbox"
+                  aria-labelledby="event-description-label"
+                  aria-multiline="true"
+                  contenteditable="true"
+                  class="min-h-[290px] px-4 py-5 text-sm leading-7 text-slate-700 outline-none sm:px-6 sm:py-6"
+                >
+                  <p class="mb-4">
+                    Presentamos una forma más clara de entender lo que ocurre en tu infraestructura.
+                    En esta sesión conocerás la nueva consola de observabilidad y cómo ayuda a tu equipo
+                    a pasar de las alertas a las decisiones con menos fricción.
+                  </p>
+                  <h3 class="mb-2 text-base font-semibold leading-6 text-slate-900">Qué veremos</h3>
+                  <ul class="mb-4 list-disc space-y-1 pl-5 marker:text-blue-600">
+                    <li>Una vista unificada de servicios, métricas y trazas.</li>
+                    <li>Cómo detectar cambios relevantes en el rendimiento.</li>
+                    <li>Un flujo de trabajo compartido para investigar incidentes.</li>
+                  </ul>
+                  <p class="mb-4">
+                    Trae tus preguntas: reservaremos tiempo al final para una demostración en vivo.
+                    Consulta el <a href="#agenda" class="font-medium text-blue-700 underline decoration-blue-300 underline-offset-2">programa completo</a> antes de registrarte.
+                  </p>
+                  <blockquote class="border-l-2 border-blue-500 pl-4 text-slate-600">
+                    Menos tiempo buscando señales. Más tiempo resolviendo lo que importa.
+                  </blockquote>
+                </div>
+
+                <div class="flex flex-col gap-2 border-t border-slate-100 bg-white px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
+                    <span class="inline-flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                      Guardado hace un momento
+                    </span>
+                    <span class="hidden h-3 w-px bg-slate-200 sm:block"></span>
+                    <span>106 palabras</span>
+                    <span>714 caracteres</span>
+                  </div>
+                  <span class="font-mono text-[10px] uppercase tracking-wider text-slate-400">HTML</span>
+                </div>
+              </div>
+              <p class="mt-1.5 text-[11px] text-slate-500">Puedes editar el contenido y conservar su formato al guardar el formulario.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col-reverse gap-2 border-t border-slate-100 bg-slate-50/70 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <p class="text-[11px] text-slate-500"><span class="text-rose-600">*</span> Campos obligatorios</p>
+            <div class="flex flex-col-reverse gap-2 sm:flex-row">
+              <button type="button" class="inline-flex h-9 items-center justify-center rounded-lg border border-slate-300 bg-white px-3.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                Guardar borrador
+              </button>
+              <button type="button" class="inline-flex h-9 items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
+                Publicar evento
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section aria-labelledby="editor-variants-title" class="mb-10">
+        <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-700">
+              02 / Variantes
+            </p>
+            <h2 id="editor-variants-title" class="mt-1 text-lg font-semibold tracking-tight text-slate-900">
+              El mismo editor, en distintos contextos
+            </h2>
+          </div>
+          <p class="text-xs text-slate-500">Toolbar compacta para respuestas · contenido enriquecido en una página</p>
+        </div>
+
+        <div class="grid gap-4 lg:grid-cols-2">
+          <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+            <div class="mb-4 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Respuesta rápida</p>
+            <p class="mt-1 text-xs text-slate-500">Compacto · comentario dentro de un formulario</p>
+              </div>
+              <span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-wide text-slate-500">compacto</span>
+            </div>
+            <div class="overflow-hidden rounded-xl border border-slate-300 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100">
+              <div role="toolbar" aria-label="Formato de respuesta" class="flex items-center gap-1 border-b border-slate-200 bg-slate-50 p-1.5">
+                <button type="button" aria-label="Negrita" title="Negrita" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                  <span class="material-symbols-outlined text-[18px]">format_bold</span>
+                </button>
+                <button type="button" aria-label="Cursiva" title="Cursiva" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                  <span class="material-symbols-outlined text-[18px]">format_italic</span>
+                </button>
+                <button type="button" aria-label="Lista" title="Lista" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                  <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+                </button>
+                <span class="mx-1 h-5 w-px bg-slate-200"></span>
+                <button type="button" aria-label="Insertar enlace" title="Insertar enlace" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 hover:bg-white hover:text-slate-900">
+                  <span class="material-symbols-outlined text-[18px]">link</span>
+                </button>
+              </div>
+              <div
+                role="textbox"
+                aria-label="Escribe una respuesta"
+                aria-multiline="true"
+                contenteditable="true"
+                class="min-h-[112px] px-3.5 py-3 text-sm leading-6 text-slate-700 outline-none"
+              >
+                <p>Gracias por compartir la propuesta. La revisamos con el equipo y te respondemos hoy.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-slate-100 px-3 py-2">
+                <span class="text-[11px] text-slate-400">Shift + Enter para salto de línea</span>
+                <button type="button" class="inline-flex h-8 items-center gap-1.5 rounded-md bg-blue-700 px-3 text-[11px] font-semibold text-white transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                  Responder
+                  <span class="material-symbols-outlined text-[15px]">send</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div class="border-b border-slate-100 px-5 py-4 sm:px-6">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold text-slate-900">Vista de artículo</p>
+                  <p class="mt-1 text-xs text-slate-500">Contenido enriquecido · página de detalle en solo lectura</p>
+                </div>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-medium text-slate-600">
+                  <span class="material-symbols-outlined text-[14px]">visibility</span>
+                  Vista previa
+                </span>
+              </div>
+            </div>
+            <div class="px-5 py-5 sm:px-6 sm:py-6">
+              <div class="mb-4 flex items-center gap-2 text-[11px] font-medium text-slate-500">
+                <span class="rounded bg-blue-50 px-2 py-1 font-mono uppercase tracking-wide text-blue-700">Engineering</span>
+                <span>·</span>
+                <span>5 min de lectura</span>
+              </div>
+              <h3 class="text-xl font-bold leading-7 tracking-tight text-slate-950">Observabilidad que deja ver el panorama completo</h3>
+              <p class="mt-2 text-xs text-slate-500">Publicado por Elena Ríos · 12 de junio de 2025</p>
+              <div class="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+                <p>
+                  Cuando cada señal vive en una herramienta distinta, entender un incidente cuesta más de lo necesario.
+                  La nueva consola reúne el contexto para que los equipos puedan investigar desde una misma vista.
+                </p>
+                <p>
+                  Empieza por el <a href="#overview" class="font-medium text-blue-700 underline decoration-blue-300 underline-offset-2">mapa de servicios</a>, sigue el recorrido de una solicitud y encuentra dónde cambia el rendimiento.
+                </p>
+                <div class="rounded-r-lg border-l-2 border-blue-500 bg-blue-50/70 px-4 py-3 text-[13px] font-medium text-slate-700">
+                  La mejor señal es la que ayuda a tomar la siguiente decisión.
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="editor-states-title" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-700">
+              03 / Estados del campo
+            </p>
+            <h2 id="editor-states-title" class="mt-1 text-lg font-semibold tracking-tight text-slate-900">
+              Configuraciones y estados
+            </h2>
+          </div>
+          <p class="text-xs text-slate-500">La ayuda y la validación mantienen el editor dentro del flujo del formulario.</p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <div>
+            <div class="mb-1.5 flex items-center justify-between gap-2">
+              <label class="text-xs font-semibold text-slate-700">Resumen del anuncio</label>
+              <span class="text-[10px] font-medium uppercase tracking-wide text-rose-600">Obligatorio</span>
+            </div>
+            <div class="overflow-hidden rounded-lg border border-rose-300 bg-white ring-1 ring-rose-100">
+              <div class="flex items-center gap-1 border-b border-rose-100 bg-rose-50/50 px-2 py-1.5">
+                <button type="button" aria-label="Negrita" class="flex h-7 w-7 items-center justify-center rounded text-slate-500">
+                  <span class="material-symbols-outlined text-[17px]">format_bold</span>
+                </button>
+                <button type="button" aria-label="Lista" class="flex h-7 w-7 items-center justify-center rounded text-slate-500">
+                  <span class="material-symbols-outlined text-[17px]">format_list_bulleted</span>
+                </button>
+                <button type="button" aria-label="Insertar enlace" class="flex h-7 w-7 items-center justify-center rounded text-slate-500">
+                  <span class="material-symbols-outlined text-[17px]">link</span>
+                </button>
+              </div>
+              <div role="textbox" aria-label="Resumen del anuncio" aria-multiline="true" class="min-h-[66px] px-3 py-2.5 text-sm text-slate-400">
+                <p>Añade un resumen para continuar…</p>
+              </div>
+            </div>
+            <p class="mt-1.5 flex items-center gap-1 text-[11px] font-medium text-rose-600">
+              <span class="material-symbols-outlined text-[14px]">error</span>
+              Escribe un resumen antes de publicar.
+            </p>
+          </div>
+
+          <div>
+            <div class="mb-1.5 flex items-center justify-between gap-2">
+              <label class="text-xs font-semibold text-slate-700">Contenido archivado</label>
+              <span class="text-[10px] font-medium uppercase tracking-wide text-slate-400">Solo lectura</span>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-slate-100/80 px-3.5 py-3 text-sm leading-6 text-slate-500">
+              <p class="font-semibold text-slate-600">Actualización de plataforma</p>
+              <p class="mt-1">El contenido está disponible para consulta y no admite cambios.</p>
+            </div>
+            <p class="mt-1.5 text-[11px] text-slate-500">Modo de lectura para contenido publicado o bloqueado.</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
+          <span class="rounded-md bg-slate-100 px-2.5 py-1.5 font-mono text-[10px] text-slate-600">toolbar: full | compact</span>
+          <span class="rounded-md bg-slate-100 px-2.5 py-1.5 font-mono text-[10px] text-slate-600">mode: editable | read-only</span>
+          <span class="rounded-md bg-slate-100 px-2.5 py-1.5 font-mono text-[10px] text-slate-600">state: default | error | disabled</span>
+          <span class="rounded-md bg-slate-100 px-2.5 py-1.5 font-mono text-[10px] text-slate-600">output: HTML</span>
+        </div>
+      </section>
+
+      <footer class="mt-8 flex flex-col gap-2 border-t border-slate-200 pt-4 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <span>Zenith UI · Forms / Rich Text Editor</span>
+        <span class="font-mono uppercase tracking-wider">Vista de diseño · HTML + Tailwind</span>
+      </footer>
+    </main>
+  </body>
+</html>

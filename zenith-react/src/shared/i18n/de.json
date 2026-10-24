@@ -20,6 +20,7 @@
     "paginators": "Paginierer",
     "tables": "Tabellen",
     "forms": "Formulare",
+    "richTextEditor": "Rich-Text-Editor",
     "modals": "Modale",
     "drawers": "Drawers",
     "cards": "Karten",
@@ -109,6 +110,7 @@
       "loading": "Laden",
       "skeletons": "Skelette",
       "forms": "Formulare",
+      "richTextEditor": "Rich-Text-Editor",
       "buttons": "Schaltflächen",
       "dropdowns": "Dropdowns",
       "tooltips": "Tooltips",
@@ -185,6 +187,14 @@
     "forms": {
       "title": "Formulare",
       "subtitle": "Felder, Validierung und Layouts"
+    },
+    "richTextEditor": {
+      "title": "Rich-Text-Editor",
+      "subtitle": "Formatierung, Listen und Links für reichhaltige Inhalte",
+      "description": "Ein visueller Editor für strukturierte HTML-Inhalte. Text lässt sich formatieren, mit Überschriften, Listen und Zitaten gliedern und mit Links ergänzen. Die Ausgabe eignet sich für Formulare und Seiten; die vollständige und kompakte Variante unterstützen Fehler-, Deaktiviert- und Nur-Lesen-Zustände.",
+      "terminal": "Terminal",
+      "copyCommand": "Installationsbefehl kopieren",
+      "copied": "Befehl kopiert"
     },
     "feedback": {
       "title": "Feedback",

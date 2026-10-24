@@ -20,6 +20,7 @@
     "paginators": "Paginators",
     "tables": "Tables",
     "forms": "Forms",
+    "richTextEditor": "Rich text editor",
     "modals": "Modals",
     "drawers": "Drawers",
     "cards": "Cards",
@@ -109,6 +110,7 @@
       "loading": "Loading",
       "skeletons": "Skeletons",
       "forms": "Forms",
+      "richTextEditor": "Rich text editor",
       "buttons": "Buttons",
       "dropdowns": "Dropdowns",
       "tooltips": "Tooltips",
@@ -185,6 +187,14 @@
     "forms": {
       "title": "Forms",
       "subtitle": "Fields, validation and layouts"
+    },
+    "richTextEditor": {
+      "title": "Rich Text Editor",
+      "subtitle": "Formatting, lists and links for rich content",
+      "description": "A visual editor for creating structured HTML content. Format text, organize it with headings, lists and quotations, and add links. Its output can power forms or page content; full and compact variants include error, disabled and read-only states.",
+      "terminal": "Terminal",
+      "copyCommand": "Copy install command",
+      "copied": "Command copied"
     },
     "feedback": {
       "title": "Feedback",

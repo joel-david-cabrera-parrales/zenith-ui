@@ -113,7 +113,10 @@ const AREAS: DeepArea[] = [
             id: "formularios",
             label: "deep.sections.formularios",
             icon: "input",
-            links: [{ id: "forms", label: "deep.links.forms", icon: "input", route: "/forms/forms" }],
+            links: [
+              { id: "forms", label: "deep.links.forms", icon: "input", route: "/forms/forms" },
+              { id: "rich-text-editor", label: "deep.links.richTextEditor", icon: "edit_note", route: "/forms/rich-text-editor" },
+            ],
           },
           {
             id: "botones",
@@ -254,14 +257,14 @@ export const DeepSidebar = ({
       if ("sections" in group && group.sections) {
         const filteredSections = group.sections.map((section) => {
           const filteredLinks = section.links.filter((link) =>
-            link.label.toLowerCase().includes(query.toLowerCase())
+            t(link.label).toLowerCase().includes(query.toLowerCase())
           );
           return { ...section, links: filteredLinks };
         }).filter((section) => section.links.length > 0);
         return { ...group, sections: filteredSections };
       } else {
         const filteredLinks = (group.links ?? []).filter((link) =>
-          link.label.toLowerCase().includes(query.toLowerCase())
+          t(link.label).toLowerCase().includes(query.toLowerCase())
         );
         return { ...group, links: filteredLinks };
       }
