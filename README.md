@@ -90,6 +90,7 @@ Ejecuta estos comandos desde `zenith-react/`:
 | Comando           | Descripción                                                           |
 | ----------------- | --------------------------------------------------------------------- |
 | `npm run dev`     | Inicia el servidor local de Vite.                                     |
+| `npm start`       | Inicia Vite en `0.0.0.0`, accesible desde contenedores y la red local. |
 | `npm run build`   | Comprueba TypeScript y genera la aplicación de producción en `dist/`. |
 | `npm run preview` | Sirve localmente la compilación de producción.                        |
 | `npm run lint`    | Ejecuta ESLint.                                                       |
