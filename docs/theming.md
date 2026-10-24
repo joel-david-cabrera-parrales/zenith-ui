@@ -1,79 +1,178 @@
-# Sistema de Temas (Dark / Light) — Zenith Dash
+# Tema claro/oscuro en React: guía paso a paso
 
-Adaptación a React + Vite del sistema documentado en
-`task-app/user-web-portal/docs/theming.md`. Diferencias clave: sin backend
-(persistencia en `localStorage`), contexto de React en vez de signals de
-Angular, y rampa dark unificada tomada del diseño topbar.
+Esta guía muestra cómo implementar un tema claro/oscuro que funcione en toda una aplicación React, persista la elección y se integre con Tailwind CSS. Está pensada para poder adaptar los pasos a otros proyectos.
 
-## 1. Arquitectura
+En este repositorio, `ThemeProvider` gestiona `light | dark`, guarda la elección en `localStorage` y aplica la clase `dark` al elemento `<html>`. Los estilos se escriben con utilidades de Tailwind y tokens CSS.
 
+## 1. Define el modelo y la preferencia guardada
+
+Empieza con dos valores explícitos y una clave de almacenamiento estable. Comprueba el valor leído: `localStorage` puede contener datos antiguos o estar bloqueado por el navegador.
+
+```ts
+export type Theme = 'light' | 'dark';
+
+const THEME_STORAGE_KEY = 'my-app:theme';
+const DEFAULT_THEME: Theme = 'light';
+
+export function readTheme(): Theme {
+  try {
+    const value = window.localStorage.getItem(THEME_STORAGE_KEY);
+    if (value === 'light' || value === 'dark') return value;
+  } catch {
+    // Continúa con el tema por defecto si el almacenamiento no está disponible.
+  }
+  return DEFAULT_THEME;
+}
 ```
-ThemeProvider (contexto React)
-  └─ state theme: 'light' | 'dark' (default 'light')
-  └─ useEffect → document.documentElement.classList.toggle('dark')
-  └─ persiste en localStorage["zenith-dash:theme"]
-  └─ index.html trae script anti-flash (aplica la clase antes del render)
 
-<html class="dark">  →  Tailwind v4 @custom-variant dark  →  clases dark:*
+Si quieres usar la preferencia del sistema operativo cuando aún no hay una elección guardada, incorpórala como una regla única de inicialización y úsala tanto en React como en el script de carga inicial.
+
+## 2. Crea el contexto, proveedor y hook
+
+El contexto debe exponer el valor actual, una función para establecerlo y otra para alternarlo:
+
+```ts
+interface ThemeContextValue {
+  theme: Theme;
+  dark: boolean;
+  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
+}
 ```
 
-Pilares:
+Inicializa el estado desde `readTheme()`. Cuando cambie, actualiza la clase raíz y persiste la elección:
 
-1. **Persistencia**: `localStorage`, clave `zenith-dash:theme`.
-2. **Estado global**: `ThemeContext` (`shared/components/theme/ThemeProvider.tsx`),
-   consumo vía `useTheme()` (`shared/hooks/useTheme.ts`).
-3. **Efecto**: alterna la clase `dark` en `<html>` y guarda el valor.
-4. **Tailwind v4**: `@custom-variant dark (&:where(.dark, .dark *))` en
-   `src/index.css` — el `dark:` responde a la clase, no al SO.
-5. **Toggles reales**: botón de tema en `TopbarActions` y switch "Modo Oscuro"
-   en `ProfileMenuPopover`, ambos conectados a `toggleTheme()`.
+```tsx
+const [theme, setTheme] = useState<Theme>(() => readTheme());
 
-## 2. Rampa dark unificada
+useEffect(() => {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+  try {
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    // La app sigue funcionando aunque no se pueda guardar la preferencia.
+  }
+}, [theme]);
 
-Se usa **un solo tono** (rampa del diseño topbar) en todo el sistema:
+const toggleTheme = () => {
+  setTheme((current) => (current === 'light' ? 'dark' : 'light'));
+};
+```
 
-| Token (`@theme`) | Valor | Uso |
+Expón el contexto mediante un hook como `useTheme()`. Haz que el hook lance un error descriptivo si se usa fuera de `ThemeProvider`; así se detecta una configuración incorrecta pronto.
+
+## 3. Envuelve la aplicación
+
+Monta el proveedor por encima de los layouts y las rutas, normalmente en `main.tsx`:
+
+```tsx
+createRoot(document.getElementById('root')!).render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>,
+);
+```
+
+En este repositorio se monta junto a `LanguageProvider` en `zenith-react/src/main.tsx`.
+
+## 4. Configura Tailwind CSS
+
+Con Tailwind CSS v4, declara la variante para que `dark:` dependa de la clase `.dark` en el documento, no solo del sistema operativo:
+
+```css
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+Ahora puedes definir juntos los estilos de ambos temas:
+
+```tsx
+<section className="border border-slate-200 bg-white text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+  ...
+</section>
+```
+
+El tema claro es el estilo base; añade el par `dark:` para cada superficie, texto, borde e interacción que deba cambiar. No uses `dark:` como sustituto de un estado de componente (por ejemplo, seleccionado o deshabilitado).
+
+### Áreas que deben permanecer claras
+
+Si una parte de la interfaz debe conservar su aspecto claro aunque el documento esté en modo oscuro, puedes definir un alcance local. En este repositorio se usa `data-theme="light"` para los ejemplos de Landing y Authentication. La variante personalizada excluye sus descendientes:
+
+```css
+@custom-variant dark (&:where(.dark, .dark *):not([data-theme="light"] *));
+```
+
+```tsx
+<div data-theme="light">
+  <ExamplePage />
+</div>
+```
+
+Este selector afecta a las utilidades `dark:` dentro de ese subárbol; no cambia el estado React del proveedor.
+
+## 5. Añade un control para cambiar el tema
+
+Conecta un botón o switch al contexto. El control debe indicar la acción y el estado de forma accesible:
+
+```tsx
+const { dark, toggleTheme } = useTheme();
+
+<button
+  type="button"
+  onClick={toggleTheme}
+  aria-label={dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
+>
+  {dark ? 'Tema claro' : 'Tema oscuro'}
+</button>
+```
+
+Colócalo en un lugar persistente, como la barra superior. Al recargar, el tema debe mantenerse porque el proveedor restaura la preferencia guardada.
+
+## 6. Define una pequeña escala de superficies
+
+Evita asignar colores oscuros de forma aislada. Define niveles y reutilízalos:
+
+| Nivel | Ejemplo en Zenith UI | Uso habitual |
 |---|---|---|
-| `dark-base` | `#141417` | sidebar, topbar, layout |
-| `dark-raised` | `#16171d` | popovers, flyouts, cards |
-| `dark-overlay` | `#1b1c22` | inputs idle, headers (`#1b1c23` absorbido) |
-| `dark-hover` | `#1f2026` | hovers, botones secundarios |
-| `dark-focus` | `#20222a` | inputs en focus |
-| `dark-border` | `#272930` | bordes y separadores |
+| Base | `--color-dark-base: #141417` | fondo general, barra lateral |
+| Elevada | `--color-dark-raised: #16171d` | tarjetas, menús |
+| Superpuesta | `--color-dark-overlay: #1b1c22` | campos y capas flotantes |
+| Hover | `--color-dark-hover: #1f2026` | estado hover |
+| Focus | `--color-dark-focus: #20222a` | controles enfocados |
+| Borde | `--color-dark-border: #272930` | divisores y contornos |
 
-Acentos literales de los diseños (iguales en sidebar y topbar, no se tocan):
-iconos activos `blue-400`, L3 activo `blue-950/60` + `blue-800/40`,
-`emerald/amber/red-400`, badge `bg-[#22c55e]`, bordes de popovers
-`slate-700/80`, avatar `stone-700`.
+En Tailwind v4 puedes registrar tokens con `@theme` y consumirlos como utilidades. Mantén el contraste de texto y controles como criterio principal; el azul de marca y los colores semánticos pueden necesitar tonos distintos en dark.
 
-## 3. Mapa de conversión aplicado
+## 7. Evita el destello de tema al cargar
 
-| Light | Dark |
-|---|---|
-| `bg-white` (superficies) | `dark:bg-dark-base` / `dark:bg-dark-raised` (popovers) |
-| `bg-slate-100` (inputs) | `dark:bg-dark-overlay` |
-| `bg-slate-50`, `hover:bg-slate-50/100` | `dark:hover:bg-dark-hover` |
-| `text-slate-900` (títulos) | `dark:text-white` |
-| `text-slate-800/700/600` | `dark:text-slate-200/300` |
-| `text-slate-500` | `dark:text-slate-400` |
-| `border-slate-100/200` | `dark:border-dark-border` |
-| `shadow-2xl/xl` (popovers) | `dark:shadow-none` (el borde sustituye la sombra) |
-| guías de árbol `#e2e8f0` | variable `--tree-line` → `:root.dark #272930` |
-| scrollbars `rgba(156,163,175,.3)` | `:root.dark rgba(75,85,99,.4)` |
+Si el navegador dibuja la página antes de que React restaure el estado, puede aparecer brevemente el tema equivocado. Un script pequeño en el `<head>` puede aplicar `.dark` antes del primer render:
 
-## 4. Cómo agregar dark mode a un componente nuevo
+```html
+<script>
+  try {
+    const savedTheme = localStorage.getItem('my-app:theme');
+    if (savedTheme === 'dark') document.documentElement.classList.add('dark');
+  } catch {}
+</script>
+```
 
-1. Identificar los colores light del componente.
-2. Aplicar el mapa de arriba con pares `dark:` (siempre en pares).
-3. Verificar en el navegador alternando la clase `dark` en `<html>` (DevTools).
-4. Probar el toggle real (topbar o menú de perfil) y recargar (persistencia).
+El script y el proveedor deben usar la misma clave y la misma regla por defecto. Si el script consulta `prefers-color-scheme` pero React arranca en `light`, ambos pueden discrepar hasta que se ejecute el efecto.
 
-## 5. Reglas de oro
+## 8. Prueba el tema
 
-1. Cada clase light lleva su par `dark:`.
-2. En dark, las sombras se reemplazan por bordes (`dark:shadow-none`).
-3. El acento azul de interactivos no se toca (solo cambia de tono donde el
-   diseño lo indica, ej. icono `blue-600` → `dark:text-blue-400`).
-4. Las opacidades se heredan (`bg-slate-50/70` → `dark:bg-dark-overlay/60`).
-5. Probar ambos modos antes de dar por terminado (texto ilegible, bordes
-   perdidos y restos de `tree-line-light` son los errores típicos).
+1. Cambia entre claro y oscuro desde el control real de la aplicación.
+2. Recorre páginas, formularios, menús, modales y estados de error/carga.
+3. Recarga y confirma que la elección se conserva.
+4. Revisa contraste de texto, bordes, placeholders, foco y hover.
+5. Si hay subárboles fijos en claro, verifica el comportamiento de `data-theme="light"`.
+
+En Zenith UI la clave actual es `zenith-dash:theme`, el valor inicial del proveedor es `light` y el control está en `Topbar`. Para adaptar esta guía, sustituye el nombre y la clave por los de tu aplicación.
+
+### Archivos de referencia de Zenith UI
+
+- Estado y persistencia: `zenith-react/src/shared/components/theme/ThemeProvider.tsx`
+- Contrato del contexto: `zenith-react/src/shared/components/theme/ThemeContext.tsx`
+- Hook: `zenith-react/src/shared/hooks/useTheme.ts`
+- Variante y tokens: `zenith-react/src/index.css`
+- Montaje del proveedor: `zenith-react/src/main.tsx`
+- Script de carga inicial: `zenith-react/index.html`
