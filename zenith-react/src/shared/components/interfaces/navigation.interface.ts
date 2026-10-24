@@ -61,6 +61,12 @@ export const SIDEBAR_NAV: NavItem[] = [
     route: '/forms/rich-text-editor',
   },
   {
+    id: 'file-upload',
+    label: 'nav.fileUpload',
+    icon: 'cloud_upload',
+    route: '/forms/file-upload',
+  },
+  {
     id: 'modals',
     label: 'nav.modals',
     icon: 'window',

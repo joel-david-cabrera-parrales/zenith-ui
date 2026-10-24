@@ -21,6 +21,7 @@
     "tables": "Tablas",
     "forms": "Formularios",
     "richTextEditor": "Editor de texto",
+    "fileUpload": "Carga de archivos",
     "modals": "Modales",
     "drawers": "Drawers",
     "cards": "Cards",
@@ -111,6 +112,7 @@
       "skeletons": "Skeletons",
       "forms": "Formularios",
       "richTextEditor": "Editor de texto enriquecido",
+      "fileUpload": "Carga de archivos",
       "buttons": "Botones",
       "dropdowns": "Dropdowns",
       "tooltips": "Tooltips",
@@ -195,6 +197,11 @@
       "terminal": "Terminal",
       "copyCommand": "Copiar comando de instalación",
       "copied": "Comando copiado"
+    },
+    "fileUpload": {
+      "title": "File Upload",
+      "subtitle": "Selección, validación y preview de archivos",
+      "description": "Componente para seleccionar o arrastrar archivos con validación de tipo, tamaño y cantidad. Incluye variantes simple, múltiple y con preview, con estados de inactividad, procesamiento local, error y éxito. Los ejemplos conservan los archivos en el navegador y no los envían a un servidor."
     },
     "feedback": {
       "title": "Feedback",

@@ -21,6 +21,7 @@
     "tables": "Tableaux",
     "forms": "Formulaires",
     "richTextEditor": "Éditeur de texte enrichi",
+    "fileUpload": "Téléversement de fichiers",
     "modals": "Modales",
     "drawers": "Tiroirs",
     "cards": "Cartes",
@@ -111,6 +112,7 @@
       "skeletons": "Squelettes",
       "forms": "Formulaires",
       "richTextEditor": "Éditeur de texte enrichi",
+      "fileUpload": "Téléversement de fichiers",
       "buttons": "Boutons",
       "dropdowns": "Menus déroulants",
       "tooltips": "Infobulles",
@@ -195,6 +197,11 @@
       "terminal": "Terminal",
       "copyCommand": "Copier la commande d'installation",
       "copied": "Commande copiée"
+    },
+    "fileUpload": {
+      "title": "Téléversement de fichiers",
+      "subtitle": "Sélection, validation et aperçu des fichiers",
+      "description": "Sélectionnez ou déposez des fichiers avec validation du type, de la taille et du nombre. Les variantes simple, multiple et avec aperçu présentent les états inactif, traitement local, erreur et réussite. Les exemples conservent les fichiers dans le navigateur sans les envoyer à un serveur."
     },
     "feedback": {
       "title": "Retour",

@@ -21,6 +21,7 @@
     "tables": "Tabellen",
     "forms": "Formulare",
     "richTextEditor": "Rich-Text-Editor",
+    "fileUpload": "Datei-Upload",
     "modals": "Modale",
     "drawers": "Drawers",
     "cards": "Karten",
@@ -111,6 +112,7 @@
       "skeletons": "Skelette",
       "forms": "Formulare",
       "richTextEditor": "Rich-Text-Editor",
+      "fileUpload": "Datei-Upload",
       "buttons": "Schaltflächen",
       "dropdowns": "Dropdowns",
       "tooltips": "Tooltips",
@@ -195,6 +197,11 @@
       "terminal": "Terminal",
       "copyCommand": "Installationsbefehl kopieren",
       "copied": "Befehl kopiert"
+    },
+    "fileUpload": {
+      "title": "Datei-Upload",
+      "subtitle": "Dateiauswahl, Validierung und Vorschau",
+      "description": "Dateien auswählen oder ablegen und Typ, Größe sowie Anzahl validieren. Enthält einfache, mehrfache und Vorschau-Varianten mit den Zuständen inaktiv, lokale Verarbeitung, Fehler und Erfolg. Die Beispiele behalten Dateien im Browser und senden sie nicht an einen Server."
     },
     "feedback": {
       "title": "Feedback",

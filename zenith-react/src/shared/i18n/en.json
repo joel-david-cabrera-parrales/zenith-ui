@@ -21,6 +21,7 @@
     "tables": "Tables",
     "forms": "Forms",
     "richTextEditor": "Rich text editor",
+    "fileUpload": "File upload",
     "modals": "Modals",
     "drawers": "Drawers",
     "cards": "Cards",
@@ -111,6 +112,7 @@
       "skeletons": "Skeletons",
       "forms": "Forms",
       "richTextEditor": "Rich text editor",
+      "fileUpload": "File upload",
       "buttons": "Buttons",
       "dropdowns": "Dropdowns",
       "tooltips": "Tooltips",
@@ -195,6 +197,11 @@
       "terminal": "Terminal",
       "copyCommand": "Copy install command",
       "copied": "Command copied"
+    },
+    "fileUpload": {
+      "title": "File Upload",
+      "subtitle": "File selection, validation and preview",
+      "description": "Select or drop files with type, size and quantity validation. Includes simple, multiple and preview variants, with idle, local processing, error and success states. Examples keep files in the browser and do not send them to a server."
     },
     "feedback": {
       "title": "Feedback",
