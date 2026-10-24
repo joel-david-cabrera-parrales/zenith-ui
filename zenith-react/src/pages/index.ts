@@ -1,4 +1,4 @@
-export { DashboardPage } from './DashboardPage';
+export { HomePage } from './HomePage';
 export { PaginatorsPage } from './PaginatorsPage';
 export { TablesPage } from './TablesPage';
 export { FormsPage } from './FormsPage';

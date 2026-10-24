@@ -356,6 +356,22 @@ export const DeepSidebar = ({
       )}
 
       <div className="space-y-1 p-3">
+        <button
+          type="button"
+          aria-current={location.pathname === "/" ? "page" : undefined}
+          aria-label={collapsed ? t("deep.home") : undefined}
+          title={collapsed ? t("deep.home") : undefined}
+          onClick={() => navigate("/")}
+          className={cx(
+            "flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors",
+            collapsed ? "justify-center" : "",
+            location.pathname === "/" ? "bg-blue-600 text-white" : `${textMuted} ${hoverBg}`,
+          )}
+        >
+          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">home</span>
+          {!collapsed && <span>{t("deep.home")}</span>}
+        </button>
+        <div className={cx("mx-2 my-2 border-t", border)} />
         {filteredAreas.map((area) => {
           const areaOpen = openAreaId === area.id;
           const areaButtonId = `${baseId}-${area.id}-button`;

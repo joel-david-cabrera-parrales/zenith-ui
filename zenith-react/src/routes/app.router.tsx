@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import { FeaturesLayout } from '@/features/layout';
-import { LandingLayout, HomePage, AboutPage, ServicesPage } from '@/landing';
+import { LandingLayout, HomePage as LandingHomePage, AboutPage, ServicesPage } from '@/landing';
 import {
   AuthLayout,
   LoginPage,
@@ -10,7 +10,7 @@ import {
 } from '@/auth';
 import { HelperLayout, NotFoundPage, ServerErrorPage } from '@/helper';
 import {
-  DashboardPage,
+  HomePage,
   PaginatorsPage,
   TablesPage,
   FormsPage,
@@ -45,7 +45,7 @@ export const appRouter = createBrowserRouter([
     path: '/',
     element: <FeaturesLayout />,
     children: [
-      { index: true, element: <DashboardPage /> },
+      { index: true, element: <HomePage /> },
       { path: 'layout/paginators', element: <PaginatorsPage /> },
       { path: 'layout/tables', element: <TablesPage /> },
       { path: 'forms/forms', element: <FormsPage /> },
@@ -86,8 +86,8 @@ export const appRouter = createBrowserRouter([
     path: '/landing',
     element: <LandingLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'home', element: <HomePage /> },
+      { index: true, element: <LandingHomePage /> },
+      { path: 'home', element: <LandingHomePage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'services', element: <ServicesPage /> },
     ],
