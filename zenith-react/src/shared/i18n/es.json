@@ -20,6 +20,7 @@
     "paginators": "Paginadores",
     "tables": "Tablas",
     "forms": "Formularios",
+    "datePicker": "Date Picker",
     "richTextEditor": "Editor de texto",
     "fileUpload": "Carga de archivos",
     "modals": "Modales",
@@ -113,6 +114,7 @@
       "loading": "Loading",
       "skeletons": "Skeletons",
       "forms": "Formularios",
+      "datePicker": "Date Picker",
       "richTextEditor": "Editor de texto enriquecido",
       "fileUpload": "Carga de archivos",
       "buttons": "Botones",
@@ -207,6 +209,11 @@
       "terminal": "Terminal",
       "copyCommand": "Copiar comando de instalación",
       "copied": "Comando copiado"
+    },
+    "datePicker": {
+      "title": "Date Picker / Date Range Picker",
+      "subtitle": "Selección de fechas individuales y periodos",
+      "description": "Selectores de fecha y rango con calendario interactivo, estados visuales, límites y fechas deshabilitadas. Configura locale y formato con Intl.DateTimeFormat; ambos componentes se adaptan al tema claro u oscuro y exponen valores ISO para formularios, filtros y dashboards."
     },
     "fileUpload": {
       "title": "File Upload",

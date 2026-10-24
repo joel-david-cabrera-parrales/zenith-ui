@@ -116,6 +116,7 @@ const AREAS: DeepArea[] = [
             icon: "input",
             links: [
               { id: "forms", label: "deep.links.forms", icon: "input", route: "/forms/forms" },
+              { id: "date-picker", label: "deep.links.datePicker", icon: "calendar_month", route: "/forms/date-picker" },
               { id: "rich-text-editor", label: "deep.links.richTextEditor", icon: "edit_note", route: "/forms/rich-text-editor" },
               { id: "file-upload", label: "deep.links.fileUpload", icon: "cloud_upload", route: "/forms/file-upload" },
             ],

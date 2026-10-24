@@ -15,6 +15,7 @@ export const ComponentDoc = ({
   preview,
   htmlCode,
   jsxCode,
+  previewOverflow,
   maxWidth = '4xl',
 }: ComponentDocProps) => {
   const { dark } = useTheme();
@@ -25,7 +26,12 @@ export const ComponentDoc = ({
         <p className={`mt-1 text-sm ${dark ? "text-slate-400" : "text-slate-500"}`}>{description}</p>
       )}
       <div className="mt-4">
-        <TabbedView preview={preview} htmlCode={htmlCode} jsxCode={jsxCode} />
+        <TabbedView
+          preview={preview}
+          htmlCode={htmlCode}
+          jsxCode={jsxCode}
+          previewOverflow={previewOverflow}
+        />
       </div>
     </section>
   );

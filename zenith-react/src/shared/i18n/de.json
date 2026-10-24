@@ -20,6 +20,7 @@
     "paginators": "Paginierer",
     "tables": "Tabellen",
     "forms": "Formulare",
+    "datePicker": "Datumsauswahl",
     "richTextEditor": "Rich-Text-Editor",
     "fileUpload": "Datei-Upload",
     "modals": "Modale",
@@ -113,6 +114,7 @@
       "loading": "Laden",
       "skeletons": "Skelette",
       "forms": "Formulare",
+      "datePicker": "Datumsauswahl",
       "richTextEditor": "Rich-Text-Editor",
       "fileUpload": "Datei-Upload",
       "buttons": "Schaltflächen",
@@ -207,6 +209,11 @@
       "terminal": "Terminal",
       "copyCommand": "Installationsbefehl kopieren",
       "copied": "Befehl kopiert"
+    },
+    "datePicker": {
+      "title": "Datumsauswahl / Zeitraum",
+      "subtitle": "Einzelne Daten und Zeiträume auswählen",
+      "description": "Datum- und Zeitraum-Auswahl mit interaktivem Kalender, visuellen Zuständen, Grenzen und deaktivierten Tagen. Sprache und Format lassen sich mit Intl.DateTimeFormat konfigurieren; beide Komponenten passen sich hellen und dunklen Themes an und liefern ISO-Werte für Formulare, Filter und Dashboards."
     },
     "fileUpload": {
       "title": "Datei-Upload",

@@ -9,6 +9,7 @@ export interface TabbedViewProps {
   preview?: ReactNode;
   htmlCode?: string;
   jsxCode?: string;
+  previewOverflow?: boolean;
 }
 
 const TABS: { id: TabId; label: string }[] = [
@@ -17,7 +18,7 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'jsx', label: 'JSX' },
 ];
 
-export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
+export const TabbedView = ({ preview, htmlCode, jsxCode, previewOverflow = false }: TabbedViewProps) => {
   const { dark } = useTheme();
   const visibleTabs = TABS.filter((tab) => {
     if (tab.id === 'preview') return preview !== undefined;
@@ -33,7 +34,7 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
   if (activeTab === undefined) return null;
 
   return (
-    <div className={`w-full max-w-4xl min-w-[18rem] overflow-hidden rounded-lg border ${dark ? 'border-slate-700' : 'border-slate-200'}`}>
+    <div className={`w-full max-w-4xl min-w-[18rem] rounded-lg border ${previewOverflow ? 'overflow-visible' : 'overflow-hidden'} ${dark ? 'border-slate-700' : 'border-slate-200'}`}>
       <div role="tablist" aria-label="Vista del componente" className={`flex gap-1 border-b ${dark ? 'border-slate-700 bg-slate-900' : 'border-slate-200 bg-slate-50'} p-2`}>
         {visibleTabs.map((tab) => {
           const selected = activeTab === tab.id;
@@ -63,18 +64,18 @@ export const TabbedView = ({ preview, htmlCode, jsxCode }: TabbedViewProps) => {
         {activeTab === 'preview' && (
           <div
             role="tabpanel"
-            className="flex min-h-[6rem] flex-wrap items-center justify-center gap-2 p-4"
+            className={`flex min-h-[6rem] flex-wrap items-center justify-center gap-2 p-4 ${previewOverflow ? 'overflow-visible rounded-b-lg' : ''}`}
           >
             {preview}
           </div>
         )}
         {activeTab === 'html' && htmlCode !== undefined && (
-          <div role="tabpanel">
+          <div role="tabpanel" className="overflow-hidden rounded-b-lg">
             <CodeBlock code={htmlCode} label="código HTML" language="html" />
           </div>
         )}
         {activeTab === 'jsx' && jsxCode !== undefined && (
-          <div role="tabpanel">
+          <div role="tabpanel" className="overflow-hidden rounded-b-lg">
             <CodeBlock code={jsxCode} label="código JSX" language="tsx" />
           </div>
         )}

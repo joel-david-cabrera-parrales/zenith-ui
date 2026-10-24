@@ -2,6 +2,7 @@ export { DashboardPage } from './DashboardPage';
 export { PaginatorsPage } from './PaginatorsPage';
 export { TablesPage } from './TablesPage';
 export { FormsPage } from './FormsPage';
+export { DatePickerPage } from './DatePickerPage';
 export { RichTextEditorPage } from './RichTextEditorPage';
 export { FileUploadPage } from './FileUploadPage';
 export { ModalsPage } from './ModalsPage';

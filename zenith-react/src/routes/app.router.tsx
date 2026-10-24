@@ -14,6 +14,7 @@ import {
   PaginatorsPage,
   TablesPage,
   FormsPage,
+  DatePickerPage,
   RichTextEditorPage,
   FileUploadPage,
   ModalsPage,
@@ -48,6 +49,7 @@ export const appRouter = createBrowserRouter([
       { path: 'layout/paginators', element: <PaginatorsPage /> },
       { path: 'layout/tables', element: <TablesPage /> },
       { path: 'forms/forms', element: <FormsPage /> },
+      { path: 'forms/date-picker', element: <DatePickerPage /> },
       { path: 'forms/rich-text-editor', element: <RichTextEditorPage /> },
       {
         path: 'display/charts',

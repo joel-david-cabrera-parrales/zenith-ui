@@ -20,6 +20,7 @@
     "paginators": "Paginateurs",
     "tables": "Tableaux",
     "forms": "Formulaires",
+    "datePicker": "Sélecteur de dates",
     "richTextEditor": "Éditeur de texte enrichi",
     "fileUpload": "Téléversement de fichiers",
     "modals": "Modales",
@@ -113,6 +114,7 @@
       "loading": "Chargement",
       "skeletons": "Squelettes",
       "forms": "Formulaires",
+      "datePicker": "Sélecteur de dates",
       "richTextEditor": "Éditeur de texte enrichi",
       "fileUpload": "Téléversement de fichiers",
       "buttons": "Boutons",
@@ -207,6 +209,11 @@
       "terminal": "Terminal",
       "copyCommand": "Copier la commande d'installation",
       "copied": "Commande copiée"
+    },
+    "datePicker": {
+      "title": "Sélecteur de dates / période",
+      "subtitle": "Sélection de dates individuelles et de périodes",
+      "description": "Sélecteurs de date et de période avec calendrier interactif, états visuels, limites et dates désactivées. Configurez la langue et le format avec Intl.DateTimeFormat ; les deux composants s'adaptent aux thèmes clair et sombre et fournissent des valeurs ISO pour les formulaires, filtres et tableaux de bord."
     },
     "fileUpload": {
       "title": "Téléversement de fichiers",

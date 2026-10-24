@@ -55,6 +55,12 @@ export const SIDEBAR_NAV: NavItem[] = [
     route: '/forms/forms',
   },
   {
+    id: 'date-picker',
+    label: 'nav.datePicker',
+    icon: 'calendar_month',
+    route: '/forms/date-picker',
+  },
+  {
     id: 'rich-text-editor',
     label: 'nav.richTextEditor',
     icon: 'edit_note',
