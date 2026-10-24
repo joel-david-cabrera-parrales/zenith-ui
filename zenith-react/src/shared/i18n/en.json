@@ -334,6 +334,12 @@
         "badge": "What we do",
         "title": "Platform Services",
         "subtitle": "From ingestion to observability, we cover the full infrastructure lifecycle.",
+        "ctaPrimary": "View plans",
+        "ctaSecondary": "Meet the team",
+        "processBadge": "How it works",
+        "processTitle": "From idea to production in three steps",
+        "pricingTitle": "Plans for every stage",
+        "testimonialsTitle": "Teams that trust Zenith",
         "services": [
           { "title": "Event Ingestion", "desc": "High-throughput pipeline for millions of events/sec with automatic backpressure." },
           { "title": "Unified Telemetry", "desc": "Metrics, logs and traces in a single view with automatic correlation." },
@@ -354,8 +360,10 @@
         "topicOptions": ["Sales", "Technical Support", "Partnership", "Other"],
         "messageLabel": "Message",
         "submitButton": "Send",
+        "sendingButton": "Sending…",
         "successTitle": "Message sent!",
         "successDesc": "We'll get back to you within 24 hours.",
+        "sendAnother": "Send another message",
         "infoTitle": "Other ways to reach us",
         "infoItems": [
           { "label": "Email", "value": "hello@zenith-ui.dev" },
@@ -397,6 +405,7 @@
         "confirmLabel": "Confirm password",
         "confirmPlaceholder": "Repeat password",
         "termsText": "By continuing, you agree to our",
+        "termsDesc": "Accept the terms of service and privacy policy to create your account.",
         "termsLink": "Terms of Service",
         "and": "and",
         "privacyLink": "Privacy Policy",
@@ -414,7 +423,9 @@
         "submitButton": "Send link",
         "loadingButton": "Sending…",
         "successTitle": "Check your inbox!",
-        "successDesc": "We've sent a recovery link to your email. Expires in 1 hour.",
+        "successDesc": "We've sent a recovery link to {{email}}. It expires in 1 hour.",
+        "useOtherEmail": "Use another email",
+        "remembered": "Remembered your password?",
         "backLink": "Back to login"
       },
       "reset": {
@@ -429,7 +440,9 @@
         "loadingButton": "Updating…",
         "successTitle": "Password updated!",
         "successDesc": "You can now sign in with your new password.",
-        "loginButton": "Go to login"
+        "loginButton": "Go to login",
+        "notRequested": "Didn't request this change?",
+        "backLink": "Back to login"
       }
     },
     "helper": {

@@ -35,7 +35,7 @@ export const ResetPasswordPage = () => {
           {t('pages.auth.reset.successDesc')}
         </p>
         <Link to="/auth/login" className="mt-5 block">
-          <Button variant="primary" className="w-full" trailingIcon="arrow_forward">
+          <Button variant="primary" className="auth-primary-button w-full">
             {t('pages.auth.reset.loginButton')}
           </Button>
         </Link>
@@ -57,7 +57,7 @@ export const ResetPasswordPage = () => {
       <form onSubmit={submit} className="mt-6 space-y-4">
         <PasswordInput label={t('pages.auth.reset.passwordLabel')} placeholder={t('pages.auth.reset.passwordPlaceholder')} autoComplete="new-password" />
         <PasswordInput label={t('pages.auth.reset.confirmLabel')} placeholder={t('pages.auth.reset.confirmPlaceholder')} autoComplete="new-password" />
-        <Button type="submit" loading={loading} trailingIcon="check" className="w-full">
+        <Button type="submit" loading={loading} className="auth-primary-button w-full">
           {loading ? t('pages.auth.reset.loadingButton') : t('pages.auth.reset.submitButton')}
         </Button>
       </form>

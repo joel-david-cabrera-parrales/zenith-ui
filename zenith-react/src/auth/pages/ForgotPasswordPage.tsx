@@ -43,11 +43,11 @@ export const ForgotPasswordPage = () => {
         </p>
         <div className="mt-5 grid gap-2">
           <Link to="/auth/login">
-            <Button variant="primary" className="w-full" leadingIcon="arrow_back">
+          <Button variant="primary" className="auth-primary-button w-full">
               {t('pages.auth.forgot.backLink')}
             </Button>
           </Link>
-          <Button variant="ghost" onClick={() => setSent(false)}>
+        <Button variant="ghost" className="rounded-xl" onClick={() => setSent(false)}>
             {t('pages.auth.forgot.useOtherEmail')}
           </Button>
         </div>
@@ -77,7 +77,7 @@ export const ForgotPasswordPage = () => {
           message={error}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <Button type="submit" loading={loading} trailingIcon="send" className="w-full">
+        <Button type="submit" loading={loading} className="auth-primary-button w-full">
           {loading ? t('pages.auth.forgot.loadingButton') : t('pages.auth.forgot.submitButton')}
         </Button>
       </form>

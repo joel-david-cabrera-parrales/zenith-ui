@@ -121,7 +121,7 @@ export const Button = ({
     <button
       type={type}
       disabled={isDisabled}
-      className={`inline-flex items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/40 disabled:cursor-not-allowed ${loading ? 'cursor-wait opacity-80' : ''} ${SIZE_CLASSES[size]} ${look} ${className}`}
+      className={`inline-flex cursor-pointer items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/40 disabled:cursor-not-allowed ${loading ? 'cursor-wait opacity-80' : ''} ${SIZE_CLASSES[size]} ${look} ${className}`}
       {...rest}
     >
       {loading && (

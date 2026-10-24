@@ -334,6 +334,12 @@
         "badge": "Ce que nous faisons",
         "title": "Services de plateforme",
         "subtitle": "De l'ingestion à l'observabilité, nous couvrons tout le cycle de vie de votre infrastructure.",
+        "ctaPrimary": "Voir les offres",
+        "ctaSecondary": "Rencontrer l'équipe",
+        "processBadge": "Comment ça marche",
+        "processTitle": "De l'idée à la production en trois étapes",
+        "pricingTitle": "Des offres pour chaque étape",
+        "testimonialsTitle": "Les équipes font confiance à Zenith",
         "services": [
           { "title": "Ingestion d'événements", "desc": "Pipeline à haut débit pour millions d'événements/sec avec backpressure automatique." },
           { "title": "Télémétrie unifiée", "desc": "Métriques, logs et traces dans une vue unique avec corrélation automatique." },
@@ -354,8 +360,10 @@
         "topicOptions": ["Ventes", "Support technique", "Partenariat", "Autre"],
         "messageLabel": "Message",
         "submitButton": "Envoyer",
+        "sendingButton": "Envoi…",
         "successTitle": "Message envoyé !",
         "successDesc": "Nous vous répondrons sous 24 heures.",
+        "sendAnother": "Envoyer un autre message",
         "infoTitle": "Autres façons de nous contacter",
         "infoItems": [
           { "label": "Email", "value": "hello@zenith-ui.dev" },
@@ -397,6 +405,7 @@
         "confirmLabel": "Confirmer le mot de passe",
         "confirmPlaceholder": "Répétez le mot de passe",
         "termsText": "En continuant, vous acceptez nos",
+        "termsDesc": "Acceptez les conditions d'utilisation et la politique de confidentialité pour créer votre compte.",
         "termsLink": "Conditions d'utilisation",
         "and": "et",
         "privacyLink": "Politique de confidentialité",
@@ -414,7 +423,9 @@
         "submitButton": "Envoyer le lien",
         "loadingButton": "Envoi…",
         "successTitle": "Vérifiez votre boîte de réception !",
-        "successDesc": "Nous avons envoyé un lien de récupération à votre email. Expire dans 1 heure.",
+        "successDesc": "Nous avons envoyé un lien de récupération à {{email}}. Il expire dans 1 heure.",
+        "useOtherEmail": "Utiliser un autre email",
+        "remembered": "Vous vous souvenez de votre mot de passe ?",
         "backLink": "Retour à la connexion"
       },
       "reset": {
@@ -429,7 +440,9 @@
         "loadingButton": "Mise à jour…",
         "successTitle": "Mot de passe mis à jour !",
         "successDesc": "Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.",
-        "loginButton": "Aller à la connexion"
+        "loginButton": "Aller à la connexion",
+        "notRequested": "Vous n'avez pas demandé ce changement ?",
+        "backLink": "Retour à la connexion"
       }
     },
     "helper": {

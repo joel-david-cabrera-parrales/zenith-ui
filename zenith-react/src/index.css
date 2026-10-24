@@ -1,6 +1,24 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *):not([data-theme="light"] *));
 @import "material-symbols/outlined.css";
+
+[data-theme="light"] .auth-primary-button:not(:disabled) {
+  border-radius: 0.75rem;
+  background-color: var(--color-blue-700);
+  box-shadow: none;
+}
+
+[data-theme="light"] .auth-primary-button {
+  justify-content: center;
+}
+
+[data-theme="light"] .auth-primary-button:not(:disabled):hover {
+  background-color: var(--color-blue-800);
+}
+
+[data-theme="light"] .auth-primary-button:not(:disabled):active {
+  background-color: var(--color-blue-900);
+}
 
 @theme {
   --color-dark-base: #141417;

@@ -334,6 +334,12 @@
         "badge": "Qué hacemos",
         "title": "Servicios de plataforma",
         "subtitle": "Desde la ingesta hasta la observabilidad, cubrimos todo el ciclo de vida de tu infraestructura.",
+        "ctaPrimary": "Ver planes",
+        "ctaSecondary": "Conocer al equipo",
+        "processBadge": "Cómo funciona",
+        "processTitle": "De la idea a producción en tres pasos",
+        "pricingTitle": "Planes para cada etapa",
+        "testimonialsTitle": "Equipos que confían en Zenith",
         "services": [
           { "title": "Ingesta de eventos", "desc": "Pipeline de alto throughput para millones de eventos/seg con backpressure automático." },
           { "title": "Telemetría unificada", "desc": "Métricas, logs y traces en una sola vista con correlación automática." },
@@ -354,8 +360,10 @@
         "topicOptions": ["Ventas", "Soporte técnico", "Colaboración", "Otro"],
         "messageLabel": "Mensaje",
         "submitButton": "Enviar",
+        "sendingButton": "Enviando…",
         "successTitle": "¡Mensaje enviado!",
         "successDesc": "Te responderemos en menos de 24 horas.",
+        "sendAnother": "Enviar otro mensaje",
         "infoTitle": "Otras formas de contactar",
         "infoItems": [
           { "label": "Email", "value": "hola@zenith-ui.dev" },
@@ -397,6 +405,7 @@
         "confirmLabel": "Confirmar contraseña",
         "confirmPlaceholder": "Repite la contraseña",
         "termsText": "Al continuar, aceptas nuestros",
+        "termsDesc": "Acepta los términos de servicio y la política de privacidad para crear tu cuenta.",
         "termsLink": "Términos de servicio",
         "and": "y",
         "privacyLink": "Política de privacidad",
@@ -414,7 +423,9 @@
         "submitButton": "Enviar enlace",
         "loadingButton": "Enviando…",
         "successTitle": "¡Revisa tu bandeja de entrada!",
-        "successDesc": "Hemos enviado un enlace de recuperación a tu email. Expira en 1 hora.",
+        "successDesc": "Hemos enviado un enlace de recuperación a {{email}}. Expira en 1 hora.",
+        "useOtherEmail": "Usar otro email",
+        "remembered": "¿Ya recordaste tu contraseña?",
         "backLink": "Volver al login"
       },
       "reset": {
@@ -429,7 +440,9 @@
         "loadingButton": "Actualizando…",
         "successTitle": "¡Contraseña actualizada!",
         "successDesc": "Ya puedes iniciar sesión con tu nueva contraseña.",
-        "loginButton": "Ir al login"
+        "loginButton": "Ir al login",
+        "notRequested": "¿No solicitaste este cambio?",
+        "backLink": "Volver al login"
       }
     },
     "helper": {

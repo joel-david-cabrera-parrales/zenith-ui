@@ -334,6 +334,12 @@
         "badge": "Was wir tun",
         "title": "Platform Services",
         "subtitle": "Von Ingestion bis Observability decken wir den gesamten Infrastructure-Lebenszyklus ab.",
+        "ctaPrimary": "Pläne ansehen",
+        "ctaSecondary": "Team kennenlernen",
+        "processBadge": "So funktioniert's",
+        "processTitle": "In drei Schritten von der Idee zur Produktion",
+        "pricingTitle": "Pläne für jede Phase",
+        "testimonialsTitle": "Teams, die Zenith vertrauen",
         "services": [
           { "title": "Event Ingestion", "desc": "High-Throughput Pipeline für Millionen Events/Sek mit automatischem Backpressure." },
           { "title": "Unified Telemetry", "desc": "Metriken, Logs und Traces in einer View mit automatischer Korrelation." },
@@ -354,8 +360,10 @@
         "topicOptions": ["Vertrieb", "Technischer Support", "Partnerschaft", "Sonstiges"],
         "messageLabel": "Nachricht",
         "submitButton": "Senden",
+        "sendingButton": "Wird gesendet…",
         "successTitle": "Nachricht gesendet!",
         "successDesc": "Wir melden uns innerhalb von 24 Stunden.",
+        "sendAnother": "Weitere Nachricht senden",
         "infoTitle": "Andere Wege, uns zu erreichen",
         "infoItems": [
           { "label": "Email", "value": "hello@zenith-ui.dev" },
@@ -397,6 +405,7 @@
         "confirmLabel": "Passwort bestätigen",
         "confirmPlaceholder": "Passwort wiederholen",
         "termsText": "Durch Fortfahren stimmst du unseren",
+        "termsDesc": "Akzeptiere die Nutzungsbedingungen und Datenschutzrichtlinie, um dein Konto zu erstellen.",
         "termsLink": "Nutzungsbedingungen",
         "and": "und",
         "privacyLink": "Datenschutzrichtlinie",
@@ -415,7 +424,9 @@
         "submitButton": "Link senden",
         "loadingButton": "Wird gesendet…",
         "successTitle": "Posteingang prüfen!",
-        "successDesc": "Wir haben einen Wiederherstellungslink an deine E-Mail gesendet. Läuft in 1 Stunde ab.",
+        "successDesc": "Wir haben einen Wiederherstellungslink an {{email}} gesendet. Er läuft in 1 Stunde ab.",
+        "useOtherEmail": "Andere E-Mail verwenden",
+        "remembered": "Passwort wieder eingefallen?",
         "backLink": "Zurück zur Anmeldung"
       },
       "reset": {
@@ -430,7 +441,9 @@
         "loadingButton": "Aktualisiere…",
         "successTitle": "Passwort aktualisiert!",
         "successDesc": "Du kannst dich jetzt mit deinem neuen Passwort anmelden.",
-        "loginButton": "Zur Anmeldung"
+        "loginButton": "Zur Anmeldung",
+        "notRequested": "Hast du diese Änderung nicht angefordert?",
+        "backLink": "Zurück zur Anmeldung"
       }
     },
     "helper": {

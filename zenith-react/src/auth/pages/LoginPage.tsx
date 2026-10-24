@@ -59,7 +59,7 @@ export const LoginPage = () => {
             {t('pages.auth.login.forgotLink')}
           </Link>
         </div>
-        <Button type="submit" loading={loading} trailingIcon="arrow_forward" className="w-full">
+        <Button type="submit" loading={loading} className="auth-primary-button w-full">
           {loading ? t('pages.auth.login.loadingButton') : t('pages.auth.login.submitButton')}
         </Button>
       </form>
@@ -71,8 +71,8 @@ export const LoginPage = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-2">
-        <Button variant="outline" leadingIcon="public">{t('pages.auth.login.googleButton')}</Button>
-        <Button variant="outline" leadingIcon="code">{t('pages.auth.login.githubButton')}</Button>
+         <Button variant="outline" leadingIcon="public" className="rounded-xl shadow-none">{t('pages.auth.login.googleButton')}</Button>
+         <Button variant="outline" leadingIcon="code" className="rounded-xl shadow-none">{t('pages.auth.login.githubButton')}</Button>
       </div>
 
       <p className="mt-5 text-center text-sm text-slate-500">

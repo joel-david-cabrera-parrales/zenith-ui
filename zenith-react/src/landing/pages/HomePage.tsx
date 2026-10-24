@@ -43,7 +43,7 @@ export const HomePage = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/20 bg-transparent text-white hover:border-white/40 hover:bg-white/10"
+                className="!border-white/20 !bg-transparent !text-white hover:!border-white/40 hover:!bg-white/10"
                 leadingIcon="play_circle"
                 onClick={() => navigate("/landing/services")}
               >
@@ -197,7 +197,7 @@ export const HomePage = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/30 bg-transparent text-white hover:bg-white/10"
+              className="!border-white/30 !bg-transparent !text-white hover:!bg-white/10"
               onClick={() => navigate("/landing/about")}
             >
               {t('pages.landing.home.ctaBannerSecondary')}

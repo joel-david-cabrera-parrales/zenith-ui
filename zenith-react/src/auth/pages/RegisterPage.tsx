@@ -59,7 +59,7 @@ export const RegisterPage = () => {
         <div className="rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200">
           <Switch label={t('pages.auth.register.termsText')} description={t('pages.auth.register.termsDesc')} />
         </div>
-        <Button type="submit" loading={loading} trailingIcon="arrow_forward" className="w-full">
+        <Button type="submit" loading={loading} className="auth-primary-button w-full">
           {loading ? t('pages.auth.register.loadingButton') : t('pages.auth.register.submitButton')}
         </Button>
       </form>
