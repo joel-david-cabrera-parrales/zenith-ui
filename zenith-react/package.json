@@ -2,6 +2,13 @@
   "name": "zenith-react",
   "private": true,
   "version": "0.0.0",
+  "description": "Catálogo interactivo de componentes e interfaces de ejemplo creado con React, TypeScript y Tailwind CSS.",
+  "author": "Joel Cabrera",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joel-david-cabrera-parrales/zenith-ui.git",
+    "directory": "zenith-react"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
