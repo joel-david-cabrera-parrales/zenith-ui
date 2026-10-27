@@ -57,7 +57,6 @@ export function ChatHeader({
           </button>
         </div>
       </header>
-    </header>
   );
 }
 
