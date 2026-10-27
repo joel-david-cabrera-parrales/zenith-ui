@@ -46,10 +46,17 @@ export function ChatApp({
 
   const hasActive = activeConversationId !== null && !!activeConversation;
 
-  // Mobile-only logic
+  // Detect if we're on a mobile device (width < 768px)
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-  // En móvil, al seleccionar una conversación cerramos el drawer y mostramos el chat
+  // Mobile-only: when there's no active conversation, show full-screen list
+  const shouldShowConversationsList =
+    isMobile && !hasActive && !showConversations;
+
+  // Mobile toggle for sidebar
+  const handleToggleSidebar = () => setSidebarOpen((prev) => !prev);
+
+  // Mobile: select conversation closes drawer and shows chat
   const handleSelectConversation = (id: string) => {
     selectConversation(id);
     setSidebarOpen(false);
@@ -58,14 +65,10 @@ export function ChatApp({
     }
   };
 
-  // En móvil, al no haber conversación activa mostramos la lista full-screen
-  const shouldShowConversationsList =
-    isMobile && !hasActive;
-
   return (
     <div className="flex flex-col h-full w-full bg-slate-100 dark:bg-slate-900">
       {/* Mobile: Conversations list full-screen when no active chat */}
-      {shouldShowConversationsList && !showConversations && (
+      {shouldShowConversationsList && (
         <div className="flex flex-col h-full w-full bg-slate-100 dark:bg-slate-900">
           <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0">
             <button
@@ -90,19 +93,18 @@ export function ChatApp({
         </div>
       )}
 
-      {/* Desktop + Mobile main layout */}
-      {/* Desktop (md+): sidebar always visible + chat area side-by-side
-          Mobile: sidebar as drawer overlay, shown/hidden via button */}
+      {/* Main layout -->
       <div className="flex flex-col h-full w-full">
-        {/* Sidebar -->
+        {/* Desktop: sidebar always visible, chat area side-by-side.
+             Mobile: sidebar as drawer overlay (toggled by button) */}
         <aside
           className={cx(
             'flex flex-col h-full w-20 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 z-40',
-            // Desktop: always visible, never hidden
-            'md:block',
-            // Mobile: hidden by default, shown as drawer when toggled
-            !isMobile && sidebarOpen ? 'transform translate-x-0' : isMobile && sidebarOpen ? 'translate-x-full transition-transform duration-300' : ''),
-          onToggleCollapsed
+            // On md and up, always show the sidebar (block = visible)
+            isMobile ? 'hidden' : 'md:block',
+            // On mobile when sidebar is open, slide it in from left
+            isMobile && sidebarOpen ? 'transform translate-x-0' : isMobile ? '' : ''
+          )}
         >
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3 bg-slate-50 dark:bg-slate-900">
             <div className="flex items-center gap-2">
@@ -227,7 +229,7 @@ export function ChatApp({
               {/* Header -->
               <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0 z-10">
                 <div className="flex items-center gap-3">
-                  {/* Mobile: back to conversations list */}
+                  {/* Mobile: back to conversations list button */}
                   {isMobile ? (
                     <button
                       type="button"
@@ -246,8 +248,8 @@ export function ChatApp({
                     <button
                       type="button"
                       aria-label="Menu"
-                      onClick={() => setSidebarOpen((prev) => !prev)}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden"
+                      onClick={() => handleToggleSidebar()}
+                      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden sm:flex"
                     >
                       <span className="material-symbols-outlined text-lg">
                         menu
