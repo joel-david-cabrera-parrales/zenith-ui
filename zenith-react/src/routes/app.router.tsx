@@ -39,7 +39,7 @@ import {
   ProgressPage,
   LoadingPage,
 } from '@/pages';
-import { ChatExamplePage } from '@/examples/chat/ChatExamplePage';
+import { ChatLayout } from '@/examples/chat/layout/ChatLayout';
 
 export const appRouter = createBrowserRouter([
   {
@@ -81,7 +81,21 @@ export const appRouter = createBrowserRouter([
       { path: 'navigation/breadcrumbs', element: <BreadcrumbsPage /> },
       { path: 'navigation/tabs', element: <TabsPage /> },
       { path: 'overlay/tooltips', element: <TooltipsPage /> },
-      { path: 'examples/chat', element: <ChatExamplePage /> },
+      {
+        path: 'examples/chat',
+        element: <ChatLayout />,
+        children: [
+          {
+            index: true,
+            lazy: async () => {
+              const { ChatExamplePage } = await import(
+                '@/examples/chat/ChatExamplePage'
+              );
+              return { Component: ChatExamplePage };
+            },
+          },
+        ],
+      },
     ],
   },
   {

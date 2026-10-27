@@ -19,22 +19,20 @@ export const ChatExamplePage = () => {
   } = useChat();
 
   return (
-    <div className="min-h-screen w-full bg-slate-50 dark:bg-slate-950">
-      <ChatApp
-        currentUser={currentUser}
-        conversations={conversations}
-        activeConversation={activeConversation}
-        activeConversationId={activeConversationId}
-        messages={messages}
-        typingUsers={typingUsers}
-        inputValue={inputValue}
-        isSending={isSending}
-        setInputValue={setInputValue}
-        selectConversation={selectConversation}
-        sendMessage={sendMessage}
-        setTyping={setTyping}
-        messagesEndRef={messagesEndRef}
-      />
-    </div>
+    <ChatApp
+      currentUser={currentUser}
+      conversations={conversations}
+      activeConversation={activeConversation}
+      activeConversationId={activeConversationId}
+      messages={messages}
+      typingUsers={typingUsers}
+      inputValue={inputValue}
+      isSending={isSending}
+      setInputValue={setInputValue}
+      selectConversation={selectConversation}
+      sendMessage={sendMessage}
+      setTyping={setTyping}
+      messagesEndRef={messagesEndRef}
+    />
   );
 };
