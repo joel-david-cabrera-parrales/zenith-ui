@@ -1,4 +1,4 @@
-import type { Conversation, User } from '../types';
+import type { Conversation } from '../types';
 import { UserAvatar, StatusPill, Badge } from './ui';
 
 const cx = (...parts: Array<string | false | undefined>): string =>
@@ -97,8 +97,8 @@ export function Sidebar({
   currentUser,
 }: SidebarProps) {
   return (
-    <aside className="flex flex-col h-full border-r border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-950">
-      <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700/60 px-4 py-3 bg-white/50 dark:bg-slate-900/40">
+    <aside className="flex flex-col h-full border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3 bg-slate-50 dark:bg-slate-900">
         <div className="flex items-center gap-2">
           <UserAvatar user={currentUser} size="sm" ring={true} />
           <div className="leading-tight">
@@ -125,7 +125,7 @@ export function Sidebar({
           <input
             type="text"
             placeholder="Search conversations"
-            className="w-full rounded-lg border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-800 pl-9 pr-3 py-2 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
+            className="w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 pl-9 pr-3 py-2 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
           />
         </div>
       </div>

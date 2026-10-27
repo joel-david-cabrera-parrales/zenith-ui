@@ -125,7 +125,7 @@ export function Separator({ className = '' }: SeparatorProps) {
   return (
     <div
       className={cx(
-        'mx-2 h-4 w-px bg-slate-200 dark:bg-slate-700/60 self-center',
+        'mx-2 h-4 w-px bg-slate-200 dark:bg-slate-800/60 self-center',
         className,
       )}
     />
