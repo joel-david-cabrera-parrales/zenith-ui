@@ -26,3 +26,4 @@ export { BreadcrumbsPage } from './BreadcrumbsPage';
 export { StepsPage } from './StepsPage';
 export { TabsPage } from './TabsPage';
 export { TooltipsPage } from './TooltipsPage';
+export { ChatExamplePage } from './ChatExamplePage';
