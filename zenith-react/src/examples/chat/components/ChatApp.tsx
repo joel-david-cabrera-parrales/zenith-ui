@@ -210,12 +210,10 @@ export function ChatApp({
 
         {/* Main chat area */}
         <div className="flex-1 flex flex-col min-w-0 relative bg-slate-50 dark:bg-slate-950">
-          {/* Mobile: Backdrop when sidebar is open */}
+          {/* Mobile: Backdrop when sidebar is open -->
           {isMobile && sidebarOpen && (
-            <div
-              className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm"
-              aria-label="Close sidebar"
-            />
+            <div className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm" aria-label="Close sidebar">
+            </div>
           )}
 
           {hasActive ? (
@@ -265,7 +263,7 @@ export function ChatApp({
                   <button
                     type="button"
                     aria-label="Search"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden md:flex"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors md:flex"
                   >
                     <span className="material-symbols-outlined text-lg">search</span>
                   </button>
