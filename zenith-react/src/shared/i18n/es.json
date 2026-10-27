@@ -82,7 +82,8 @@
       "estructuras": "Estructuras",
       "herramientas": "Herramientas",
       "autenticacion": "Autenticación",
-      "landingPage": "Landing page"
+      "landingPage": "Landing page",
+      "chat": "Chat"
     },
     "sections": {
       "componentes": "Componentes",
@@ -133,7 +134,8 @@
       "reset": "Reset Password",
       "about": "About",
       "contact": "Contact",
-      "home": "Home"
+      "home": "Home",
+      "chatExample": "Chat Example"
     }
   },
   "pages": {

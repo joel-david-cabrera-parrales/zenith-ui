@@ -214,6 +214,14 @@ const AREAS: DeepArea[] = [
           { id: "home", label: "deep.links.home", icon: "home", route: "/landing/home" },
         ],
       },
+      {
+        id: "chat",
+        label: "deep.groups.chat",
+        icon: "chat",
+        links: [
+          { id: "chat-example", label: "deep.links.chatExample", icon: "chat", route: "/examples/chat" },
+        ],
+      },
     ],
   },
 ];
