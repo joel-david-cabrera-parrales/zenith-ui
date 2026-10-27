@@ -81,20 +81,20 @@ export const appRouter = createBrowserRouter([
       { path: 'navigation/breadcrumbs', element: <BreadcrumbsPage /> },
       { path: 'navigation/tabs', element: <TabsPage /> },
       { path: 'overlay/tooltips', element: <TooltipsPage /> },
+    ],
+  },
+  {
+    path: 'examples/chat',
+    element: <ChatLayout />,
+    children: [
       {
-        path: 'examples/chat',
-        element: <ChatLayout />,
-        children: [
-          {
-            index: true,
-            lazy: async () => {
-              const { ChatExamplePage } = await import(
-                '@/examples/chat/ChatExamplePage'
-              );
-              return { Component: ChatExamplePage };
-            },
-          },
-        ],
+        index: true,
+        lazy: async () => {
+          const { ChatExamplePage } = await import(
+            '@/examples/chat/ChatExamplePage'
+          );
+          return { Component: ChatExamplePage };
+        },
       },
     ],
   },
