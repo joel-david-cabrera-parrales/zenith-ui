@@ -210,7 +210,7 @@ export function ChatApp({
 
         {/* Main chat area */}
         <div className="flex-1 flex flex-col min-w-0 relative bg-slate-50 dark:bg-slate-950">
-          {/* Mobile: Backdrop when sidebar is open -->
+          {/* Mobile: Backdrop when sidebar is open */}
           {isMobile && sidebarOpen && (
             <div className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm" aria-label="Close sidebar">
             </div>
@@ -375,7 +375,7 @@ export function ChatApp({
                             className="h-1.5 w-1.5 rounded-full bg-slate-400 dark:bg-slate-500 animate-[loading-dot_1.2s_ease-in-out_infinite]"
                             style={{ animationDelay: `${i * 0.2}s` }}
                           />
-                        ))}
+                        ))
                       </div>
                     </div>
                   </div>
