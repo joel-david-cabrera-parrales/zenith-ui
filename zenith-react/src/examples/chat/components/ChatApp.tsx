@@ -46,20 +46,21 @@ export function ChatApp({
 
   const hasActive = activeConversationId !== null && !!activeConversation;
 
+  // Mobile-only logic
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   // En móvil, al seleccionar una conversación cerramos el drawer y mostramos el chat
   const handleSelectConversation = (id: string) => {
     selectConversation(id);
     setSidebarOpen(false);
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    if (isMobile) {
       setShowConversations(false);
     }
   };
 
-  // En móvil, al no haber conversación activa mostramos la lista
+  // En móvil, al no haber conversación activa mostramos la lista full-screen
   const shouldShowConversationsList =
-    typeof window !== 'undefined' &&
-    window.innerWidth < 768 &&
-    !hasActive;
+    isMobile && !hasActive;
 
   return (
     <div className="flex flex-col h-full w-full bg-slate-100 dark:bg-slate-900">
@@ -90,15 +91,18 @@ export function ChatApp({
       )}
 
       {/* Desktop + Mobile main layout */}
-      <div className="flex flex-col h-full w-full md:flex-row">
-        {/* Sidebar - Desktop: always visible; Mobile: drawer overlay */}
+      {/* Desktop (md+): sidebar always visible + chat area side-by-side
+          Mobile: sidebar as drawer overlay, shown/hidden via button */}
+      <div className="flex flex-col h-full w-full">
+        {/* Sidebar -->
         <aside
           className={cx(
-            'flex flex-col h-full border-r border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-950 z-40',
-            'md:flex md:w-80',
-            sidebarOpen ? 'transform translate-x-0' : 'hidden md:block',
-            !sidebarOpen && 'md:hidden',
-          )}
+            'flex flex-col h-full w-20 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 z-40',
+            // Desktop: always visible, never hidden
+            'md:block',
+            // Mobile: hidden by default, shown as drawer when toggled
+            !isMobile && sidebarOpen ? 'transform translate-x-0' : isMobile && sidebarOpen ? 'translate-x-full transition-transform duration-300' : ''),
+          onToggleCollapsed
         >
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3 bg-slate-50 dark:bg-slate-900">
             <div className="flex items-center gap-2">
@@ -207,26 +211,24 @@ export function ChatApp({
         </aside>
 
         {/* Main chat area */}
-        <div className="flex-1 flex flex-col min-w-0 relative">
+        <div className="flex-1 flex flex-col min-w-0 relative bg-slate-50 dark:bg-slate-950">
           {/* Mobile: Backdrop when sidebar is open */}
-          {typeof window !== 'undefined' &&
-            window.innerWidth < 768 &&
-            sidebarOpen && (
-              <button
-                type="button"
-                onClick={() => setSidebarOpen(false)}
-                className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm"
-                aria-label="Close sidebar"
-              />
-            )}
+          {isMobile && sidebarOpen && (
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(false)}
+              className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm"
+              aria-label="Close sidebar"
+            />
+          )}
 
           {hasActive ? (
             <>
-              {/* Header */}
+              {/* Header -->
               <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0 z-10">
                 <div className="flex items-center gap-3">
                   {/* Mobile: back to conversations list */}
-                  {typeof window !== 'undefined' && window.innerWidth < 768 ? (
+                  {isMobile ? (
                     <button
                       type="button"
                       aria-label="Back to conversations"
