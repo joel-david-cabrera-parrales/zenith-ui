@@ -38,8 +38,8 @@ import {
   TooltipsPage,
   ProgressPage,
   LoadingPage,
-  ChatExamplePage,
 } from '@/pages';
+import { ChatExamplePage } from '@/examples/chat/ChatExamplePage';
 
 export const appRouter = createBrowserRouter([
   {
