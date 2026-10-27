@@ -57,17 +57,8 @@ export function ChatHeader({
           </button>
         </div>
       </header>
-  );
-}
-
-export function ActiveChatHeader({
-  conversation,
-  onBack,
-  onCall,
-  onVideo,
-  onMore,
-}: ChatHeaderProps) {
-  if (!conversation) return null;
+    );
+  }
 
   const otherParticipants = conversation.participants.filter(
     (p) => p.id !== 'user-me',
@@ -107,7 +98,6 @@ export function ActiveChatHeader({
           </div>
         </div>
       </div>
-
       <div className="flex items-center gap-2">
         <button
           type="button"
