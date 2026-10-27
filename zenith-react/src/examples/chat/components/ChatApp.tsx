@@ -225,26 +225,33 @@ export function ChatApp({
               {/* Header */}
               <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0 z-10">
                 <div className="flex items-center gap-3">
-                  {/* Mobile: menu / back button */}
-                  <button
-                    type="button"
-                    aria-label="Menu"
-                    onClick={() => setSidebarOpen((prev) => !prev)}
-                    className={cx(
-                      'flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors',
-                      typeof window !== 'undefined' &&
-                        window.innerWidth < 768
-                          ? ''
-                        : 'hidden',
-                    )}
-                  >
-                    <span className="material-symbols-outlined text-lg">
-                      {typeof window !== 'undefined' &&
-                      window.innerWidth < 768
-                        ? 'menu'
-                        : 'chevron_left'}
-                    </span>
-                  </button>
+                  {/* Mobile: back to conversations list */}
+                  {typeof window !== 'undefined' && window.innerWidth < 768 ? (
+                    <button
+                      type="button"
+                      aria-label="Back to conversations"
+                      onClick={() => {
+                        setSidebarOpen(false);
+                        setShowConversations(true);
+                      }}
+                      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    >
+                      <span className="material-symbols-outlined text-lg">
+                        chevron_left
+                      </span>
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      aria-label="Menu"
+                      onClick={() => setSidebarOpen((prev) => !prev)}
+                      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden"
+                    >
+                      <span className="material-symbols-outlined text-lg">
+                        menu
+                      </span>
+                    </button>
+                  )}
                   <div className="flex items-center gap-2">
                     <div className="flex shrink-0 items-center justify-center rounded-full overflow-hidden border border-white/60 dark:border-white/10 ring-2 ring-blue-500/30 h-9 w-9 text-sm font-semibold shadow-sm dark:bg-slate-800 bg-white text-slate-700">
                       {activeConversation.initials}
