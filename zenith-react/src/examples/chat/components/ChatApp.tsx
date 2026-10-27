@@ -95,15 +95,11 @@ export function ChatApp({
 
       {/* Main layout -->
       <div className="flex flex-col h-full w-full">
-        {/* Desktop: sidebar always visible, chat area side-by-side.
-             Mobile: sidebar as drawer overlay (toggled by button) */}
+        {/* Desktop: sidebar always visible (md:block), Mobile: drawer overlay -->
         <aside
           className={cx(
-            'flex flex-col h-full w-20 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 z-40',
-            // On md and up, always show the sidebar (block = visible)
-            isMobile ? 'hidden' : 'md:block',
-            // On mobile when sidebar is open, slide it in from left
-            isMobile && sidebarOpen ? 'transform translate-x-0' : isMobile ? '' : ''
+            'flex flex-col h-full w-20 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 z-40 md:block',
+            isMobile && sidebarOpen ? 'transform translate-x-0' : ''
           )}
         >
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3 bg-slate-50 dark:bg-slate-900">
@@ -216,9 +212,7 @@ export function ChatApp({
         <div className="flex-1 flex flex-col min-w-0 relative bg-slate-50 dark:bg-slate-950">
           {/* Mobile: Backdrop when sidebar is open */}
           {isMobile && sidebarOpen && (
-            <button
-              type="button"
-              onClick={() => setSidebarOpen(false)}
+            <div
               className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm"
               aria-label="Close sidebar"
             />
@@ -228,55 +222,42 @@ export function ChatApp({
             <>
               {/* Header -->
               <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0 z-10">
-                <div className="flex items-center gap-3">
-                  {/* Mobile: back to conversations list button */}
-                  {isMobile ? (
-                    <button
-                      type="button"
-                      aria-label="Back to conversations"
-                      onClick={() => {
-                        setSidebarOpen(false);
-                        setShowConversations(true);
-                      }}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                    >
-                      <span className="material-symbols-outlined text-lg">
-                        chevron_left
+                {/* Mobile: back to conversations list button -->
+                {isMobile ? (
+                  <button
+                    type="button"
+                    aria-label="Back to conversations"
+                    onClick={() => {
+                      setSidebarOpen(false);
+                      setShowConversations(true);
+                    }}
+                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-lg">
+                      chevron_left
+                    </span>
+                  </button>
+                ) : null}
+                <div className="flex items-center gap-2">
+                  <div className="flex shrink-0 items-center justify-center rounded-full overflow-hidden border border-white/60 dark:border-white/10 ring-2 ring-blue-500/30 h-9 w-9 text-sm font-semibold shadow-sm dark:bg-slate-800 bg-white text-slate-700">
+                    {activeConversation.initials}
+                  </div>
+                  <div className="leading-tight min-w-0">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate" title={activeConversation.name}>
+                      {activeConversation.name}
+                    </p>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider shadow-sm">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                        Available
                       </span>
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      aria-label="Menu"
-                      onClick={() => handleToggleSidebar()}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden sm:flex"
-                    >
-                      <span className="material-symbols-outlined text-lg">
-                        menu
-                      </span>
-                    </button>
-                  )}
-                  <div className="flex items-center gap-2">
-                    <div className="flex shrink-0 items-center justify-center rounded-full overflow-hidden border border-white/60 dark:border-white/10 ring-2 ring-blue-500/30 h-9 w-9 text-sm font-semibold shadow-sm dark:bg-slate-800 bg-white text-slate-700">
-                      {activeConversation.initials}
-                    </div>
-                    <div className="leading-tight min-w-0">
-                      <p className="text-sm font-semibold text-slate-900 dark:text-white truncate" title={activeConversation.name}>
-                        {activeConversation.name}
-                      </p>
-                      <div className="flex items-center gap-1 mt-0.5">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider shadow-sm">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                          Available
+                      {activeConversation.type === 'group' && (
+                        <span className="text-[10px] text-slate-400 dark:text-slate-500">
+                          • {activeConversation.participants.filter(
+                            (p: any) => p.status === 'online',
+                          ).length} of {activeConversation.participants.length} online
                         </span>
-                        {activeConversation.type === 'group' && (
-                          <span className="text-[10px] text-slate-400 dark:text-slate-500">
-                            • {activeConversation.participants.filter(
-                              (p: any) => p.status === 'online',
-                            ).length} of {activeConversation.participants.length} online
-                          </span>
-                        )}
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -284,28 +265,28 @@ export function ChatApp({
                   <button
                     type="button"
                     aria-label="Search"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden sm:flex"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden md:flex"
                   >
                     <span className="material-symbols-outlined text-lg">search</span>
                   </button>
                   <button
                     type="button"
                     aria-label="Call"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors hidden sm:flex"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors md:flex"
                   >
                     <span className="material-symbols-outlined text-lg">call</span>
                   </button>
                   <button
                     type="button"
                     aria-label="Video call"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors hidden sm:flex"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors md:flex"
                   >
                     <span className="material-symbols-outlined text-lg">videocam</span>
                   </button>
                   <button
                     type="button"
                     aria-label="More"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors hidden sm:flex"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors md:flex"
                   >
                     <span className="material-symbols-outlined text-lg">more_vert</span>
                   </button>
