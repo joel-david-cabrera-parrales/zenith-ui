@@ -7,7 +7,7 @@ import {
   RegisterPage,
   ForgotPasswordPage,
   ResetPasswordPage,
-} from '@/auth';
+} from '@/examples/auth';
 import { HelperLayout, NotFoundPage, ServerErrorPage } from '@/helper';
 import {
   HomePage,

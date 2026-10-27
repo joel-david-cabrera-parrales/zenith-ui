@@ -143,7 +143,7 @@ export function ChatApp({
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1">
+          <div className="chat-sidebar-scroll flex-1 overflow-y-auto px-3 py-2 space-y-1">
             {conversations.map((conv) => (
               <button
                 key={conv.id}
@@ -389,7 +389,7 @@ export function ChatApp({
                   isSending ? 'opacity-60 pointer-events-none' : '',
                 )}
               >
-                <div className="flex items-end gap-2">
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     aria-label="Attach file"
@@ -423,7 +423,7 @@ export function ChatApp({
                       rows={1}
                       style={{ maxHeight: 112, overflowY: 'auto' }}
                       className={cx(
-                        'w-full resize-none rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all',
+                        'block w-full resize-none rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all',
                         isSending
                           ? 'bg-slate-50/50 dark:bg-slate-800/30 cursor-not-allowed'
                           : '',

@@ -130,7 +130,7 @@ export function Sidebar({
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1">
+      <div className="chat-sidebar-scroll flex-1 overflow-y-auto px-3 py-2 space-y-1">
         {conversations.map((conv) => (
           <ConversationItem
             key={conv.id}

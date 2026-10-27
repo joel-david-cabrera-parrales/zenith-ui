@@ -496,3 +496,43 @@
   width: 0;
   height: 0;
 }
+
+/* Chat conversation list scrollbar */
+.chat-sidebar-scroll {
+  scrollbar-color: rgb(148 163 184 / 0.55) transparent;
+  scrollbar-width: thin;
+}
+
+.chat-sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-sidebar-scroll::-webkit-scrollbar-thumb {
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  background: rgb(148 163 184 / 0.55);
+  background-clip: content-box;
+}
+
+.chat-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139 / 0.8);
+  background-clip: content-box;
+}
+
+.dark .chat-sidebar-scroll {
+  scrollbar-color: rgb(71 85 105 / 0.8) transparent;
+}
+
+.dark .chat-sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgb(71 85 105 / 0.8);
+  background-clip: content-box;
+}
+
+.dark .chat-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139 / 0.95);
+  background-clip: content-box;
+}
