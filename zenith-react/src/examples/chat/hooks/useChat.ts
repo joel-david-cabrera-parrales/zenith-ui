@@ -48,6 +48,8 @@ const MOCK_USERS: User[] = [
   },
 ];
 
+const INITIAL_TIME = new Date();
+
 function createMessage(
   conversationId: string,
   senderId: string,
@@ -72,6 +74,50 @@ function createMessage(
   };
 }
 
+function createConversationMessages(conversation?: Conversation): Message[] {
+  if (!conversation?.lastMessage) return [];
+
+  const otherUser =
+    conversation.participants.find((participant) => participant.id !== CURRENT_USER.id) ??
+    MOCK_USERS[1];
+
+  return [
+    createMessage(
+      conversation.id,
+      conversation.lastMessage.senderId,
+      conversation.lastMessage.senderName,
+      conversation.lastMessage.senderAvatar,
+      conversation.lastMessage.senderInitials,
+      conversation.lastMessage.text,
+      conversation.lastMessage.status,
+    ),
+    createMessage(
+      conversation.id,
+      CURRENT_USER.id,
+      CURRENT_USER.name,
+      CURRENT_USER.avatar,
+      CURRENT_USER.initials,
+      "Not yet, I'm reviewing them now. Looks promising so far.",
+    ),
+    createMessage(
+      conversation.id,
+      otherUser.id,
+      otherUser.name,
+      otherUser.avatar,
+      otherUser.initials,
+      'Awesome! The new card components have some really nice hover states.',
+    ),
+    createMessage(
+      conversation.id,
+      CURRENT_USER.id,
+      CURRENT_USER.name,
+      CURRENT_USER.avatar,
+      CURRENT_USER.initials,
+      'Yeah, I especially like the toast notifications. Very clean.',
+    ),
+  ];
+}
+
 export function useChat() {
   const [conversations, setConversations] = useState<Conversation[]>([
     {
@@ -92,7 +138,7 @@ export function useChat() {
       ),
       unreadCount: 2,
       muted: false,
-      updatedAt: new Date(Date.now() - 2 * 60 * 1000),
+      updatedAt: new Date(INITIAL_TIME.getTime() - 2 * 60 * 1000),
     },
     {
       id: 'conv-2',
@@ -112,7 +158,7 @@ export function useChat() {
       ),
       unreadCount: 0,
       muted: false,
-      updatedAt: new Date(Date.now() - 5 * 60 * 1000),
+      updatedAt: new Date(INITIAL_TIME.getTime() - 5 * 60 * 1000),
     },
     {
       id: 'conv-3',
@@ -132,7 +178,7 @@ export function useChat() {
       ),
       unreadCount: 5,
       muted: false,
-      updatedAt: new Date(Date.now() - 15 * 60 * 1000),
+      updatedAt: new Date(INITIAL_TIME.getTime() - 15 * 60 * 1000),
     },
     {
       id: 'conv-4',
@@ -152,7 +198,7 @@ export function useChat() {
       ),
       unreadCount: 0,
       muted: false,
-      updatedAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
+      updatedAt: new Date(INITIAL_TIME.getTime() - 2 * 60 * 60 * 1000),
     },
     {
       id: 'conv-5',
@@ -172,12 +218,14 @@ export function useChat() {
       ),
       unreadCount: 1,
       muted: false,
-      updatedAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+      updatedAt: new Date(INITIAL_TIME.getTime() - 24 * 60 * 60 * 1000),
     },
   ]);
 
   const [activeConversationId, setActiveConversationId] = useState<string | null>('conv-1');
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(() =>
+    createConversationMessages(conversations[0]),
+  );
   const [typingUsers, setTypingUsers] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -185,51 +233,6 @@ export function useChat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const activeConversation = conversations.find((c) => c.id === activeConversationId);
-
-  useEffect(() => {
-    if (activeConversation?.lastMessage) {
-      setMessages([
-        createMessage(
-          activeConversation.id,
-          'user-1',
-          'Maya Chen',
-          undefined,
-          'MC',
-          "Hey! Did you see the new design system docs?",
-          'read',
-        ),
-        createMessage(
-          activeConversation.id,
-          'user-me',
-          'Alex Rivera',
-          undefined,
-          'AR',
-          "Not yet, I'm reviewing them now. Looks promising so far.",
-          'read',
-        ),
-        createMessage(
-          activeConversation.id,
-          'user-1',
-          'Maya Chen',
-          undefined,
-          'MC',
-          'Awesome! The new card components have some really nice hover states.',
-          'read',
-        ),
-        createMessage(
-          activeConversation.id,
-          'user-me',
-          'Alex Rivera',
-          undefined,
-          'AR',
-          'Yeah, I especially like the toast notifications. Very clean.',
-          'read',
-        ),
-      ]);
-    } else {
-      setMessages([]);
-    }
-  }, [activeConversation]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -248,9 +251,12 @@ export function useChat() {
   const selectConversation = useCallback(
     (id: string) => {
       setActiveConversationId(id);
+      setMessages(
+        createConversationMessages(conversations.find((conversation) => conversation.id === id)),
+      );
       markAsRead(id);
     },
-    [markAsRead],
+    [conversations, markAsRead],
   );
 
   const sendMessage = useCallback(

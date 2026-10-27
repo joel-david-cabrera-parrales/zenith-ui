@@ -7,7 +7,7 @@ interface ChatInputProps {
   value: string;
   onChange: (value: string) => void;
   onSend: (text: string) => void;
-  onTyping: (isTyping: boolean) => void;
+  onTyping: (userId: string, isTyping: boolean) => void;
   disabled?: boolean;
   currentUser: User;
 }
@@ -28,7 +28,10 @@ export function ChatInput({
   };
 
   const handleTyping = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    onTyping(e.target.value.trim().length > 0);
+    onChange(e.target.value);
+    onTyping(currentUser.id, e.target.value.trim().length > 0);
+    e.currentTarget.style.height = 'auto';
+    e.currentTarget.style.height = `${Math.min(e.currentTarget.scrollHeight, 112)}px`;
   };
 
   return (
@@ -59,7 +62,7 @@ export function ChatInput({
             placeholder="Type a message..."
             disabled={disabled}
             rows={1}
-            maxRows={4}
+            style={{ maxHeight: 112, overflowY: 'auto' }}
             className={cx(
               'w-full resize-none rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all',
               disabled && 'bg-slate-50/50 dark:bg-slate-800/30 cursor-not-allowed',

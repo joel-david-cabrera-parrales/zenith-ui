@@ -1,4 +1,4 @@
-import type { Conversation } from '../types';
+import type { Conversation, User } from '../types';
 import { UserAvatar, StatusPill, Badge } from './ui';
 
 const cx = (...parts: Array<string | false | undefined>): string =>

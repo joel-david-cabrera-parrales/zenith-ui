@@ -1,21 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import { Sidebar } from './Sidebar';
 import { EmptyState } from './EmptyState';
-import { ChatHeader } from './ChatHeader';
-import { MessageList } from './MessageList';
-import { TypingIndicator } from './TypingIndicator';
-import { ChatInput } from './ChatInput';
-import { UserAvatar, StatusPill, Separator } from './ui';
+import { StatusPill, UserAvatar } from './ui';
+import type { Conversation, Message, User } from '../types';
 
 const cx = (...parts: Array<string | false | undefined>): string =>
   parts.filter(Boolean).join(' ');
 
 interface ChatAppProps {
-  currentUser: any;
-  conversations: any[];
-  activeConversation: any;
+  currentUser: User;
+  conversations: Conversation[];
+  activeConversation: Conversation | undefined;
   activeConversationId: string | null;
-  messages: any[];
+  messages: Message[];
   typingUsers: string[];
   inputValue: string;
   isSending: boolean;
@@ -23,7 +20,7 @@ interface ChatAppProps {
   selectConversation: (id: string) => void;
   sendMessage: (text: string) => void;
   setTyping: (userId: string, isTyping: boolean) => void;
-  messagesEndRef: React.RefObject<HTMLDivElement>;
+  messagesEndRef: RefObject<HTMLDivElement | null>;
 }
 
 export function ChatApp({
@@ -41,44 +38,54 @@ export function ChatApp({
   setTyping,
   messagesEndRef,
 }: ChatAppProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showConversations, setShowConversations] = useState(false);
+  const [showConversations, setShowConversations] = useState(true);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const hasActive = activeConversationId !== null && !!activeConversation;
 
-  // Detect if we're on a mobile device (width < 768px)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  // Detect mobile layout and keep it in sync when the viewport changes.
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < 768,
+  );
 
-  // Mobile-only: when there's no active conversation, show full-screen list
-  const shouldShowConversationsList =
-    isMobile && !hasActive && !showConversations;
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
-  // Mobile toggle for sidebar
-  const handleToggleSidebar = () => setSidebarOpen((prev) => !prev);
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener('change', updateIsMobile);
+    return () => mediaQuery.removeEventListener('change', updateIsMobile);
+  }, []);
 
-  // Mobile: select conversation closes drawer and shows chat
+  // On mobile, show the conversation list first and switch to chat after selection.
+  const shouldShowConversationsList = isMobile && showConversations;
+
+  // Selecting a conversation switches the mobile view to the chat.
   const handleSelectConversation = (id: string) => {
     selectConversation(id);
-    setSidebarOpen(false);
-    if (isMobile) {
-      setShowConversations(false);
-    }
+    setShowConversations(false);
   };
+
+  const handleSendMessage = () => {
+    const text = inputValue.trim();
+    if (!text || isSending) return;
+
+    setTyping(currentUser.id, false);
+    sendMessage(text);
+    if (inputRef.current) inputRef.current.style.height = 'auto';
+  };
+
+  const visibleTypingUsers = typingUsers.filter(
+    (userId) => userId !== currentUser.id,
+  );
 
   return (
     <div className="flex flex-col h-full w-full bg-slate-100 dark:bg-slate-900">
-      {/* Mobile: Conversations list full-screen when no active chat */}
+      {/* Mobile: full-screen conversation list */}
       {shouldShowConversationsList && (
         <div className="flex flex-col h-full w-full bg-slate-100 dark:bg-slate-900">
           <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0">
-            <button
-              type="button"
-              aria-label="Back"
-              onClick={() => setShowConversations(true)}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            >
-              <span className="material-symbols-outlined text-lg">chevron_left</span>
-            </button>
+            <div className="h-9 w-9" />
             <h1 className="text-sm font-semibold text-slate-900 dark:text-white">
               Conversations
             </h1>
@@ -93,14 +100,16 @@ export function ChatApp({
         </div>
       )}
 
-      {/* Main layout -->
-      <div className="flex flex-col h-full w-full">
-        {/* Desktop: sidebar always visible (md:block), Mobile: drawer overlay -->
+      {/* Main layout */}
+      <div
+        className={cx(
+          'flex h-full w-full flex-col md:flex-row',
+          shouldShowConversationsList ? 'hidden md:flex' : '',
+        )}
+      >
+        {/* Desktop sidebar; mobile uses the full-screen conversation list above. */}
         <aside
-          className={cx(
-            'flex flex-col h-full w-20 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 z-40 md:block',
-            isMobile && sidebarOpen ? 'transform translate-x-0' : ''
-          )}
+          className="hidden h-full w-full shrink-0 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 md:flex md:w-80"
         >
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3 bg-slate-50 dark:bg-slate-900">
             <div className="flex items-center gap-2">
@@ -210,25 +219,16 @@ export function ChatApp({
 
         {/* Main chat area */}
         <div className="flex-1 flex flex-col min-w-0 relative bg-slate-50 dark:bg-slate-950">
-          {/* Mobile: Backdrop when sidebar is open */}
-          {isMobile && sidebarOpen && (
-            <div className="absolute inset-0 z-20 bg-slate-950/50 backdrop-blur-sm" aria-label="Close sidebar">
-            </div>
-          )}
-
           {hasActive ? (
             <>
-              {/* Header -->
+              {/* Header */}
               <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 shrink-0 z-10">
-                {/* Mobile: back to conversations list button -->
+                {/* Mobile: back to conversations list button */}
                 {isMobile ? (
                   <button
                     type="button"
                     aria-label="Back to conversations"
-                    onClick={() => {
-                      setSidebarOpen(false);
-                      setShowConversations(true);
-                    }}
+                    onClick={() => setShowConversations(true)}
                     className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                   >
                     <span className="material-symbols-outlined text-lg">
@@ -252,7 +252,7 @@ export function ChatApp({
                       {activeConversation.type === 'group' && (
                         <span className="text-[10px] text-slate-400 dark:text-slate-500">
                           • {activeConversation.participants.filter(
-                            (p: any) => p.status === 'online',
+                          (p) => p.status === 'online',
                           ).length} of {activeConversation.participants.length} online
                         </span>
                       )}
@@ -294,7 +294,7 @@ export function ChatApp({
               {/* Messages */}
               <main className="flex-1 overflow-y-auto relative">
                 <div className="p-4 sm:p-6 bg-slate-50 dark:bg-slate-950">
-                  {messages.map((msg: any, idx: number) => {
+                  {messages.map((msg, idx) => {
                     const prevMsg = messages[idx - 1];
                     const isSameDay = prevMsg
                       ? new Date(msg.createdAt).toDateString() ===
@@ -321,38 +321,38 @@ export function ChatApp({
                             ? 'justify-end'
                             : 'justify-start',
                         )}>
-                          <div className={cx(
-                            'max-w-[80%] md:max-w-[65%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm border whitespace-pre-wrap break-words',
-                            msg.senderId === currentUser.id
-                              ? 'bg-blue-600 text-white border-transparent self-end'
-                              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white self-start',
-                          )}>
-                            <p className="whitespace-pre-wrap break-words">{msg.text}</p>
-                          </div>
-                          <div className={cx(
-                            'flex items-center gap-1 mt-1.5',
-                            msg.senderId === currentUser.id ? 'ml-auto' : 'ml-0',
-                          )}>
+                          <div className="flex w-fit max-w-[85%] flex-col md:max-w-[65%]">
+                            <div
+                              className={cx(
+                                'w-fit max-w-full rounded-2xl border px-4 py-2.5 text-sm leading-relaxed shadow-sm',
+                                msg.senderId === currentUser.id
+                                  ? 'border-transparent bg-blue-600 text-white'
+                                  : 'border-slate-200 bg-white text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-white',
+                              )}
+                            >
+                              <p className="whitespace-pre-wrap break-words">{msg.text}</p>
+                              <span
+                                className={cx(
+                                  'mt-1 block text-right text-[10px] leading-none',
+                                  msg.senderId === currentUser.id
+                                    ? 'text-blue-100/80'
+                                    : 'text-slate-400 dark:text-slate-500',
+                                )}
+                              >
+                                {new Date(msg.createdAt).toLocaleTimeString([], {
+                                  hour: '2-digit',
+                                  minute: '2-digit',
+                                })}
+                              </span>
+                            </div>
                             {msg.senderId === currentUser.id && (
-                              <>
-                                <span
-                                  className={cx(
-                                    'material-symbols-outlined text-[10px] text-blue-600 dark:text-blue-400',
-                                  )}
-                                >
+                              <div className="mt-1 flex self-end items-center gap-1 text-[10px] font-medium text-slate-400">
+                                <span className="material-symbols-outlined text-blue-600 dark:text-blue-400">
                                   {msg.status === 'sending' ? 'hourglass_bottom' : 'done_all'}
                                 </span>
-                                <span className="text-[10px] font-medium text-slate-400">
-                                  {msg.status}
-                                </span>
-                              </>
+                                <span>{msg.status}</span>
+                              </div>
                             )}
-                            <span className="text-[10px] font-medium text-slate-400">
-                              {new Date(msg.createdAt).toLocaleTimeString(
-                                [],
-                                { hour: '2-digit', minute: '2-digit' },
-                              )}
-                            </span>
                           </div>
                         </div>
                       </div>
@@ -361,12 +361,12 @@ export function ChatApp({
                   <div ref={messagesEndRef} />
                 </div>
 
-                {typingUsers.length > 0 && (
+                {visibleTypingUsers.length > 0 && (
                   <div className="absolute bottom-[80px] left-4 right-4 flex max-w-fit md:max-w-[65%] mx-auto items-center gap-2 px-4 py-1.5 pointer-events-none">
                     <div className="pointer-events-auto flex items-center gap-2 px-4 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">
                       <span className="material-symbols-outlined text-xs text-slate-400">person</span>
                       <p className="text-xs italic text-slate-500 dark:text-slate-400">
-                        {typingUsers.length === 1 ? 'typing...' : `${typingUsers.length} people are typing...`}
+                        {visibleTypingUsers.length === 1 ? 'typing...' : `${visibleTypingUsers.length} people are typing...`}
                       </p>
                       <div className="flex gap-1">
                         {[1, 2, 3].map((i) => (
@@ -375,7 +375,7 @@ export function ChatApp({
                             className="h-1.5 w-1.5 rounded-full bg-slate-400 dark:bg-slate-500 animate-[loading-dot_1.2s_ease-in-out_infinite]"
                             style={{ animationDelay: `${i * 0.2}s` }}
                           />
-                        ))
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -404,20 +404,24 @@ export function ChatApp({
 
                   <div className="flex-1 relative">
                     <textarea
+                      ref={inputRef}
                       value={inputValue}
                       onChange={(e) => {
                         setInputValue(e.target.value);
-                        setTyping(e.target.value.trim().length > 0);
+                        setTyping(currentUser.id, e.target.value.trim().length > 0);
+                        e.currentTarget.style.height = 'auto';
+                        e.currentTarget.style.height = `${Math.min(e.currentTarget.scrollHeight, 112)}px`;
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey) {
                           e.preventDefault();
-                          sendMessage(inputValue.trim());
+                          e.currentTarget.style.height = 'auto';
+                          handleSendMessage();
                         }
                       }}
                       placeholder="Type a message..."
                       rows={1}
-                      maxRows={4}
+                      style={{ maxHeight: 112, overflowY: 'auto' }}
                       className={cx(
                         'w-full resize-none rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all',
                         isSending
@@ -429,7 +433,7 @@ export function ChatApp({
 
                   <button
                     type="button"
-                    onClick={() => sendMessage(inputValue.trim())}
+                    onClick={handleSendMessage}
                     disabled={!inputValue.trim() || isSending}
                     className={cx(
                       'flex h-9 w-9 items-center justify-center rounded-xl',

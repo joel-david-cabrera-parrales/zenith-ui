@@ -1,9 +1,6 @@
 import type { Conversation } from '../types';
 import { UserAvatar, StatusPill, Separator } from './ui';
 
-const cx = (...parts: Array<string | false | undefined>): string =>
-  parts.filter(Boolean).join(' ');
-
 interface ChatHeaderProps {
   conversation: Conversation | null;
   onBack?: () => void;
