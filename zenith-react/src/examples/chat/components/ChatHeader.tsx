@@ -21,7 +21,7 @@ export function ChatHeader({
 }: ChatHeaderProps) {
   if (!conversation) {
     return (
-      <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-950 px-4 py-3">
+      <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3">
         <div className="flex items-center gap-3">
           {onBack && (
             <button
@@ -57,8 +57,17 @@ export function ChatHeader({
           </button>
         </div>
       </header>
-    );
-  }
+  );
+}
+
+export function ActiveChatHeader({
+  conversation,
+  onBack,
+  onCall,
+  onVideo,
+  onMore,
+}: ChatHeaderProps) {
+  if (!conversation) return null;
 
   const otherParticipants = conversation.participants.filter(
     (p) => p.id !== 'user-me',
@@ -70,7 +79,7 @@ export function ChatHeader({
   ).length;
 
   return (
-    <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-950 px-4 py-3 shrink-0">
+    <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 shrink-0">
       <div className="flex items-center gap-3">
         {onBack && (
           <button
@@ -98,6 +107,7 @@ export function ChatHeader({
           </div>
         </div>
       </div>
+
       <div className="flex items-center gap-2">
         <button
           type="button"
