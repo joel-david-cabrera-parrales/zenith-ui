@@ -4,6 +4,7 @@ import { ShopFooter } from '../components/ShopFooter';
 import { ShopTopBar } from '../components/ShopTopBar';
 import { ShopProductCard } from '../components/ShopProductCard';
 import { products } from '../mocks/products';
+import { useShopCart } from '../hooks/useShopCart';
 
 type ViewMode = 'grid' | 'list';
 
@@ -14,9 +15,9 @@ export const CatalogPage = () => {
   const [freeShippingOnly, setFreeShippingOnly] = useState(false);
   const [view, setView] = useState<ViewMode>('grid');
   const [sort, setSort] = useState('featured');
-  const [cartCount, setCartCount] = useState(0);
   const [notice, setNotice] = useState('');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const { itemCount, addToCart } = useShopCart();
 
   const visibleProducts = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase('es');
@@ -60,7 +61,7 @@ export const CatalogPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <ShopTopBar query={query} onQueryChange={setQuery} cartCount={cartCount} />
+      <ShopTopBar query={query} onQueryChange={setQuery} cartCount={itemCount} />
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 sm:pt-11 lg:px-8">
         <div className="mb-8 overflow-hidden rounded-3xl bg-sky-50">
           <div className="grid min-h-[220px] items-center gap-5 px-6 py-8 sm:px-10 md:grid-cols-[1fr_auto] md:px-12">
@@ -180,7 +181,7 @@ export const CatalogPage = () => {
                     product={product}
                     view={view}
                     onAddToCart={addedProduct => {
-                      setCartCount(count => count + 1);
+                      addToCart(addedProduct);
                       setNotice(`${addedProduct.name} añadido a tu cesta`);
                     }}
                   />

@@ -5,6 +5,7 @@ import type { ShopProduct } from '../interfaces/shop-products.interface';
 import { ShopTopBar } from '../components/ShopTopBar';
 import { ShopFooter } from '../components/ShopFooter';
 import { CustomSelect } from '@/features/forms/components/CustomSelect';
+import { useShopCart } from '../hooks/useShopCart';
 
 type Review = { name: string; date: string; rating: number; text: string; likes: number };
 
@@ -43,7 +44,7 @@ const Stars = ({ rating, large = false }: { rating: number; large?: boolean }) =
 const Icon = ({ children, className = '' }: { children: string; className?: string }) => <span aria-hidden="true" className={`material-symbols-outlined ${className}`}>{children}</span>;
 
 export const ProductDetailPage = () => {
-  const [cartCount, setCartCount] = useState(0);
+  const { itemCount, addToCart } = useShopCart();
   const cartNoticeTimeout = useRef<number | null>(null);
   
   const { productCode } = useParams();
@@ -80,7 +81,7 @@ export const ProductDetailPage = () => {
 
   return (
     <>
-    <ShopTopBar query={query} onQueryChange={setQuery} cartCount={cartCount} />
+    <ShopTopBar query={query} onQueryChange={setQuery} cartCount={itemCount} />
     <div className="min-h-screen bg-white text-slate-900">
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-5 sm:px-6 sm:pt-8 lg:px-8">
         <nav aria-label="Ruta de navegación" className="mb-5 flex items-center gap-2 text-xs text-slate-500 sm:text-sm">
@@ -119,7 +120,7 @@ export const ProductDetailPage = () => {
             </div>
             <div className="mt-5 grid grid-cols-[minmax(120px,0.7fr)_1.3fr] items-end gap-3">
               <CustomSelect label="Cantidad" options={quantityOptions} value={String(quantity)} onValueChange={value => setQuantity(Number(value))} />
-              <button type="button" onClick={() => { setCartCount(count => count + quantity); setCartAdded(true); if (cartNoticeTimeout.current !== null) window.clearTimeout(cartNoticeTimeout.current); cartNoticeTimeout.current = window.setTimeout(() => { setCartAdded(false); cartNoticeTimeout.current = null; }, 2500); }} className="flex h-12 items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 text-sm font-semibold text-white transition hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300"><Icon className="text-[19px]">{cartAdded ? 'check' : 'shopping_bag'}</Icon>{cartAdded ? 'Añadido al carrito' : 'Añadir al carrito'}</button>
+              <button type="button" onClick={() => { addToCart(product, quantity); setCartAdded(true); if (cartNoticeTimeout.current !== null) window.clearTimeout(cartNoticeTimeout.current); cartNoticeTimeout.current = window.setTimeout(() => { setCartAdded(false); cartNoticeTimeout.current = null; }, 2500); }} className="flex h-12 items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 text-sm font-semibold text-white transition hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300"><Icon className="text-[19px]">{cartAdded ? 'check' : 'shopping_bag'}</Icon>{cartAdded ? 'Añadido al carrito' : 'Añadir al carrito'}</button>
             </div>
             <Link to={`/examples/shop/checkout/${product.id}`} className="mt-3 flex h-12 items-center justify-center rounded-xl border border-slate-300 bg-transparent text-sm font-semibold text-slate-900 transition hover:border-slate-900 hover:bg-white">Comprar ahora</Link>
             <div className="mt-5 space-y-3 border-t border-stone-200 pt-4 text-xs text-slate-600"><div className="flex items-center gap-2"><Icon className="text-[18px] text-sky-700">local_shipping</Icon><span><strong className="font-semibold text-slate-800">Envío gratis</strong> en pedidos superiores a 50 €</span></div><div className="flex items-center gap-2"><Icon className="text-[18px] text-sky-700">autorenew</Icon><span>Devoluciones sencillas durante 30 días</span></div><div className="flex items-center gap-2"><Icon className="text-[18px] text-sky-700">verified_user</Icon><span>Compra protegida · Pago seguro</span></div></div>
