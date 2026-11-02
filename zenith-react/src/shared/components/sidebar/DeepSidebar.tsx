@@ -22,6 +22,7 @@ export interface DeepGroup {
   id: string;
   label: string;
   icon: string;
+  route?: string;
   sections?: DeepSection[];
   links?: DeepLink[];
 }
@@ -222,6 +223,12 @@ const AREAS: DeepArea[] = [
           { id: "chat-example", label: "deep.links.chatExample", icon: "chat", route: "/examples/chat" },
         ],
       },
+      {
+        id: "shop",
+        label: "deep.links.shop",
+        icon: "shopping_bag",
+        route: "/examples/shop",
+      },
     ],
   },
 ];
@@ -229,6 +236,9 @@ const AREAS: DeepArea[] = [
 function findActiveId(pathname: string): string | null {
   for (const area of AREAS) {
     for (const group of area.groups) {
+      if (group.route && (pathname === group.route || pathname.startsWith(group.route + "/"))) {
+        return group.id;
+      }
       const links = "sections" in group && group.sections
         ? group.sections.flatMap((section) => section.links)
         : group.links ?? [];
@@ -265,6 +275,9 @@ export const DeepSidebar = ({
 
   const filteredAreas = AREAS.map((area) => {
     const filteredGroups = area.groups.map((group) => {
+      if (group.route) {
+        return t(group.label).toLowerCase().includes(query.toLowerCase()) ? group : null;
+      }
       if ("sections" in group && group.sections) {
         const filteredSections = group.sections.map((section) => {
           const filteredLinks = section.links.filter((link) =>
@@ -279,7 +292,9 @@ export const DeepSidebar = ({
         );
         return { ...group, links: filteredLinks };
       }
-    }).filter((group) => {
+    }).filter((group): group is DeepGroup => {
+      if (group === null) return false;
+      if (group.route) return true;
       if ("sections" in group && group.sections) return group.sections.length > 0;
       return (group.links ?? []).length > 0;
     });
@@ -428,6 +443,25 @@ export const DeepSidebar = ({
                   <div className="overflow-hidden">
                     <div className="space-y-1 px-2 pb-2">
                       {area.groups.map((group) => {
+                        if (group.route) {
+                          const active = activeId === group.id;
+                          return (
+                            <button
+                              key={group.id}
+                              type="button"
+                              aria-current={active ? "page" : undefined}
+                              onClick={() => go(group.route)}
+                              tabIndex={areaOpen ? 0 : -1}
+                              className={cx(
+                                "ml-2 flex w-[calc(100%-0.5rem)] cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-left text-[13px] transition-colors",
+                                active ? "bg-blue-600 font-semibold text-white" : `font-medium ${textMuted} ${hoverBg}`,
+                              )}
+                            >
+                              <span aria-hidden="true" className={cx("material-symbols-outlined text-[16px]", active ? "" : textSecondary)}>{group.icon}</span>
+                              <span>{t(group.label)}</span>
+                            </button>
+                          );
+                        }
                         const groupOpen = areaOpen && openGroupId === group.id;
                         const groupButtonId = `${baseId}-${group.id}-button`;
                         const groupPanelId = `${baseId}-${group.id}-panel`;
