@@ -1,13 +1,7 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router';
-import { FeaturesLayout } from '@/features/layout';
-import { LandingLayout, HomePage as LandingHomePage, AboutPage, ServicesPage } from '@/landing';
-import {
-  AuthLayout,
-  LoginPage,
-  RegisterPage,
-  ForgotPasswordPage,
-  ResetPasswordPage,
-} from '@/examples/auth';
+import { LandingHomePage, AboutPage, ServicesPage } from '@/examples/landing/pages';
+import { AuthLayout, LoginPage, RegisterPage, ForgotPasswordPage, ResetPasswordPage } from '@/examples/auth';
 import { HelperLayout, NotFoundPage, ServerErrorPage } from '@/helper';
 import {
   HomePage,
@@ -38,8 +32,20 @@ import {
   TooltipsPage,
   ProgressPage,
   LoadingPage,
-} from '@/pages';
-import { ChatLayout } from '@/examples/chat/layout/ChatLayout';
+} from '@/pages/index';
+
+import { CatalogPage } from '@/examples/shop/pages/CatalogPage';
+import { ProductDetailPage } from '@/examples/shop/pages/ProductDetailPage';
+import { ChartsPage } from '@/pages/ChartsPage';
+import { ChatExamplePage } from '@/examples/chat/ChatExamplePage';
+import { CheckoutPage } from '@/examples/shop/pages/CheckoutPage';
+import { SeachProductPage } from '@/examples/shop/pages/SeachProductPage';
+import { ShoppingCartPage } from '@/examples/shop/pages/ShoppingCartPage';
+
+const ShopLayout = lazy(() => import('@/examples/shop/layout/ShopLayout'));
+const ChatLayout = lazy(() => import('@/examples/chat/layout/ChatLayout'));
+const FeaturesLayout = lazy(() => import('@/features/layout/FeaturesLayout'));
+const LandingLayout = lazy(() => import('@/examples/landing/layout/LandingLayout'));
 
 export const appRouter = createBrowserRouter([
   {
@@ -52,13 +58,7 @@ export const appRouter = createBrowserRouter([
       { path: 'forms/forms', element: <FormsPage /> },
       { path: 'forms/date-picker', element: <DatePickerPage /> },
       { path: 'forms/rich-text-editor', element: <RichTextEditorPage /> },
-      {
-        path: 'display/charts',
-        lazy: async () => {
-          const { ChartsPage } = await import('@/pages/ChartsPage');
-          return { Component: ChartsPage };
-        },
-      },
+      { path: 'display/charts', element: <ChartsPage /> },
       { path: 'forms/file-upload', element: <FileUploadPage /> },
       { path: 'feedback/modals', element: <ModalsPage /> },
       { path: 'feedback/drawers', element: <DrawersPage /> },
@@ -89,12 +89,7 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        lazy: async () => {
-          const { ChatExamplePage } = await import(
-            '@/examples/chat/ChatExamplePage'
-          );
-          return { Component: ChatExamplePage };
-        },
+        element: <ChatExamplePage />,
       },
     ],
   },
@@ -125,6 +120,36 @@ export const appRouter = createBrowserRouter([
     children: [
       { path: '404', element: <NotFoundPage /> },
       { path: '500', element: <ServerErrorPage /> },
+    ],
+  },
+  {
+    path: 'examples/shop',
+    element: <ShopLayout />,
+    children: [
+      {
+        index: true,
+        element: <CatalogPage />,
+      },
+      {
+        path: 'home',
+        element: <CatalogPage />,
+      },
+      {
+        path: 'product/:productCode',
+        element: <ProductDetailPage />,
+      },
+      {
+        path: 'checkout/:orderId',
+        element: <CheckoutPage />,
+      },
+      {
+        path: 'search',
+        element: <SeachProductPage />,
+      },
+      {
+        path: 'shopping-cart',
+        element: <ShoppingCartPage />,
+      },
     ],
   },
   {

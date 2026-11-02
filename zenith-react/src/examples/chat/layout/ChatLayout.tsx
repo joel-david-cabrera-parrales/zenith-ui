@@ -7,3 +7,5 @@ export const ChatLayout = () => {
     </div>
   );
 };
+
+export default ChatLayout;

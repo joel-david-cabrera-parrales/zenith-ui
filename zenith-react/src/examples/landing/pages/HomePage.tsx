@@ -1,20 +1,20 @@
-import { useNavigate } from "react-router";
-import { useTranslation } from "@/shared/hooks/useTranslation";
-import { Button } from "@/features/botones/components/Button";
-import { Heading } from "@/features/headings/components/Heading";
-import { BodyText } from "@/features/headings/components/BodyText";
-import { FeatureService } from "@/features/cards/components/FeatureService";
-import { PricingTier } from "@/features/cards/components/PricingTier";
-import { Testimonial } from "@/features/cards/components/Testimonial";
+import { useNavigate } from 'react-router';
+import { useTranslation } from '@/shared/hooks/useTranslation';
+import { Button } from '@/features/botones/components/Button';
+import { Heading } from '@/features/headings/components/Heading';
+import { BodyText } from '@/features/headings/components/BodyText';
+import { FeatureService } from '@/features/cards/components/FeatureService';
+import { PricingTier } from '@/features/cards/components/PricingTier';
+import { Testimonial } from '@/features/cards/components/Testimonial';
 import {
   LANDING_LOGOS,
   LANDING_PRICING,
   LANDING_SERVICES,
   LANDING_STATS,
   LANDING_TESTIMONIALS,
-} from "../mocks/landing.mock";
+} from '../mocks/landing.mock';
 
-export const HomePage = () => {
+export const LandingHomePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -33,11 +33,9 @@ export const HomePage = () => {
             <Heading variant="display-xl" as="h1" className="mt-4 text-white">
               {t('pages.landing.home.heroTitle')}
             </Heading>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">
-              {t('pages.landing.home.heroDesc')}
-            </p>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">{t('pages.landing.home.heroDesc')}</p>
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-              <Button size="lg" trailingIcon="arrow_forward" onClick={() => navigate("/auth/register")}>
+              <Button size="lg" trailingIcon="arrow_forward" onClick={() => navigate('/auth/register')}>
                 {t('pages.landing.home.ctaPrimary')}
               </Button>
               <Button
@@ -45,13 +43,13 @@ export const HomePage = () => {
                 variant="outline"
                 className="!border-white/20 !bg-transparent !text-white hover:!border-white/40 hover:!bg-white/10"
                 leadingIcon="play_circle"
-                onClick={() => navigate("/landing/services")}
+                onClick={() => navigate('/landing/services')}
               >
                 {t('pages.landing.home.ctaSecondary')}
               </Button>
             </div>
             <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {LANDING_STATS.map((stat) => (
+              {LANDING_STATS.map(stat => (
                 <div key={stat.label}>
                   <dt className="order-2 mt-1 block text-xs text-slate-400">{stat.label}</dt>
                   <dd className="text-xl font-bold tracking-tight text-white">{stat.value}</dd>
@@ -80,10 +78,10 @@ export const HomePage = () => {
             </div>
             <div className="mt-4 grid grid-cols-3 gap-2">
               {[
-                { icon: "bolt", value: "2.4M/s", label: "eventos" },
-                { icon: "database", value: "48", label: "réplicas" },
-                { icon: "shield", value: "0", label: "incidentes" },
-              ].map((item) => (
+                { icon: 'bolt', value: '2.4M/s', label: 'eventos' },
+                { icon: 'database', value: '48', label: 'réplicas' },
+                { icon: 'shield', value: '0', label: 'incidentes' },
+              ].map(item => (
                 <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 p-3 text-center">
                   <span aria-hidden="true" className="material-symbols-outlined text-lg text-blue-300">
                     {item.icon}
@@ -97,7 +95,7 @@ export const HomePage = () => {
         </div>
         <div className="border-t border-white/10">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-2 px-4 py-5 sm:px-6">
-            {LANDING_LOGOS.map((logo) => (
+            {LANDING_LOGOS.map(logo => (
               <span key={logo} className="text-sm font-bold tracking-wide text-slate-500">
                 {logo}
               </span>
@@ -118,7 +116,7 @@ export const HomePage = () => {
           {t('pages.landing.home.featuresDesc')}
         </BodyText>
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {LANDING_SERVICES.map((service) => (
+          {LANDING_SERVICES.map(service => (
             <FeatureService
               key={service.title}
               icon={service.icon}
@@ -141,7 +139,7 @@ export const HomePage = () => {
             {t('pages.landing.home.pricingTitle')}
           </Heading>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {LANDING_PRICING.map((tier) => (
+            {LANDING_PRICING.map(tier => (
               <PricingTier
                 key={tier.name}
                 ribbon={tier.ribbon}
@@ -166,7 +164,7 @@ export const HomePage = () => {
           {t('pages.landing.home.testimonialsTitle')}
         </Heading>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {LANDING_TESTIMONIALS.map((item) => (
+          {LANDING_TESTIMONIALS.map(item => (
             <Testimonial
               key={item.author}
               quote={item.quote}
@@ -182,15 +180,13 @@ export const HomePage = () => {
           <Heading variant="h1" as="h2" className="text-white">
             {t('pages.landing.home.ctaBannerTitle')}
           </Heading>
-          <p className="mx-auto mt-3 max-w-xl text-blue-100">
-            {t('pages.landing.home.ctaBannerDesc')}
-          </p>
+          <p className="mx-auto mt-3 max-w-xl text-blue-100">{t('pages.landing.home.ctaBannerDesc')}</p>
           <div className="mt-6 flex flex-col justify-center gap-2 sm:flex-row">
             <Button
               size="lg"
               variant="secondary"
               trailingIcon="arrow_forward"
-              onClick={() => navigate("/auth/register")}
+              onClick={() => navigate('/auth/register')}
             >
               {t('pages.landing.home.ctaBannerPrimary')}
             </Button>
@@ -198,7 +194,7 @@ export const HomePage = () => {
               size="lg"
               variant="outline"
               className="!border-white/30 !bg-transparent !text-white hover:!bg-white/10"
-              onClick={() => navigate("/landing/about")}
+              onClick={() => navigate('/landing/about')}
             >
               {t('pages.landing.home.ctaBannerSecondary')}
             </Button>
