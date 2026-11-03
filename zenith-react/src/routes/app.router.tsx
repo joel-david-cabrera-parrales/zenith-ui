@@ -41,6 +41,7 @@ import { ChatExamplePage } from '@/examples/chat/ChatExamplePage';
 import { CheckoutPage } from '@/examples/shop/pages/CheckoutPage';
 import { SeachProductPage } from '@/examples/shop/pages/SeachProductPage';
 import { ShoppingCartPage } from '@/examples/shop/pages/ShoppingCartPage';
+import { ProfilePage } from '@/examples/shop/pages/ProfilePage';
 
 const ShopLayout = lazy(() => import('@/examples/shop/layout/ShopLayout'));
 const ChatLayout = lazy(() => import('@/examples/chat/layout/ChatLayout'));
@@ -149,6 +150,10 @@ export const appRouter = createBrowserRouter([
       {
         path: 'shopping-cart',
         element: <ShoppingCartPage />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
       },
     ],
   },

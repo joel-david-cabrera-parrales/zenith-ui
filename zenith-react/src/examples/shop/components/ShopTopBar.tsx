@@ -141,6 +141,10 @@ export const ShopTopBar = ({ query, onQueryChange, cartCount }: ShopTopBarProps)
                 <div className="mt-1 border-t border-slate-100 pt-1">
                   <Link role="menuitem" to="/auth" onClick={() => setProfileOpen(false)} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50"><span aria-hidden="true" className="material-symbols-outlined shrink-0 text-lg text-slate-500">account_circle</span><span className="min-w-0 flex-1">Iniciar sesión o crear cuenta</span><span aria-hidden="true" className="material-symbols-outlined shrink-0 text-base text-slate-400">arrow_forward</span></Link>
                   <Link role="menuitem" to="/examples/shop/shopping-cart" onClick={() => setProfileOpen(false)} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50"><span aria-hidden="true" className="material-symbols-outlined shrink-0 text-lg text-slate-500">shopping_bag</span><span className="min-w-0 flex-1">Ir a mi carrito</span><span className="shrink-0 text-xs text-slate-400">{cartCount}</span></Link>
+                  <Link role="menuitem" to="/examples/shop/profile" onClick={() => setProfileOpen(false)} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50"><span aria-hidden="true" className="material-symbols-outlined shrink-0 text-lg text-slate-500">account_circle</span><span className="min-w-0 flex-1">Perfil</span></Link>
+                </div>
+                <div className="mt-1 border-t border-slate-100 pt-1">
+                  <button role="menuitem" type="button" onClick={() => { setProfileOpen(false); navigate('/auth'); }} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium text-rose-700 transition hover:bg-rose-50"><span aria-hidden="true" className="material-symbols-outlined text-lg">logout</span>Cerrar sesión</button>
                 </div>
               </div>
             )}
