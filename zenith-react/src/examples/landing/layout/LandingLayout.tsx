@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router";
-import { Button } from "@/features/botones/components/Button";
+import { useState } from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router';
+import { Button } from '@/features/botones/components/Button';
 
-const cx = (...parts: Array<string | false | undefined>): string =>
-  parts.filter(Boolean).join(" ");
+const cx = (...parts: Array<string | false | undefined>): string => parts.filter(Boolean).join(' ');
 
 const LANDING_LINKS = [
-  { to: "/landing/home", label: "Home" },
-  { to: "/landing/about", label: "About" },
-  { to: "/landing/services", label: "Services" },
+  { to: '/landing/home', label: 'Home' },
+  { to: '/landing/about', label: 'About' },
+  { to: '/landing/services', label: 'Services' },
 ] as const;
 
 export const LandingLayout = () => {
@@ -16,11 +15,11 @@ export const LandingLayout = () => {
   const [open, setOpen] = useState(false);
 
   const goCatalog = () => {
-    navigate("/");
+    navigate('/');
   };
 
   const goRegister = () => {
-    navigate("/auth/register");
+    navigate('/auth/register');
   };
 
   return (
@@ -29,7 +28,7 @@ export const LandingLayout = () => {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
           <button
             type="button"
-            onClick={() => navigate("/landing/home")}
+            onClick={() => navigate('/landing/home')}
             className="flex items-center gap-2.5"
             aria-label="Zenith - ir a home"
           >
@@ -39,9 +38,7 @@ export const LandingLayout = () => {
               </span>
             </span>
             <span className="leading-tight">
-              <span className="block text-sm font-bold tracking-tight text-slate-900">
-                Zenith
-              </span>
+              <span className="block text-sm font-bold tracking-tight text-slate-900">Zenith</span>
               <span className="block font-mono text-[9px] font-semibold tracking-widest text-slate-400 uppercase">
                 Ejemplos UI
               </span>
@@ -49,14 +46,14 @@ export const LandingLayout = () => {
           </button>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Navegación landing">
-            {LANDING_LINKS.map((link) => (
+            {LANDING_LINKS.map(link => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
                   cx(
-                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    isActive ? "bg-blue-50 text-blue-700" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
+                    'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                    isActive ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                   )
                 }
               >
@@ -76,29 +73,32 @@ export const LandingLayout = () => {
 
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen(v => !v)}
             aria-expanded={open}
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
             className="flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 hover:bg-slate-100 md:hidden"
           >
             <span aria-hidden="true" className="material-symbols-outlined text-2xl">
-              {open ? "close" : "menu"}
+              {open ? 'close' : 'menu'}
             </span>
           </button>
         </div>
 
         {open && (
-          <nav className="border-t border-slate-200/70 bg-white px-4 py-3 md:hidden" aria-label="Navegación landing móvil">
+          <nav
+            className="border-t border-slate-200/70 bg-white px-4 py-3 md:hidden"
+            aria-label="Navegación landing móvil"
+          >
             <div className="flex flex-col gap-1">
-              {LANDING_LINKS.map((link) => (
+              {LANDING_LINKS.map(link => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     cx(
-                      "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                      isActive ? "bg-blue-50 text-blue-700" : "text-slate-600 hover:bg-slate-100",
+                      'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                      isActive ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-100'
                     )
                   }
                 >
@@ -138,13 +138,23 @@ export const LandingLayout = () => {
             </p>
           </div>
           <div>
-            <p className="font-mono text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-              Páginas
-            </p>
+            <p className="font-mono text-[10px] font-bold tracking-widest text-slate-500 uppercase">Páginas</p>
             <ul className="mt-3 space-y-2 text-sm">
-              <li><NavLink to="/landing/home" className="hover:text-slate-900">Home</NavLink></li>
-              <li><NavLink to="/landing/about" className="hover:text-slate-900">About</NavLink></li>
-              <li><NavLink to="/landing/services" className="hover:text-slate-900">Services</NavLink></li>
+              <li>
+                <NavLink to="/landing/home" className="hover:text-slate-900">
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/landing/about" className="hover:text-slate-900">
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/landing/services" className="hover:text-slate-900">
+                  Services
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
@@ -158,3 +168,5 @@ export const LandingLayout = () => {
     </div>
   );
 };
+
+export default LandingLayout;

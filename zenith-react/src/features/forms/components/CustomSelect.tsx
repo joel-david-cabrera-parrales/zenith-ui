@@ -10,17 +10,22 @@ export interface CustomSelectProps {
   label?: string;
   options: CustomSelectOption[];
   defaultValue?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
 }
 
 export const CustomSelect = ({
   label,
   options,
   defaultValue,
+  value,
+  onValueChange,
 }: CustomSelectProps) => {
   const detailsRef = useRef<HTMLDetailsElement>(null);
-  const [selected, setSelected] = useState(
+  const [internalSelected, setInternalSelected] = useState(
     defaultValue ?? options[0]?.value ?? '',
   );
+  const selected = value ?? internalSelected;
   const current = options.find((o) => o.value === selected) ?? options[0];
 
   if (current === undefined) return null;
@@ -53,7 +58,8 @@ export const CustomSelect = ({
                 key={option.value}
                 type="button"
                 onClick={() => {
-                  setSelected(option.value);
+                  setInternalSelected(option.value);
+                  onValueChange?.(option.value);
                   detailsRef.current?.removeAttribute('open');
                 }}
                 className={`flex w-full items-center justify-between rounded-md px-2.5 py-2 text-left text-sm text-slate-900 transition-colors hover:bg-slate-100 ${isCurrent ? 'bg-slate-100' : ''}`}

@@ -10,8 +10,12 @@ export interface ModeOption {
 }
 
 export interface ModeSelectMenuProps extends HTMLAttributes<HTMLDivElement> {
+  options?: ModeOption[];
+  label?: string;
   defaultSelected?: string;
+  selectedId?: string;
   defaultOpen?: boolean;
+  palette?: 'blue' | 'sky';
   onAction?: (id: string) => void;
 }
 
@@ -23,20 +27,26 @@ const MODE_OPTIONS: ModeOption[] = [
 ];
 
 export const ModeSelectMenu = ({
+  options = MODE_OPTIONS,
+  label = 'Modo Operativo',
   defaultSelected = 'audit',
+  selectedId: controlledSelectedId,
   defaultOpen = true,
+  palette = 'blue',
   onAction,
   className = '',
   ...rest
 }: ModeSelectMenuProps) => {
   const [open, setOpen] = useState(defaultOpen);
   const [exiting, setExiting] = useState(false);
-  const [selectedId, setSelectedId] = useState(defaultSelected);
+  const [internalSelectedId, setInternalSelectedId] = useState(defaultSelected);
   const menuId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const timer = useRef<number | null>(null);
 
-  const selected = MODE_OPTIONS.find((option) => option.id === selectedId) ?? MODE_OPTIONS[0];
+  const selectedId = controlledSelectedId ?? internalSelectedId;
+  const selected = options.find((option) => option.id === selectedId) ?? options[0];
+  const isSky = palette === 'sky';
 
   useEffect(() => {
     return () => {
@@ -93,7 +103,7 @@ export const ModeSelectMenu = ({
   };
 
   const handleAction = (id: string) => {
-    setSelectedId(id);
+    if (controlledSelectedId === undefined) setInternalSelectedId(id);
     onAction?.(id);
     close();
   };
@@ -114,9 +124,9 @@ export const ModeSelectMenu = ({
         aria-expanded={open && !exiting}
         aria-controls={menuId}
         onClick={toggle}
-        className="flex w-full items-center justify-between rounded-lg border border-blue-600 bg-white px-3 py-2 text-sm font-medium text-blue-700 shadow-sm ring-2 ring-blue-600/20"
+        className={`flex w-full items-center justify-between rounded-lg border bg-white px-3 py-2 text-left text-sm font-medium shadow-sm outline-none focus-visible:ring-2 ${isSky ? 'border-sky-600 text-sky-800 focus-visible:ring-sky-600/20' : 'border-blue-600 text-blue-700 ring-2 ring-blue-600/20 focus-visible:ring-blue-600/20'}`}
       >
-        Modo Operativo: {selected.label.replace('Modo ', '')}
+        {label}: {selected?.label.replace(/^Modo\s+/, '') ?? 'Seleccionar'}
         <span aria-hidden="true" className="material-symbols-outlined text-[16px]">
           {open && !exiting ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
         </span>
@@ -126,14 +136,14 @@ export const ModeSelectMenu = ({
         <div
           id={menuId}
           role="menu"
-          aria-label="Selector de modo operativo"
+          aria-label={label}
           className={
             exiting
               ? 'absolute top-full right-0 left-0 z-50 mt-2 w-full animate-modal-out space-y-1 rounded-xl border border-slate-200 bg-white p-1.5 shadow-[0_20px_35px_-10px_rgba(11,28,48,0.12)]'
               : 'absolute top-full right-0 left-0 z-50 mt-2 w-full animate-modal-in space-y-1 rounded-xl border border-slate-200 bg-white p-1.5 shadow-[0_20px_35px_-10px_rgba(11,28,48,0.12)]'
           }
         >
-          {MODE_OPTIONS.map((option) => {
+          {options.map((option) => {
             if (option.disabled === true) {
               return (
                 <div
@@ -165,21 +175,21 @@ export const ModeSelectMenu = ({
                 onClick={() => handleAction(option.id)}
                 className={
                   isSelected
-                    ? 'flex w-full items-center justify-between rounded-lg bg-blue-100 px-2.5 py-1.5 text-sm font-semibold text-blue-900'
+                    ? `flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-sm font-semibold ${isSky ? 'bg-sky-100 text-sky-900' : 'bg-blue-100 text-blue-900'}`
                     : 'flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-sm text-slate-700 transition-colors hover:bg-slate-100'
                 }
               >
                 <span className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={`material-symbols-outlined text-[16px] ${isSelected ? 'text-blue-700' : 'text-slate-500'}`}
+                    className={`material-symbols-outlined text-[16px] ${isSelected ? (isSky ? 'text-sky-700' : 'text-blue-700') : 'text-slate-500'}`}
                   >
                     {option.icon}
                   </span>
                   {option.label}
                 </span>
                 {isSelected && (
-                  <span className="text-[10px] font-bold tracking-wider text-blue-700 uppercase">Activo</span>
+                  <span className={`text-[10px] font-bold tracking-wider uppercase ${isSky ? 'text-sky-700' : 'text-blue-700'}`}>Activo</span>
                 )}
               </button>
             );
