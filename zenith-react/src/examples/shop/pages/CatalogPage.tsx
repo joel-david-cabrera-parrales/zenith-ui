@@ -13,6 +13,9 @@ export const CatalogPage = () => {
   const [category, setCategory] = useState('Todo el catálogo');
   const [inStockOnly, setInStockOnly] = useState(false);
   const [freeShippingOnly, setFreeShippingOnly] = useState(false);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [minRating, setMinRating] = useState(0);
   const [view, setView] = useState<ViewMode>('grid');
   const [sort, setSort] = useState('featured');
   const [notice, setNotice] = useState('');
@@ -25,6 +28,9 @@ export const CatalogPage = () => {
       .filter(product => category === 'Todo el catálogo' || product.category === category)
       .filter(product => !inStockOnly || product.inStock)
       .filter(product => !freeShippingOnly || product.freeShipping)
+      .filter(product => minPrice === '' || product.price >= Number(minPrice))
+      .filter(product => maxPrice === '' || product.price <= Number(maxPrice))
+      .filter(product => product.rating >= minRating)
       .filter(
         product =>
           !normalizedQuery || `${product.name} ${product.category}`.toLocaleLowerCase('es').includes(normalizedQuery)
@@ -38,12 +44,15 @@ export const CatalogPage = () => {
           ? b.rating - a.rating
           : 0
       );
-  }, [category, freeShippingOnly, inStockOnly, query, sort]);
+  }, [category, freeShippingOnly, inStockOnly, maxPrice, minPrice, minRating, query, sort]);
 
   const clearFilters = () => {
     setCategory('Todo el catálogo');
     setInStockOnly(false);
     setFreeShippingOnly(false);
+    setMinPrice('');
+    setMaxPrice('');
+    setMinRating(0);
     setQuery('');
   };
 
@@ -55,6 +64,12 @@ export const CatalogPage = () => {
       onInStockChange={setInStockOnly}
       freeShippingOnly={freeShippingOnly}
       onFreeShippingChange={setFreeShippingOnly}
+      minPrice={minPrice}
+      onMinPriceChange={setMinPrice}
+      maxPrice={maxPrice}
+      onMaxPriceChange={setMaxPrice}
+      minRating={minRating}
+      onMinRatingChange={setMinRating}
       onClear={clearFilters}
     />
   );
@@ -105,7 +120,7 @@ export const CatalogPage = () => {
                 tune
               </span>{' '}
               Filtros
-              {(inStockOnly || freeShippingOnly || category !== 'Todo el catálogo') && (
+              {(inStockOnly || freeShippingOnly || category !== 'Todo el catálogo' || minPrice !== '' || maxPrice !== '' || minRating > 0) && (
                 <span className="h-1.5 w-1.5 rounded-full bg-sky-600" />
               )}
             </button>

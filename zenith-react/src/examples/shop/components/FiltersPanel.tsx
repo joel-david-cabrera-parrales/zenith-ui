@@ -7,6 +7,12 @@ interface FiltersPanelProps {
   onInStockChange: (value: boolean) => void;
   freeShippingOnly: boolean;
   onFreeShippingChange: (value: boolean) => void;
+  minPrice: string;
+  onMinPriceChange: (value: string) => void;
+  maxPrice: string;
+  onMaxPriceChange: (value: string) => void;
+  minRating: number;
+  onMinRatingChange: (value: number) => void;
   onClear: () => void;
 }
 
@@ -18,6 +24,12 @@ export const FiltersPanel = (props: FiltersPanelProps) => {
     onInStockChange,
     freeShippingOnly,
     onFreeShippingChange,
+    minPrice,
+    onMinPriceChange,
+    maxPrice,
+    onMaxPriceChange,
+    minRating,
+    onMinRatingChange,
     onClear,
   } = props;
   return (
@@ -72,6 +84,34 @@ export const FiltersPanel = (props: FiltersPanelProps) => {
           />
           Envío gratuito
         </label>
+      </section>
+      <section className="border-b border-slate-100 py-5">
+        <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Precio</h3>
+        <div className="grid grid-cols-2 gap-2">
+          <label className="text-xs text-slate-500">
+            Mínimo
+            <span className="mt-1 flex h-10 items-center rounded-lg border border-slate-200 px-2 text-sm text-slate-700 focus-within:border-sky-400 focus-within:ring-2 focus-within:ring-sky-100">
+              <span aria-hidden="true">€</span>
+              <input aria-label="Precio mínimo" type="number" min="0" value={minPrice} onChange={event => onMinPriceChange(event.target.value)} className="w-full bg-transparent pl-1 outline-none" placeholder="0" />
+            </span>
+          </label>
+          <label className="text-xs text-slate-500">
+            Máximo
+            <span className="mt-1 flex h-10 items-center rounded-lg border border-slate-200 px-2 text-sm text-slate-700 focus-within:border-sky-400 focus-within:ring-2 focus-within:ring-sky-100">
+              <span aria-hidden="true">€</span>
+              <input aria-label="Precio máximo" type="number" min="0" value={maxPrice} onChange={event => onMaxPriceChange(event.target.value)} className="w-full bg-transparent pl-1 outline-none" placeholder="Sin límite" />
+            </span>
+          </label>
+        </div>
+      </section>
+      <section className="py-5">
+        <label htmlFor="minimum-rating" className="mb-3 block text-xs font-semibold uppercase tracking-wide text-slate-500">Valoración mínima</label>
+        <select id="minimum-rating" value={minRating} onChange={event => onMinRatingChange(Number(event.target.value))} className="h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100">
+          <option value={0}>Cualquier valoración</option>
+          <option value={4}>4 estrellas o más</option>
+          <option value={4.5}>4,5 estrellas o más</option>
+          <option value={5}>5 estrellas</option>
+        </select>
       </section>
       <div className="mt-5 rounded-xl bg-sky-50 p-3.5">
         <div className="flex items-start gap-2.5">
